@@ -12,7 +12,7 @@ based services and specifically includes `RDKit <http://www.rdkit.org/>`_ for bu
 applications. The following schema gives an overview.
 
 
-.. image:: docs/_images/appdock.png
+.. image:: docs/_images/chembience.png
 
 
 If launched, Appdock creates a Docker virtual network ("Chembience Rope") on the Docker host system and starts up several
@@ -50,30 +50,30 @@ Installation (needs update)
 
 Clone this repository::
 
-    https://github.com/markussitzmann/appdock.git appdock
+    https://github.com/markussitzmann/chembience.git chembience
 
 go into directory ::
 
-    cd appdock/
+    cd chembience/
 
-and edit the file ``.env`` to appropriate settings, in particular, variable ``APPDOCK_HOME`` to a file directory location where the user
-running the build in the next is allowed to create a directory. If the directory specified in ``APPDOCK_HOME`` does not exist, it will be
+and edit the file ``.env`` to appropriate settings, in particular, variable ``CHEMBIENCE_HOME`` to a file directory location where the user
+running the build in the next is allowed to create a directory. If the directory specified in ``CHEMBIENCE_HOME`` does not exist, it will be
 created during the first start up of a Docker container. It will be mounted as volume in all containers.
 
-Start the Docker build of the system by going to the ``build``-directory of the ``appdock``-directory and run ``docker-compose build`` (it is
+Start the Docker build of the system by going to the ``build``-directory of the ``chembience``-directory and run ``docker-compose build`` (it is
 actually important to be in this directory because ``docker-compose`` needs the corresponding ``docker-compose.yml`` configuration file available in the
 directory it is run)::
 
     cd build/
     docker-compose build
 
-This will build all Docker image files needed for APPDOCK.
+This will build all Docker image files needed for Chembience.
 
 
-Bringing APPDOCK up
+Bringing Chembience up
 -------------------
 
-go back into the ``appdock`` directory::
+go back into the ``chembience`` directory::
 
     cd ..
 
@@ -90,7 +90,7 @@ APPDOCK will run with the settings provided in ``appdock/.env``. Bringing APPDOC
 also in the ``bin`` directory. Any data stored in any databases or search indices will persist and will be available again after restarting the system
 with ``docker-compose up`` again.
 
-It is possible to change settings in the ``appdock/.env`` file while the system is down, however, PLEASE NOTE, this may have unwanted side effects.
+It is possible to change settings in the ``chembience/.env`` file while the system is down, however, PLEASE NOTE, this may have unwanted side effects.
 
 Some (already working) things
 -----------------------------
@@ -104,7 +104,7 @@ with::
     docker-compose run --rm shell
 
 If this is the first start-up of the shell container, the directory specified in ``APPDOCK_HOME`` will be created and mounted as a Docker volume.
-Inside the shell container, this directory is available under ``/home/appdock``.
+Inside the shell container, this directory is available under ``/home/chembience``.
 
 
 ===============================
@@ -113,6 +113,6 @@ Starting a database client psql
 
 with::
 
-    docker-compose run --rm shell psql -h db -U appdock appdock
+    docker-compose run --rm shell psql -h db -U chembience chembience
 
-Password is the one specified ``APPDOCK_DB_PASSWORD`` in ``.env``.
+Password is the one specified ``CHEMBIENCE_DB_PASSWORD`` in ``.env``.
