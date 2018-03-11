@@ -1,0 +1,65 @@
+version: '3'
+
+services:
+
+  proxy:
+    image: markussitzmann/chembience_proxy:${CHEMBIENCE_BUILD_LABEL}
+    container_name: chembience_proxy
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - "${CHEMBIENCE_HOME}:/home/chembience"
+    ports:
+      - "80:80"
+    networks:
+      - atmosphere
+
+  shell:
+    image: markussitzmann/chembience_shell:${CHEMBIENCE_BUILD_LABEL}
+    container_name: chembience_shell
+    command: bash
+    volumes:
+      - "${CHEMBIENCE_HOME}:/home/chembience"
+    networks:
+      - atmosphere
+    environment:
+      - CHEMBIENCE_BUILD_LABEL
+      - CHEMBIENCE_ROOT
+      - CHEMBIENCE_HOME
+      - CHEMBIENCE_USER
+      - CHEMBIENCE_UID
+      - CHEMBIENCE_GID
+
+  db:
+    image: markussitzmann/chembience_db:${CHEMBIENCE_BUILD_LABEL}
+    container_name: chembience_db
+    volumes:
+       #- /srv/docker/chembiencedb:/var/lib/postgresql
+      - db_volume:/var/lib/postgresql
+    networks:
+      - atmosphere
+    environment:
+      - DEBUG=true
+      - CHEMBIENCE_BUILD_LABEL
+      - CHEMBIENCE_ROOT
+      - CHEMBIENCE_HOME
+      - CHEMBIENCE_USER
+      - CHEMBIENCE_UID
+      - CHEMBIENCE_GID
+      - DB_USER=${CHEMBIENCE_USER}
+      - DB_PASS=${CHEMBIENCE_DB_PASSWORD}
+      - DB_NAME=${CHEMBIENCE_USER}
+      - DB_TEMPLATE=
+      - DB_EXTENSION=rdkit
+      - REPLICATION_MODE=
+      - REPLICATION_USER=
+      - REPLICATION_PASS=
+      - REPLICATION_SSLMODE=
+
+volumes:
+  db_volume:
+
+networks:
+  atmosphere:
+
+
+

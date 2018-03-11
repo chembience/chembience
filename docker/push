@@ -1,0 +1,9 @@
+#!/bin/bash
+
+source ../.env
+
+docker push markussitzmann/chembience_shell:$CHEMBIENCE_BUILD_LABEL
+docker push markussitzmann/chembience_db:$CHEMBIENCE_BUILD_LABEL
+docker push markussitzmann/chembience_django:$CHEMBIENCE_BUILD_LABEL
+docker push markussitzmann/chembience_app:$CHEMBIENCE_BUILD_LABEL
+

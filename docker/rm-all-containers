@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#source ./appserver.env
+
+#docker ps --filter status=dead --filter status=exited -aq | xargs -r docker rm -v
+
+docker stop $(docker ps -a -q)
+docker rm -v $(docker ps -a -q)

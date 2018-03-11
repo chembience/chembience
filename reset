@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source .env
+
+docker-compose -f $CHEMBIENCE_HOME/docker-compose.yml down
+docker-compose -f $APP_HOME/docker-compose.yml down
+
+rm -rf $CHEMBIENCE_HOME && rm -rf $APP_HOME

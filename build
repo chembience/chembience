@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cp .env ./context \
+&& cp .env ./context/django/ \
+&& cp .env ./context/base/chembience/bin/ \
+&& cp .env ./context/app/
+
+docker-compose -f ./context/docker-compose.yml build
