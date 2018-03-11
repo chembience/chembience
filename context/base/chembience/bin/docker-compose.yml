@@ -11,7 +11,7 @@ services:
     ports:
       - "80:80"
     networks:
-      - atmosphere
+      - sphere
 
   shell:
     image: markussitzmann/chembience_shell:${CHEMBIENCE_BUILD_LABEL}
@@ -20,7 +20,7 @@ services:
     volumes:
       - "${CHEMBIENCE_HOME}:/home/chembience"
     networks:
-      - atmosphere
+      - sphere
     environment:
       - CHEMBIENCE_BUILD_LABEL
       - CHEMBIENCE_ROOT
@@ -33,10 +33,9 @@ services:
     image: markussitzmann/chembience_db:${CHEMBIENCE_BUILD_LABEL}
     container_name: chembience_db
     volumes:
-       #- /srv/docker/chembiencedb:/var/lib/postgresql
       - db_volume:/var/lib/postgresql
     networks:
-      - atmosphere
+      - sphere
     environment:
       - DEBUG=true
       - CHEMBIENCE_BUILD_LABEL
@@ -59,7 +58,7 @@ volumes:
   db_volume:
 
 networks:
-  atmosphere:
+  sphere:
 
 
 

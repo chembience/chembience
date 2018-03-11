@@ -15,7 +15,7 @@ services:
       - CHEMBIENCE_GID
       - APP_HOME
     networks:
-      - atmosphere
+      - sphere
 
 networks:
-  atmosphere:
+  sphere:

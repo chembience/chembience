@@ -16,7 +16,7 @@
    viewBox="0 0 295 213"
    version="1.1"
    id="svg8"
-   inkscape:export-filename="/home/sitzmann/projects/appdock/docs/_images/appdock.png"
+   inkscape:export-filename="/home/sitzmann/projects/chembience/docs/_images/chembience.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
@@ -483,9 +483,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="509.62525"
-     inkscape:cy="439.42073"
+     inkscape:zoom="0.7"
+     inkscape:cx="698.05015"
+     inkscape:cy="545.28069"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -510,6 +510,11 @@
        position="307.62723,213.54836"
        orientation="1,0"
        id="guide2184"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="253.63879,196.44311"
+       orientation="1,0"
+       id="guide1141"
        inkscape:locked="false" />
   </sodipodi:namedview>
   <metadata
@@ -550,7 +555,7 @@
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333311px;line-height:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';text-align:center;text-anchor:middle;stroke-width:0.26458332"
          y="208.08754"
          x="125.40163"
-         sodipodi:role="line">Chembience Atmosphere</tspan><tspan
+         sodipodi:role="line">Chembience Sphere</tspan><tspan
          id="tspan6294"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';text-align:center;text-anchor:middle;stroke-width:0.26458332"
          y="212.69234"
@@ -756,7 +761,7 @@
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333311px;line-height:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';text-align:center;text-anchor:middle;fill:#808080;stroke-width:0.26458332"
          y="240.24921"
          x="147.19655"
-         sodipodi:role="line">Other </tspan><tspan
+         sodipodi:role="line">Further </tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333311px;line-height:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';text-align:center;text-anchor:middle;fill:#808080;stroke-width:0.26458332"
          y="244.854"
          x="146.65912"
@@ -766,7 +771,7 @@
          y="249.4588"
          x="147.19655"
          sodipodi:role="line"
-         id="tspan6600">container </tspan><tspan
+         id="tspan6600">containers </tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';text-align:center;text-anchor:middle;fill:#808080;stroke-width:0.26458332"
          y="254.0636"
          x="146.65912"
@@ -807,12 +812,12 @@
     <text
        id="text7068-4-5"
        y="116.26507"
-       x="123.10746"
+       x="116.22831"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777805px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777805px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';fill:#999999;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777805px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';fill:#000000;stroke-width:0.26458332"
          y="116.26507"
-         x="123.10746"
+         x="116.22831"
          id="tspan7066-7-6"
          sodipodi:role="line">Chembience</tspan></text>
     <rect
@@ -906,25 +911,25 @@
     <text
        id="text10755"
        y="162.11462"
-       x="229.22043"
+       x="231.86623"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';stroke-width:0.26458332"
          y="162.11462"
-         x="229.22043"
+         x="231.86623"
          id="tspan10753"
-         sodipodi:role="line">/home/user/atmosphere/app1</tspan></text>
+         sodipodi:role="line">~/chembiencemnt/app1</tspan></text>
     <text
        id="text10755-9"
        y="150.19254"
-       x="229.75594"
+       x="232.40173"
        style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:12.69999981px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';fill:#666666;stroke-width:0.26458332"
          y="150.19254"
-         x="229.75594"
+         x="232.40173"
          id="tspan10753-7"
-         sodipodi:role="line">/home/user/atmosphere/app2</tspan></text>
+         sodipodi:role="line">~/chembiencemnt/app2</tspan></text>
     <text
        id="text10823"
        y="172.64153"
@@ -1016,14 +1021,14 @@
     <text
        id="text24268-6-2-0-3"
        y="265.30203"
-       x="136.40315"
+       x="134.41878"
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';letter-spacing:0px;word-spacing:0px;display:inline;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';fill:#999999;stroke-width:0.26458332"
          y="265.30203"
-         x="136.40315"
+         x="134.41878"
          id="tspan24266-2-7-9-6"
-         sodipodi:role="line">Docker container</tspan></text>
+         sodipodi:role="line">Docker containers</tspan></text>
     <text
        id="text4151"
        y="188.0941"
