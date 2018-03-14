@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  app:
+    image: markussitzmann/chembience_app:${CHEMBIENCE_BUILD_LABEL}
+    build:
+      context: .
+      args:
+        build_label: ${CHEMBIENCE_BUILD_LABEL}
+
+
+
+
