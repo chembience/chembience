@@ -66,10 +66,10 @@ services:
     depends_on:
        - base
 
-  app:
-    image: markussitzmann/chembience_app:${CHEMBIENCE_BUILD_LABEL}
+  djangoapp:
+    image: markussitzmann/chembience_djangoapp:${CHEMBIENCE_BUILD_LABEL}
     build:
-      context: app/
+      context: djangoapp/
       args:
         build_label: ${CHEMBIENCE_BUILD_LABEL}
     depends_on:

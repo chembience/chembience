@@ -2,14 +2,14 @@ version: '3'
 
 services:
 
-  app:
-    image: markussitzmann/chembience_app:${CHEMBIENCE_BUILD_LABEL}
-    container_name: chembience_app
+  djangoapp:
+    image: markussitzmann/chembience_djangoapp:${CHEMBIENCE_BUILD_LABEL}
+    container_name: chembience_djangoapp
     volumes:
       - "${CHEMBIENCE_HOME}:/home/chembience"
-      - "${APP_HOME}:/home/app"
+      - "${DJANGO_APP_HOME}:/home/app"
     ports:
-       - "${APP_CONNECTION_PORT}:80"
+       - "${DJANGO_APP_CONNECTION_PORT}:80"
     networks:
       - sphere
     environment:
@@ -20,9 +20,9 @@ services:
       - CHEMBIENCE_DB_HOST=${CHEMBIENCE_DB_HOST}
       - CHEMBIENCE_DB_PORT=${CHEMBIENCE_DB_PORT}
       - CHEMBIENCE_DB_PASSWORD=${CHEMBIENCE_DB_PASSWORD}
-      - APP_HOME=${APP_HOME}
-      - APP_VIRTUAL_HOSTNAME=${APP_VIRTUAL_HOSTNAME}
-      - VIRTUAL_HOST=${APP_VIRTUAL_HOSTNAME}
+      - DJANGO_APP_HOME=${DJANGO_APP_HOME}
+      - DJANGO_APP_VIRTUAL_HOSTNAME=${DJANGO_APP_VIRTUAL_HOSTNAME}
+      - VIRTUAL_HOST=${DJANGO_APP_VIRTUAL_HOSTNAME}
     depends_on:
       - proxy
       - db

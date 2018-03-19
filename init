@@ -2,7 +2,7 @@
 
 source .env
 
-mkdir -p $CHEMBIENCE_HOME && mkdir -p $APP_HOME
+mkdir -p $CHEMBIENCE_HOME && mkdir -p $DJANGO_APP_HOME
 
 docker-compose -f ./context/docker-compose.build.yml run --rm base
 docker-compose -f ./context/django/docker-compose.init.yml run --rm django

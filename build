@@ -3,6 +3,8 @@
 cp .env ./context \
 && cp .env ./context/django/ \
 && cp .env ./context/base/chembience/bin/ \
-&& cp .env ./context/app/
+&& cp .env ./context/djangoapp/ \
+&& cp .env ./context/django/app-context
+
 
 docker-compose -f ./context/docker-compose.build.yml build

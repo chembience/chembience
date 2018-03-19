@@ -4,7 +4,7 @@
 
     DJANGO_APP_HOME=~/chembiencemnt/djangoapp
     DJANGO_APP_CONNECTION_PORT=8000
-    DJANGO_APP_VIRTUAL_HOSTNAME=djangoapp.localhost
+    DJANGO_APP_VIRTUAL_HOSTNAME=app.localhost
 
 ### PROXY ###
 

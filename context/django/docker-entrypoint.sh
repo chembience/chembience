@@ -12,7 +12,7 @@ else
 fi
 
 if [ -z "$(ls -A /home/app)" ]; then
-    echo "Initializing home directory for app and django ..."
+    echo "Initializing home directory for django app ..."
     cp -rf /opt/django/* /home/app
     mv /home/app/project_template/appsite /home/app
     mv /home/app/app-context/* /home/app/
