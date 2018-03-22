@@ -1,10 +1,12 @@
 #!/bin/bash
 
-cp .env ./context \
-&& cp .env ./context/django/ \
-&& cp .env ./context/base/chembience/bin/ \
-&& cp .env ./context/djangoapp/ \
-&& cp .env ./context/django/app-context
+cp .env ./context/base \
+&& cp .env ./context/app \
+&& cp .env ./context/base/django/ \
+&& cp .env ./context/base/base/chembience/bin/ \
+&& cp .env ./context/base/django/app-context \
+&& cp .env ./context/app/django/ \
+&& cp .env ./context/app/rdkit/
 
-
-docker-compose -f ./context/docker-compose.build.yml build
+docker-compose -f ./context/base/docker-compose.build.yml build
+docker-compose -f ./context/app/docker-compose.build.yml build

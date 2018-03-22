@@ -25,7 +25,7 @@ SECRET_KEY = 'j=-c$eq!j$(rl)(2-s16dqcrco#52pp=nu0u*vn)973i-m^aai'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = os.environ['DJANGO_APP_VIRTUAL_HOSTNAME'].split(",")
+ALLOWED_HOSTS = os.environ['APP_VIRTUAL_HOSTNAME'].split(",")
 
 
 # Application definition

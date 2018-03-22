@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+
+  proxy:
+    image: markussitzmann/chembience_proxy:${CHEMBIENCE_BUILD_LABEL}
+    build:
+      context: https://github.com/markussitzmann/nginx-proxy.git#chembience
+
+  shell:
+    image: markussitzmann/chembience_shell:${CHEMBIENCE_BUILD_LABEL}
+    build:
+      context: shell/
+      args:
+        build_label: ${CHEMBIENCE_BUILD_LABEL}
+    command: bash
+
+  db:
+    image: markussitzmann/chembience_db:${CHEMBIENCE_BUILD_LABEL}
+    build:
+      context: https://github.com/markussitzmann/docker-postgresql.git#chembience
+      args:
+        build_label: ${CHEMBIENCE_BUILD_LABEL}
+
+  django:
+    image: markussitzmann/chembience_django:${CHEMBIENCE_BUILD_LABEL}
+    build:
+      context: django/
+      args:
+        build_label: ${CHEMBIENCE_BUILD_LABEL}
+
+
+
+
+

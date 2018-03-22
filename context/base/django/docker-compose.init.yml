@@ -3,17 +3,16 @@ version: '3'
 services:
 
   django:
-    image: markussitzmann/chembience_django:${CHEMBIENCE_BUILD_LABEL}
-    #container_name: djangoapp
+    image: markussitzmann/chembience_django_base:${CHEMBIENCE_BUILD_LABEL}
     volumes:
       - "${CHEMBIENCE_HOME}:/home/chembience"
-      - "${DJANGO_APP_HOME}:/home/app"
+      - "${APP_HOME}:/home/app"
     environment:
       - CHEMBIENCE_HOME
       - CHEMBIENCE_USER
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
-      - DJANGO_APP_HOME
+      - APP_HOME
     networks:
       - sphere
 
