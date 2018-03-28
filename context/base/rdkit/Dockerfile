@@ -86,7 +86,12 @@ RUN /bin/bash -c "source activate chembience" && \
     conda install --offline /home/chembience/rdkit-*.tar.bz2 && \
     conda clean -pt
 
+RUN mkdir -p /opt/rdkit
 
+COPY ./.env /opt/rdkit/env
+COPY . /opt/rdkit
+
+COPY docker-entrypoint.sh /
 
 
 

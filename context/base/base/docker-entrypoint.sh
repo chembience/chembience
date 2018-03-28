@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "Starting with UID : $CHEMBIENCE_UID : $CHEMBIENCE_GID : $CHEMBIENCE_HOME : $CHEMBIENCE_USER"
+echo "Initialization of base container using UID : $CHEMBIENCE_UID : $CHEMBIENCE_GID"
+
 if id "$CHEMBIENCE_USER" >/dev/null 2>&1; then
     echo "User exists, skipping creation."
 else
@@ -12,7 +13,7 @@ else
 fi
 
 if [ -z "$(ls -A /home/chembience)" ];  then
-    echo "Initializing home directory for Chembience ..."
+    echo "Initialization of base directory for Chembience ..."
     cp /opt/chembience/bin/* /home/chembience
     cp /opt/chembience/bin/.env /home/chembience
     chown -R $CHEMBIENCE_UID:$CHEMBIENCE_GID /home/chembience

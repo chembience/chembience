@@ -6,5 +6,3 @@ hashids
 requests
 lxml
 six
-
-

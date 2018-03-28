@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cp .env ./context
+
+docker-compose -f ./docker-compose.build.yml build

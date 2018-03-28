@@ -2,11 +2,11 @@ version: '3'
 
 services:
 
-  django:
-    image: markussitzmann/chembience_django_base:${CHEMBIENCE_BUILD_LABEL}
+  rdkit:
+    image: markussitzmann/chembience_rdkit_base:${CHEMBIENCE_BUILD_LABEL}
     volumes:
       - "${CHEMBIENCE_HOME}:/home/chembience"
-      - "${DJANGO_APP_HOME}:/home/app"
+      - "${RDKIT_APP_HOME}:/home/app"
     environment:
       - CHEMBIENCE_HOME
       - CHEMBIENCE_USER

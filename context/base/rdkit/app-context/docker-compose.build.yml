@@ -2,8 +2,8 @@ version: '3'
 
 services:
 
-  django:
-    image: markussitzmann/chembience_django:${CHEMBIENCE_BUILD_LABEL}
+  rdkit:
+    image: markussitzmann/chembience_rdkit:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: .
       args:

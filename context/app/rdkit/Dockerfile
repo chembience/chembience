@@ -4,6 +4,9 @@ LABEL maintainer="markussitzmann@gmail.com "
 
 ENV PATH /opt/conda/bin:$PATH
 
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+
+WORKDIR /home/chembience
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/bin/bash"]
