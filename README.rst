@@ -15,7 +15,7 @@ applications. The following schema gives an overview.
 .. image:: docs/_images/chembience.png
 
 
-If launched, Appdock creates a Docker virtual network ("Chembience Rope") on the Docker host system and starts up several
+If launched, Chembience creates a Docker virtual network ("Chembience Sphere") on the Docker host system and starts up several
 Docker containers which connect to this network. Currently, this includes a Postgres database container with RDKit
 extension readily available, a Nginx container which is configured as reverse proxy, and a basic application (App) container
 which provides a Django installation extended by the `Django REST framework <https://www.django-rest-framework.org/>`_ and RDKit on
