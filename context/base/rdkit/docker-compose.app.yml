@@ -19,8 +19,10 @@ services:
       - CHEMBIENCE_DB_PORT=${CHEMBIENCE_DB_PORT}
       - CHEMBIENCE_DB_PASSWORD=${CHEMBIENCE_DB_PASSWORD}
       - APP_HOME=${RDKIT_APP_HOME}
+      #- PYTHONPATH=/home/app
     depends_on:
       - db
+    entrypoint: ["/home/app/docker-entrypoint.sh"]
     command: ["python"]
 
 

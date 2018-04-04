@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]
+  then
+    docker-compose run rdkit
+  else
+    docker-compose run rdkit python $1
+fi
+

@@ -2,7 +2,7 @@ ARG build_label
 FROM markussitzmann/chembience_rdkit:$build_label
 LABEL maintainer="markussitzmann@gmail.com "
 
-ENV PATH /opt/conda/bin:$PATH
+ENV PATH /home/app:/opt/conda/bin:$PATH
 
 COPY requirements.txt /
 

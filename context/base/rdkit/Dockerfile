@@ -90,6 +90,7 @@ RUN mkdir -p /opt/rdkit
 
 COPY ./.env /opt/rdkit/env
 COPY . /opt/rdkit
+COPY ./app-context /opt/rdkit/app-context
 
 COPY docker-entrypoint.sh /
 
