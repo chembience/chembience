@@ -3,7 +3,7 @@ version: '3'
 services:
 
   proxy:
-    image: markussitzmann/chembience_proxy:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/proxy:${CHEMBIENCE_BUILD_LABEL}
     container_name: chembience_proxy
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
@@ -14,7 +14,7 @@ services:
       - sphere
 
   shell:
-    image: markussitzmann/chembience_shell:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/shell:${CHEMBIENCE_BUILD_LABEL}
     container_name: chembience_shell
     command: bash
     volumes:
@@ -29,7 +29,7 @@ services:
       - CHEMBIENCE_GID
 
   db:
-    image: markussitzmann/chembience_db:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/db:${CHEMBIENCE_BUILD_LABEL}
     container_name: chembience_db
     volumes:
       - db_volume:/var/lib/postgresql

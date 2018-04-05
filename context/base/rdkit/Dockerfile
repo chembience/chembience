@@ -58,7 +58,7 @@ RUN CONDA_PY=36 conda install jinja2 conda-build --yes && \
 
 
 
-FROM markussitzmann/chembience_python_base:$build_label
+FROM chembience/python_base:$build_label
 LABEL maintainer="markussitzmann@gmail.com "
 
 ENV PATH /opt/conda/bin:$PATH

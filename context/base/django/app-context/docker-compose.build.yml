@@ -3,7 +3,7 @@ version: '3'
 services:
 
   django:
-    image: markussitzmann/chembience_django:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/django:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: .
       args:

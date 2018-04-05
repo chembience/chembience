@@ -3,17 +3,19 @@ version: '3'
 services:
 
   django:
-    image: markussitzmann/chembience_django:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/django:${CHEMBIENCE_BUILD_LABEL}
     container_name: chembience_django
     volumes:
-      - "${CHEMBIENCE_HOME}:/home/sphere"
       - "${DJANGO_APP_HOME}:/home/app"
+      - "${CHEMBIENCE_HOME}:/home/sphere"
+      - "${CHEMBIENCE_SHARE}:/opt/share"
     ports:
        - "${DJANGO_APP_CONNECTION_PORT}:80"
     networks:
       - sphere
     environment:
       - CHEMBIENCE_HOME=${CHEMBIENCE_HOME}
+      - CHEMBIENCE_SHARE=${CHEMBIENCE_SHARE}
       - CHEMBIENCE_USER=${CHEMBIENCE_USER}
       - CHEMBIENCE_UID=${CHEMBIENCE_UID}
       - CHEMBIENCE_GID=${CHEMBIENCE_GID}
@@ -28,7 +30,7 @@ services:
       - db
 
   proxy:
-    image: markussitzmann/chembience_proxy:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/proxy:${CHEMBIENCE_BUILD_LABEL}
     container_name: chembience_proxy
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
@@ -39,7 +41,7 @@ services:
       - sphere
 
   db:
-    image: markussitzmann/chembience_db:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/db:${CHEMBIENCE_BUILD_LABEL}
     container_name: chembience_db
     volumes:
       - db_volume:/var/lib/postgresql

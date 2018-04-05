@@ -3,15 +3,17 @@ version: '3'
 services:
 
   rdkit:
-    image: markussitzmann/chembience_rdkit:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/rdkit:${CHEMBIENCE_BUILD_LABEL}
     container_name: chembience_rdkit
     volumes:
-      - "${CHEMBIENCE_HOME}:/home/chembience"
       - "${RDKIT_APP_HOME}:/home/app"
+      - "${CHEMBIENCE_HOME}:/home/chembience"
+      - "${CHEMBIENCE_SHARE}:/opt/share"
     networks:
       - sphere
     environment:
       - CHEMBIENCE_HOME=${CHEMBIENCE_HOME}
+      - CHEMBIENCE_SHARE=${CHEMBIENCE_SHARE}
       - CHEMBIENCE_USER=${CHEMBIENCE_USER}
       - CHEMBIENCE_UID=${CHEMBIENCE_UID}
       - CHEMBIENCE_GID=${CHEMBIENCE_GID}
@@ -19,7 +21,6 @@ services:
       - CHEMBIENCE_DB_PORT=${CHEMBIENCE_DB_PORT}
       - CHEMBIENCE_DB_PASSWORD=${CHEMBIENCE_DB_PASSWORD}
       - APP_HOME=${RDKIT_APP_HOME}
-      #- PYTHONPATH=/home/app
     depends_on:
       - db
     entrypoint: ["/home/app/docker-entrypoint.sh"]
@@ -27,7 +28,7 @@ services:
 
 
   db:
-    image: markussitzmann/chembience_db:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/db:${CHEMBIENCE_BUILD_LABEL}
     container_name: chembience_db
     volumes:
       - db_volume:/var/lib/postgresql

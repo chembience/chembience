@@ -1,5 +1,5 @@
 ARG build_label
-FROM markussitzmann/chembience_base:$build_label
+FROM chembience/base:$build_label
 LABEL maintainer="markussitzmann@gmail.com "
 
 RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \

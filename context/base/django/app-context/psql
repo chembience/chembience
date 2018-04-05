@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]
+  then
+    docker-compose -f docker-compose.shell.yml run --rm shell psql -h db -U chembience chembience
+  else
+    docker-compose -f docker-compose.shell.yml run --rm shell psql $1
+fi
+

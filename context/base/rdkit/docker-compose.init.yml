@@ -3,7 +3,7 @@ version: '3'
 services:
 
   rdkit:
-    image: markussitzmann/chembience_rdkit_base:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/rdkit_base:${CHEMBIENCE_BUILD_LABEL}
     volumes:
       - "${CHEMBIENCE_HOME}:/home/chembience"
       - "${RDKIT_APP_HOME}:/home/app"

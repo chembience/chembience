@@ -3,7 +3,7 @@ version: '3'
 services:
 
   rdkit:
-    image: markussitzmann/chembience_rdkit:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/rdkit:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: .
       args:

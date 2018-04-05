@@ -3,13 +3,13 @@ version: '3'
 services:
 
   proxy:
-    image: markussitzmann/chembience_proxy:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/proxy:${CHEMBIENCE_BUILD_LABEL}
     build:
-      context: https://github.com/markussitzmann/nginx-proxy.git#chembience
+      context: https://github.com/chembience/nginx-proxy.git#chembience
 
 
   shell:
-    image: markussitzmann/chembience_shell:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/shell:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: shell/
       args:
@@ -18,15 +18,15 @@ services:
 
 
   db:
-    image: markussitzmann/chembience_db:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/db:${CHEMBIENCE_BUILD_LABEL}
     build:
-      context: https://github.com/markussitzmann/docker-postgresql.git#chembience
+      context: https://github.com/chembience/docker-postgresql.git#chembience
       args:
         build_label: ${CHEMBIENCE_BUILD_LABEL}
 
 
   django:
-    image: markussitzmann/chembience_django:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/django:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: django/
       args:
@@ -34,7 +34,7 @@ services:
 
 
   rdkit:
-    image: markussitzmann/chembience_rdkit:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/rdkit:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: rdkit/
       args:

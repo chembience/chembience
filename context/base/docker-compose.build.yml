@@ -3,7 +3,7 @@ version: '3'
 services:
 
   base:
-    image: markussitzmann/chembience_base:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/base:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: base/
     volumes:
@@ -17,7 +17,7 @@ services:
 
 
   python_base:
-    image: markussitzmann/chembience_python_base:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/python_base:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: python/
       args:
@@ -27,7 +27,7 @@ services:
 
 
   rdkit_base:
-    image: markussitzmann/chembience_rdkit_base:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/rdkit_base:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: rdkit/
       args:
@@ -37,7 +37,7 @@ services:
 
 
   django_base:
-    image: markussitzmann/chembience_django_base:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/django_base:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: django/
       args:
