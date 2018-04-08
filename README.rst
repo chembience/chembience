@@ -4,32 +4,33 @@ Chembience
 Overview
 --------
 
-**Chembience** is a `Docker <https://docs.docker.com/>`_ based platform intended for the rapid development of scientific
-web applications and microservices. It has been develop as component for the `InChI-Resolver <http://www.inchi-resolver.org/>`_
-project (the alpha version of) the resolver is currently in the process of being migrated from a predecessor version of Chembience)
-At its current (early) development stage, Chembience supports the quick deployment of `Python <https://www.python.org/>`_/`Django <https://www.djangoproject.com/>`_
-based services and specifically includes `RDKit <http://www.rdkit.org/>`_ for building `chemoinformatics <https://en.wikipedia.org/wiki/Cheminformatics>`_-centric
-applications. The following schema gives an overview.
+**Chembience** is a `Docker <https://docs.docker.com/>`_ based platform intended for the fast development of scientific
+web applications and microservices. At its current development stage, Chembience supports two types of base application
+containers: (1) a `Python <https://www.python.org/>`_/`Django <https://www.djangoproject.com/>`_/`Django REST framework <https://www.django-rest-framework.org/>`_
+-based container type which is specifically suited for the development of web-based applications, and (2) a Python shell-based container type which allows
+for the execution of script-based applications. Both base container types have pre-configured access to a Postgres databases
+system running in another Docker container. All containers including the database container have the `RDKit <http://www.rdkit.org/>`_  toolkit for building
+`chemoinformatics <https://en.wikipedia.org/wiki/Cheminformatics>`_-centric applications readily available (either as
+Python module or Postgres extension). The following schema provides an overview about Chembience.
 
 
 .. image:: docs/_images/chembience.png
 
 
-If launched, Chembience creates a Docker virtual network ("Chembience Sphere") on the Docker host system and starts up several
-Docker containers which connect to this network. Currently, this includes a Postgres database container with RDKit
-extension readily available, a Nginx container which is configured as reverse proxy, and a basic application (App) container
-which provides a Django installation extended by the `Django REST framework <https://www.django-rest-framework.org/>`_ and RDKit on
-Python-level. The Django installation is set up to to establishes a connection to the database instance at the Postgres container
-and to link to the local Nginx web server instance inside the same App container (by uswgi). If the Nginx instance of
-the Proxy container discovers another container with Nginx running inside the Chembience Rope network, it automatically
-looks up the (sub) domain specification of this additional Nginx instance and makes it available to the outside of
-Chembience (which either might be localhost or any Web-accessible domain). This mechanism allows to easily bring up
-additional App containers or update or remove existing ones.
+On start-up, Chembience creates a Docker virtual network ("Chembience Sphere") on the host system where Docker is running and spins
+up the configured application containers which all connect to this network. Currently, this includes the application containers
+(optionally "App (1)" and/or "App (2)"), the "Database" container, and a "Proxy" container (Nginx) which acts as a reverse proxy.
+The Django installation of the App (1) container is linked to a Nginx web server instance (by uswgi) local to its container.
+If the Nginx instance of the reverse proxy container discovers another container inside the Chembience Sphere network with
+a locally running Nginx instance, the reverse proxy automatically looks up the (sub) domain specification of the detected Nginx
+instance and makes it available to the outside of Chembience Sphere network (which either might be linked to localhost or any
+other Web-accessible domain). This mechanism allows for easily bringing up additional App containers or updating or removing existing
+ones.
 
-Build and deployment of Chembience are orchestrated by `docker-compose <https://docs.docker.com/compose/>`_. Any Docker
-images required for starting up Chembience are either available from `Docker hub <https://docs.docker.com/docker-hub/>`_
-(either as official package releases, third-party images or images pre-build by me), or can be build locally on the user's
-host machine using Docker build.
+Creation and deployment of all Chembience containers is orchestrated by `docker-compose <https://docs.docker.com/compose/>`_.
+All Docker images required for starting up a Chembience container are either available from `Docker hub <https://docs.docker.com/docker-hub/>`_
+(either as official package releases, third-party images, or images pre-build by me), or can be build locally on the user's
+host machine using Docker (docker-compose) build.
 
 Current release version of the most important packages are:
 
@@ -37,6 +38,14 @@ Current release version of the most important packages are:
 * Django 2.0 + Django Rest Framework 3.7.7
 * Postgres 9.6
 * RDKit 2017.09.3
+
+
+History
+-------
+
+The development of Chembience originally started as a component for the `InChI-Resolver <http://www.inchi-resolver.org/>`_
+project (the alpha version of which is currently in the process of being migrated from a predecessor version to the current
+version of Chembience).
 
 
 Requirements
