@@ -702,7 +702,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
      inkscape:cx="473.01194"
-     inkscape:cy="414.02711"
+     inkscape:cy="412.95568"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -881,7 +881,7 @@
        inkscape:connector-curvature="0"
        id="path6634-9"
        d="m 118.94218,152.8082 2.59232,26.28351"
-       style="fill:#999999;stroke:#999999;stroke-width:1.05377662;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.05377667, 1.05377667;stroke-dashoffset:0.73180413;stroke-opacity:1" />
+       style="fill:#000000;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1,1;stroke-dashoffset:0.69445848;stroke-opacity:1" />
     <rect
        rx="13.822622"
        ry="6.1471996"
@@ -1027,8 +1027,8 @@
          id="tspan6294-5-6-7-4"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333311px;line-height:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';text-align:center;text-anchor:middle;fill:#808080;stroke-width:0.26458332"
          y="240.24921"
-         x="147.19655"
-         sodipodi:role="line">(Optional) </tspan><tspan
+         x="146.65912"
+         sodipodi:role="line">Optional</tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333311px;line-height:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';text-align:center;text-anchor:middle;fill:#808080;stroke-width:0.26458332"
          y="244.854"
          x="146.65912"
@@ -1080,9 +1080,9 @@
        id="text7068-4-5"
        y="116.26507"
        x="116.22831"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777805px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777805px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
        xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777805px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';fill:#000000;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777805px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';fill:#000000;stroke-width:0.26458332;"
          y="116.26507"
          x="116.22831"
          id="tspan7066-7-6"

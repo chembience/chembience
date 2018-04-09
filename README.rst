@@ -88,14 +88,47 @@ which has four subdirectories ::
              /sphere
 The first two directories contain the base versions of the Django and the RDKit *App*, respectively. The location
 and name of these base application directories is freely configurable (in fact, it isn't even required to keep them in the
-``chembient`` parent directory).
+``chembient`` parent directory). The ``share/`` directory can be used to store resources and (python) packages that should
+be common to all containers. The ``sphere/`` directory holds scripts and files related to all core infrastructure
+containers (e.g. the *Database* and *Proxy* containers).
 
+Django App Quick Start
+----------------------
 
-The ``share/``
-directory is supposed to store all packages which should be shared to all base application containers,
-and the ``sphere/`` directory provides scripts related to all infrastructure ("Database" and "Proxy") containers.
+After the quick start installation of Chembience (see previous section), go into ::
 
-unfinished
+    cd ~/chembient/django
+
+which has the following layout ::
+
+    .env
+    appsite
+    build
+    django-manage-py
+    docker-compose.build.yml
+    docker-compose.shell.yml
+    docker-compose.yml
+    docker-entrypoint.sh
+    Dockerfile
+    down
+    psql
+    requirements.txt
+    shell
+    up
+    uswgi-log
+
+Here, for the quick start section, only some of these files will be discussed. The command ``./up`` will start up the Django *App*
+container, the *Proxy* container and the *Database* container (the initial configuration of the containers is provided in
+the ``.env`` file and the ``docker-compose.yml`` file, PLEASE NOTICE: the *Proxy* container connects to port 80 of the
+host system, if this port is already in use, it can by reconfigured in ``.env``). If everything went fine you should
+now be able to go to ::
+
+    `http://localhost <http://localhost>`_  (don't worry, the reverse proxy will report with *503 Service Temporarily Unavailable* there
+
+and ::
+
+    `http://app.localhost <http://app.localhost>`_  (you should see the welcome page of a initial Django installation)
+
 
 Installation unfinished
 ------------
