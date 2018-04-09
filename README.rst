@@ -4,25 +4,25 @@ Chembience
 Overview
 --------
 
-**Chembience** is a `Docker <https://docs.docker.com/>`_ based platform intended for the fast development of scientific
-web applications and microservices. At its current development stage, Chembience supports two types of base application
-containers: (1) a `Python <https://www.python.org/>`_/`Django <https://www.djangoproject.com/>`_/`Django REST framework <https://www.django-rest-framework.org/>`_
+**Chembience** is a `Docker <https://docs.docker.com/>`_ based platform intended for the fast development of
+`chemoinformatics <https://en.wikipedia.org/wiki/Cheminformatics>`_-centric web applications and microservices.
+At its current development stage, Chembience supports two types of base application containers: (1) a
+`Python <https://www.python.org/>`_/`Django <https://www.djangoproject.com/>`_/`Django REST framework <https://www.django-rest-framework.org/>`_
 -based container type which is specifically suited for the development of web-based applications, and (2) a Python shell-based container type which allows
 for the execution of script-based python applications. Both base container types have pre-configured access to a `Postgres <https://www.postgresql.org/>`_ databases
-system running in another Docker container. All containers including the database container have the `RDKit <http://www.rdkit.org/>`_  toolkit for building
-`chemoinformatics <https://en.wikipedia.org/wiki/Cheminformatics>`_-centric applications readily available (either as
-Python module or Postgres extension). The following schema provides an overview about Chembience.
+system running in a separate Docker container. All *App* containers and the database container have the `RDKit <http://www.rdkit.org/>`_  toolkit
+readily available (either as Python module or Postgres extension). The following schema provides an overview about Chembience.
 
 
 .. image:: docs/_images/chembience.png
 
 
-On start-up, Chembience creates a Docker virtual network (*Chembience Sphere*) on the host system where Docker is running and spins
-up the configured application containers which all will be connected to this network. Currently, this includes the application containers
+Chembience creates a Docker virtual network (*Chembience Sphere*) on the host system where Docker is running and spins
+up the configured application containers which all are linked by this network. Currently, this includes the application containers
 (*App (1)/Django* and/or *App (2)/RDKit*), the *Database* container, and a *Proxy* container (Nginx) which acts as a reverse proxy.
-The Django installation of the *App (1)* container is linked to a Nginx web server instance (by uswgi) local to the same container.
+The Django installation of the *App (1)* container is linked (by uswgi) to a Nginx web server instance running locally at the same container.
 If the Nginx instance of the *Proxy* container discovers another container inside the *Chembience Sphere* network with such
-a locally running Nginx instance, the *Proxy* automatically looks up the (sub) domain specification of the detected Nginx
+a Nginx instance running, the *Proxy* automatically looks up the (sub) domain specification of the detected Nginx
 instance and makes it available to the outside of *Chembience Sphere* network (which either might be linked to localhost or any
 other Web-accessible domain). This mechanism allows for easily bringing up additional *App* containers or updating or removing existing
 ones.
@@ -35,7 +35,7 @@ host machine by running a Docker (docker-compose) build.
 All *Chembience App* containers can be easily added, multiplied, removed or reconfigured. After initialization of
 the Chembience base system (see below), the initially created *App* directories can be moved, renamed, or copied to create multiple,
 independent application containers, each of which can be tracked on its own in a Git or other VCS repository. If further
-infrastructure containers are needed (e.g. Solr, elasticsearch, ...) for a project, they can be easily added, too.
+infrastructure containers are needed for a project (e.g. Solr, elasticsearch, ...), they can be easily added, too.
 
 Current release version of the most important packages are:
 
@@ -75,7 +75,7 @@ and change into the newly created directory ::
 
     cd chembience/
 
-and run (it is important that you do this inside the chembience directory) ::
+and run (it is important that you do this from inside the chembience directory) ::
 
     ./init
 
@@ -122,25 +122,24 @@ which has the following layout ::
     up
     uswgi-log
 
-Here, for the quick start section, only some of these files will be discussed. The command ``./up`` will start up the Django *App*
+For the quick start section, only some of these files will be discussed. The command ``./up`` will start up the Django *App*
 container, the *Proxy* container and the *Database* container (the initial configuration of the containers is provided in
-the ``.env`` file and the ``docker-compose.yml`` file, PLEASE NOTICE: the *Proxy* container connects to port 80 of the
+the ``.env`` file and the ``docker-compose.yml`` file, **PLEASE NOTICE**: the *Proxy* container connects to port 80 of the
 host system, if this port is already in use, it can by reconfigured in ``.env``). If everything went fine you should
 now be able to go to ::
 
-    http://localhost
-    (don't worry, the reverse proxy will report with *503 Service Temporarily Unavailable* there
+    http://localhost        (don't worry, the reverse proxy will report with *503 Service Temporarily Unavailable* there
 
 and ::
 
-    http://app.localhost
-    (you should see the welcome page of a bare Django installation)
+    http://app.localhost    (you should see the welcome page of a bare Django installation)
 
 For the initial setup of Django, still a few steps have to be done. Since Django runs inside a Docker container you can not directly
 use Django's ``manage.py`` script to set up things. Instead you have to use the ``django-manage-py`` script provided here which passes
-any arguments to the ``manage.py`` script inside the container. To finalize the initial setup of Django in your container
-installation, run these commands (except for using ``django-manage-py`` instead of ``manage.py`` these are the same for
-any Django installation if you want to install Django's admin app) ::
+any arguments to the ``manage.py`` script and the Django instance running inside the container.
+
+To finalize the initial setup of Django in your container installation, run these commands (except for using ``django-manage-py``
+instead of ``manage.py`` these are the same for any Django installation if you want to install Django's admin app) ::
 
     ./django-manage-py migrate           (creates the initial Django database tables)
     ./django-manage-py createsuperuser   (will prompt you to create a Django superuser account)
@@ -150,16 +149,16 @@ After running these commands you should be able to go to::
 
     http://app.localhost/admin
 
-and login into the admin application with the just set account and password.
+and login into the Django admin application with the just set up account and password.
 
-If you want to start the implementation of Django apps, go to the ``appsite`` directory. If you already know how to develop
+If you want to start the implementation of own Django apps, go to the ``appsite`` directory. If you already know how to develop
 with Django, this should look familiar to you. If not, go to the `official Django tutorial <https://docs.djangoproject.com/en/2.0/intro/tutorial01/>`_
 as a starting point (you can jump there to section *Creating the Polls app* because anything before is already done, also any
 database setup sections can be skipped). Because the ``appsite`` directory is bind mounted into the Django *App* container,
 anything you do there is immediately represented inside the container (for some changes in ``appsite/appsite`` and settings.py
-a container restart might be necessary.
+a container restart might be necessary).
 
-In order to bring the whole Chembience stack of Django *App*, *Proxy* and *Database* down, use the ``down`` script::
+In order to bring the whole Chembience stack of Django *App*, *Proxy* and *Database* down again, use the ``down`` script::
 
     ./down
 
