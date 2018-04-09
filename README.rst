@@ -19,7 +19,7 @@ readily available (either as Python module or Postgres extension). The following
 
 Chembience creates a Docker virtual network (*Chembience Sphere*) on the host system where Docker is running and spins
 up the configured application containers which all are linked by this network. Currently, this includes the application containers
-(*App (1)/Django* and/or *App (2)/RDKit*), the *Database* container, and a *Proxy* container (Nginx) which acts as a reverse proxy.
+(*App (1)/Django* and/or *App (2)/RDKit*), the *Database* container (Postgres), and a *Proxy* container (Nginx) which acts as a reverse proxy.
 The Django installation of the *App (1)* container is linked (by uswgi) to a Nginx web server instance running locally at the same container.
 If the Nginx instance of the *Proxy* container discovers another container inside the *Chembience Sphere* network with such
 a Nginx instance running, the *Proxy* automatically looks up the (sub) domain specification of the detected Nginx
@@ -164,3 +164,8 @@ In order to bring the whole Chembience stack of Django *App*, *Proxy* and *Datab
 
 It will keep anything persistent you have created and stored in the database. If you are familiar with ``docker-compose``,
 all life-circle commands should work as expected.
+
+
+Markus Sitzmann, 2018-04-10
+
+This work is a personal project of mine unrelated to my professional work.
