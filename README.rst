@@ -52,6 +52,11 @@ The development of Chembience originally started as a component for the `InChI-R
 project (the alpha version of the InChI resolver is currently in the process of being migrated from a predecessor version
 of Chembience to the current version provided here).
 
+Releases
+--------
+
+April, 2018     0.1.0 (Early beta)
+
 
 Requirements
 ------------
@@ -131,20 +136,32 @@ and ::
     http://app.localhost
     (you should see the welcome page of a bare Django installation)
 
+For the initial setup of Django, still a few steps have to be done. Since Django runs inside a Docker container you can not directly
+use Django's ``manage.py`` script to set up things. Instead you have to use the ``django-manage-py`` script provided here which passes
+any arguments to the ``manage.py`` script inside the container. To finalize the initial setup of Django in your container
+installation, run these commands (except for using ``django-manage-py`` instead of ``manage.py`` these are the same for
+any Django installation if you want to install Django's admin app) ::
 
-Installation unfinished
-------------
-and edit the file ``.env`` to appropriate settings, in particular, variable ``CHEMBIENCE_HOME`` to a file directory location where the user
-running the build in the next is allowed to create a directory. If the directory specified in ``CHEMBIENCE_HOME`` does not exist, it will be
-created during the first start up of a Docker container. It will be mounted as volume in all containers.
+    ./django-manage-py migrate           (creates the initial Django database tables)
+    ./django-manage-py createsuperuser   (will prompt you to create a Django superuser account)
+    ./django-manage-py collectstatic     (add's all media (css, js, templates) for the Django admin application; creates a static/ directory in the Django directory)
 
-Start the Docker build of the system by going to the ``build``-directory of the ``chembience``-directory and run ``docker-compose build`` (it is
-actually important to be in this directory because ``docker-compose`` needs the corresponding ``docker-compose.yml`` configuration file available in the
-directory it is run)::
+After running these commands you should be able to go to::
 
-    cd build/
-    docker-compose build
+    http://app.localhost/admin
 
-This will build all Docker image files needed for Chembience.
+and login into the admin application with the just set account and password.
 
+If you want to start the implementation of Django apps, go to the ``appsite`` directory. If you already know how to develop
+with Django, this should look familiar to you. If not, go to the `official Django tutorial <https://docs.djangoproject.com/en/2.0/intro/tutorial01/>`_
+as a starting point (you can jump there to section *Creating the Polls app* because anything before is already done, also any
+database setup sections can be skipped). Because the ``appsite`` directory is bind mounted into the Django *App* container,
+anything you do there is immediately represented inside the container (for some changes in ``appsite/appsite`` and settings.py
+a container restart might be necessary.
 
+In order to bring the whole Chembience stack of Django *App*, *Proxy* and *Database* down, use the ``down`` script::
+
+    ./down
+
+It will keep anything persistent you have created and stored in the database. If you are familiar with ``docker-compose``,
+all life-circle commands should work as expected.
