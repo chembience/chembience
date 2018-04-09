@@ -8,7 +8,7 @@ Overview
 web applications and microservices. At its current development stage, Chembience supports two types of base application
 containers: (1) a `Python <https://www.python.org/>`_/`Django <https://www.djangoproject.com/>`_/`Django REST framework <https://www.django-rest-framework.org/>`_
 -based container type which is specifically suited for the development of web-based applications, and (2) a Python shell-based container type which allows
-for the execution of script-based applications. Both base container types have pre-configured access to a `Postgres <https://www.postgresql.org/>`_ databases
+for the execution of script-based python applications. Both base container types have pre-configured access to a `Postgres <https://www.postgresql.org/>`_ databases
 system running in another Docker container. All containers including the database container have the `RDKit <http://www.rdkit.org/>`_  toolkit for building
 `chemoinformatics <https://en.wikipedia.org/wiki/Cheminformatics>`_-centric applications readily available (either as
 Python module or Postgres extension). The following schema provides an overview about Chembience.
@@ -17,24 +17,24 @@ Python module or Postgres extension). The following schema provides an overview 
 .. image:: docs/_images/chembience.png
 
 
-On start-up, Chembience creates a Docker virtual network ("Chembience Sphere") on the host system where Docker is running and spins
-up the configured application containers which all connect to this network. Currently, this includes the application containers
-(optionally "App (1)" and/or "App (2)"), the "Database" container, and a "Proxy" container (Nginx) which acts as a reverse proxy.
-The Django installation of the App (1) container is linked to a Nginx web server instance (by uswgi) local to its container.
-If the Nginx instance of the reverse proxy container discovers another container inside the Chembience Sphere network with
-a locally running Nginx instance, the reverse proxy automatically looks up the (sub) domain specification of the detected Nginx
-instance and makes it available to the outside of Chembience Sphere network (which either might be linked to localhost or any
-other Web-accessible domain). This mechanism allows for easily bringing up additional App containers or updating or removing existing
+On start-up, Chembience creates a Docker virtual network (*Chembience Sphere*) on the host system where Docker is running and spins
+up the configured application containers which all will be connected to this network. Currently, this includes the application containers
+(*App (1)/Django* and/or *App (2)/RDKit*), the *Database* container, and a *Proxy* container (Nginx) which acts as a reverse proxy.
+The Django installation of the *App (1)* container is linked to a Nginx web server instance (by uswgi) local to the same container.
+If the Nginx instance of the *Proxy* container discovers another container inside the *Chembience Sphere* network with such
+a locally running Nginx instance, the *Proxy* automatically looks up the (sub) domain specification of the detected Nginx
+instance and makes it available to the outside of *Chembience Sphere* network (which either might be linked to localhost or any
+other Web-accessible domain). This mechanism allows for easily bringing up additional *App* containers or updating or removing existing
 ones.
 
 Creation and deployment of all Chembience containers is orchestrated by `docker-compose <https://docs.docker.com/compose/>`_.
 Any Docker images required for starting up a Chembience container are either available from `Docker hub <https://docs.docker.com/docker-hub/>`_
 (either as official package releases, third-party images, or images pre-build by me), or can be build locally on the user's
-host machine using Docker (docker-compose) build.
+host machine by running a Docker (docker-compose) build.
 
-All "Chembience App" containers can be easily added, multiplied, removed or reconfigured. After initialization of
-the Chembience base system (see below), the initially created app directories can be moved, renamed, or copied to create multiple,
-independent applications, each of which can be tracked on its own in a Git or other VCS repository. Also, if further
+All *Chembience App* containers can be easily added, multiplied, removed or reconfigured. After initialization of
+the Chembience base system (see below), the initially created *App* directories can be moved, renamed, or copied to create multiple,
+independent application containers, each of which can be tracked on its own in a Git or other VCS repository. If further
 infrastructure containers are needed (e.g. Solr, elasticsearch, ...) for a project, they can be easily added, too.
 
 Current release version of the most important packages are:
@@ -74,21 +74,25 @@ and run (it is important that you do this inside the chembience directory) ::
 
     ./init
 
-This will start the download of all all required Chembience Docker images to your system and make take a while (download
-of circa 3.5GB of data from DockerHub). If this is successful a new directory ``chembient/`` is created in your
-home directory ::
+As a first step, this will download all necessary Chembience Docker images to your system and may take a while for the
+initial setup (approx 3.5GB of downloads from DockerHub). After a successful download, a new directory ``chembient/`` is created
+in your home directory ::
 
     cd ~/chembient
 
-Inside this directory you will find four subdirectories ::
+which has four subdirectories ::
 
-    django/
-    rdkit/
-    share/
-    sphere/
+    chembient/django
+             /rdkit
+             /share
+             /sphere
+The first two directories contain the base versions of the Django and the RDKit *App*, respectively. The location
+and name of these base application directories is freely configurable (in fact, it isn't even required to keep them in the
+``chembient`` parent directory).
 
-The ``django/`` directory is home directory of the Django-based application, ``rdkit/`` the one of the RDKit-based
-application, the ``share/`` directory is home to all resources which should be available in all application containers,
+
+The ``share/``
+directory is supposed to store all packages which should be shared to all base application containers,
 and the ``sphere/`` directory provides scripts related to all infrastructure ("Database" and "Proxy") containers.
 
 unfinished
