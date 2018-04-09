@@ -123,11 +123,13 @@ the ``.env`` file and the ``docker-compose.yml`` file, PLEASE NOTICE: the *Proxy
 host system, if this port is already in use, it can by reconfigured in ``.env``). If everything went fine you should
 now be able to go to ::
 
-    `http://localhost <http://localhost>`_  (don't worry, the reverse proxy will report with *503 Service Temporarily Unavailable* there
+    http://localhost
+    (don't worry, the reverse proxy will report with *503 Service Temporarily Unavailable* there
 
 and ::
 
-    `http://app.localhost <http://app.localhost>`_  (you should see the welcome page of a initial Django installation)
+    http://app.localhost
+    (you should see the welcome page of a bare Django installation)
 
 
 Installation unfinished
