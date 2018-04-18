@@ -12,3 +12,5 @@ docker-compose -f ./context/base/django/docker-compose.init.yml run --rm django
 docker-compose -f ./context/base/rdkit/docker-compose.init.yml run --rm rdkit
 
 
+
+

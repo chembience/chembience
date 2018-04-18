@@ -13,13 +13,22 @@ else
 fi
 
 if [ -z "$(ls -A /home/chembience)" ];  then
-    echo "Initialization of base directory for Chembience ..."
+    echo "Initialization of Chembience base directory ..."
     cp /opt/chembience/bin/* /home/chembience
     cp /opt/chembience/bin/.env /home/chembience
     chown -R $CHEMBIENCE_UID:$CHEMBIENCE_GID /home/chembience
     echo "Done."
 else
     echo "Chembience home directory isn't empty, skipping initializing content there"
+fi
+
+if [ -z "$(ls -A /home/share)" ];  then
+    echo "Initialization of Chembience share directory ..."
+    cp -r /opt/pychembience/chembience /home/share
+    chown -R $CHEMBIENCE_UID:$CHEMBIENCE_GID /home/share
+    echo "Done."
+else
+    echo "Chembience share directory isn't empty, skipping initializing content there"
 fi
 
 

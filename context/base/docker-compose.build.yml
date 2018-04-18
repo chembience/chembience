@@ -8,6 +8,7 @@ services:
       context: base/
     volumes:
       - "${CHEMBIENCE_HOME}:/home/chembience"
+      - "${CHEMBIENCE_SHARE}:/home/share"
     environment:
       - CHEMBIENCE_BUILD_LABEL
       - CHEMBIENCE_HOME

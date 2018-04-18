@@ -12,4 +12,9 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
 COPY docker-entrypoint.sh /
 COPY ./chembience /opt/chembience
 
+RUN cd /tmp \
+    && git clone https://github.com/chembience/pychembience.git \
+    && cp -r pychembience /opt \
+    && rm -rf pychembience
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
