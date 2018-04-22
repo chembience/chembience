@@ -6,43 +6,47 @@ Overview
 
 **Chembience** is a `Docker <https://docs.docker.com/>`_ based platform intended for the fast development of
 `chemoinformatics <https://en.wikipedia.org/wiki/Cheminformatics>`_-centric web applications and microservices.
-At its current development stage, Chembience supports two types of base application containers: (1) a
-`Python <https://www.python.org/>`_/`Django <https://www.djangoproject.com/>`_/`Django REST framework <https://www.django-rest-framework.org/>`_
--based container type which is specifically suited for the development of web-based applications, and (2) a Python shell-based container type which allows
-for the execution of script-based python applications. Both base container types have pre-configured access to a `Postgres <https://www.postgresql.org/>`_ databases
-system running in a separate Docker container. All *App* containers and the database container have the `RDKit <http://www.rdkit.org/>`_  toolkit
-readily available (either as Python module or Postgres extension). The following schema provides an overview about Chembience.
-
+The following schema provides an overview about Chembience.
 
 .. image:: docs/_images/chembience.png
 
-
-Chembience creates a Docker virtual network (*Chembience Sphere*) on the host system where Docker is running and spins
-up the configured application containers which all are linked by this network. Currently, this includes the application containers
-(*App (1)/Django* and/or *App (2)/RDKit*), the *Database* container (Postgres), and a *Proxy* container (Nginx) which acts as a reverse proxy.
-The Django installation of the *App (1)* container is linked (by uswgi) to a Nginx web server instance running locally at the same container.
-If the Nginx instance of the *Proxy* container discovers another container inside the *Chembience Sphere* network with such
-a Nginx instance running, the *Proxy* automatically looks up the (sub) domain specification of the detected Nginx
-instance and makes it available to the outside of *Chembience Sphere* network (which either might be linked to localhost or any
-other Web-accessible domain). This mechanism allows for easily bringing up additional *App* containers or updating or removing existing
-ones.
+At its current development stage, Chembience supports two base types of application (*App*) containers: (1) a
+`Django <https://www.djangoproject.com/>`_/`Django REST framework <https://www.django-rest-framework.org/>`_-based
+App container which is specifically suited for the development of web-based `Python <https://www.python.org/>`_/ applications,
+and (2) a Python shell-based App container which allows for the execution of script-based python applications.
+Both App container types have pre-configured access to a `Postgres <https://www.postgresql.org/>`_ databases
+system running in a separate Docker container (*Database*) on the same Docker virtual network (*Chembience Sphere*).
+All *App* containers and the database container have the `RDKit <http://www.rdkit.org/>`_  toolkit
+readily installed (either as Python module or Postgres extension). The Django-based *App* container also provides a
+`Nginx <https://www.nginx.com>`_-based web server instance running locally at the same the container, linking the
+Django installation by uswgi to Nginx.
 
 Creation and deployment of all Chembience containers is orchestrated by `docker-compose <https://docs.docker.com/compose/>`_.
 Any Docker images required for starting up a Chembience container are either available from `Docker hub <https://docs.docker.com/docker-hub/>`_
 (either as official package releases, third-party images, or images pre-build by me), or can be build locally on the user's
 host machine by running a Docker (docker-compose) build.
 
-All *Chembience App* containers can be easily added, multiplied, removed or reconfigured. After initialization of
-the Chembience base system (see below), the initially created *App* directories can be moved, renamed, or copied to create multiple,
-independent application containers, each of which can be tracked on its own in a Git or other VCS repository. If further
-infrastructure containers are needed for a project (e.g. Solr, elasticsearch, ...), they can be easily added, too.
+When Chembience is brought up with docker-compose, a Docker virtual network (*Chembience Sphere*) is created on the Docker host
+system and and the *App* containers as well as the *Database* container are started. Depending on the use case of Chembience,
+a `Nginx <https://www.nginx.com>`_-based *Proxy* container configured as a reverse proxy can also be added to the virtual network.
+The *Proxy* allows for easily bringing up additional *App* containers or updating or removing existing ones.
+If the Nginx instance of the *Proxy* container discovers an existing or new *App* container inside the *Chembience Sphere*
+network having a locally running Nginx instance, it automatically looks up the (sub) domain specification of the detected
+Nginx instance at the *App* container and makes it available to the outside of the *Chembience Sphere* network.
+This might be either any Web-accessible domainb or just localhost for locally running applications.
+
+Any of the *Chembience App* containers can be easily added, multiplied, removed or reconfigured. After initialization of
+the Chembience base system (see `Quick Start Installation`_ below), any of the *App* directories initially created during first start-up can be moved, renamed,
+or copied to create multiple, independent application containers, each of which can be tracked independently by version control
+systems like Git. If further infrastructure containers are needed for a project (e.g. Solr, elasticsearch, or additional
+Postgres container instances), they can be easily added, too.
 
 Current release version of the most important packages are:
 
 * Python 3.6.3
 * Django 2.0 + Django Rest Framework 3.7.7
 * Postgres 9.6
-* RDKit 2017.09.3
+* RDKit 2017.09.3 (sorry, no 2018.03 yet)
 
 
 History
@@ -55,7 +59,7 @@ of Chembience to the current version provided here).
 Releases
 --------
 
-April, 2018     0.1.0 (Early beta)
+April, 2018     0.1.0 (first beta)
 
 
 Requirements
@@ -97,8 +101,8 @@ and name of these base application directories is freely configurable (in fact, 
 be common to all containers. The ``sphere/`` directory holds scripts and files related to all core infrastructure
 containers (e.g. the *Database* and *Proxy* containers).
 
-Django App Quick Start
-----------------------
+Quick Start: Django App Container
+---------------------------------
 
 After the quick start installation of Chembience (see previous section), go into ::
 
@@ -164,6 +168,11 @@ In order to bring the whole Chembience stack of Django *App*, *Proxy* and *Datab
 
 It will keep anything persistent you have created and stored in the database. If you are familiar with ``docker-compose``,
 all life-circle commands should work as expected.
+
+
+Quick Start: RDKit App Container
+--------------------------------
+
 
 
 Markus Sitzmann, 2018-04-10
