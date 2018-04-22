@@ -16,12 +16,12 @@ App container which is specifically suited for the development of web-based `Pyt
 and (2) a Python shell-based App container which allows for the execution of script-based python applications.
 Both App container types have pre-configured access to a `Postgres <https://www.postgresql.org/>`_ databases
 system running in a separate Docker container (*Database*) on the same Docker virtual network (*Chembience Sphere*).
-All *App* containers and the database container have the `RDKit <http://www.rdkit.org/>`_  toolkit
+All *App* containers and the *Database* container have the `RDKit <http://www.rdkit.org/>`_  toolkit
 readily installed (either as Python module or Postgres extension). The Django-based *App* container also provides a
 `Nginx <https://www.nginx.com>`_-based web server instance running locally at the same the container, linking the
 Django installation by uswgi to Nginx.
 
-Creation and deployment of all Chembience containers is orchestrated by `docker-compose <https://docs.docker.com/compose/>`_.
+Creation and deployment of all Chembience-based containers and services is orchestrated by `docker-compose <https://docs.docker.com/compose/>`_.
 Any Docker images required for starting up a Chembience container are either available from `Docker hub <https://docs.docker.com/docker-hub/>`_
 (either as official package releases, third-party images, or images pre-build by me), or can be build locally on the user's
 host machine by running a Docker (docker-compose) build.
@@ -29,15 +29,16 @@ host machine by running a Docker (docker-compose) build.
 When Chembience is brought up with docker-compose, a Docker virtual network (*Chembience Sphere*) is created on the Docker host
 system and and the *App* containers as well as the *Database* container are started. Depending on the use case of Chembience,
 a `Nginx <https://www.nginx.com>`_-based *Proxy* container configured as a reverse proxy can also be added to the virtual network.
-The *Proxy* allows for easily bringing up additional *App* containers or updating or removing existing ones.
+The *Proxy* allows for easily bringing up additional *App* containers, or updating and removing existing ones, while
+avoiding interference of web traffic to other Chembience containers and services.
 If the Nginx instance of the *Proxy* container discovers an existing or new *App* container inside the *Chembience Sphere*
 network having a locally running Nginx instance, it automatically looks up the (sub) domain specification of the detected
 Nginx instance at the *App* container and makes it available to the outside of the *Chembience Sphere* network.
-This might be either any Web-accessible domainb or just localhost for locally running applications.
+This might be either any Web-accessible domain or just localhost for locally running applications.
 
 Any of the *Chembience App* containers can be easily added, multiplied, removed or reconfigured. After initialization of
-the Chembience base system (see `Quick Start Installation`_ below), any of the *App* directories initially created during first start-up can be moved, renamed,
-or copied to create multiple, independent application containers, each of which can be tracked independently by version control
+the Chembience base system (see `Quick Start: Base Installation`_ below), any of the *App* directories initially created during first start-up can be moved, renamed,
+or copied to create multiple, independent application containers, each of which can be tracked separately by version control
 systems like Git. If further infrastructure containers are needed for a project (e.g. Solr, elasticsearch, or additional
 Postgres container instances), they can be easily added, too.
 
@@ -68,7 +69,7 @@ Requirements
 Please have at least `Docker CE 17.09 <https://docs.docker.com/engine/installation/>`_ and `Docker Compose 1.17 <https://docs.docker.com/compose/install/>`_ installed on your system.
 
 
-Quick Start Installation
+Quick Start: Base Installation
 ------------------------
 
 Clone the repository::
@@ -89,22 +90,22 @@ in your home directory ::
 
     cd ~/chembient
 
-which has four subdirectories ::
+which has the following layout ::
 
     chembient/django
              /rdkit
              /share
              /sphere
-The first two directories contain the base versions of the Django and the RDKit *App*, respectively. The location
+The first two directories contain the base versions of the Django- and RDKit-based *App* container, respectively. The location
 and name of these base application directories is freely configurable (in fact, it isn't even required to keep them in the
 ``chembient`` parent directory). The ``share/`` directory can be used to store resources and (python) packages that should
-be common to all containers. The ``sphere/`` directory holds scripts and files related to all core infrastructure
+be common to all *App* containers. The ``sphere/`` directory holds scripts and files related to all core infrastructure
 containers (e.g. the *Database* and *Proxy* containers).
 
 Quick Start: Django App Container
 ---------------------------------
 
-After the quick start installation of Chembience (see previous section), go into ::
+After the quick start installation of Chembience (see previous section `Quick Start: Base Installation`_), go into directory ::
 
     cd ~/chembient/django
 
@@ -126,13 +127,13 @@ which has the following layout ::
     up
     uswgi-log
 
-For the quick start section, only some of these files will be discussed. The command ``./up`` will start up the Django *App*
+For this quick start section, only some of these files will be discussed. The command ``./up`` will start up the Django *App*
 container, the *Proxy* container and the *Database* container (the initial configuration of the containers is provided in
 the ``.env`` file and the ``docker-compose.yml`` file, **PLEASE NOTICE**: the *Proxy* container connects to port 80 of the
-host system, if this port is already in use, it can by reconfigured in ``.env``). If everything went fine you should
+host system, if this port is already in use, it can by reconfigured in ``.env``). If everything went fine, you should
 now be able to go to ::
 
-    http://localhost        (don't worry, the reverse proxy will report with *503 Service Temporarily Unavailable* there
+    http://localhost        (don't worry, the reverse proxy will report with *503 Service Temporarily Unavailable* there)
 
 and ::
 
@@ -140,14 +141,14 @@ and ::
 
 For the initial setup of Django, still a few steps have to be done. Since Django runs inside a Docker container you can not directly
 use Django's ``manage.py`` script to set up things. Instead you have to use the ``django-manage-py`` script provided here which passes
-any arguments to the ``manage.py`` script and the Django instance running inside the container.
+any arguments to the ``manage.py`` script of the Django instance running inside the Django *App* container.
 
 To finalize the initial setup of Django in your container installation, run these commands (except for using ``django-manage-py``
-instead of ``manage.py`` these are the same for any Django installation if you want to install Django's admin app) ::
+instead of ``manage.py`` these are the same steps as for any Django installation for setting up Django's admin pages) ::
 
     ./django-manage-py migrate           (creates the initial Django database tables)
     ./django-manage-py createsuperuser   (will prompt you to create a Django superuser account)
-    ./django-manage-py collectstatic     (add's all media (css, js, templates) for the Django admin application; creates a static/ directory in the Django directory)
+    ./django-manage-py collectstatic     (add's all media (css, js, templates) for the Django admin application; creates a static/ directory in the django directory)
 
 After running these commands you should be able to go to::
 
@@ -155,23 +156,61 @@ After running these commands you should be able to go to::
 
 and login into the Django admin application with the just set up account and password.
 
-If you want to start the implementation of own Django apps, go to the ``appsite`` directory. If you already know how to develop
+If you want to start the implementation of own Django apps, go into the ``appsite`` directory. If you already know how to develop
 with Django, this should look familiar to you. If not, go to the `official Django tutorial <https://docs.djangoproject.com/en/2.0/intro/tutorial01/>`_
 as a starting point (you can jump there to section *Creating the Polls app* because anything before is already done, also any
-database setup sections can be skipped). Because the ``appsite`` directory is bind mounted into the Django *App* container,
-anything you do there is immediately represented inside the container (for some changes in ``appsite/appsite`` and settings.py
+database setup sections can be skipped). Because the ``appsite`` directory is Docker-bind-mounted into the Django *App* container,
+anything you change there is immediately represented inside the container and the web service you implement (for some changes in ``appsite/appsite`` and settings.py
 a container restart might be necessary).
 
 In order to bring the whole Chembience stack of Django *App*, *Proxy* and *Database* down again, use the ``down`` script::
 
     ./down
 
-It will keep anything persistent you have created and stored in the database. If you are familiar with ``docker-compose``,
-all life-circle commands should work as expected.
+It will keep anything persistent you have created and stored so far in the database. If you are familiar with ``docker-compose``,
+all life-circle commands should work as expected, in fact, ``up`` and  ``down`` are just short cuts for their respective
+``docker-compose`` commands.
 
 
 Quick Start: RDKit App Container
 --------------------------------
+
+After the quick start installation of Chembience (see section `Quick Start: Base Installation`_), go into directory ::
+
+    cd ~/chembient/rdkit
+
+You will see the following layout::
+
+   build
+   context
+   docker-compose.build.yml
+   docker-compose.shell.yml
+   docker-compose.yml
+   docker-entrypoint.sh
+   Dockerfile
+   psql
+   requirements.txt
+   run
+   test.py
+   up
+
+For this quick start section, only some of these files will be discussed. The command ``./up`` will start up a regular
+python shell which has RDKit available. For connecting to the database, do this (don't change any of the connection
+parameters
+
+    .. code-block:: python
+
+    import psycopg2
+
+    conn_string = "host='db' dbname='chembience' user='chembience' password='Arg0'"
+    conn = psycopg2.connect(conn_string)
+    cursor = conn.cursor()
+
+    # rdkit installed?
+    cursor.execute("select * from pg_extension")
+    extensions = cursor.fetchall()
+    pprint.pprint(extensions)
+
 
 
 
