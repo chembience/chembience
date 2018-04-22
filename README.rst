@@ -194,9 +194,9 @@ You will see the following layout::
    test.py
    up
 
-For this quick start section, only some of these files will be discussed. The command ``./up`` will start up a regular
-python shell which has RDKit available. For connecting to the database, do this (don't change any of the connection
-parameters
+For this quick start section, only some of these files will be discussed. The ``./up`` command will start up the database and
+the *App* container running just a regular python shell. For connecting to the database, do this (if you use an unchanged Chembience
+configuration, use the database connection parameters as shown, they are no placeholders):
 
 .. code-block:: python
 
@@ -212,8 +212,16 @@ parameters
     extensions = cursor.fetchall()
     pprint.pprint(extensions)
 
+If you use the ``./run`` command, it does the same without starting an interactive shell, however it will pass any command line arguments
+to the Python interpreter of the *App* container. The Python interpreter has the current directory (``~/chembience/rdkit``) available on
+its PYTHONPATH, i.e. if you add a script named script.py to the directory you can run it like this::
+
+    ./run script.py
+
+The same is true for any python module or package put into the ``~/chembience/share`` directory.
 
 
+[ ... more to come ...]
 
 Markus Sitzmann, 2018-04-10
 
