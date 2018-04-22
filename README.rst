@@ -191,7 +191,6 @@ You will see the following layout::
    psql
    requirements.txt
    run
-   test.py
    up
 
 For this quick start section, only some of these files will be discussed. The ``./up`` command will start up the database and
@@ -223,6 +222,6 @@ The same is true for any python module or package put into the ``~/chembience/sh
 
 [ ... more to come ...]
 
-Markus Sitzmann, 2018-04-10
+Markus Sitzmann, 2018-04-23
 
 This work is a personal project of mine unrelated to my professional work.
