@@ -198,15 +198,16 @@ For this quick start section, only some of these files will be discussed. The co
 python shell which has RDKit available. For connecting to the database, do this (don't change any of the connection
 parameters
 
-    .. code-block:: python
+.. code-block:: python
 
     import psycopg2
+    import pprint
 
     conn_string = "host='db' dbname='chembience' user='chembience' password='Arg0'"
     conn = psycopg2.connect(conn_string)
     cursor = conn.cursor()
 
-    # rdkit installed?
+    # rdkit extension installed?
     cursor.execute("select * from pg_extension")
     extensions = cursor.fetchall()
     pprint.pprint(extensions)
