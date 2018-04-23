@@ -75,9 +75,9 @@ Quick Start: Base Installation
 
 Clone the repository::
 
-    https://github.com/chembience/chembience.git chembience
+    git clone https://github.com/chembience/chembience.git chembience
 
-and change into the newly created directory ::
+Then, change into the newly created directory ::
 
     cd chembience/
 
@@ -224,5 +224,3 @@ The same is true for any python module or package put into the ``~/chembience/sh
 [ ... more to come ...]
 
 Markus Sitzmann, 2018-04-23
-
-This work is a personal project of mine unrelated to my professional work.
