@@ -6,7 +6,8 @@ Overview
 
 **Chembience** is a `Docker <https://docs.docker.com/>`_ based platform intended for the fast development of
 `chemoinformatics <https://en.wikipedia.org/wiki/Cheminformatics>`_-centric web applications and microservices.
-The following schema provides an overview about Chembience.
+It supports a clean separation of your scientific web service implementation work from any infrastructure related
+configuration requirements. The following schema provides an overview.
 
 .. image:: docs/_images/chembience.png
 
