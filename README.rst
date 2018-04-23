@@ -61,8 +61,7 @@ of Chembience to the current version provided here).
 Releases
 --------
 
-April, 2018     0.1.0 (first beta)
-
+April, 2018     0.1.0 (first beta) & 0.1.1 (minor bug fixes)
 
 Requirements
 ------------
@@ -81,7 +80,13 @@ Then, change into the newly created directory ::
 
     cd chembience/
 
-and run (it is important that you do this from inside the chembience directory) ::
+and start editing the ``.env`` file. At a minimum, both the variables (line 23 and 24) ::
+
+    CHEMBIENCE_UID=1000
+    CHEMBIENCE_GID=1000
+
+need to be changed to the UID and GID of the user account you are using for this installation (if you don't know them type ``id`` in your shell).
+After this, run the following command (it is important that you do this from inside the chembience directory) ::
 
     ./init
 

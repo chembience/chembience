@@ -7,7 +7,7 @@ mkdir -p $CHEMBIENCE_HOME \
 && mkdir -p $DJANGO_APP_HOME \
 && mkdir -p $RDKIT_APP_HOME
 
-#docker-compose -f ./context/base/docker-compose.build.yml run --rm base
+docker-compose -f ./context/base/base/docker-compose.init.yml run --rm base
 docker-compose -f ./context/base/django/docker-compose.init.yml run --rm django
 docker-compose -f ./context/base/rdkit/docker-compose.init.yml run --rm rdkit
 
