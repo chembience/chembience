@@ -13,11 +13,16 @@ cp .env ./context/base \
 && cp .env ./context/base/django \
 && cp .env ./context/base/django/app-context \
 && cp .env ./context/base/rdkit \
-&& cp .env ./context/base/rdkit/app-context
+&& cp .env ./context/base/rdkit/app-context \
 
 docker-compose -f ./context/base/base/docker-compose.init.yml run --rm base
 docker-compose -f ./context/base/django/docker-compose.init.yml run --rm django
 docker-compose -f ./context/base/rdkit/docker-compose.init.yml run --rm rdkit
+
+cp .env $CHEMBIENCE_SHARE \
+&& cp .env $DJANGO_APP_HOME \
+&& cp .env $RDKIT_APP_HOME
+
 
 
 
