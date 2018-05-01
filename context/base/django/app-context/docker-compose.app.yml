@@ -2,25 +2,26 @@ version: '3'
 
 services:
 
-  django:
+  app:
     image: chembience/django:${CHEMBIENCE_BUILD_LABEL}
     container_name: chembience_django
     volumes:
       - "${DJANGO_APP_HOME}:/home/app"
-      - "${CHEMBIENCE_HOME}:/home/sphere"
+      - "${CHEMBIENCE_SPHERE}:/home/sphere"
       - "${CHEMBIENCE_SHARE}:/home/share"
     ports:
        - "${DJANGO_APP_CONNECTION_PORT}:80"
     networks:
       - sphere
     environment:
-      - CHEMBIENCE_USER
+      #- CHEMBIENCE_USER
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
+      - CHEMBIENCE_DB_USER
       - CHEMBIENCE_DB_HOST
       - CHEMBIENCE_DB_PORT
       - CHEMBIENCE_DB_PASSWORD
-      - APP_HOME=${DJANGO_APP_HOME}
+      #- APP_HOME=${DJANGO_APP_HOME}
       - APP_VIRTUAL_HOSTNAME=${DJANGO_APP_VIRTUAL_HOSTNAME}
       - VIRTUAL_HOST=${DJANGO_APP_VIRTUAL_HOSTNAME}
     depends_on:
@@ -34,7 +35,7 @@ services:
     container_name: chembience_proxy
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - "${CHEMBIENCE_HOME}:/home/chembience"
+      - "${CHEMBIENCE_SPHERE}:/home/sphere"
     ports:
       - "${PROXY_EXTERNAL_PORT}:80"
     networks:
@@ -55,9 +56,9 @@ services:
       - CHEMBIENCE_USER
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
-      - DB_USER=${CHEMBIENCE_USER}
+      - DB_USER=${CHEMBIENCE_DB_USER}
       - DB_PASS=${CHEMBIENCE_DB_PASSWORD}
-      - DB_NAME=${CHEMBIENCE_USER}
+      - DB_NAME=${CHEMBIENCE_DB_USER}
       - DB_TEMPLATE=
       - DB_EXTENSION=rdkit
       - REPLICATION_MODE=

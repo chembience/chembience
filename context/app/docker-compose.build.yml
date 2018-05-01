@@ -41,3 +41,9 @@ services:
         build_label: ${CHEMBIENCE_BUILD_LABEL}
 
 
+  jupyter:
+    image: chembience/jupyter:${CHEMBIENCE_BUILD_LABEL}
+    build:
+      context: jupyter/
+      args:
+        build_label: ${CHEMBIENCE_BUILD_LABEL}

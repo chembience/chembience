@@ -1,5 +1,5 @@
 #!/bin/bash
 
-docker-compose run rdkit python $1
+docker-compose --rm run app python $1
 
 

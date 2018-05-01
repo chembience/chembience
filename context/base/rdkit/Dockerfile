@@ -75,15 +75,15 @@ RUN apt-get -y --no-install-recommends install \
     libfreetype6 \
     && rm -rf /var/lib/apt/lists/*
 
-COPY --from=rdkit-build /opt/conda/conda-bld/linux-64/*.tar.bz2 /home/chembience/
+COPY --from=rdkit-build /opt/conda/conda-bld/linux-64/*.tar.bz2 /tmp/
 
 RUN /bin/bash -c "source activate chembience" && \
-    conda install --offline /home/chembience/boost-*.tar.bz2  && \
-    conda install --offline /home/chembience/cairo-*.tar.bz2 && \
-    conda install --offline /home/chembience/cairocffi-*.tar.bz2 && \
-    conda install --offline /home/chembience/eigen-*.tar.bz2  && \
-    conda install --offline /home/chembience/nox-*.tar.bz2  && \
-    conda install --offline /home/chembience/rdkit-*.tar.bz2 && \
+    conda install --offline /tmp/boost-*.tar.bz2  && \
+    conda install --offline /tmp/cairo-*.tar.bz2 && \
+    conda install --offline /tmp/cairocffi-*.tar.bz2 && \
+    conda install --offline /tmp/eigen-*.tar.bz2  && \
+    conda install --offline /tmp/nox-*.tar.bz2  && \
+    conda install --offline /tmp/rdkit-*.tar.bz2 && \
     conda clean -pt
 
 RUN mkdir -p /opt/rdkit
@@ -91,6 +91,8 @@ RUN mkdir -p /opt/rdkit
 COPY ./.env /opt/rdkit/env
 COPY . /opt/rdkit
 COPY ./app-context /opt/rdkit/app-context
+
+RUN rm -rf /tmp/*.tar.bz2
 
 COPY docker-entrypoint.sh /
 

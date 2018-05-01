@@ -2,8 +2,8 @@
 
 if [ $# -eq 0 ]
   then
-    docker-compose run rdkit
+    docker-compose run --rm app
   else
-    docker-compose run rdkit python $1
+    docker-compose run --rm app python $1
 fi
 

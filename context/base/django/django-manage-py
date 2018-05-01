@@ -2,4 +2,4 @@
 
 echo "Running $@"
 
-docker-compose exec django bash -ci "gosu chembience bash -c 'cd /home/app/appsite && ./manage.py $*'"
+docker-compose exec app bash -ci "gosu app bash -c 'cd /home/app/appsite && ./manage.py $*'"

@@ -6,7 +6,9 @@ cp .env ./context/base \
 && cp .env ./context/base/django \
 && cp .env ./context/base/django/app-context \
 && cp .env ./context/base/rdkit \
-&& cp .env ./context/base/rdkit/app-context
+&& cp .env ./context/base/rdkit/app-context \
+&& cp .env ./context/base/jupyter \
+&& cp .env ./context/base/jupyter/app-context
 
 docker-compose -f ./context/base/docker-compose.build.yml build
 docker-compose -f ./context/app/docker-compose.build.yml build

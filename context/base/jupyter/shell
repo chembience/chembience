@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]
+  then
+    docker-compose exec jupyter bash
+  else
+    docker-compose exec $1 bash
+fi
+
