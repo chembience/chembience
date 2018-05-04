@@ -12,7 +12,7 @@ services:
       #- CHEMBIENCE_USER
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
-      - APP_HOME
+      #- APP_HOME
     networks:
       - sphere
 

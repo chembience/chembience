@@ -1,4 +1,26 @@
 # Configuration file for jupyter-notebook.
+import os
+from IPython.lib import passwd
+
+c.NotebookApp.ip = '*'
+c.NotebookApp.port = 8888
+
+c.NotebookApp.notebook_dir = '/home/app'
+
+c.NotebookApp.allow_root = False
+c.NotebookApp.open_browser = False
+
+# sets a password if PASSWORD is set in the environment
+if 'PASSWORD' in os.environ:
+
+    c.NotebookApp.password_required = True
+    c.NotebookApp.password = passwd(
+        os.environ['PASSWORD']
+    )
+
+    del os.environ['PASSWORD']
+
+
 
 #------------------------------------------------------------------------------
 # Application(SingletonConfigurable) configuration
@@ -76,7 +98,7 @@
 ## The base URL for the notebook server.
 #  
 #  Leading and trailing slashes can be omitted, and will automatically be added.
-c.NotebookApp.base_url = 'http://jupyter.localhost'
+#c.NotebookApp.base_url = ''
 
 ## Specify what command to use to invoke a web browser when opening the notebook.
 #  If not specified, the default browser will be determined by the `webbrowser`
@@ -211,7 +233,7 @@ c.NotebookApp.base_url = 'http://jupyter.localhost'
 #c.NotebookApp.nbserver_extensions = {}
 
 ## The directory to use for notebooks and kernels.
-c.NotebookApp.notebook_dir = '/home/app'
+#c.NotebookApp.notebook_dir = '/home/app'
 
 ## Whether to open in a browser after starting. The specific browser used is
 #  platform dependent and determined by the python standard library `webbrowser`
@@ -226,7 +248,7 @@ c.NotebookApp.notebook_dir = '/home/app'
 #    from notebook.auth import passwd; passwd()
 #  
 #  The string should be of the form type:salt:hashed-password.
-c.NotebookApp.password = 'jupyter0'
+#c.NotebookApp.password = ''
 
 ## Forces users to use a password for the Notebook server. This is useful in a
 #  multi user environment, for instance when everybody in the LAN can access each
@@ -237,10 +259,10 @@ c.NotebookApp.password = 'jupyter0'
 #c.NotebookApp.password_required = False
 
 ## The port the notebook server will listen on.
-c.NotebookApp.port = 8001
+#c.NotebookApp.port = 8888
 
 ## The number of additional ports to try if the specified port is not available.
-c.NotebookApp.port_retries = 50
+#c.NotebookApp.port_retries = 50
 
 ## DISABLED: use %pylab or %matplotlib in the notebook to enable matplotlib.
 #c.NotebookApp.pylab = 'disabled'
@@ -693,3 +715,4 @@ c.NotebookApp.port_retries = 50
 #  
 #  By default, all installed kernels are allowed.
 #c.KernelSpecManager.whitelist = set()
+

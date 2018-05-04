@@ -16,10 +16,10 @@ if [ -z "$(ls -A /home/app)" ]; then
     echo "Initializing home directory for RDKit app ..."
     cp -rf /opt/rdkit/* /home/app
     mv /home/app/app-context/* /home/app/
-    mv /home/app/build-app /home/app/build
+    #mv /home/app/build-app /home/app/build
     mv /home/app/env /home/app/.env
     rm -rf /home/app/docker-compose.init.yml /home/app/app-context
-    mv /home/app/docker-compose.app.yml /home/app/docker-compose.yml
+    #mv /home/app/docker-compose.app.yml /home/app/docker-compose.yml
     chown -R $CHEMBIENCE_UID:$CHEMBIENCE_GID /home/app
     echo "Done."
 else

@@ -2,28 +2,28 @@ version: '3'
 
 services:
 
-  jupyter:
-    image: chembience/jupyter:${CHEMBIENCE_BUILD_LABEL}
-    container_name: chembience_jupyter
+  app:
+    image: chembience/django:${CHEMBIENCE_BUILD_LABEL}
+    container_name: chembience_django
     volumes:
-      - "${JUPYTER_APP_HOME}:/home/app"
-      - "${CHEMBIENCE_HOME}:/home/sphere"
+      - "${DJANGO_APP_HOME}:/home/app"
+      - "${CHEMBIENCE_SPHERE}:/home/sphere"
       - "${CHEMBIENCE_SHARE}:/home/share"
     ports:
-       - "${JUPYTER_APP_CONNECTION_PORT}:80"
+       - "${DJANGO_APP_CONNECTION_PORT}:80"
     networks:
       - sphere
     environment:
-      - CHEMBIENCE_USER
+      #- CHEMBIENCE_USER
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
+      - CHEMBIENCE_DB_USER
       - CHEMBIENCE_DB_HOST
       - CHEMBIENCE_DB_PORT
       - CHEMBIENCE_DB_PASSWORD
-      - APP_HOME=${JUPYTER_APP_HOME}
-      - APP_VIRTUAL_HOSTNAME=${JUPYTER_APP_VIRTUAL_HOSTNAME}
-      - VIRTUAL_HOST=${JUPYTER_APP_VIRTUAL_HOSTNAME}
-      - JUPYTER_CONFIG_DIR=/home/app
+      #- APP_HOME=${DJANGO_APP_HOME}
+      - APP_VIRTUAL_HOSTNAME=${DJANGO_APP_VIRTUAL_HOSTNAME}
+      - VIRTUAL_HOST=${DJANGO_APP_VIRTUAL_HOSTNAME}
     depends_on:
       - proxy
       - db
@@ -35,7 +35,7 @@ services:
     container_name: chembience_proxy
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - "${CHEMBIENCE_HOME}:/home/chembience"
+      - "${CHEMBIENCE_SPHERE}:/home/sphere"
     ports:
       - "${PROXY_EXTERNAL_PORT}:80"
     networks:
@@ -50,15 +50,15 @@ services:
       - sphere
     environment:
       - DEBUG=false
-      - CHEMBIENCE_BUILD_LABEL
-      - CHEMBIENCE_ROOT
-      - CHEMBIENCE_HOME
-      - CHEMBIENCE_USER
+      #- CHEMBIENCE_BUILD_LABEL
+      #- CHEMBIENCE_ROOT
+      #- CHEMBIENCE_HOME
+      #- CHEMBIENCE_USER
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
-      - DB_USER=${CHEMBIENCE_USER}
+      - DB_USER=${CHEMBIENCE_DB_USER}
       - DB_PASS=${CHEMBIENCE_DB_PASSWORD}
-      - DB_NAME=${CHEMBIENCE_USER}
+      - DB_NAME=${CHEMBIENCE_DB_USER}
       - DB_TEMPLATE=
       - DB_EXTENSION=rdkit
       - REPLICATION_MODE=
