@@ -5,7 +5,7 @@ if ! id "app" >/dev/null 2>&1; then
     useradd --shell /bin/bash -u $CHEMBIENCE_UID -g $CHEMBIENCE_GID -o -c "" -M app
 fi
 
-export PYTHONPATH=/home/app:/home/share:$PYTHONPATH
+export PYTHONPATH=/home/app:/share:$PYTHONPATH
 
 gosu app "$@"
 

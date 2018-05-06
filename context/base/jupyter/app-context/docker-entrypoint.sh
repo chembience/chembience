@@ -1,10 +1,14 @@
 #!/bin/bash
 
-groupadd -g $CHEMBIENCE_GID app && \
-    useradd --shell /bin/bash -u $CHEMBIENCE_UID -g $CHEMBIENCE_GID -o -c "" -M app
+if ! id "app" >/dev/null 2>&1; then
+    groupadd -g $CHEMBIENCE_GID app && \
+        useradd --shell /bin/bash -u $CHEMBIENCE_UID -g $CHEMBIENCE_GID -o -c "" -M app
+fi
 
+export PYTHONPATH=/home/app:/share:$PYTHONPATH
 
-export PYTHONPATH=/home/app:/home/share:$PYTHONPATH
+touch /home/app/jupyter.log
+chown app.app /home/app/jupyter.log
 
-gosu app "$@"
+exec "$@"
 

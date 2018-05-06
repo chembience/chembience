@@ -8,18 +8,16 @@ services:
     volumes:
       - "${RDKIT_APP_HOME}:/home/app"
       - "${CHEMBIENCE_SPHERE}:/home/sphere"
-      - "${CHEMBIENCE_SHARE}:/home/share"
+      - "${CHEMBIENCE_SHARE}:/share"
     networks:
       - sphere
     environment:
-      #- CHEMBIENCE_USER
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
       - CHEMBIENCE_DB_USER
       - CHEMBIENCE_DB_HOST
       - CHEMBIENCE_DB_PORT
       - CHEMBIENCE_DB_PASSWORD=${CHEMBIENCE_DB_PASSWORD}
-      #- APP_HOME=${RDKIT_APP_HOME}
     depends_on:
       - db
     entrypoint: ["/home/app/docker-entrypoint.sh"]
@@ -36,9 +34,6 @@ services:
     environment:
       - DEBUG=false
       - CHEMBIENCE_BUILD_LABEL
-      #- CHEMBIENCE_ROOT
-      #- CHEMBIENCE_HOME
-      #- CHEMBIENCE_USER
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
       - DB_USER=${CHEMBIENCE_DB_USER}

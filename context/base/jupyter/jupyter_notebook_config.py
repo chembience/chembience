@@ -1,24 +1,22 @@
-# Configuration file for jupyter-notebook.
 import os
 from IPython.lib import passwd
 
 c.NotebookApp.ip = '*'
 c.NotebookApp.port = 8888
 
-c.NotebookApp.notebook_dir = '/home/app'
-
 c.NotebookApp.allow_root = False
 c.NotebookApp.open_browser = False
 
-# sets a password if PASSWORD is set in the environment
-if 'PASSWORD' in os.environ:
+c.NotebookApp.notebook_dir = os.environ['JUPYTER_NOTEBOOK_DIR']
+
+if 'JUPYTER_PASSWORD' in os.environ:
 
     c.NotebookApp.password_required = True
     c.NotebookApp.password = passwd(
-        os.environ['PASSWORD']
+        os.environ['JUPYTER_PASSWORD']
     )
 
-    del os.environ['PASSWORD']
+    del os.environ['JUPYTER_PASSWORD']
 
 
 

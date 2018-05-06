@@ -22,10 +22,10 @@ else
     echo "Chembience sphere directory isn't empty, skipping initializing content there"
 fi
 
-if [ -z "$(ls -A /home/share)" ];  then
+if [ -z "$(ls -A /share)" ];  then
     echo "Initialization of Chembience share directory ..."
-    cp -r /opt/pychembience/chembience /home/share
-    chown -R $CHEMBIENCE_UID:$CHEMBIENCE_GID /home/share
+    cp -r /opt/pychembience/chembience /share
+    chown -R $CHEMBIENCE_UID:$CHEMBIENCE_GID /share
     echo "Done."
 else
     echo "Chembience share directory isn't empty, skipping initializing content there"

@@ -2,8 +2,8 @@
 
 if [ $# -eq 0 ]
   then
-    docker-compose exec shell bash
+    docker-compose -f docker-compose.shell.yml exec shell bash
   else
-    docker-compose exec $1 bash
+    docker-compose -f docker-compose.shell.yml exec $1 bash
 fi
 

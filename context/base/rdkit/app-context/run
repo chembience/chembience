@@ -1,5 +1,5 @@
 #!/bin/bash
 
-docker-compose --rm run app python $1
+docker-compose run --rm app python $1
 
 

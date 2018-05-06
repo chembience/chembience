@@ -8,11 +8,10 @@ services:
       - "${CHEMBIENCE_SPHERE}:/home/sphere"
       - "${JUPYTER_APP_HOME}:/home/app"
     environment:
-      #- CHEMBIENCE_HOME
-      #- CHEMBIENCE_USER
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
-      #- APP_HOME
+      - JUPYTER_NOTEBOOK_DIR=/home/app/${JUPYTER_NOTEBOOK_DIR}
+      - JUPYTER_CONFIG_DIR=/home/app/${JUPYTER_CONFIG_DIR}
     networks:
       - sphere
 

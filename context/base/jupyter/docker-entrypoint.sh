@@ -15,12 +15,10 @@ fi
 if [ -z "$(ls -A /home/app)" ]; then
     echo "Initializing home directory for Jupyter app ..."
     cp -rf /opt/jupyter/* /home/app
-    #mv /home/app/project_template/appsite /home/app
     mv /home/app/app-context/* /home/app/
-    #mv /home/app/build-app /home/app/build
     mv /home/app/env /home/app/.env
     rm -rf /home/app/docker-compose.init.yml /home/app/app-context
-    #mv /home/app/docker-compose.app.yml /home/app/docker-compose.yml
+    mkdir -p $JUPYTER_NOTEBOOK_DIR
     chown -R $CHEMBIENCE_UID:$CHEMBIENCE_GID /home/app
     echo "Done."
 else

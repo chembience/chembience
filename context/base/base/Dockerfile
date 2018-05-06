@@ -7,7 +7,8 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
     gnupg \
     unzip tar bzip2 \
     git \
-    postgresql-client
+    postgresql-client \
+    joe
     
 COPY docker-entrypoint.sh /
 COPY ./chembience /opt/chembience

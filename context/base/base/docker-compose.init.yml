@@ -6,10 +6,8 @@ services:
     image: chembience/base:${CHEMBIENCE_BUILD_LABEL}
     volumes:
       - "${CHEMBIENCE_SPHERE}:/home/sphere"
-      - "${CHEMBIENCE_SHARE}:/home/share"
+      - "${CHEMBIENCE_SHARE}:/share"
     environment:
-      #- CHEMBIENCE_HOME
-      #- CHEMBIENCE_USER
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
     networks:

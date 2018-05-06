@@ -7,7 +7,6 @@ ENV PATH /opt/conda/bin:$PATH
 RUN apt-get update && apt-get -y --no-install-recommends install \
     nginx \
     supervisor \
-    joe \
     && rm -rf /var/lib/apt/lists/*
 
 COPY ./nginx /home/nginx/
@@ -19,5 +18,5 @@ RUN chown -R www-data.www-data /home/nginx && \
     ln -s /home/nginx/sites-includes/ /etc/nginx/ && \
     ln -s /home/nginx/supervisord.conf /etc/supervisor/conf.d/
 
-EXPOSE 8888
+EXPOSE 80
 CMD ["/home/nginx/run.sh"]
