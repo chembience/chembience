@@ -31,19 +31,23 @@ services:
       context: django/
       args:
         build_label: ${CHEMBIENCE_BUILD_LABEL}
-
-
-  rdkit:
-    image: chembience/rdkit:${CHEMBIENCE_BUILD_LABEL}
-    build:
-      context: rdkit/
-      args:
-        build_label: ${CHEMBIENCE_BUILD_LABEL}
+    volumes:
+      - "${DJANGO_APP_HOME}:/home/app"
 
 
   jupyter:
     image: chembience/jupyter:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: jupyter/
+      args:
+        build_label: ${CHEMBIENCE_BUILD_LABEL}
+    volumes:
+      - "${JUPYTER_APP_HOME}:/home/app"
+
+
+  rdkit:
+    image: chembience/rdkit:${CHEMBIENCE_BUILD_LABEL}
+    build:
+      context: rdkit/
       args:
         build_label: ${CHEMBIENCE_BUILD_LABEL}
