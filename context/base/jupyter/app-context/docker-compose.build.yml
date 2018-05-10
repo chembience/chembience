@@ -2,7 +2,7 @@ version: '3'
 
 services:
 
-  django:
+  jupyter:
     image: chembience/jupyter:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: .

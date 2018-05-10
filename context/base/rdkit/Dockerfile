@@ -15,11 +15,11 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
     libsm6 \
     libxrender1 \
     libcairo2-dev \
-	libjpeg-dev \
-	libpng-dev \
-	libpq-dev \
-	flex \
-	bison \
+    libjpeg-dev \
+    libpng-dev \
+    libpq-dev \
+    flex \
+    bison \
     libfreetype6 \
     libfreetype6-dev \
     libtiff5-dev \
@@ -31,9 +31,9 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
     && rm -rf /var/lib/apt/lists/*
 
 RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
-    wget --quiet https://repo.continuum.io/miniconda/Miniconda3-4.3.30-Linux-x86_64.sh && \
-    /bin/bash /Miniconda3-4.3.30-Linux-x86_64.sh -b -p /opt/conda && \
-    rm Miniconda3-4.3.30-Linux-x86_64.sh
+    wget --quiet https://repo.continuum.io/miniconda/Miniconda3-4.5.1-Linux-x86_64.sh && \
+    /bin/bash /Miniconda3-4.5.1-Linux-x86_64.sh -b -p /opt/conda && \
+    rm Miniconda3-4.5.1-Linux-x86_64.sh
 
 ENV PATH /opt/conda/bin:$PATH
 
@@ -42,9 +42,9 @@ RUN CONDA_PY=36 conda install anaconda-client --yes
 RUN mkdir -p /home/rdkit
 WORKDIR /home/rdkit
 
-RUN git clone https://github.com/rdkit/conda-rdkit.git
+RUN git clone https://github.com/markussitzmann/conda-rdkit.git
 WORKDIR conda-rdkit
-RUN git checkout development
+RUN git checkout chembience
 
 ENV PATH /opt/conda/bin:$PATH
 
