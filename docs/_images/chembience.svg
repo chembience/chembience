@@ -24,6 +24,118 @@
   <defs
      id="defs2">
     <marker
+       inkscape:stockid="EmptyDiamondMend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker7540"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path7538"
+         d="M 0,-7.0710768 L -7.0710894,0 L 0,7.0710589 L 7.0710462,0 L 0,-7.0710768 z "
+         style="fill-rule:evenodd;fill:#ffffff;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="scale(0.4) translate(-6.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="DotM"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker7536"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path7255"
+         d="M -2.5,-1.0 C -2.5,1.7600000 -4.7400000,4.0 -7.5,4.0 C -10.260000,4.0 -12.5,1.7600000 -12.5,-1.0 C -12.5,-3.7600000 -10.260000,-6.0 -7.5,-6.0 C -4.7400000,-6.0 -2.5,-3.7600000 -2.5,-1.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.4) translate(7.4, 1)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyDiamondMend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="EmptyDiamondMend"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path7318"
+         d="M 0,-7.0710768 L -7.0710894,0 L 0,7.0710589 L 7.0710462,0 L 0,-7.0710768 z "
+         style="fill-rule:evenodd;fill:#ffffff;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="scale(0.4) translate(-6.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path7194"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyDiamondM"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker7462"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path7460"
+         d="M 0,-7.0710768 L -7.0710894,0 L 0,7.0710589 L 7.0710462,0 L 0,-7.0710768 z "
+         style="fill-rule:evenodd;fill:#ffffff;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="scale(0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyDiamondM"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker7458"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path7300"
+         d="M 0,-7.0710768 L -7.0710894,0 L 0,7.0710589 L 7.0710462,0 L 0,-7.0710768 z "
+         style="fill-rule:evenodd;fill:#ffffff;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill-opacity:1"
+         transform="scale(0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyDiamondMstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="EmptyDiamondMstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path7309"
+         d="M 0,-7.0710768 L -7.0710894,0 L 0,7.0710589 L 7.0710462,0 L 0,-7.0710768 z "
+         style="fill-rule:evenodd;fill:#ffffff;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="scale(0.4) translate(6.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyDiamondLstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="EmptyDiamondLstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path7306"
+         d="M 0,-7.0710768 L -7.0710894,0 L 0,7.0710589 L 7.0710462,0 L 0,-7.0710768 z "
+         style="fill-rule:evenodd;fill:#ffffff;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="scale(0.8) translate(7,0)" />
+    </marker>
+    <marker
        inkscape:stockid="EmptyDiamondM"
        orient="auto"
        refY="0.0"
@@ -47,7 +159,7 @@
        inkscape:stockid="EmptyDiamondM">
       <path
          transform="scale(0.4)"
-         style="fill-rule:evenodd;fill:#ffffff;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         style="fill-rule:evenodd;fill:#000000;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill-opacity:1"
          d="M 0,-7.0710768 L -7.0710894,0 L 0,7.0710589 L 7.0710462,0 L 0,-7.0710768 z "
          id="path1747" />
     </marker>
@@ -64,21 +176,6 @@
          style="fill-rule:evenodd;fill:#ffffff;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
          d="M 0,-7.0710768 L -7.0710894,0 L 0,7.0710589 L 7.0710462,0 L 0,-7.0710768 z "
          id="path1743" />
-    </marker>
-    <marker
-       inkscape:stockid="EmptyDiamondM"
-       orient="auto"
-       refY="0.0"
-       refX="0.0"
-       id="marker1741"
-       style="overflow:visible"
-       inkscape:isstock="true"
-       inkscape:collect="always">
-      <path
-         id="path1739"
-         d="M 0,-7.0710768 L -7.0710894,0 L 0,7.0710589 L 7.0710462,0 L 0,-7.0710768 z "
-         style="fill-rule:evenodd;fill:#ffffff;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
-         transform="scale(0.4)" />
     </marker>
     <marker
        inkscape:stockid="EmptyDiamondM"
@@ -386,7 +483,7 @@
        xlink:href="#linearGradient6037"
        inkscape:collect="always" />
     <linearGradient
-       gradientTransform="matrix(1.5012712,0,0,1.4671335,28.034305,104.71175)"
+       gradientTransform="matrix(1.5012712,0,0,1.4671335,27.505138,108.41594)"
        gradientUnits="userSpaceOnUse"
        y2="37.013565"
        x2="57.327969"
@@ -692,6 +789,76 @@
          id="path1634"
          inkscape:connector-curvature="0" />
     </marker>
+    <linearGradient
+       gradientTransform="matrix(1.5012712,0,0,1.4671335,27.542133,76.438648)"
+       gradientUnits="userSpaceOnUse"
+       y2="37.013565"
+       x2="57.327969"
+       y1="37.013565"
+       x1="24.322868"
+       id="linearGradient6019-91-3"
+       xlink:href="#linearGradient6037"
+       inkscape:collect="always" />
+    <marker
+       inkscape:stockid="EmptyDiamondM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker1737-6"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path1354-2"
+         d="M 0,-7.0710768 -7.0710894,0 0,7.0710589 7.0710462,0 Z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyDiamondM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker1737-4"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path1354-29"
+         d="M 0,-7.0710768 -7.0710894,0 0,7.0710589 7.0710462,0 Z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="EmptyDiamondM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker7462-6"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7460-1"
+         d="M 0,-7.0710768 -7.0710894,0 0,7.0710589 7.0710462,0 Z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker1510-2"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path1390-2"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#b3b3b3;fill-opacity:1;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.4)" />
+    </marker>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -700,16 +867,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="473.01194"
-     inkscape:cy="412.95568"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="385.06254"
+     inkscape:cy="416.92308"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1016"
      inkscape:window-x="1920"
-     inkscape:window-y="27"
+     inkscape:window-y="128"
      inkscape:window-maximized="1"
      showguides="true"
      inkscape:guide-bbox="true">
@@ -719,12 +886,12 @@
        id="guide1967"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="32.127977,51.593751"
+       position="42.333335,182.75149"
        orientation="1,0"
        id="guide2182"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="287.26191,134.18155"
+       position="291.99197,201.65486"
        orientation="1,0"
        id="guide2184"
        inkscape:locked="false" />
@@ -744,27 +911,22 @@
        id="guide1217"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="56.88542,133.80357"
+       position="64.255954,174.05804"
        orientation="1,0"
        id="guide1223"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="220.73811,180.10566"
+       position="220.45462,176.06604"
        orientation="1,0"
        id="guide1564"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="193.10224,157.28812"
+       position="-61.988097,247.19644"
        orientation="0,1"
        id="guide1685"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="219.0942,135.17157"
-       orientation="0,1"
-       id="guide1687"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="191.89953,141.96958"
+       position="59.734741,138.57925"
        orientation="0,1"
        id="guide1708"
        inkscape:locked="false" />
@@ -774,19 +936,34 @@
        id="guide1710"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="220.73044,141.96958"
+       position="53.721178,170.78523"
        orientation="0,1"
-       id="guide1712"
+       id="guide7155"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="211.0093,149.00277"
-       orientation="0,1"
-       id="guide1716"
+       position="138.57925,173.25748"
+       orientation="1,0"
+       id="guide7177"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="211.20976,146.19643"
+       position="64.255956,87.263501"
        orientation="0,1"
-       id="guide1770"
+       id="guide7179"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="85.8006,176.98735"
+       orientation="1,0"
+       id="guide7185"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="223.9509,102.14807"
+       orientation="0,1"
+       id="guide7187"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="106.02233,117.5506"
+       orientation="1,0"
+       id="guide7189"
        inkscape:locked="false" />
   </sodipodi:namedview>
   <metadata
@@ -797,7 +974,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -808,40 +985,22 @@
      transform="translate(0,-84)"
      style="opacity:1">
     <rect
-       style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:0.30520022;stroke-miterlimit:8.69999981;stroke-dasharray:none;stroke-dashoffset:0"
-       id="rect1559-4-8"
-       width="66.566452"
-       height="8.5028095"
-       x="220.69543"
-       y="157.57703"
-       ry="0" />
-    <rect
-       style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:0.30520022;stroke-miterlimit:8.69999981;stroke-dasharray:none;stroke-dashoffset:0"
-       id="rect1559-4"
-       width="66.566452"
-       height="8.5028095"
-       x="220.7381"
-       y="135.46048"
-       ry="0" />
-    <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:0.30520022;stroke-miterlimit:8.69999981;stroke-dasharray:none;stroke-dashoffset:0"
-       id="rect1559"
-       width="66.566452"
-       height="8.5028095"
-       x="220.73044"
-       y="146.52762"
-       ry="0" />
+       y="105.00636"
+       x="68.376442"
+       height="164.54164"
+       width="148.08755"
+       id="rect6629"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.79006279;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       id="path6634-9-6"
+       d="m 85.800598,126.21477 25.468802,54.89448 v 0"
+       style="opacity:1;fill:#000000;stroke:#000000;stroke-width:1.33068979;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.33068981, 1.33068981;stroke-dashoffset:0.42333707;stroke-opacity:1" />
     <g
        id="layer3"
        inkscape:label="Layer -1"
        transform="translate(-2.233671,1.085165)" />
-    <rect
-       y="125.57056"
-       x="68.376442"
-       height="143.97745"
-       width="148.08755"
-       id="rect6629"
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.73900002;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <text
        id="text6176-2"
        y="208.08754"
@@ -867,12 +1026,12 @@
        sodipodi:nodetypes="cc"
        inkscape:connector-curvature="0"
        id="path6634"
-       d="m 94.012578,160.62154 14.016462,21.72503"
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0.60000002;stroke-opacity:1" />
+       d="m 85.800598,158.42075 19.205922,25.8951"
+       style="fill:none;stroke:#000000;stroke-width:1.32291663;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.32291667, 1.32291667;stroke-dashoffset:0.31267399;stroke-opacity:1" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.35213596;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       y="132.99611"
-       x="96.997406"
+       y="132.46695"
+       x="118.69324"
        height="19.557173"
        width="39.335125"
        id="rect3732-6-1" />
@@ -880,8 +1039,8 @@
        sodipodi:nodetypes="cc"
        inkscape:connector-curvature="0"
        id="path6634-9"
-       d="m 118.94218,152.8082 2.59232,26.28351"
-       style="fill:#000000;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1,1;stroke-dashoffset:0.69445848;stroke-opacity:1" />
+       d="m 136.37427,153.00854 -5.60746,25.36109"
+       style="fill:#000000;stroke:#000000;stroke-width:1.32291663;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.32291667, 1.32291667;stroke-dashoffset:0.22326082;stroke-opacity:1" />
     <rect
        rx="13.822622"
        ry="6.1471996"
@@ -912,7 +1071,7 @@
        cy="209.6293"
        cx="125.03724"
        id="path6045"
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.16499996;stroke-miterlimit:4;stroke-dasharray:1.165, 1.165;stroke-dashoffset:0;stroke-opacity:1" />
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.32291663;stroke-miterlimit:4;stroke-dasharray:1.32291667, 1.32291667;stroke-dashoffset:0;stroke-opacity:1" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient6019);stroke-width:0.40000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        y="217.71722"
@@ -943,39 +1102,39 @@
          sodipodi:role="line" /></text>
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient6019-91);stroke-width:0.40000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       y="143.4286"
-       x="64.748123"
+       y="147.13272"
+       x="64.218956"
        height="22.350843"
        width="42.933117"
        id="rect3732-6" />
     <text
        id="text6176-2-1-3"
-       y="151.4839"
-       x="85.774765"
+       y="155.18802"
+       x="85.245598"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:2.82222223px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          id="tspan6294-5-6"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333311px;line-height:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';text-align:center;text-anchor:middle;stroke-width:0.26458332"
-         y="151.4839"
-         x="85.774765"
-         sodipodi:role="line">App (1)</tspan><tspan
+         y="155.18802"
+         x="85.245598"
+         sodipodi:role="line">App (3)</tspan><tspan
          id="tspan6354-8"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';text-align:center;text-anchor:middle;stroke-width:0.26458332"
-         y="156.0887"
-         x="85.774765"
-         sodipodi:role="line">Python/Django, RDKit</tspan><tspan
+         y="159.79282"
+         x="85.245598"
+         sodipodi:role="line">Jupyter (Python), RDKit</tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';text-align:center;text-anchor:middle;stroke-width:0.26458332"
-         y="160.884"
-         x="85.774765"
+         y="164.58812"
+         x="85.245598"
          sodipodi:role="line"
          id="tspan10713">Nginx</tspan><tspan
          id="tspan6284-3-4"
          style="font-size:3.52777767px;line-height:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.26458332"
-         y="165.67929"
-         x="85.774765"
+         y="169.38341"
+         x="85.245598"
          sodipodi:role="line" /></text>
     <g
-       transform="translate(-17.825957,78.019182)"
+       transform="translate(-17.825957,81.194184)"
        id="g6547">
       <rect
          id="rect3732-6-7"
@@ -1051,12 +1210,12 @@
          sodipodi:role="line" /></text>
     <text
        id="text7068-4"
-       y="116.43162"
+       y="97.910774"
        x="4.087996"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777805px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777805px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';fill:#999999;stroke-width:0.26458332"
-         y="116.43162"
+         y="97.910774"
          x="4.087996"
          id="tspan7066-7"
          sodipodi:role="line">User/Client</tspan></text>
@@ -1078,19 +1237,19 @@
          sodipodi:role="line">API Consumer</tspan></text>
     <text
        id="text7068-4-5"
-       y="116.26507"
+       y="97.74427"
        x="116.22831"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777805px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777805px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777805px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';fill:#000000;stroke-width:0.26458332;"
-         y="116.26507"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777805px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';fill:#000000;stroke-width:0.26458332"
+         y="97.74427"
          x="116.22831"
          id="tspan7066-7-6"
          sodipodi:role="line">Chembience</tspan></text>
     <rect
        rx="13.822622"
        ry="6.1471996"
-       y="177.76479"
+       y="180.93974"
        x="184.25671"
        height="17.355379"
        width="27.645245"
@@ -1098,166 +1257,184 @@
        style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.48050585;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <text
        id="text7250"
-       y="171.69942"
+       y="174.87437"
        x="191.35002"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:2.77812505px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0.66145831px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic';stroke-width:0.26458332"
-         y="171.69942"
+         y="174.87437"
          x="191.35002"
          id="tspan7248"
          sodipodi:role="line">Docker </tspan><tspan
          id="tspan7252"
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:0.66145831px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic';stroke-width:0.26458332"
-         y="175.43527"
+         y="178.61023"
          x="191.35002"
          sodipodi:role="line">volume</tspan></text>
     <path
        inkscape:connector-curvature="0"
        id="path7262"
-       d="m 178.32069,186.88834 h 5.74629"
+       d="m 178.32069,190.06336 h 5.74629"
        style="fill:none;stroke:#000000;stroke-width:0.317;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#DotM);marker-end:url(#marker7668)" />
     <text
        id="text8130"
-       y="204.14906"
+       y="207.32402"
        x="159.41133"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:2.64583325px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:2.64583325px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:2.64583325px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';fill:#666666;stroke-width:0.26458332;"
-         y="204.14906"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:2.64583325px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';fill:#666666;stroke-width:0.26458332"
+         y="207.32402"
          x="159.41133"
          id="tspan8128"
          sodipodi:role="line">Database and Docker volume</tspan><tspan
          id="tspan8132"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:2.64583325px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';fill:#666666;stroke-width:0.26458332;"
-         y="208.59158"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:2.64583325px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';fill:#666666;stroke-width:0.26458332"
+         y="211.76654"
          x="159.41133"
          sodipodi:role="line">can be multiplied</tspan></text>
     <text
        id="text7068-4-5-6"
-       y="116.23077"
+       y="97.70993"
        x="229.98386"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777805px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';letter-spacing:0px;word-spacing:0px;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87777805px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';fill:#999999;stroke-width:0.26458332"
-         y="116.23077"
+         y="97.70993"
          x="229.98386"
          id="tspan7066-7-6-1"
          sodipodi:role="line">Developer</tspan></text>
     <rect
-       transform="matrix(-0.99999481,-0.00322151,0,-1,0,0)"
+       transform="matrix(-0.99999544,-0.00301855,0,-1,0,0)"
        ry="2.0392036"
        rx="0"
-       y="-131.5829"
-       x="-286.84036"
+       y="-110.98816"
+       x="-291.99329"
        height="9.5920067"
-       width="76.638657"
+       width="81.791718"
        id="rect10343"
-       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.53646719;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:2.22194552;stroke-opacity:1" />
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.55420941;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:2.22194552;stroke-opacity:1" />
     <text
        transform="skewY(0.16306621)"
        id="text10349"
-       y="128.14914"
+       y="107.51165"
        x="231.91693"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';letter-spacing:0px;word-spacing:0px;fill:#ececec;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';fill:#ececec;stroke-width:0.26458332"
-         y="128.14914"
+         y="107.51165"
          x="231.91693"
          id="tspan10347"
          sodipodi:role="line">docker-compose</tspan></text>
-    <text
-       id="text10755"
-       y="163.0732"
-       x="228.69127"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';stroke-width:0.26458332"
-         y="163.0732"
+    <g
+       id="g7175"
+       transform="matrix(0.99995982,0,0,1,0.0117189,-3.1750001)">
+      <rect
+         ry="0"
+         y="157.57703"
+         x="220.45175"
+         height="8.5028095"
+         width="71.54023"
+         id="rect1559-4-8"
+         style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:0.31639695;stroke-miterlimit:8.69999981;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
          x="228.69127"
-         id="tspan10753"
-         sodipodi:role="line">~/chembient/app1</tspan></text>
-    <text
-       id="text10755-9"
-       y="141.01468"
-       x="228.69762"
-       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:12.69999981px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';fill:#000000;stroke-width:0.26458332"
-         y="141.01468"
+         y="163.0732"
+         id="text10755"><tspan
+           sodipodi:role="line"
+           id="tspan10753"
+           x="228.69127"
+           y="163.0732"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';stroke-width:0.26458332">~/chembient/jupyter/notebooks</tspan></text>
+    </g>
+    <g
+       id="g7165"
+       transform="matrix(0.99995982,0,0,1,0.0117189,2.6458334)">
+      <rect
+         ry="0"
+         y="135.46048"
+         x="220.45175"
+         height="8.5028095"
+         width="71.54023"
+         id="rect1559-4"
+         style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:0.31639695;stroke-miterlimit:8.69999981;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:12.69999981px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
          x="228.69762"
-         id="tspan10753-7"
-         sodipodi:role="line">~/chembient/app2</tspan></text>
+         y="141.01468"
+         id="text10755-9"><tspan
+           sodipodi:role="line"
+           id="tspan10753-7"
+           x="228.69762"
+           y="141.01468"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';fill:#000000;stroke-width:0.26458332">~/chembient/rdkit</tspan></text>
+    </g>
     <text
        id="text10823"
-       y="173.92082"
-       x="238.95441"
+       y="117.80495"
+       x="239.22168"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:12.69999981px;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';stroke-width:0.26458332"
-         y="173.92082"
-         x="238.95441"
+         y="117.80495"
+         x="239.22168"
          id="tspan10821"
          sodipodi:role="line">local directories &amp; files</tspan></text>
     <text
        id="text24268"
-       y="160.17284"
-       x="153.25397"
+       y="139.86035"
+       x="163.14294"
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';stroke-width:0.26458332"
-         y="160.17284"
-         x="153.25397"
+         y="139.86035"
+         x="163.14294"
          id="tspan24266"
          sodipodi:role="line">Docker bind mount</tspan></text>
     <path
        inkscape:connector-curvature="0"
        id="path24270"
-       d="m 253.89267,185.07369 0.20686,16.57483"
+       d="m 253.89267,191.42373 0.20686,16.57483"
        style="fill:#b3b3b3;stroke:#b3b3b3;stroke-width:0.97500002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker25626);marker-end:url(#marker24569)" />
     <text
        id="text25527"
-       y="219.42215"
+       y="225.77206"
        x="246.5365"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';letter-spacing:0px;word-spacing:0px;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';fill:#999999;stroke-width:0.26458332"
-         y="219.42215"
+         y="225.77206"
          x="246.5365"
          id="tspan25525"
          sodipodi:role="line">GIT</tspan></text>
     <text
        id="text24268-6"
-       y="170.64967"
-       x="72.134445"
-       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       y="163.46809"
+       x="110.08324"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:4.02166653px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';stroke-width:0.26458332"
-         y="170.64967"
-         x="72.134445"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:4.02166653px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';stroke-width:0.26458332"
+         y="163.46809"
+         x="110.08324"
          id="tspan24266-2"
-         sodipodi:role="line">Docker container</tspan></text>
+         sodipodi:role="line">Docker</tspan><tspan
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:4.02166653px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';stroke-width:0.26458332"
+         y="167.48976"
+         x="110.08324"
+         sodipodi:role="line"
+         id="tspan7542">container</tspan></text>
     <text
        id="text24268-6-9"
-       y="172.69786"
+       y="175.87282"
        x="146.41953"
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';stroke-width:0.26458332"
-         y="172.69786"
+         y="175.87282"
          x="146.41953"
          id="tspan24266-2-1"
-         sodipodi:role="line">Docker container</tspan></text>
-    <text
-       id="text24268-6-2-0"
-       y="130.89372"
-       x="104.84214"
-       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none"
-       xml:space="preserve"><tspan
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';fill:#000000;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none"
-         y="130.89372"
-         x="104.84214"
-         id="tspan24266-2-7-9"
          sodipodi:role="line">Docker container</tspan></text>
     <text
        id="text24268-6-2-0-3"
@@ -1272,12 +1449,12 @@
          sodipodi:role="line">Docker containers</tspan></text>
     <text
        id="text4151"
-       y="188.0941"
+       y="191.26906"
        x="190.72318"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333311px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';stroke-width:0.26458332"
-         y="188.0941"
+         y="191.26906"
          x="190.72318"
          id="tspan4149"
          sodipodi:role="line">PGDATA</tspan></text>
@@ -1299,13 +1476,13 @@
          sodipodi:role="line">volume</tspan></text>
     <text
        id="text24268-61"
-       y="143.56786"
-       x="157.5743"
+       y="123.78991"
+       x="151.58989"
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';fill:#000000;stroke-width:0.26458332"
-         y="143.56786"
-         x="157.5743"
+         y="123.78991"
+         x="151.58989"
          id="tspan24266-8"
          sodipodi:role="line">Docker bind mount</tspan></text>
     <text
@@ -1322,22 +1499,22 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
-       x="15.874988"
-       y="168.90387"
+       x="39.158321"
+       y="155.44791"
        id="text2043"><tspan
          sodipodi:role="line"
          id="tspan2041"
-         x="15.874988"
-         y="168.90387"
+         x="39.158321"
+         y="155.44791"
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';fill:#b3b3b3;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none">http</tspan></text>
     <path
        style="fill:none;stroke:#808080;stroke-width:0.66500002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.665, 0.665;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 68.338092,110.431 v 6.23661"
+       d="m 68.338092,91.910098 v 6.236574"
        id="path2163"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#999999;stroke-width:0.66500002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.66500001, 0.66500001;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 216.58035,110.50652 v 6.23661"
+       d="m 216.58035,91.985618 v 6.236574"
        id="path2163-8"
        inkscape:connector-curvature="0" />
     <text
@@ -1362,13 +1539,13 @@
        id="path2163-8-0"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:#b3b3b3;stroke:#b3b3b3;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 25.513393,179.82738 V 154.50297"
+       style="fill:#b3b3b3;stroke:#b3b3b3;stroke-width:0.72750133;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 25.513393,179.82738 V 126.21477"
        id="path1219"
        inkscape:connector-curvature="0" />
     <path
        style="fill:#b3b3b3;stroke:#b3b3b3;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1510)"
-       d="M 25.513393,154.50297 H 56.885416"
+       d="M 25.716881,158.42075 H 57.088904"
        id="path1221"
        inkscape:connector-curvature="0" />
     <path
@@ -1384,102 +1561,207 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="16.289228"
-       y="216.05006"
+       x="39.232384"
+       y="224.40335"
        id="text2043-7"><tspan
          sodipodi:role="line"
          id="tspan2041-2"
-         x="16.289228"
-         y="216.05006"
+         x="39.232384"
+         y="224.40335"
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';stroke-width:0.26458332">http</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0.5em;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="228.6378"
-       y="152.23512"
-       id="text1551"><tspan
-         sodipodi:role="line"
-         x="228.6378"
+    <g
+       id="g7170"
+       transform="translate(-1.1990203e-5,25.52424)">
+      <rect
+         ry="0"
+         y="146.52762"
+         x="220.45175"
+         height="8.5028095"
+         width="71.54023"
+         id="rect1559"
+         style="fill:#ffffff;stroke:#000000;stroke-width:0.31639695;stroke-miterlimit:8.69999981;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         id="text1551"
          y="152.23512"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:0.5em;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';stroke-width:0.26458332"
-         id="tspan1553">~/chembient/sphere/share</tspan></text>
+         x="228.6378"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0.5em;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           id="tspan1553"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:0.5em;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';stroke-width:0.26458332"
+           y="152.23512"
+           x="228.6378"
+           sodipodi:role="line">~/chembient/sphere/share</tspan></text>
+    </g>
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.25, 0.25;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker1737)"
-       d="m 107.6369,156.41623 96.95792,0"
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.25, 0.25;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker1737);marker-end:url(#marker7462)"
+       d="M 107.10236,158.42075 H 220.45461"
        id="path1720"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:#ffffff;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.25, 0.25;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker1753)"
-       d="m 136.17382,145.25773 h 68.421"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.47218466;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.23609232, 0.23609232;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker1753);marker-end:url(#marker7458)"
+       d="m 157.98072,142.38457 h 62.47389"
        id="path1722"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.25, 0.25;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 204.59482,139.71188 v 5.54584 5.54584"
-       id="path1724"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.25, 0.25;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker1741)"
-       d="M 204.59482,150.80356 H 220.7381"
-       id="path1728"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.25, 0.25;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker1745)"
-       d="M 204.59482,161.89525 H 220.7381"
-       id="path1730"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:#000000;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.25, 0.25;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker1749)"
-       d="M 204.59482,139.71188 H 220.7381"
-       id="path1732"
-       inkscape:connector-curvature="0" />
-    <path
-       style="opacity:1;fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.25, 0.25;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 204.59482,150.80356 v 5.54584 5.54584"
-       id="path1724-8"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
     <text
        id="text6176-2-1-3-5"
-       y="141.71341"
-       x="116.6656"
+       y="141.18425"
+       x="138.36128"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:2.82222223px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          id="tspan6294-5-6-4"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333311px;line-height:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';text-align:center;text-anchor:middle;stroke-width:0.26458332"
-         y="141.71341"
-         x="116.6656"
+         y="141.18425"
+         x="138.36128"
          sodipodi:role="line">App (2)</tspan><tspan
          id="tspan6354-8-0"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';text-align:center;text-anchor:middle;stroke-width:0.26458332"
-         y="146.31821"
-         x="116.6656"
+         y="145.78905"
+         x="138.36128"
          sodipodi:role="line">RDKit</tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';text-align:center;text-anchor:middle;stroke-width:0.26458332"
-         y="151.11351"
-         x="116.6656"
+         y="150.58435"
+         x="138.36128"
          sodipodi:role="line"
          id="tspan10713-5" /><tspan
          id="tspan6284-3-4-9"
          style="font-size:3.52777767px;line-height:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.26458332"
-         y="153.93573"
-         x="116.6656"
+         y="153.40657"
+         x="138.36128"
          sodipodi:role="line" /></text>
     <text
        id="text8130-4"
-       y="127.80149"
-       x="138.40309"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:2.64583325px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;opacity:1;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
+       y="109.89443"
+       x="110.20615"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:2.64583325px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;opacity:1;fill:#808080;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:2.64583325px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';fill:#808080;stroke-width:0.26458332;"
-         y="131.8736"
-         x="138.40309"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:2.64583325px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';fill:#808080;stroke-width:0.26458332"
+         y="113.96654"
+         x="110.20615"
          id="tspan8128-6"
          sodipodi:role="line" /><tspan
          id="tspan8132-9"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:2.64583325px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';fill:#808080;stroke-width:0.26458332;"
-         y="134.51942"
-         x="138.40309"
-         sodipodi:role="line">App containers can be multiplied</tspan></text>
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:2.64583325px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';fill:#808080;stroke-width:0.26458332"
+         y="116.61237"
+         x="110.20615"
+         sodipodi:role="line">App containers can be multiplied &amp;specialized</tspan></text>
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:url(#linearGradient6019-91-3);stroke-width:0.40000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       y="115.15551"
+       x="64.255951"
+       height="22.350843"
+       width="42.933121"
+       id="rect3732-6-19" />
+    <text
+       id="text6176-2-1-3-6"
+       y="123.21081"
+       x="85.282593"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:2.82222223px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         id="tspan6294-5-6-9"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333311px;line-height:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="123.21081"
+         x="85.282593"
+         sodipodi:role="line">App (1)</tspan><tspan
+         id="tspan6354-8-3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="127.81561"
+         x="85.282593"
+         sodipodi:role="line">Python/Django, RDKit</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:3.17499995px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="132.6109"
+         x="85.282593"
+         sodipodi:role="line"
+         id="tspan10713-3">Nginx</tspan><tspan
+         id="tspan6284-3-4-8"
+         style="font-size:3.52777767px;line-height:2.82222223px;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="137.4062"
+         x="85.282593"
+         sodipodi:role="line" /></text>
+    <text
+       id="text24268-6-0"
+       y="112.32745"
+       x="73.685837"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';stroke-width:0.26458332"
+         y="112.32745"
+         x="73.685837"
+         id="tspan24266-2-5"
+         sodipodi:role="line">Docker container</tspan></text>
+    <g
+       id="g7160"
+       transform="matrix(0.99995982,0,0,1,0.0117189,-2.6458334)">
+      <rect
+         ry="0"
+         y="124.39812"
+         x="220.45175"
+         height="8.5028095"
+         width="71.54023"
+         id="rect1559-4-6"
+         style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:0.31639695;stroke-miterlimit:8.69999981;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:12.69999981px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="228.41127"
+         y="129.95238"
+         id="text10755-9-6"><tspan
+           sodipodi:role="line"
+           id="tspan10753-7-4"
+           x="228.41127"
+           y="129.95238"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';fill:#000000;stroke-width:0.26458332">~/chembient/django</tspan></text>
+    </g>
+    <path
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:0.54009634;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.27004817, 0.27004817;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker1737-6);marker-end:url(#EmptyDiamondMstart)"
+       d="M 107.22804,126.21477 H 219.06083"
+       id="path1720-6"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       id="text24268-8"
+       y="156.44119"
+       x="162.79872"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';letter-spacing:0px;word-spacing:0px;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';stroke-width:0.26458332"
+         y="156.44119"
+         x="162.79872"
+         id="tspan24266-0"
+         sodipodi:role="line">Docker bind mount</tspan></text>
+    <path
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.25, 0.25;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker7540)"
+       d="M 219.13169,176.19418 H 207.1948 v -49.97941"
+       id="path1720-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <text
+       id="text24268-6-0-4"
+       y="130.59523"
+       x="126.93383"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:12.69999981px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';stroke-width:0.26458332"
+         y="130.59523"
+         x="126.93383"
+         id="tspan24266-2-5-2"
+         sodipodi:role="line">Docker container</tspan></text>
+    <path
+       style="opacity:1;fill:#b3b3b3;stroke:#b3b3b3;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1510-2)"
+       d="M 25.513393,126.21477 H 56.885417"
+       id="path1221-0"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;opacity:1;fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       x="39.232395"
+       y="123.06796"
+       id="text2043-5"><tspan
+         sodipodi:role="line"
+         id="tspan2041-5"
+         x="39.232395"
+         y="123.06796"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';fill:#b3b3b3;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none">http</tspan></text>
   </g>
 </svg>
