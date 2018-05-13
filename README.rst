@@ -281,6 +281,11 @@ use the ``jupyter`` script inside the Juypter *App* directory which will pass al
 
     ./jupyter [subcommands]
 
+If you want to add and run existing Jupyter notebooks to the Jupyter *App* container, you need to place them in directory::
+
+    ~chembient/jupyter/notebooks
+
+Likewise, if you create new Jupyter notebooks in the Jupyter app and safe them, you will find them at this directory.
 
 In order to bring the whole Chembience stack of Jupyter *App*, *Proxy* and *Database* down again, use the ``down`` script::
 
