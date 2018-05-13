@@ -67,15 +67,12 @@ of Chembience to the current version provided here).
 Releases
 --------
 
-    ..table:: Releases
-        :width: auto
-
-    ===========     =======     ==========================
-    Date            Version     Notes
-    ===========     =======     ==========================
-    May, 2018       0.2.0       switch to RDKit 2018.03, addition of Jupyter *App* container, project clean-up
-    April, 2018     0.1.1       minor bug fixes
-                    0.1.0       first beta
+===========     =======     ==========================
+Date            Version     Notes
+===========     =======     ==========================
+May 2018        0.2.0       switch to RDKit 2018.03, addition of Jupyter *App* container, project clean-up
+April 2018      0.1.1       minor bug fixes
+March 2018      0.1.0       first beta
 
 Requirements
 ------------
