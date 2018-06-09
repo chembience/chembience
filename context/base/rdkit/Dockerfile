@@ -9,7 +9,7 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
     unzip tar bzip2 \
     git \
     build-essential \
-    postgresql-client \
+#    postgresql-client \
     libglib2.0-0 \
     libxext6 \
     libsm6 \
@@ -42,7 +42,7 @@ RUN CONDA_PY=36 conda install anaconda-client --yes
 RUN mkdir -p /home/rdkit
 WORKDIR /home/rdkit
 
-RUN git clone https://github.com/markussitzmann/conda-rdkit.git
+RUN git clone https://github.com/chembience/conda-rdkit.git
 WORKDIR conda-rdkit
 RUN git checkout chembience
 
@@ -64,7 +64,7 @@ LABEL maintainer="markussitzmann@gmail.com "
 ENV PATH /opt/conda/bin:$PATH
 
 RUN apt-get -y --no-install-recommends install \
-    postgresql-client \
+#    postgresql-client \
     libcairo2 \
     libglib2.0-0 \
     libxext6 \
