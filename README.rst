@@ -70,7 +70,7 @@ Releases
 - 0.2.1 (June 2018), update to RDKit 2018.03.2, switch to Postgres 10.4
 - 0.2.0 (May 2018), switch to RDKit 2018.03, addition of Jupyter *App* container, project clean-up
 - 0.1.1 (April 2018), minor bug fixes
-- 0.1.0 (May 2018), first beta
+- 0.1.0 (March 2018), first beta
 
 Requirements
 ------------
