@@ -13,18 +13,6 @@ services:
     networks:
       - sphere
 
-#  shell:
-#    image: chembience/shell:${CHEMBIENCE_BUILD_LABEL}
-#    container_name: chembience_shell
-#    command: bash
-#    volumes:
-#      - "${CHEMBIENCE_SPHERE}:/home/spheres"
-#    networks:
-#      - sphere
-#    environment:
-#      - CHEMBIENCE_UID
-#      - CHEMBIENCE_GID
-
   db:
     image: chembience/db:${CHEMBIENCE_BUILD_LABEL}
     container_name: chembience_db
