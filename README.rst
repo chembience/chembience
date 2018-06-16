@@ -51,7 +51,7 @@ be easily added, too.
 Current release version of the most important packages are:
 
 * Python 3.6.5
-* Django 2.0 + Django Rest Framework 3.7.7
+* Django 2.0 + Django Rest Framework 3.8.2
 * Postgres 9.6
 * RDKit 2018.03.2
 * Jupyter 5.5.0
