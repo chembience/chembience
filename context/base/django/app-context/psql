@@ -1,8 +1,10 @@
 #!/bin/bash
 
+source .env
+
 if [ $# -eq 0 ]
   then
-    docker-compose -f docker-compose.shell.yml run --rm shell psql -h db -U chembience chembience
+    docker-compose -f docker-compose.shell.yml run --rm shell psql -h $CHEMBIENCE_DB_HOST -U chembience chembience
   else
     docker-compose -f docker-compose.shell.yml run --rm shell psql $1
 fi
