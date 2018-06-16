@@ -8,5 +8,5 @@ jobs:
       - checkout
       - run: |
           cd ./context/base
-          docker-compose -f docker-compose.build.yml pull
+          docker-compose -f docker-compose.build.yml pull --ignore-pull-failures
           docker-compose -f docker-compose.build.yml build
