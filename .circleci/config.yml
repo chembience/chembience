@@ -1,8 +1,10 @@
 version: 2
-jobs:
-   build:
-     machine:
-       image: circleci/classic:201711-01
-     steps:
-       - checkout
-       - run: echo "hello world"
+  jobs:
+    build:
+      machine:
+        image: circleci/classic:201711-01
+    working_directory: ~/chembience
+    steps:
+      - checkout
+      - run:
+          command: ./build
