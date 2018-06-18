@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build:
+  build-bases:
     machine:
       image: circleci/classic:201711-01
       docker_layer_caching: true
@@ -52,6 +52,21 @@ jobs:
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures jupyter_base
             docker-compose -f docker-compose.build.yml build jupyter_base
             docker-compose -f docker-compose.build.yml push jupyter_base
+  build-apps:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build Apps
+          working_directory: ./context/app
+          command: |
+            cp ../../.env .
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures
+            docker-compose -f docker-compose.build.yml build
+            docker-compose -f docker-compose.build.yml push
 
 workflows:
   version: 2
