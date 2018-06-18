@@ -20,9 +20,17 @@ jobs:
           working_directory: ./context/base
           command: |
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures base
+            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures python_base
             docker-compose -f docker-compose.build.yml build python_base
             docker-compose -f docker-compose.build.yml push python_base
+      - run:
+          name: Build rdkit_base
+          working_directory: ./context/base
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures rdkit_base
+            docker-compose -f docker-compose.build.yml build rdkit_base
+            docker-compose -f docker-compose.build.yml push rdkit_base
 
 
 workflows:
