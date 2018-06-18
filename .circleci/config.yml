@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           name: Build base
-          working_directory: ~/chembience/context/base
+          working_directory: ./context/base
           command: |
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures base
@@ -17,7 +17,7 @@ jobs:
             docker-compose -f docker-compose.build.yml push base
       - run:
           name: Build python_base
-          working_directory: ~/chembience/context/base
+          working_directory: ./context/base
           command: |
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures base
