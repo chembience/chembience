@@ -1,24 +1,33 @@
 version: 2
 
 jobs:
-  chembience-build:
+  build:
     machine:
       image: circleci/classic:201711-01
+      docker_layer_caching: true
     working_directory: ~/chembience
     steps:
       - checkout
       - run:
-          name: Build Base
+          name: Build base
           command: |
             cd ./context/base
-            docker --password-stdin login -u $DOCKER_USER -p $DOCKER_PASS
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures base
             docker-compose -f docker-compose.build.yml build base
             docker-compose -f docker-compose.build.yml push base
+      - run:
+          name: Build python_base
+          command: |
+            cd ./context/python
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures base
+            docker-compose -f docker-compose.build.yml build python_base
+            docker-compose -f docker-compose.build.yml push python_base
 
 
 workflows:
   version: 2
   chembience-workflow:
     jobs:
-      - chembience-build
+      - build
