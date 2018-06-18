@@ -11,7 +11,7 @@ jobs:
           name: Build Base
           command: |
             cd ./context/base
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker login -u $DOCKER_USER --password-stdin $DOCKER_PASS
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures base
             docker-compose -f docker-compose.build.yml build base
             docker-compose -f docker-compose.build.yml push base
