@@ -73,6 +73,6 @@ workflows:
   chembience-workflow:
     jobs:
       - build-bases
-      - build-apps
+      - build-apps:
           requires:
-            -build-bases
+            - build-bases
