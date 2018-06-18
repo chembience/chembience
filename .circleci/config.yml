@@ -72,4 +72,5 @@ workflows:
   version: 2
   chembience-workflow:
     jobs:
-      - build
+      - build-bases
+      - build-apps
