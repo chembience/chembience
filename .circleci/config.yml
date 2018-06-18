@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build:
+  chembience-build:
     machine:
       image: circleci/classic:201711-01
     working_directory: ~/chembience
@@ -19,6 +19,6 @@ jobs:
 
 workflows:
   version: 2
-  build_and_test:
+  chembience-workflow:
     jobs:
-      - build
+      - chembience-build
