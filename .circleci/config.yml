@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           name: Compile Conda RDKit
-          working_directory: ./context/rdkit-conda-compile
+          working_directory: ./context/base
           command: |
             cp ../../.env .
             docker login -u $DOCKER_USER -p $DOCKER_PASS
@@ -18,7 +18,7 @@ jobs:
             docker-compose -f docker-compose.build.yml push rdkit-conda-compile
       - run:
           name: Compile Postgres RDKit
-          working_directory: ./context/rdkit-postgres-compile
+          working_directory: ./context/base
           command: |
             cp ../../.env .
             docker login -u $DOCKER_USER -p $DOCKER_PASS
