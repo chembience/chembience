@@ -13,18 +13,18 @@ jobs:
           command: |
             cp ../../.env .
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures rdkit-conda-compile
-            docker-compose -f docker-compose.build.yml build rdkit-conda-compile
-            docker-compose -f docker-compose.build.yml push rdkit-conda-compile
+            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures rdkit_conda_compile
+            docker-compose -f docker-compose.build.yml build rdkit_conda_compile
+            docker-compose -f docker-compose.build.yml push rdkit_conda_compile
       - run:
           name: Compile Postgres RDKit
           working_directory: ./context/base
           command: |
             cp ../../.env .
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures rdkit-postgres-compile
-            docker-compose -f docker-compose.build.yml build rdkit-postgres-compile
-            docker-compose -f docker-compose.build.yml push rdkit-postgres-compile
+            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures rdkit_postgres_compile
+            docker-compose -f docker-compose.build.yml build rdkit_postgres_compile
+            docker-compose -f docker-compose.build.yml push rdkit_postgres_compile
       - run:
           name: Build base
           working_directory: ./context/base
