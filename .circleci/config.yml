@@ -120,7 +120,7 @@ jobs:
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures proxy
             docker-compose -f docker-compose.build.yml build proxy
-            docker-compose -f docker-compose.build.yml push
+            docker-compose -f docker-compose.build.yml push proxy
   build-shell:
     machine:
       image: circleci/classic:201711-01
@@ -135,7 +135,7 @@ jobs:
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures shell
             docker-compose -f docker-compose.build.yml build shell
-            docker-compose -f docker-compose.build.yml push
+            docker-compose -f docker-compose.build.yml push shell
   build-db:
     machine:
       image: circleci/classic:201711-01
@@ -150,7 +150,7 @@ jobs:
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures db
             docker-compose -f docker-compose.build.yml build db
-            docker-compose -f docker-compose.build.yml push
+            docker-compose -f docker-compose.build.yml push db
   build-django:
     machine:
       image: circleci/classic:201711-01
@@ -164,8 +164,8 @@ jobs:
             cp ../../.env .
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures django
-            docker-compose -f docker-compose.build.yml build db
-            docker-compose -f docker-compose.build.yml push
+            docker-compose -f docker-compose.build.yml build django
+            docker-compose -f docker-compose.build.yml push django
   build-jupyter:
     machine:
       image: circleci/classic:201711-01
@@ -180,7 +180,7 @@ jobs:
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures jupyter
             docker-compose -f docker-compose.build.yml build jupyter
-            docker-compose -f docker-compose.build.yml push
+            docker-compose -f docker-compose.build.yml push jupyter
     build-rdkit:
     machine:
       image: circleci/classic:201711-01
@@ -195,7 +195,7 @@ jobs:
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures rdkit
             docker-compose -f docker-compose.build.yml build rdkit
-            docker-compose -f docker-compose.build.yml push
+            docker-compose -f docker-compose.build.yml push rdkit
 
 workflows:
   version: 2
