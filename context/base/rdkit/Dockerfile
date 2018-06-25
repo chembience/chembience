@@ -1,5 +1,5 @@
 ARG build_label
-FROM chembience/rdkit_conda_compile:${build_label} as rdkit-build
+FROM chembience/rdkit_conda_compile:$build_label as rdkit-build
 FROM chembience/python_base:$build_label
 LABEL maintainer="markussitzmann@gmail.com "
 

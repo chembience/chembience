@@ -9,6 +9,7 @@ c.NotebookApp.open_browser = False
 
 c.NotebookApp.notebook_dir = os.environ['JUPYTER_NOTEBOOK_DIR']
 
+
 if 'JUPYTER_PASSWORD' in os.environ:
 
     c.NotebookApp.password_required = True

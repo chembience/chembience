@@ -7,4 +7,4 @@ ENV PATH /opt/conda/bin:$PATH
 COPY requirements.txt /
 
 RUN /bin/bash -c "source activate chembience" && \
-    pip install -r /requirements.txt
+    CONDA_PY=36 conda install --yes --file /requirements.txt
