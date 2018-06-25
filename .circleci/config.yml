@@ -81,7 +81,7 @@ jobs:
       image: circleci/classic:201711-01
       docker_layer_caching: true
     steps:
-       - checkout
+      - checkout
       - run:
           name: Build Django base
           working_directory: ./context/base
