@@ -106,7 +106,7 @@ jobs:
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures jupyter_base
             docker-compose -f docker-compose.build.yml build jupyter_base
             docker-compose -f docker-compose.build.yml push jupyter_base
-  build-apps:
+  build-proxy:
     machine:
       image: circleci/classic:201711-01
       docker_layer_caching: true
@@ -119,7 +119,82 @@ jobs:
             cp ../../.env .
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures
-            docker-compose -f docker-compose.build.yml build
+            docker-compose -f docker-compose.build.yml build proxy
+            docker-compose -f docker-compose.build.yml push
+  build-shell:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build Apps
+          working_directory: ./context/app
+          command: |
+            cp ../../.env .
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures
+            docker-compose -f docker-compose.build.yml build shell
+            docker-compose -f docker-compose.build.yml push
+  build-db:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build Apps
+          working_directory: ./context/app
+          command: |
+            cp ../../.env .
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures
+            docker-compose -f docker-compose.build.yml build db
+            docker-compose -f docker-compose.build.yml push
+  build-django:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build Apps
+          working_directory: ./context/app
+          command: |
+            cp ../../.env .
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures
+            docker-compose -f docker-compose.build.yml build db
+            docker-compose -f docker-compose.build.yml push
+  build-jupyter:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build Apps
+          working_directory: ./context/app
+          command: |
+            cp ../../.env .
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures
+            docker-compose -f docker-compose.build.yml build db
+            docker-compose -f docker-compose.build.yml push
+    build-rdkit:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build Apps
+          working_directory: ./context/app
+          command: |
+            cp ../../.env .
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures
+            docker-compose -f docker-compose.build.yml build rdkit
             docker-compose -f docker-compose.build.yml push
 
 workflows:
@@ -128,6 +203,7 @@ workflows:
     jobs:
       - build-rdkit-conda-compile
       - build-rdkit-postgres-compile
+      - build-proxy
       - build-base
       - build-python-base:
           requires:
@@ -138,12 +214,23 @@ workflows:
             - build-python-base
       - build-django-base:
           requires:
-            - build-rdkit-base
+            - build-django-base
       - build-jupyter-base:
           requires:
-            - build-rdkit-base
-      - build-apps:
+            - build-jupyter-base
+      - build-db:
           requires:
             - build-base
-            - build-python-base
-            - build-rdkit-base
+            - build-rdkit-postgres-compile
+      - build-shell:
+          requires:
+            - build-base
+      - build-django:
+          requires:
+            - build-django-base
+      - build-jupyter:
+          requires:
+            - build-jupyter-base
+      - build-rdkit:
+          requires:
+            - build-jupyter-base
