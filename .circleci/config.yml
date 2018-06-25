@@ -214,10 +214,10 @@ workflows:
             - build-python-base
       - build-django-base:
           requires:
-            - build-django-base
+            - build-rdkit-base
       - build-jupyter-base:
           requires:
-            - build-jupyter-base
+            - build-rdkit-base
       - build-db:
           requires:
             - build-base
@@ -233,4 +233,4 @@ workflows:
             - build-jupyter-base
       - build-rdkit:
           requires:
-            - build-jupyter-base
+            - build-rdkit-base
