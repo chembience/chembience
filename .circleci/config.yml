@@ -118,7 +118,7 @@ jobs:
           command: |
             cp ../../.env .
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures
+            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures proxy
             docker-compose -f docker-compose.build.yml build proxy
             docker-compose -f docker-compose.build.yml push
   build-shell:
@@ -128,12 +128,12 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build Apps
+          name: Build shell
           working_directory: ./context/app
           command: |
             cp ../../.env .
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures
+            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures shell
             docker-compose -f docker-compose.build.yml build shell
             docker-compose -f docker-compose.build.yml push
   build-db:
@@ -143,12 +143,12 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build Apps
+          name: Build db
           working_directory: ./context/app
           command: |
             cp ../../.env .
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures
+            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures db
             docker-compose -f docker-compose.build.yml build db
             docker-compose -f docker-compose.build.yml push
   build-django:
@@ -158,12 +158,12 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build Apps
+          name: Build django
           working_directory: ./context/app
           command: |
             cp ../../.env .
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures
+            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures django
             docker-compose -f docker-compose.build.yml build db
             docker-compose -f docker-compose.build.yml push
   build-jupyter:
@@ -173,13 +173,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build Apps
+          name: Build jupyter
           working_directory: ./context/app
           command: |
             cp ../../.env .
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures
-            docker-compose -f docker-compose.build.yml build db
+            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures jupyter
+            docker-compose -f docker-compose.build.yml build jupyter
             docker-compose -f docker-compose.build.yml push
     build-rdkit:
     machine:
@@ -188,12 +188,12 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build Apps
+          name: Build RDKit
           working_directory: ./context/app
           command: |
             cp ../../.env .
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures
+            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures rdkit
             docker-compose -f docker-compose.build.yml build rdkit
             docker-compose -f docker-compose.build.yml push
 
