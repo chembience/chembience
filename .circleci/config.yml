@@ -181,7 +181,7 @@ jobs:
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures jupyter
             docker-compose -f docker-compose.build.yml build jupyter
             docker-compose -f docker-compose.build.yml push jupyter
-    build-rdkit:
+  build-rdkit:
     machine:
       image: circleci/classic:201711-01
       docker_layer_caching: true
