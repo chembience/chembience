@@ -1,6 +1,5 @@
-ARG build_label
 FROM debian:stretch
-MAINTAINER markussitzmann@gmail.com
+LABEL maintainer="markussitzmann@gmail.com"
 
 RUN apt-get update && apt-get -y --no-install-recommends install \
     ca-certificates \
