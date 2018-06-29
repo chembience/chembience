@@ -166,6 +166,19 @@ jobs:
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures django
             docker-compose -f docker-compose.build.yml build django
             docker-compose -f docker-compose.build.yml push django
+  django-test:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: test django
+          working_directory: .
+          command: |
+            ./init
+            cd ~/chembient/django
+            ./up
   jupyter:
     machine:
       image: circleci/classic:201711-01
@@ -234,3 +247,6 @@ workflows:
       - rdkit:
           requires:
             - rdkit-base
+      - django-test:
+          requires:
+            - django
