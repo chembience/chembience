@@ -6,7 +6,6 @@ LABEL maintainer="markussitzmann@gmail.com "
 ENV PATH /opt/conda/bin:$PATH
 
 RUN apt-get -y --no-install-recommends install \
-#    postgresql-client \
     libcairo2 \
     libglib2.0-0 \
     libxext6 \
