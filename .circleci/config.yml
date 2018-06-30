@@ -178,10 +178,11 @@ jobs:
           command: |
             ./init
             cd ~/chembient/django
-            ./up && \
-            ./django-manage-py migrate && \
-            ./django-manage-py createsuperuser --username test --noinput --email test@test.org && \
-            ./django-manage-py collectstatic && \
+            ./up
+            sleep 30
+            ./django-manage-py migrate
+            ./django-manage-py createsuperuser --username test --noinput --email test@test.org
+            ./django-manage-py collectstatic
             ./down
 
   jupyter:
@@ -226,9 +227,7 @@ jobs:
           command: |
             ./init
             cd ~/chembient/rdkit
-            ./up && \
-            ./run script.py && \
-            ./down
+            ./run script.py
 
 workflows:
   version: 2
