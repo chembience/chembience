@@ -1,6 +1,14 @@
 #!/bin/bash
 set -e
 
+CUID="$(stat -c %u ~)"
+CGID="$(stat -c %g ~)"
+
+cp ./env.settings ./.env
+
+sed -i -e "s/@CHEMBIENCE_UID/${CUID}/g" .env
+sed -i -e "s/@CHEMBIENCE_GID/${CGID}/g" .env
+
 source .env
 
 mkdir -p $CHEMBIENCE_SPHERE \
