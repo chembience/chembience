@@ -178,10 +178,10 @@ jobs:
           command: |
             ./init
             cd ~/chembient/django
-            ./up
-            ./django-manage-py migrate
-            ./django-manage-py createsuperuser --username test --noinput --email test@test.org
-            ./django-manage-py collectstatic
+            ./up && \
+            ./django-manage-py migrate && \
+            ./django-manage-py createsuperuser --username test --noinput --email test@test.org && \
+            ./django-manage-py collectstatic && \
             ./down
 
   jupyter:
@@ -214,6 +214,21 @@ jobs:
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures rdkit
             docker-compose -f docker-compose.build.yml build rdkit
             docker-compose -f docker-compose.build.yml push rdkit
+  rdkit-test:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: test rdkit
+          working_directory: .
+          command: |
+            ./init
+            cd ~/chembient/rdkit
+            ./up && \
+            ./run script.py && \
+            ./down
 
 workflows:
   version: 2
@@ -255,3 +270,6 @@ workflows:
       - django-test:
           requires:
             - django
+      - rdkit-test:
+          requires:
+            - rdkit
