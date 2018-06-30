@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 echo "Initializing RDKit app container using UID $CHEMBIENCE_UID : GID $CHEMBIENCE_GID"
 

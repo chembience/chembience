@@ -179,6 +179,11 @@ jobs:
             ./init
             cd ~/chembient/django
             ./up
+            ./django-manage-py migrate
+            ./django-manage-py createsuperuser --username test --noinput --email test@test.org
+            ./django-manage-py collectstatic
+            ./down
+
   jupyter:
     machine:
       image: circleci/classic:201711-01

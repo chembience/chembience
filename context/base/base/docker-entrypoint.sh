@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 echo "Initialization of base container using UID : $CHEMBIENCE_UID : $CHEMBIENCE_GID"
 
