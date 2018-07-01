@@ -13,7 +13,7 @@ jobs:
           command: |
             rm -rf ~/chembient
             docker system prune -f --volumes
-            ../../docker/rm-by-pattern chembience
+            ../docker/rm-by-pattern chembience
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f ./base/docker-compose.build.yml pull --ignore-pull-failures
             docker-compose -f ./app/docker-compose.build.yml pull --ignore-pull-failures
