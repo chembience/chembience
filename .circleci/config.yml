@@ -26,7 +26,7 @@ jobs:
       - checkout
       - run:
           name: Compile Conda RDKit
-          working_directory: ./context/base
+          working_directory: .
           command: |
             docker-compose -f ./context/base/docker-compose.build.yml build rdkit-conda-compile
             docker-compose -f ./context/base/docker-compose.build.yml push rdkit-conda-compile
@@ -206,6 +206,18 @@ jobs:
             cd ~/chembient/rdkit
             ./run script.py
             sleep 60
+  deploy:
+    machine:
+      image: circleci/classic:201711-01
+    steps:
+      - checkout
+      - run:
+          name: Prepare
+          working_directory: .
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/base/docker-compose.build.yml push
+            docker-compose -f ./context/app/docker-compose.build.yml push
 
 workflows:
   version: 2
@@ -265,3 +277,7 @@ workflows:
       - rdkit-test:
           requires:
             - rdkit
+      - deploy:
+          requires:
+            - rdkit-test
+            - django-test
