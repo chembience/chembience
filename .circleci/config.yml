@@ -29,7 +29,6 @@ jobs:
           working_directory: .
           command: |
             docker-compose -f ./context/base/docker-compose.build.yml build rdkit-conda-compile
-            docker-compose -f ./context/base/docker-compose.build.yml push rdkit-conda-compile
   rdkit-postgres-compile:
     machine:
       image: circleci/classic:201711-01
@@ -41,7 +40,6 @@ jobs:
           working_directory: .
           command: |
              docker-compose -f ./context/base/docker-compose.build.yml build rdkit-postgres-compile
-             docker-compose -f ./context/base/docker-compose.build.yml push rdkit-postgres-compile
   base:
     machine:
       image: circleci/classic:201711-01
@@ -53,7 +51,6 @@ jobs:
           working_directory: .
           command: |
             docker-compose -f ./context/base/docker-compose.build.yml build base
-            docker-compose -f ./context/base/docker-compose.build.yml push base
   python-base:
     machine:
       image: circleci/classic:201711-01
@@ -65,7 +62,6 @@ jobs:
           working_directory: .
           command: |
             docker-compose -f ./context/base/docker-compose.build.yml build python_base
-            docker-compose -f ./context/base/docker-compose.build.yml push python_base
   rdkit-base:
     machine:
       image: circleci/classic:201711-01
@@ -77,7 +73,6 @@ jobs:
           working_directory: .
           command: |
             docker-compose -f ./context/base/docker-compose.build.yml build rdkit_base
-            docker-compose -f ./context/base/docker-compose.build.yml push rdkit_base
   django-base:
     machine:
       image: circleci/classic:201711-01
@@ -89,7 +84,6 @@ jobs:
           working_directory: .
           command: |
             docker-compose -f ./context/base/docker-compose.build.yml build django_base
-            docker-compose -f ./context/base/docker-compose.build.yml push django_base
   jupyter-base:
     machine:
       image: circleci/classic:201711-01
@@ -101,7 +95,6 @@ jobs:
           working_directory: .
           command: |
             docker-compose -f ./context/base/docker-compose.build.yml build jupyter_base
-            docker-compose -f ./context/base/docker-compose.build.yml push jupyter_base
   proxy:
     machine:
       image: circleci/classic:201711-01
@@ -113,7 +106,6 @@ jobs:
           working_directory: .
           command: |
             docker-compose -f ./context/app/docker-compose.build.yml build proxy
-            docker-compose -f ./context/app/docker-compose.build.yml push proxy
   shell:
     machine:
       image: circleci/classic:201711-01
@@ -125,7 +117,6 @@ jobs:
           working_directory: .
           command: |
             docker-compose -f ./context/app/docker-compose.build.yml build shell
-            docker-compose -f ./context/app/docker-compose.build.yml push shell
   db:
     machine:
       image: circleci/classic:201711-01
@@ -137,7 +128,6 @@ jobs:
           working_directory: .
           command: |
             docker-compose -f ./context/app/docker-compose.build.yml build db
-            docker-compose -f ./context/app/docker-compose.build.yml push db
   django:
     machine:
       image: circleci/classic:201711-01
@@ -149,7 +139,6 @@ jobs:
           working_directory: .
           command: |
             docker-compose -f ./context/app/docker-compose.build.yml build django
-            docker-compose -f ./context/app/docker-compose.build.yml push django
   django-test:
     machine:
       image: circleci/classic:201711-01
@@ -179,7 +168,6 @@ jobs:
           working_directory: .
           command: |
             docker-compose -f ./context/app/docker-compose.build.yml build jupyter
-            docker-compose -f ./context/app/docker-compose.build.yml push jupyter
   rdkit:
     machine:
       image: circleci/classic:201711-01
@@ -191,7 +179,6 @@ jobs:
           working_directory: .
           command: |
             docker-compose -f ./context/app/docker-compose.build.yml build rdkit
-            docker-compose -f ./context/app/docker-compose.build.yml push rdkit
   rdkit-test:
     machine:
       image: circleci/classic:201711-01
