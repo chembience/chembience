@@ -239,6 +239,7 @@ workflows:
             - prepare
       - base:
           requires:
+            - prepare
       - python-base:
           requires:
             - prepare
