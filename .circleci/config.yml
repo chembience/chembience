@@ -228,8 +228,8 @@ jobs:
           command: |
             ./init
             cd ~/chembient/rdkit
-            sleep 60
             ./run script.py
+            sleep 60
 
 workflows:
   version: 2
