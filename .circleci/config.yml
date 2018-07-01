@@ -179,7 +179,7 @@ jobs:
             ./init
             cd ~/chembient/django
             ./up
-            sleep 30
+            sleep 60
             ./django-manage-py migrate
             ./django-manage-py createsuperuser --username test --noinput --email test@test.org
             ./django-manage-py collectstatic
@@ -227,6 +227,7 @@ jobs:
           command: |
             ./init
             cd ~/chembient/rdkit
+            sleep 60
             ./run script.py
 
 workflows:
