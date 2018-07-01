@@ -1,6 +1,22 @@
 version: 2
 
 jobs:
+  prepare:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Prepare
+          working_directory: ./context/
+          command: |
+            rm -rf ~/chembient
+            docker system prune -f --volumes
+            ../../docker/rm-by-pattern chembience
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./base/docker-compose.build.yml pull --ignore-pull-failures
+            docker-compose -f ./app/docker-compose.build.yml pull --ignore-pull-failures
   rdkit-conda-compile:
     machine:
       image: circleci/classic:201711-01
@@ -11,12 +27,7 @@ jobs:
           name: Compile Conda RDKit
           working_directory: ./context/base
           command: |
-            rm -rf ~/chembient
-            docker system prune -f --volumes
-            ../../docker/rm-by-pattern chembience
             cp ../../.env .
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures rdkit-conda-compile
             docker-compose -f docker-compose.build.yml build rdkit-conda-compile
             docker-compose -f docker-compose.build.yml push rdkit-conda-compile
   rdkit-postgres-compile:
@@ -30,8 +41,6 @@ jobs:
           working_directory: ./context/base
           command: |
              cp ../../.env .
-             docker login -u $DOCKER_USER -p $DOCKER_PASS
-             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures rdkit-postgres-compile
              docker-compose -f docker-compose.build.yml build rdkit-postgres-compile
              docker-compose -f docker-compose.build.yml push rdkit-postgres-compile
   base:
@@ -45,8 +54,6 @@ jobs:
           working_directory: ./context/base
           command: |
             cp ../../.env .
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures base
             docker-compose -f docker-compose.build.yml build base
             docker-compose -f docker-compose.build.yml push base
   python-base:
@@ -90,8 +97,6 @@ jobs:
           working_directory: ./context/base
           command: |
             cp ../../.env .
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures django_base
             docker-compose -f docker-compose.build.yml build django_base
             docker-compose -f docker-compose.build.yml push django_base
   jupyter-base:
@@ -105,8 +110,6 @@ jobs:
           working_directory: ./context/base
           command: |
             cp ../../.env .
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures jupyter_base
             docker-compose -f docker-compose.build.yml build jupyter_base
             docker-compose -f docker-compose.build.yml push jupyter_base
   proxy:
@@ -120,8 +123,6 @@ jobs:
           working_directory: ./context/app
           command: |
             cp ../../.env .
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures proxy
             docker-compose -f docker-compose.build.yml build proxy
             docker-compose -f docker-compose.build.yml push proxy
   shell:
@@ -135,8 +136,6 @@ jobs:
           working_directory: ./context/app
           command: |
             cp ../../.env .
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures shell
             docker-compose -f docker-compose.build.yml build shell
             docker-compose -f docker-compose.build.yml push shell
   db:
@@ -150,8 +149,6 @@ jobs:
           working_directory: ./context/app
           command: |
             cp ../../.env .
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures db
             docker-compose -f docker-compose.build.yml build db
             docker-compose -f docker-compose.build.yml push db
   django:
@@ -165,8 +162,6 @@ jobs:
           working_directory: ./context/app
           command: |
             cp ../../.env .
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures django
             docker-compose -f docker-compose.build.yml build django
             docker-compose -f docker-compose.build.yml push django
   django-test:
@@ -198,8 +193,6 @@ jobs:
           working_directory: ./context/app
           command: |
             cp ../../.env .
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures jupyter
             docker-compose -f docker-compose.build.yml build jupyter
             docker-compose -f docker-compose.build.yml push jupyter
   rdkit:
@@ -213,8 +206,6 @@ jobs:
           working_directory: ./context/app
           command: |
             cp ../../.env .
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures rdkit
             docker-compose -f docker-compose.build.yml build rdkit
             docker-compose -f docker-compose.build.yml push rdkit
   rdkit-test:
@@ -236,29 +227,42 @@ workflows:
   version: 2
   chembience-workflow:
     jobs:
-      - rdkit-conda-compile
-      - rdkit-postgres-compile
-      - proxy
-      - base
+      - rdkit-conda-compile:
+          requires:
+            - prepare
+      - rdkit-postgres-compile:
+          requires:
+            - prepare
+      - proxy:
+          requires:
+            - prepare
+      - base:
+          requires:
       - python-base:
           requires:
+            - prepare
             - base
       - rdkit-base:
           requires:
+            - prepare
             - rdkit-conda-compile
             - python-base
       - django-base:
           requires:
+            - prepare
             - rdkit-base
       - jupyter-base:
           requires:
+            - prepare
             - rdkit-base
       - db:
           requires:
+            - prepare
             - base
             - rdkit-postgres-compile
       - shell:
           requires:
+            - prepare
             - base
       - django:
           requires:
