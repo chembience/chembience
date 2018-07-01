@@ -261,9 +261,12 @@ workflows:
       - django-test:
           requires:
             - django
+            - db
+            - proxy
       - rdkit-test:
           requires:
             - rdkit
+            - db
       - deploy:
           requires:
             - rdkit-test
