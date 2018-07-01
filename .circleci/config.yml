@@ -227,6 +227,7 @@ workflows:
   version: 2
   chembience-workflow:
     jobs:
+      - prepare
       - rdkit-conda-compile:
           requires:
             - prepare
