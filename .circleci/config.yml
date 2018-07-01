@@ -12,6 +12,8 @@ jobs:
           working_directory: ./context/base
           command: |
             cp ../../.env .
+            docker system prune
+            ./docker/rm-by-pattern chembience
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures rdkit-conda-compile
             docker-compose -f docker-compose.build.yml build rdkit-conda-compile
@@ -184,7 +186,6 @@ jobs:
             ./django-manage-py createsuperuser --username test --noinput --email test@test.org
             ./django-manage-py collectstatic
             ./down
-
   jupyter:
     machine:
       image: circleci/classic:201711-01
