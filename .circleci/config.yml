@@ -149,9 +149,16 @@ jobs:
           name: test django
           working_directory: .
           command: |
-            ./init && cd ~/chembient/django && ./up && ./django-manage-py migrate && \
-            ./django-manage-py createsuperuser --username test --noinput --email test@test.org && \
-            ./django-manage-py collectstatic && \
+            ./init
+            cd ~/chembient/django
+            ./up
+            sleep 60
+            ./django-manage-py migrate
+            sleep 60
+            ./django-manage-py createsuperuser --username test --noinput --email test@test.org
+            sleep 60
+            ./django-manage-py collectstatic
+            sleep 60
             ./down
   jupyter:
     machine:
@@ -187,6 +194,7 @@ jobs:
           command: |
             ./init
             cd ~/chembient/rdkit
+            sleep 60
             ./run script.py
             sleep 60
   deploy:
