@@ -12,7 +12,7 @@ jobs:
           working_directory: ./context/base
           command: |
             cp ../../.env .
-            docker system prune -f
+            ../../docker system prune -f
             ./docker/rm-by-pattern chembience
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures rdkit-conda-compile
