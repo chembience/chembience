@@ -11,9 +11,10 @@ jobs:
           name: Compile Conda RDKit
           working_directory: ./context/base
           command: |
-            cp ../../.env .
+            rm -rf ~/chembient
             docker system prune -f --volumes
             ../../docker/rm-by-pattern chembience
+            cp ../../.env .
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures rdkit-conda-compile
             docker-compose -f docker-compose.build.yml build rdkit-conda-compile

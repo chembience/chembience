@@ -6,5 +6,7 @@ ENV PATH /home/app:/opt/conda/bin:$PATH
 
 COPY requirements.txt /
 
+RUN CONDA_PY=36 conda config --add channels conda-forge
+
 RUN /bin/bash -c "source activate chembience" && \
-    pip install -r /requirements.txt
+    CONDA_PY=36 conda install --yes --file /requirements.txt
