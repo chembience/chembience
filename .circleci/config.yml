@@ -9,14 +9,16 @@ jobs:
       - checkout
       - run:
           name: Prepare
-          working_directory: ./context/
+          working_directory: .
           command: |
             rm -rf ~/chembient
             docker system prune -f --volumes
-            ../docker/rm-by-pattern chembience
+            ./docker/rm-by-pattern chembience
+            cp .env ./context/base
+            cp .env ./context/app
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f ./base/docker-compose.build.yml pull --ignore-pull-failures
-            docker-compose -f ./app/docker-compose.build.yml pull --ignore-pull-failures
+            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures
   rdkit-conda-compile:
     machine:
       image: circleci/classic:201711-01
@@ -27,9 +29,8 @@ jobs:
           name: Compile Conda RDKit
           working_directory: ./context/base
           command: |
-            cp ../../.env .
-            docker-compose -f docker-compose.build.yml build rdkit-conda-compile
-            docker-compose -f docker-compose.build.yml push rdkit-conda-compile
+            docker-compose -f ./context/base/docker-compose.build.yml build rdkit-conda-compile
+            docker-compose -f ./context/base/docker-compose.build.yml push rdkit-conda-compile
   rdkit-postgres-compile:
     machine:
       image: circleci/classic:201711-01
@@ -38,11 +39,10 @@ jobs:
       - checkout
       - run:
           name: Compile Postgres RDKit
-          working_directory: ./context/base
+          working_directory: .
           command: |
-             cp ../../.env .
-             docker-compose -f docker-compose.build.yml build rdkit-postgres-compile
-             docker-compose -f docker-compose.build.yml push rdkit-postgres-compile
+             docker-compose -f ./context/base/docker-compose.build.yml build rdkit-postgres-compile
+             docker-compose -f ./context/base/docker-compose.build.yml push rdkit-postgres-compile
   base:
     machine:
       image: circleci/classic:201711-01
@@ -51,11 +51,10 @@ jobs:
       - checkout
       - run:
           name: Build base
-          working_directory: ./context/base
+          working_directory: .
           command: |
-            cp ../../.env .
-            docker-compose -f docker-compose.build.yml build base
-            docker-compose -f docker-compose.build.yml push base
+            docker-compose -f ./context/base/docker-compose.build.yml build base
+            docker-compose -f ./context/base/docker-compose.build.yml push base
   python-base:
     machine:
       image: circleci/classic:201711-01
@@ -64,13 +63,10 @@ jobs:
       - checkout
       - run:
           name: Build Python base
-          working_directory: ./context/base
+          working_directory: .
           command: |
-            cp ../../.env .
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures python_base
-            docker-compose -f docker-compose.build.yml build python_base
-            docker-compose -f docker-compose.build.yml push python_base
+            docker-compose -f ./context/base/docker-compose.build.yml build python_base
+            docker-compose -f ./context/base/docker-compose.build.yml push python_base
   rdkit-base:
     machine:
       image: circleci/classic:201711-01
@@ -79,13 +75,10 @@ jobs:
       - checkout
       - run:
           name: Build RDKit base
-          working_directory: ./context/base
+          working_directory: .
           command: |
-            cp ../../.env .
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f docker-compose.build.yml pull --ignore-pull-failures rdkit_base
-            docker-compose -f docker-compose.build.yml build rdkit_base
-            docker-compose -f docker-compose.build.yml push rdkit_base
+            docker-compose -f ./context/base/docker-compose.build.yml build rdkit_base
+            docker-compose -f ./context/base/docker-compose.build.yml push rdkit_base
   django-base:
     machine:
       image: circleci/classic:201711-01
@@ -94,11 +87,10 @@ jobs:
       - checkout
       - run:
           name: Build Django base
-          working_directory: ./context/base
+          working_directory: .
           command: |
-            cp ../../.env .
-            docker-compose -f docker-compose.build.yml build django_base
-            docker-compose -f docker-compose.build.yml push django_base
+            docker-compose -f ./context/base/docker-compose.build.yml build django_base
+            docker-compose -f ./context/base/docker-compose.build.yml push django_base
   jupyter-base:
     machine:
       image: circleci/classic:201711-01
@@ -107,11 +99,10 @@ jobs:
       - checkout
       - run:
           name: Build Jupyter base
-          working_directory: ./context/base
+          working_directory: .
           command: |
-            cp ../../.env .
-            docker-compose -f docker-compose.build.yml build jupyter_base
-            docker-compose -f docker-compose.build.yml push jupyter_base
+            docker-compose -f ./context/base/docker-compose.build.yml build jupyter_base
+            docker-compose -f ./context/base/docker-compose.build.yml push jupyter_base
   proxy:
     machine:
       image: circleci/classic:201711-01
@@ -120,11 +111,10 @@ jobs:
       - checkout
       - run:
           name: Build proxy
-          working_directory: ./context/app
+          working_directory: .
           command: |
-            cp ../../.env .
-            docker-compose -f docker-compose.build.yml build proxy
-            docker-compose -f docker-compose.build.yml push proxy
+            docker-compose -f ./context/app/docker-compose.build.yml build proxy
+            docker-compose -f ./context/app/docker-compose.build.yml push proxy
   shell:
     machine:
       image: circleci/classic:201711-01
@@ -133,11 +123,10 @@ jobs:
       - checkout
       - run:
           name: Build shell
-          working_directory: ./context/app
+          working_directory: .
           command: |
-            cp ../../.env .
-            docker-compose -f docker-compose.build.yml build shell
-            docker-compose -f docker-compose.build.yml push shell
+            docker-compose -f ./context/app/docker-compose.build.yml build shell
+            docker-compose -f ./context/app/docker-compose.build.yml push shell
   db:
     machine:
       image: circleci/classic:201711-01
@@ -146,11 +135,10 @@ jobs:
       - checkout
       - run:
           name: Build db
-          working_directory: ./context/app
+          working_directory: .
           command: |
-            cp ../../.env .
-            docker-compose -f docker-compose.build.yml build db
-            docker-compose -f docker-compose.build.yml push db
+            docker-compose -f ./context/app/docker-compose.build.yml build db
+            docker-compose -f ./context/app/docker-compose.build.yml push db
   django:
     machine:
       image: circleci/classic:201711-01
@@ -159,11 +147,10 @@ jobs:
       - checkout
       - run:
           name: Build django
-          working_directory: ./context/app
+          working_directory: .
           command: |
-            cp ../../.env .
-            docker-compose -f docker-compose.build.yml build django
-            docker-compose -f docker-compose.build.yml push django
+            docker-compose -f ./context/app/docker-compose.build.yml build django
+            docker-compose -f ./context/app/docker-compose.build.yml push django
   django-test:
     machine:
       image: circleci/classic:201711-01
@@ -190,11 +177,10 @@ jobs:
       - checkout
       - run:
           name: Build jupyter
-          working_directory: ./context/app
+          working_directory: .
           command: |
-            cp ../../.env .
-            docker-compose -f docker-compose.build.yml build jupyter
-            docker-compose -f docker-compose.build.yml push jupyter
+            docker-compose -f ./context/app/docker-compose.build.yml build jupyter
+            docker-compose -f ./context/app/docker-compose.build.yml push jupyter
   rdkit:
     machine:
       image: circleci/classic:201711-01
@@ -203,11 +189,10 @@ jobs:
       - checkout
       - run:
           name: Build RDKit
-          working_directory: ./context/app
+          working_directory: .
           command: |
-            cp ../../.env .
-            docker-compose -f docker-compose.build.yml build rdkit
-            docker-compose -f docker-compose.build.yml push rdkit
+            docker-compose -f ./context/app/docker-compose.build.yml build rdkit
+            docker-compose -f ./context/app/docker-compose.build.yml push rdkit
   rdkit-test:
     machine:
       image: circleci/classic:201711-01
