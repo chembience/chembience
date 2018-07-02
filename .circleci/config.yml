@@ -181,7 +181,7 @@ jobs:
       - checkout
       - run:
           - run: ./init
-          - run: && sleep 30 && cd ~/chembient/rdkit && ./run script.py
+          - run: sleep 30 && cd ~/chembient/rdkit && ./run script.py
   deploy:
     machine:
       image: circleci/classic:201711-01
