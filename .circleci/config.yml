@@ -204,9 +204,6 @@ jobs:
 workflows:
   version: 2
   chembience-compile-build:
-    branches:
-      only:
-        - compile
     jobs:
       - prepare
       - rdkit-conda-compile:
