@@ -146,6 +146,7 @@ jobs:
     steps:
       - checkout
       - run: ./init
+      - run: cd ~/chembient/django && ./up
       - run: sleep 30 && cd ~/chembient/django && ./django-manage-py migrate
       - run: sleep 30 && cd ~/chembient/django && ./django-manage-py createsuperuser --username test --noinput --email test@test.org
       - run: sleep 30 && cd ~/chembient/django && ./django-manage-py collectstatic
@@ -179,14 +180,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: test rdkit
-          working_directory: .
-          command: |
-            ./init
-            cd ~/chembient/rdkit
-            sleep 60
-            ./run script.py
-            sleep 60
+          - run: ./init
+          - run: && sleep 30 && cd ~/chembient/rdkit && ./run script.py
   deploy:
     machine:
       image: circleci/classic:201711-01
@@ -261,15 +256,16 @@ workflows:
       - rdkit:
           requires:
             - rdkit-base
-      - django-test:
-          requires:
-            - django
-            - db
-            - proxy
       - rdkit-test:
           requires:
             - rdkit
             - db
+      - django-test:
+          requires:
+            - rdkit-test
+            - django
+            - db
+            - proxy
       - deploy:
           requires:
             - rdkit-test

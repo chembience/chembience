@@ -1,7 +1,1 @@
-numpy
 jupyter
-pandas
-scijava-jupyter-kernel
-vega
-vega_datasets
-altair
