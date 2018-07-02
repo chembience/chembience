@@ -146,11 +146,11 @@ jobs:
     steps:
       - checkout
       - run: ./init
-      - run: cd ~/chembient/django && ./up
+      - run: sleep 30 && cd ~/chembient/django && ./up
       - run: sleep 30 && cd ~/chembient/django && ./django-manage-py migrate
       - run: sleep 30 && cd ~/chembient/django && ./django-manage-py createsuperuser --username test --noinput --email test@test.org
       - run: sleep 30 && cd ~/chembient/django && ./django-manage-py collectstatic
-      - run: sleep 60 && cd ~/chembient/django./down
+      - run: sleep 60 && cd ~/chembient/django && ./down
   jupyter:
     machine:
       image: circleci/classic:201711-01
