@@ -147,10 +147,10 @@ jobs:
       - checkout
       - run: ./init
       - run: sleep 30 && cd ~/chembient/django && ./up
-      - run: sleep 30 && cd ~/chembient/django && ./django-manage-py migrate
+      - run: sleep 60 && cd ~/chembient/django && ./django-manage-py migrate
       - run: sleep 30 && cd ~/chembient/django && ./django-manage-py createsuperuser --username test --noinput --email test@test.org
       - run: sleep 30 && cd ~/chembient/django && ./django-manage-py collectstatic
-      - run: sleep 60 && cd ~/chembient/django && ./down
+      - run: sleep 60 && cd ~/chembient/django./down
   jupyter:
     machine:
       image: circleci/classic:201711-01
@@ -200,72 +200,71 @@ workflows:
   chembience-compile-build:
     jobs:
       - prepare
-#      - rdkit-conda-compile:
-#          requires:
-#            - prepare
-#          filters:
-#            branches:
-#              only:
-#                - compile
-#      - rdkit-postgres-compile:
-#          requires:
-#            - prepare
-#          filters:
-#            branches:
-#              only:
-#                - compile
-#      - proxy:
-#          requires:
-#            - prepare
-#      - base:
-#          requires:
-#            - prepare
-#      - python-base:
-#          requires:
-#            - prepare
-#            - base
-#      - rdkit-base:
-#          requires:
-#            - prepare
-#            - rdkit-conda-compile
-#            - python-base
-#      - django-base:
-#          requires:
-#            - prepare
-#            - rdkit-base
-#      - jupyter-base:
-#          requires:
-#            - prepare
-#            - rdkit-base
-#      - db:
-#          requires:
-#            - prepare
-#            - base
-#            - rdkit-postgres-compile
-#      - shell:
-#          requires:
-#            - prepare
-#            - base
-#      - django:
-#          requires:
-#            - django-base
-#      - jupyter:
-#          requires:
-#            - jupyter-base
-#      - rdkit:
-#          requires:
-#            - rdkit-base
-#      - rdkit-test:
-#          requires:
-#            - rdkit
-#            - db
-      - django-test:
+      - rdkit-conda-compile:
           requires:
             - prepare
-#            - rdkit-test
-#            - django
-#            - db
-#            - proxy
+          filters:
+            branches:
+              only:
+                - compile
+      - rdkit-postgres-compile:
+          requires:
+            - prepare
+          filters:
+            branches:
+              only:
+                - compile
+      - proxy:
+          requires:
+            - prepare
+      - base:
+          requires:
+            - prepare
+      - python-base:
+          requires:
+            - prepare
+            - base
+      - rdkit-base:
+          requires:
+            - prepare
+            - rdkit-conda-compile
+            - python-base
+      - django-base:
+          requires:
+            - prepare
+            - rdkit-base
+      - jupyter-base:
+          requires:
+            - prepare
+            - rdkit-base
+      - db:
+          requires:
+            - prepare
+            - base
+            - rdkit-postgres-compile
+      - shell:
+          requires:
+            - prepare
+            - base
+      - django:
+          requires:
+            - django-base
+      - jupyter:
+          requires:
+            - jupyter-base
+      - rdkit:
+          requires:
+            - rdkit-base
+      - rdkit-test:
+          requires:
+            - rdkit
+            - db
+      - django-test:
+          requires:
+            - rdkit-test
+            - django
+            - db
+            - proxy
       - deploy:
           requires:
             - rdkit-test
