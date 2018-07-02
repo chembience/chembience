@@ -145,11 +145,11 @@ jobs:
       docker_layer_caching: true
     steps:
       - checkout
-      - run: ./init && cd ~/chembient/django
-      - run: sleep 30 && ./django-manage-py migrate
-      - run: sleep 30 && ./django-manage-py createsuperuser --username test --noinput --email test@test.org
-      - run: sleep 30 && ./django-manage-py collectstatic
-      - run: sleep 60 && ./down
+      - run: ./init
+      - run: sleep 30 && cd ~/chembient/django && ./django-manage-py migrate
+      - run: sleep 30 && cd ~/chembient/django && ./django-manage-py createsuperuser --username test --noinput --email test@test.org
+      - run: sleep 30 && cd ~/chembient/django && ./django-manage-py collectstatic
+      - run: sleep 60 && cd ~/chembient/django./down
   jupyter:
     machine:
       image: circleci/classic:201711-01
