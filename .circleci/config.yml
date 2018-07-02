@@ -203,7 +203,10 @@ jobs:
 
 workflows:
   version: 2
-  chembience-workflow:
+  chembience-compile-build:
+    branches:
+      only:
+        - compile
     jobs:
       - prepare
       - rdkit-conda-compile:
@@ -240,6 +243,67 @@ workflows:
             - prepare
             - base
             - rdkit-postgres-compile
+      - shell:
+          requires:
+            - prepare
+            - base
+      - django:
+          requires:
+            - django-base
+      - jupyter:
+          requires:
+            - jupyter-base
+      - rdkit:
+          requires:
+            - rdkit-base
+      - django-test:
+          requires:
+            - django
+            - db
+            - proxy
+      - rdkit-test:
+          requires:
+            - rdkit
+            - db
+      - deploy:
+          requires:
+            - rdkit-test
+            - django-test
+  chembience-build:
+    branches:
+      only:
+        - master
+        - develop
+        - ci
+        - ci2
+    jobs:
+      - prepare
+      - proxy:
+          requires:
+            - prepare
+      - base:
+          requires:
+            - prepare
+      - python-base:
+          requires:
+            - prepare
+            - base
+      - rdkit-base:
+          requires:
+            - prepare
+            - python-base
+      - django-base:
+          requires:
+            - prepare
+            - rdkit-base
+      - jupyter-base:
+          requires:
+            - prepare
+            - rdkit-base
+      - db:
+          requires:
+            - prepare
+            - base
       - shell:
           requires:
             - prepare
