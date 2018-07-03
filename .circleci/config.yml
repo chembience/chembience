@@ -290,5 +290,5 @@ workflows:
           requires:
             - rdkit-test
             - django-test
-            - juypter-test
+            - jupyter-test
 
