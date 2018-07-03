@@ -149,9 +149,17 @@ jobs:
           name: Django test
           working_directory: .
           command: |
-            ./init && cd ~/chembient/django && ./up && sleep 30 && cd ~/chembient/django && ./django-manage-py migrate
+            ./init && cd ~/chembient/django && ./up && sleep 30
+            ./django-manage-py migrate
             ./django-manage-py createsuperuser --username test --noinput --email test@test.org
             ./django-manage-py collectstatic
+            status_code=$(curl -o /dev/null --silent --head --write-out '%{http_code}\n' http://django.localhost)
+            if [ $status_code -ne "200" ]
+            then
+                echo "http status check failed"
+                ./down
+                exit 1
+            fi
             ./down
   jupyter:
     machine:
@@ -164,6 +172,26 @@ jobs:
           working_directory: .
           command: |
             docker-compose -f ./context/app/docker-compose.build.yml build jupyter
+  jupyter-test:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Jupyter test
+          working_directory: .
+          command: |
+            ./init && cd ~/chembient/jupyter && ./up && sleep 30 &&
+            ./jupyter --version
+            status_code=$(curl -o /dev/null --silent --head --write-out '%{http_code}\n' http://jupyter.localhost)
+            if [ $status_code -ne "200" ]
+            then
+                echo "http status check failed"
+                ./down
+                exit 1
+            fi
+            ./down
   rdkit:
     machine:
       image: circleci/classic:201711-01
@@ -267,7 +295,14 @@ workflows:
             - django
             - db
             - proxy
+      - juypter-test:
+          requires:
+            - django-test
+            - jupyter
+            - db
+            - proxy
       - deploy:
           requires:
             - rdkit-test
             - django-test
+            - juypter-test
