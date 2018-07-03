@@ -280,7 +280,7 @@ workflows:
             - django
             - db
             - proxy
-      - juypter-test:
+      - jupyter-test:
           requires:
             - django-test
             - jupyter

@@ -1,6 +1,10 @@
 Chembience
 =======
 
+.. image:: https://circleci.com/gh/chembience/chembience/tree/master.svg?style=svg
+    :target: https://circleci.com/gh/chembience/chembience/tree/master
+
+
 Overview
 --------
 
