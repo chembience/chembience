@@ -198,7 +198,7 @@ jobs:
           name: Test RDKit
           working_directory: .
           command: |
-            ./init && sleep 160 && cd ~/chembient/rdkit && ./run script.py
+            ./init && sleep 60 && cd ~/chembient/rdkit && ./run script.py && sleep 60
   deploy:
     machine:
       image: circleci/classic:201711-01
