@@ -1,5 +1,6 @@
+ARG build_label
 FROM debian:stretch
-LABEL maintainer="markussitzmann@gmail.com"
+LABEL maintainer="markus.sitzmann@gmail.com"
 
 RUN apt-get update && apt-get -y --no-install-recommends install \
     ca-certificates \
@@ -8,7 +9,6 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
     unzip tar bzip2 \
     git \
     build-essential \
-#    postgresql-client \
     libglib2.0-0 \
     libxext6 \
     libsm6 \

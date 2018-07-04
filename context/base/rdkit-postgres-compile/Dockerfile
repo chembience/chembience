@@ -1,5 +1,6 @@
+ARG build_label
 FROM debian:stretch
-LABEL maintainer="markussitzmann@gmail.com"
+LABEL maintainer="markus.sitzmann@gmail.com"
 
 
 ENV RDBASE="/opt/rdkit"

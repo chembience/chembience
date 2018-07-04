@@ -1,7 +1,7 @@
 ARG build_label
 FROM chembience/rdkit_conda_compile:$build_label as rdkit-build
 FROM chembience/python_base:$build_label
-LABEL maintainer="markussitzmann@gmail.com "
+LABEL maintainer="markus.sitzmann@gmail.com "
 
 ENV PATH /opt/conda/bin:$PATH
 
