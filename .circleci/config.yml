@@ -12,7 +12,8 @@ jobs:
           working_directory: .
           command: |
             rm -rf ~/chembient
-            docker system prune -f --volumes
+            docker system prune -f --volume
+            ./docker/rm-all-images
             ./env-prepare
             cp .env ./context/base
             cp .env ./context/app
