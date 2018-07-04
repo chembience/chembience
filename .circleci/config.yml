@@ -195,8 +195,11 @@ jobs:
       docker_layer_caching: true
     steps:
       - checkout
-      - run: ./init
-      - run: sleep 30 && cd ~/chembient/rdkit && ./run script.py
+      - run: 
+          name: Test RDKit
+          working_directory: .
+          command: |
+            ./init && sleep 60 && cd ~/chembient/rdkit && ./run script.py && sleep 60
   deploy:
     machine:
       image: circleci/classic:201711-01

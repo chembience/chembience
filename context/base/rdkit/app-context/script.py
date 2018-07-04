@@ -6,7 +6,7 @@ import time
 m = Chem.MolFromSmiles('Cc1ccccc1')
 print(m)
 
-time.sleep(20)
+time.sleep(30)
 
 conn_string = "host='db' dbname='chembience' user='chembience' password='Arg0'"
 conn = psycopg2.connect(conn_string)
