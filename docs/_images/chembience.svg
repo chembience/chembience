@@ -1032,8 +1032,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="1349.0456"
-     inkscape:cy="402.52142"
+     inkscape:cx="446.84104"
+     inkscape:cy="484.47601"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -1983,43 +1983,6 @@
          x="239.59488"
          y="230.74835"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333311px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Bold';stroke-width:0.26458332">Dockerhub.com</tspan></text>
-    <g
-       style="opacity:1"
-       id="g7170-0"
-       transform="translate(31.316141,63.208883)">
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         x="326.18661"
-         y="95.862007"
-         id="text1503"><tspan
-           sodipodi:role="line"
-           x="326.18661"
-           y="95.862007"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:1px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans';stroke-width:0.26458332"
-           id="tspan1509"> </tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:3.17499995px;line-height:4.61000013px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-         x="280.64047"
-         y="98.475639"
-         id="text1581"><tspan
-           sodipodi:role="line"
-           id="tspan1579"
-           x="281.06525"
-           y="98.475639"
-           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:4.61000013px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332">Version Control </tspan><tspan
-           sodipodi:role="line"
-           x="281.06525"
-           y="103.11813"
-           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:4.61000013px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332"
-           id="tspan1583">&amp; </tspan><tspan
-           sodipodi:role="line"
-           x="280.64047"
-           y="107.76063"
-           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:4.61000013px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332"
-           id="tspan1585">Code Repository</tspan></text>
-    </g>
     <rect
        transform="matrix(-0.99998789,-0.00492189,0,-1,0,0)"
        ry="2.0392036"
@@ -2042,5 +2005,26 @@
          x="249.78831"
          id="tspan10347-8"
          sodipodi:role="line">circleci/config.yml</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.17499995px;line-height:4.61000013px;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="311.38904"
+       y="159.22255"
+       id="text1631"><tspan
+         sodipodi:role="line"
+         x="311.38904"
+         y="159.22255"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:4.61000013px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan1633">Version Control</tspan><tspan
+         sodipodi:role="line"
+         x="311.38904"
+         y="163.86505"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:4.61000013px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan1637">&amp;</tspan><tspan
+         sodipodi:role="line"
+         x="311.38904"
+         y="168.50754"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:4.61000013px;font-family:'PT Sans';-inkscape-font-specification:'PT Sans Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan1639">Code Repository</tspan></text>
   </g>
 </svg>

@@ -28,6 +28,8 @@ jobs:
           name: Compile Conda RDKit
           working_directory: .
           command: |
+            ./env-prepare
+            sleep 10
             docker-compose -f ./context/base/docker-compose.build.yml build rdkit-conda-compile
   rdkit-postgres-compile:
     machine:
@@ -40,6 +42,7 @@ jobs:
           working_directory: .
           command: |
              ./env-prepare
+             sleep 10
              docker-compose -f ./context/base/docker-compose.build.yml build rdkit-postgres-compile
   base:
     machine:
@@ -52,6 +55,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            sleep 10
             docker-compose -f ./context/base/docker-compose.build.yml build base
   python-base:
     machine:
@@ -64,6 +68,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            sleep 10
             docker-compose -f ./context/base/docker-compose.build.yml build python_base
   rdkit-base:
     machine:
@@ -75,6 +80,8 @@ jobs:
           name: Build RDKit base
           working_directory: .
           command: |
+            ./env-prepare
+            sleep 10
             docker-compose -f ./context/base/docker-compose.build.yml build rdkit_base
   django-base:
     machine:
@@ -87,6 +94,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            sleep 10
             docker-compose -f ./context/base/docker-compose.build.yml build django_base
   jupyter-base:
     machine:
@@ -99,6 +107,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            sleep 10
             docker-compose -f ./context/base/docker-compose.build.yml build jupyter_base
   proxy:
     machine:
@@ -111,6 +120,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            sleep 10
             docker-compose -f ./context/app/docker-compose.build.yml build proxy
   shell:
     machine:
@@ -123,6 +133,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            sleep 10
             docker-compose -f ./context/app/docker-compose.build.yml build shell
   db:
     machine:
@@ -135,6 +146,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            sleep 10
             docker-compose -f ./context/app/docker-compose.build.yml build db
   django:
     machine:
@@ -147,6 +159,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            sleep 10
             docker-compose -f ./context/app/docker-compose.build.yml build django
   django-test:
     machine:
@@ -173,6 +186,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            sleep 10
             docker-compose -f ./context/app/docker-compose.build.yml build jupyter
   jupyter-test:
     machine:
@@ -198,6 +212,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            sleep 10
             docker-compose -f ./context/app/docker-compose.build.yml build rdkit
   rdkit-test:
     machine:
@@ -221,6 +236,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            sleep 10
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f ./context/base/docker-compose.build.yml push
             docker-compose -f ./context/app/docker-compose.build.yml push
