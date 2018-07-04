@@ -13,6 +13,7 @@ jobs:
           command: |
             rm -rf ~/chembient
             docker system prune -f --volumes
+            ./env-prepare
             cp .env ./context/base
             cp .env ./context/app
             docker login -u $DOCKER_USER -p $DOCKER_PASS
