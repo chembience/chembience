@@ -133,9 +133,9 @@ jobs:
           command: |
             ./env-prepare
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures proxy
-            docker-compose -f ./context/base/docker-compose.build.yml build proxy
-            docker-compose -f ./context/base/docker-compose.build.yml push proxy
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures proxy
+            docker-compose -f ./context/app/docker-compose.build.yml build proxy
+            docker-compose -f ./context/app/docker-compose.build.yml push proxy
   shell:
     machine:
       image: circleci/classic:201711-01
@@ -148,9 +148,9 @@ jobs:
           command: |
             ./env-prepare
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures shell
-            docker-compose -f ./context/base/docker-compose.build.yml build shell
-            docker-compose -f ./context/base/docker-compose.build.yml push shell
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures shell
+            docker-compose -f ./context/app/docker-compose.build.yml build shell
+            docker-compose -f ./context/app/docker-compose.build.yml push shell
   db:
     machine:
       image: circleci/classic:201711-01
@@ -163,9 +163,9 @@ jobs:
           command: |
             ./env-prepare
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures db
-            docker-compose -f ./context/base/docker-compose.build.yml build db
-            docker-compose -f ./context/base/docker-compose.build.yml push db
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures db
+            docker-compose -f ./context/app/docker-compose.build.yml build db
+            docker-compose -f ./context/app/docker-compose.build.yml push db
   django:
     machine:
       image: circleci/classic:201711-01
@@ -178,9 +178,9 @@ jobs:
           command: |
             ./env-prepare
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures django
-            docker-compose -f ./context/base/docker-compose.build.yml build django
-            docker-compose -f ./context/base/docker-compose.build.yml push django
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures django
+            docker-compose -f ./context/app/docker-compose.build.yml build django
+            docker-compose -f ./context/app/docker-compose.build.yml push django
   django-test:
     machine:
       image: circleci/classic:201711-01
@@ -235,9 +235,9 @@ jobs:
           command: |
             ./env-prepare
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures rdkit
-            docker-compose -f ./context/base/docker-compose.build.yml build rdkit
-            docker-compose -f ./context/base/docker-compose.build.yml push rdkit
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures rdkit
+            docker-compose -f ./context/app/docker-compose.build.yml build rdkit
+            docker-compose -f ./context/app/docker-compose.build.yml push rdkit
   rdkit-test:
     machine:
       image: circleci/classic:201711-01
@@ -341,9 +341,9 @@ workflows:
             - jupyter
             - db
             - proxy
-      - deploy:
-          requires:
-            - rdkit-test
-            - django-test
-            - jupyter-test
+#       - deploy:
+#           requires:
+#             - rdkit-test
+#             - django-test
+#             - jupyter-test
 
