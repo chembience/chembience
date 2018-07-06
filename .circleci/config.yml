@@ -27,6 +27,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures rdkit-conda-compile
             docker-compose -f ./context/base/docker-compose.build.yml build rdkit-conda-compile
             docker-compose -f ./context/base/docker-compose.build.yml push rdkit-conda-compile
@@ -41,6 +42,7 @@ jobs:
           working_directory: .
           command: |
              ./env-prepare
+             docker login -u $DOCKER_USER -p $DOCKER_PASS
              docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures rdkit-postgres-compile
              docker-compose -f ./context/base/docker-compose.build.yml build rdkit-postgres-compile
              docker-compose -f ./context/base/docker-compose.build.yml push rdkit-postgres-compile
@@ -55,6 +57,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures base
             docker-compose -f ./context/base/docker-compose.build.yml build base
             docker-compose -f ./context/base/docker-compose.build.yml push base
@@ -69,6 +72,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures python-base
             docker-compose -f ./context/base/docker-compose.build.yml build python-base
             docker-compose -f ./context/base/docker-compose.build.yml push python-base
@@ -83,6 +87,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures rdkit-base
             docker-compose -f ./context/base/docker-compose.build.yml build rdkit-base
             docker-compose -f ./context/base/docker-compose.build.yml push rdkit-base
@@ -97,6 +102,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures django-base
             docker-compose -f ./context/base/docker-compose.build.yml build django-base
             docker-compose -f ./context/base/docker-compose.build.yml push django-base
@@ -111,6 +117,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures jupyter-base
             docker-compose -f ./context/base/docker-compose.build.yml build jupyter-base
             docker-compose -f ./context/base/docker-compose.build.yml push jupyter-base
@@ -125,6 +132,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures proxy
             docker-compose -f ./context/base/docker-compose.build.yml build proxy
             docker-compose -f ./context/base/docker-compose.build.yml push proxy
@@ -139,6 +147,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures shell
             docker-compose -f ./context/base/docker-compose.build.yml build shell
             docker-compose -f ./context/base/docker-compose.build.yml push shell
@@ -153,6 +162,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures db
             docker-compose -f ./context/base/docker-compose.build.yml build db
             docker-compose -f ./context/base/docker-compose.build.yml push db
@@ -167,6 +177,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures django
             docker-compose -f ./context/base/docker-compose.build.yml build django
             docker-compose -f ./context/base/docker-compose.build.yml push django
@@ -195,6 +206,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures jupyter
             docker-compose -f ./context/base/docker-compose.build.yml build jupyter
             docker-compose -f ./context/base/docker-compose.build.yml push jupyter
@@ -222,6 +234,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures rdkit
             docker-compose -f ./context/base/docker-compose.build.yml build rdkit
             docker-compose -f ./context/base/docker-compose.build.yml push rdkit
