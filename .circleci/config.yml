@@ -207,9 +207,9 @@ jobs:
           command: |
             ./env-prepare
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures jupyter
-            docker-compose -f ./context/base/docker-compose.build.yml build jupyter
-            docker-compose -f ./context/base/docker-compose.build.yml push jupyter
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures jupyter
+            docker-compose -f ./context/app/docker-compose.build.yml build jupyter
+            docker-compose -f ./context/app/docker-compose.build.yml push jupyter
   jupyter-test:
     machine:
       image: circleci/classic:201711-01
