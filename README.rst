@@ -17,40 +17,42 @@ configuration requirements. The following schema provides an overview.
 
 At its current development stage, Chembience supports three base types of application (*App*) containers: (1) a
 `Django <https://www.djangoproject.com/>`_/`Django REST framework <https://www.django-rest-framework.org/>`_-based
-*App* container which is specifically suited for the development of web-based `Python <https://www.python.org/>`_/ applications,
-(2) a Python shell-based *App* container which allows for the execution of script-based python applications, and (3), a
-`Jupyter <https://www.jupyter.org/>`_-based *App* container which let you run Jupyter notebooks (currently only a Python kernel
-is supported).
+*App* container which is specifically suited for the development of web-based `Python <https://www.python.org/>`_
+applications, (2) a Python shell-based *App* container which allows for the execution of script-based python
+applications, and (3), a `Jupyter <https://www.jupyter.org/>`_-based *App* container which let you run Jupyter
+notebooks (currently only a Python kernel is supported).
 
 All *App* container types have pre-configured access to a `Postgres <https://www.postgresql.org/>`_ databases
 system running in a separate Docker container (*Database*) on the same Docker virtual network (*Chembience Sphere*).
 All containers have the `RDKit <http://www.rdkit.org/>`_  toolkit readily installed (either as Python module or
-Postgres extension). Both the Django and the Jupyter *App* containers provide a `Nginx <https://www.nginx.com>`_-based web server
-instance running locally at their respective containers (the Django installation is linked by uswgi to its local Nginx server,
-while the Jupyter installation is just connecting by a web socket).
+Postgres extension). Both the Django and the Jupyter *App* containers provide a `Nginx <https://www.nginx.com>`_-based
+web server instance running locally at their respective containers (the Django installation is linked by uswgi to its
+local Nginx server, while the Jupyter installation is just connecting by a web socket).
 
-Creation and deployment of all Chembience-based containers and services is orchestrated by `docker-compose <https://docs.docker.com/compose/>`_.
-Any Docker images required for starting up a Chembience container are either available from `Docker hub <https://docs.docker.com/docker-hub/>`_
-(either as official package releases, third-party images, or pre-built images at the Chembience repository), or can be build
+Creation and deployment of all Chembience-based containers and services is orchestrated by
+`docker-compose <https://docs.docker.com/compose/>`_. Any Docker images required for starting up a Chembience
+container are either available from `Docker hub <https://docs.docker.com/docker-hub/>`_
+(either as official package releases, third-party images, or pre-built images at the
+`Chembience repository <https://hub.docker.com/u/chembience/>`_), or can be build
 locally on the user's host machine by running a Docker (docker-compose) build.
 
-If Chembience is started with docker-compose, a Docker virtual network (*Chembience Sphere*) is created on the Docker host
-system and all requested *App* containers as well as the *Database* container are brought up. Depending on the use case of Chembience,
-a Nginx-based *Proxy* container configured as a reverse proxy can also be added to the virtual network.
-The *Proxy* allows for easily spinning up additional *App* containers, or updating and removing existing ones, while
-avoiding interference of web traffic to other running Chembience containers and services.
+If Chembience is started with docker-compose, a Docker virtual network (*Chembience Sphere*) is created on the Docker
+host system and all requested *App* containers as well as the *Database* container are brought up. Depending on the
+use case of Chembience, a Nginx-based *Proxy* container configured as a reverse proxy can also be added to the virtual
+network. The *Proxy* allows for easily spinning up additional *App* containers, or updating and removing existing ones,
+while avoiding interference of web traffic to other running Chembience containers and services.
 
 If the Nginx instance of the *Proxy* container discovers an existing or new *App* container inside the *Chembience Sphere*
-network which has a Nginx instance running locally to the container, it automatically looks up the (sub) domain specification of
-this Nginx instance at the *App* container and makes it available to the outside of the *Chembience Sphere* network.
-This might be either any Web-accessible domain or just localhost for locally running applications.
+network which has a Nginx instance running locally to the container, it automatically looks up the (sub) domain
+specification of this Nginx instance at the *App* container and makes it available to the outside of the *Chembience
+Sphere* network. This might be either any Web-accessible domain or just localhost for locally running applications.
 
 Any of the *Chembience App* containers can be easily added, multiplied, removed or reconfigured. After initialization of
 the Chembience base system (see `Quick Start: Base Installation`_ below), any of the *App* directories initially created
-during first start-up can be moved, renamed, or copied to create multiple, independent and specialized application containers,
-which can be tracked separately as software projects on their own in VCS software like GIT. If further infrastructure
-containers are needed for a project (e.g. Solr, elasticsearch, or additional Postgres container instances), they can
-be easily added, too.
+during first start-up can be moved, renamed, or copied to create multiple, independent and specialized application
+containers, which can be tracked separately as software projects on their own in VCS software like GIT. If further
+infrastructure containers are needed for a project (e.g. Solr, elasticsearch, or additional Postgres container
+instances), they can be easily added, too.
 
 Current release version of the most important packages are:
 
