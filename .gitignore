@@ -5,3 +5,4 @@ tmp/*
 .idea/
 /static
 /media
+/context/**/.env
