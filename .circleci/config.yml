@@ -27,6 +27,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures rdkit-conda-compile
             docker-compose -f ./context/base/docker-compose.build.yml build rdkit-conda-compile
             docker-compose -f ./context/base/docker-compose.build.yml push rdkit-conda-compile
@@ -41,6 +42,7 @@ jobs:
           working_directory: .
           command: |
              ./env-prepare
+             docker login -u $DOCKER_USER -p $DOCKER_PASS
              docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures rdkit-postgres-compile
              docker-compose -f ./context/base/docker-compose.build.yml build rdkit-postgres-compile
              docker-compose -f ./context/base/docker-compose.build.yml push rdkit-postgres-compile
@@ -55,6 +57,7 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures base
             docker-compose -f ./context/base/docker-compose.build.yml build base
             docker-compose -f ./context/base/docker-compose.build.yml push base
@@ -69,9 +72,10 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures python-base
-            docker-compose -f ./context/base/docker-compose.build.yml build python-base
-            docker-compose -f ./context/base/docker-compose.build.yml push python-base
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures python_base
+            docker-compose -f ./context/base/docker-compose.build.yml build python_base
+            docker-compose -f ./context/base/docker-compose.build.yml push python_base
   rdkit-base:
     machine:
       image: circleci/classic:201711-01
@@ -83,9 +87,10 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures rdkit-base
-            docker-compose -f ./context/base/docker-compose.build.yml build rdkit-base
-            docker-compose -f ./context/base/docker-compose.build.yml push rdkit-base
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures rdkit_base
+            docker-compose -f ./context/base/docker-compose.build.yml build rdkit_base
+            docker-compose -f ./context/base/docker-compose.build.yml push rdkit_base
   django-base:
     machine:
       image: circleci/classic:201711-01
@@ -97,9 +102,10 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures django-base
-            docker-compose -f ./context/base/docker-compose.build.yml build django-base
-            docker-compose -f ./context/base/docker-compose.build.yml push django-base
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures django_base
+            docker-compose -f ./context/base/docker-compose.build.yml build django_base
+            docker-compose -f ./context/base/docker-compose.build.yml push django_base
   jupyter-base:
     machine:
       image: circleci/classic:201711-01
@@ -111,9 +117,10 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures jupyter-base
-            docker-compose -f ./context/base/docker-compose.build.yml build jupyter-base
-            docker-compose -f ./context/base/docker-compose.build.yml push jupyter-base
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures jupyter_base
+            docker-compose -f ./context/base/docker-compose.build.yml build jupyter_base
+            docker-compose -f ./context/base/docker-compose.build.yml push jupyter_base
   proxy:
     machine:
       image: circleci/classic:201711-01
@@ -125,9 +132,10 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures proxy
-            docker-compose -f ./context/base/docker-compose.build.yml build proxy
-            docker-compose -f ./context/base/docker-compose.build.yml push proxy
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures proxy
+            docker-compose -f ./context/app/docker-compose.build.yml build proxy
+            docker-compose -f ./context/app/docker-compose.build.yml push proxy
   shell:
     machine:
       image: circleci/classic:201711-01
@@ -139,9 +147,10 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures shell
-            docker-compose -f ./context/base/docker-compose.build.yml build shell
-            docker-compose -f ./context/base/docker-compose.build.yml push shell
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures shell
+            docker-compose -f ./context/app/docker-compose.build.yml build shell
+            docker-compose -f ./context/app/docker-compose.build.yml push shell
   db:
     machine:
       image: circleci/classic:201711-01
@@ -153,9 +162,10 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures db
-            docker-compose -f ./context/base/docker-compose.build.yml build db
-            docker-compose -f ./context/base/docker-compose.build.yml push db
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures db
+            docker-compose -f ./context/app/docker-compose.build.yml build db
+            docker-compose -f ./context/app/docker-compose.build.yml push db
   django:
     machine:
       image: circleci/classic:201711-01
@@ -167,9 +177,10 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures django
-            docker-compose -f ./context/base/docker-compose.build.yml build django
-            docker-compose -f ./context/base/docker-compose.build.yml push django
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures django
+            docker-compose -f ./context/app/docker-compose.build.yml build django
+            docker-compose -f ./context/app/docker-compose.build.yml push django
   django-test:
     machine:
       image: circleci/classic:201711-01
@@ -195,9 +206,10 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures jupyter
-            docker-compose -f ./context/base/docker-compose.build.yml build jupyter
-            docker-compose -f ./context/base/docker-compose.build.yml push jupyter
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures jupyter
+            docker-compose -f ./context/app/docker-compose.build.yml build jupyter
+            docker-compose -f ./context/app/docker-compose.build.yml push jupyter
   jupyter-test:
     machine:
       image: circleci/classic:201711-01
@@ -208,9 +220,7 @@ jobs:
           name: Jupyter test
           working_directory: .
           command: |
-            ./init && cd ~/chembient/jupyter && ./up && sleep 30
-            ./jupyter --version
-            ./down
+            ./init && sleep 60 && cd ~/chembient/jupyter && ./up && sleep 60 && ./jupyter --version && ./down
   rdkit:
     machine:
       image: circleci/classic:201711-01
@@ -222,9 +232,10 @@ jobs:
           working_directory: .
           command: |
             ./env-prepare
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures rdkit
-            docker-compose -f ./context/base/docker-compose.build.yml build rdkit
-            docker-compose -f ./context/base/docker-compose.build.yml push rdkit
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures rdkit
+            docker-compose -f ./context/app/docker-compose.build.yml build rdkit
+            docker-compose -f ./context/app/docker-compose.build.yml push rdkit
   rdkit-test:
     machine:
       image: circleci/classic:201711-01
@@ -236,21 +247,6 @@ jobs:
           working_directory: .
           command: |
             ./init && sleep 60 && cd ~/chembient/rdkit && ./run script.py && sleep 60
-#  deploy:
-#    machine:
-#      image: circleci/classic:201711-01
-#      docker_layer_caching: true
-#    steps:
-#      - checkout
-#      - run:
-#          name: Prepare
-#          working_directory: .
-#          command: |
-#            ./env-prepare
-#            sleep 30
-#            docker login -u $DOCKER_USER -p $DOCKER_PASS
-#            docker-compose -f ./context/base/docker-compose.build.yml push
-#            docker-compose -f ./context/app/docker-compose.build.yml push
 
 workflows:
   version: 2
@@ -328,9 +324,5 @@ workflows:
             - jupyter
             - db
             - proxy
-      - deploy:
-          requires:
-            - rdkit-test
-            - django-test
-            - jupyter-test
+
 
