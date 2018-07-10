@@ -12,10 +12,6 @@ COPY . /opt/jupyter
 COPY docker-entrypoint.sh /
 COPY requirements.txt /
 
-#RUN CONDA_PY=36 conda config --add channels conda-forge && \
-#    CONDA_PY=36 conda create --name java_env scijava-jupyter-kernel && \
-#    bin/bash -c "source activate java_env"
-
 RUN CONDA_PY=36 conda config --add channels conda-forge && \
     /bin/bash -c "source activate chembience" && \
     CONDA_PY=36 conda install --yes --file /requirements.txt

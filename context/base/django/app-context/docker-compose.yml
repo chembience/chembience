@@ -4,7 +4,7 @@ services:
 
   app:
     image: chembience/django:${CHEMBIENCE_BUILD_LABEL}
-    #container_name: chembience_django
+    container_name: chembience_django
     volumes:
       - "${DJANGO_APP_HOME}:/home/app"
       - "${CHEMBIENCE_SPHERE}:/home/sphere"
@@ -30,7 +30,7 @@ services:
 
   proxy:
     image: chembience/proxy:${CHEMBIENCE_BUILD_LABEL}
-    #container_name: chembience_proxy
+    container_name: chembience_proxy
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - "${CHEMBIENCE_SPHERE}:/home/sphere"
@@ -41,7 +41,7 @@ services:
 
   db:
     image: chembience/db:${CHEMBIENCE_BUILD_LABEL}
-    #container_name: chembience_db
+    container_name: chembience_db
     volumes:
       - db_volume:/var/lib/postgresql
     networks:
