@@ -29,6 +29,7 @@ services:
         build_label: ${CHEMBIENCE_BUILD_LABEL}
     depends_on:
       - python_base
+      - rdkit-conda-compile
 
 
   django_base:
@@ -51,6 +52,20 @@ services:
       - rdkit_base
 
 
+  rdkit-conda-compile:
+    image: chembience/rdkit_conda_compile:${CHEMBIENCE_BUILD_LABEL}
+    build:
+      context: rdkit-conda-compile/
+      args:
+        build_label: ${CHEMBIENCE_BUILD_LABEL}
+
+
+  rdkit-postgres-compile:
+    image: chembience/rdkit_postgres_compile:${CHEMBIENCE_BUILD_LABEL}
+    build:
+      context: rdkit-postgres-compile/
+      args:
+        build_label: ${CHEMBIENCE_BUILD_LABEL}
 
 
 

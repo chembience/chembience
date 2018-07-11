@@ -1,10 +1,11 @@
+numpy
 Pillow
 markdown
-psycopg2-binary
+psycopg2
 pygments
-hashids
 requests
 lxml
 six
+
 
 

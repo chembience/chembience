@@ -1,10 +1,328 @@
 version: 2
+
 jobs:
-  build:
+  prepare:
     machine:
       image: circleci/classic:201711-01
-    working_directory: ~/chembience
+      docker_layer_caching: true
     steps:
       - checkout
       - run:
-          command: ./build
+          name: Prepare
+          working_directory: .
+          command: |
+            rm -rf ~/chembient
+            docker system prune -f --volumes
+            ./docker/rm-all-images
+            ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+  rdkit-conda-compile:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Compile Conda RDKit
+          working_directory: .
+          command: |
+            ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures rdkit-conda-compile
+            docker-compose -f ./context/base/docker-compose.build.yml build rdkit-conda-compile
+            docker-compose -f ./context/base/docker-compose.build.yml push rdkit-conda-compile
+  rdkit-postgres-compile:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Compile Postgres RDKit
+          working_directory: .
+          command: |
+             ./env-prepare
+             docker login -u $DOCKER_USER -p $DOCKER_PASS
+             docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures rdkit-postgres-compile
+             docker-compose -f ./context/base/docker-compose.build.yml build rdkit-postgres-compile
+             docker-compose -f ./context/base/docker-compose.build.yml push rdkit-postgres-compile
+  base:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build base
+          working_directory: .
+          command: |
+            ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures base
+            docker-compose -f ./context/base/docker-compose.build.yml build base
+            docker-compose -f ./context/base/docker-compose.build.yml push base
+  python-base:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build Python base
+          working_directory: .
+          command: |
+            ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures python_base
+            docker-compose -f ./context/base/docker-compose.build.yml build python_base
+            docker-compose -f ./context/base/docker-compose.build.yml push python_base
+  rdkit-base:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build RDKit base
+          working_directory: .
+          command: |
+            ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures rdkit_base
+            docker-compose -f ./context/base/docker-compose.build.yml build rdkit_base
+            docker-compose -f ./context/base/docker-compose.build.yml push rdkit_base
+  django-base:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build Django base
+          working_directory: .
+          command: |
+            ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures django_base
+            docker-compose -f ./context/base/docker-compose.build.yml build django_base
+            docker-compose -f ./context/base/docker-compose.build.yml push django_base
+  jupyter-base:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build Jupyter base
+          working_directory: .
+          command: |
+            ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures jupyter_base
+            docker-compose -f ./context/base/docker-compose.build.yml build jupyter_base
+            docker-compose -f ./context/base/docker-compose.build.yml push jupyter_base
+  proxy:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build proxy
+          working_directory: .
+          command: |
+            ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures proxy
+            docker-compose -f ./context/app/docker-compose.build.yml build proxy
+            docker-compose -f ./context/app/docker-compose.build.yml push proxy
+  shell:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build shell
+          working_directory: .
+          command: |
+            ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures shell
+            docker-compose -f ./context/app/docker-compose.build.yml build shell
+            docker-compose -f ./context/app/docker-compose.build.yml push shell
+  db:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build db
+          working_directory: .
+          command: |
+            ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures db
+            docker-compose -f ./context/app/docker-compose.build.yml build db
+            docker-compose -f ./context/app/docker-compose.build.yml push db
+  django:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build django
+          working_directory: .
+          command: |
+            ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures django
+            docker-compose -f ./context/app/docker-compose.build.yml build django
+            docker-compose -f ./context/app/docker-compose.build.yml push django
+  django-test:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Django test
+          working_directory: .
+          command: |
+            ./init && cd ~/chembient/django && ./up && sleep 30 && ./django-manage-py migrate
+            ./django-manage-py createsuperuser --username test --noinput --email test@test.org
+            ./django-manage-py collectstatic
+            ./down
+  jupyter:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build jupyter
+          working_directory: .
+          command: |
+            ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures jupyter
+            docker-compose -f ./context/app/docker-compose.build.yml build jupyter
+            docker-compose -f ./context/app/docker-compose.build.yml push jupyter
+  jupyter-test:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Jupyter test
+          working_directory: .
+          command: |
+            ./init && sleep 60 && cd ~/chembient/jupyter && ./up && sleep 60 && ./jupyter --version && ./down
+  rdkit:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Build RDKit
+          working_directory: .
+          command: |
+            ./env-prepare
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures rdkit
+            docker-compose -f ./context/app/docker-compose.build.yml build rdkit
+            docker-compose -f ./context/app/docker-compose.build.yml push rdkit
+  rdkit-test:
+    machine:
+      image: circleci/classic:201711-01
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run: 
+          name: Test RDKit
+          working_directory: .
+          command: |
+            ./init && sleep 60 && cd ~/chembient/rdkit && ./run script.py && sleep 60
+
+workflows:
+  version: 2
+  chembience-compile-build:
+    jobs:
+      - prepare
+      - rdkit-conda-compile:
+          requires:
+            - prepare
+          filters:
+            branches:
+              only:
+                - compile
+      - rdkit-postgres-compile:
+          requires:
+            - prepare
+          filters:
+            branches:
+              only:
+                - compile
+      - proxy:
+          requires:
+            - prepare
+      - base:
+          requires:
+            - prepare
+      - python-base:
+          requires:
+            - prepare
+            - base
+      - rdkit-base:
+          requires:
+            - prepare
+            - rdkit-conda-compile
+            - python-base
+      - django-base:
+          requires:
+            - prepare
+            - rdkit-base
+      - jupyter-base:
+          requires:
+            - prepare
+            - rdkit-base
+      - db:
+          requires:
+            - prepare
+            - base
+            - rdkit-postgres-compile
+      - shell:
+          requires:
+            - prepare
+            - base
+      - django:
+          requires:
+            - django-base
+      - jupyter:
+          requires:
+            - jupyter-base
+      - rdkit:
+          requires:
+            - rdkit-base
+      - rdkit-test:
+          requires:
+            - rdkit
+            - db
+      - django-test:
+          requires:
+            - rdkit-test
+            - django
+            - db
+            - proxy
+      - jupyter-test:
+          requires:
+            - django-test
+            - jupyter
+            - db
+            - proxy
+
+

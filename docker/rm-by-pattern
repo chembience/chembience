@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]
+  then
+    echo "No pattern provided. Exit!"
+  else
+    #echo `docker images | grep $1 | tr -s ' ' | cut -d ' ' -f 3`
+    docker rmi $(docker images | grep $1 | tr -s ' ' | cut -d ' ' -f 3)
+fi
+
+

@@ -1,6 +1,6 @@
 ARG build_label
 FROM chembience/rdkit_base:$build_label
-LABEL maintainer="markussitzmann@gmail.com "
+LABEL maintainer="markus.sitzmann@gmail.com"
 
 ENV PATH /opt/conda/bin:$PATH
 
@@ -12,5 +12,7 @@ COPY . /opt/django
 COPY docker-entrypoint.sh /
 COPY requirements.txt /
 
+RUN CONDA_PY=36 conda config --add channels conda-forge
+
 RUN /bin/bash -c "source activate chembience" && \
-    pip install -r /requirements.txt
+    CONDA_PY=36 conda install --yes --file /requirements.txt

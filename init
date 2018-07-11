@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./env-prepare
+
 source .env
 
 mkdir -p $CHEMBIENCE_SPHERE \
@@ -8,15 +10,15 @@ mkdir -p $CHEMBIENCE_SPHERE \
 && mkdir -p $RDKIT_APP_HOME \
 && mkdir -p $JUPYTER_APP_HOME
 
-cp .env ./context/base \
-&& cp .env ./context/app \
-&& cp .env ./context/base/base/chembience/bin \
-&& cp .env ./context/base/django \
-&& cp .env ./context/base/django/app-context \
-&& cp .env ./context/base/rdkit \
-&& cp .env ./context/base/rdkit/app-context \
-&& cp .env ./context/base/jupyter/ \
-&& cp .env ./context/base/jupyter/app-context \
+#cp .env ./context/base \
+#&& cp .env ./context/app \
+#&& cp .env ./context/base/base/chembience/bin \
+#&& cp .env ./context/base/django \
+#&& cp .env ./context/base/django/app-context \
+#&& cp .env ./context/base/rdkit \
+#&& cp .env ./context/base/rdkit/app-context \
+#&& cp .env ./context/base/jupyter/ \
+#&& cp .env ./context/base/jupyter/app-context \
 
 docker-compose -f ./context/base/base/docker-compose.init.yml run --rm base
 docker-compose -f ./context/base/django/docker-compose.init.yml run --rm django

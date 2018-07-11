@@ -1,14 +1,19 @@
 #!/bin/bash
+set -e
 
-cp .env ./context/base \
-&& cp .env ./context/app \
-&& cp .env ./context/base/base/chembience/bin \
-&& cp .env ./context/base/django \
-&& cp .env ./context/base/django/app-context \
-&& cp .env ./context/base/rdkit \
-&& cp .env ./context/base/rdkit/app-context \
-&& cp .env ./context/base/jupyter \
-&& cp .env ./context/base/jupyter/app-context
+./env-prepare
+
+#cp .env ./context/base \
+#&& cp .env ./context/app \
+#&& cp .env ./context/base/base/chembience/bin \
+#&& cp .env ./context/base/django \
+#&& cp .env ./context/base/django/app-context \
+#&& cp .env ./context/base/rdkit \
+#&& cp .env ./context/base/rdkit/app-context \
+#&& cp .env ./context/base/jupyter \
+#&& cp .env ./context/base/jupyter/app-context \
+#&& cp .env ./context/base/rdkit-conda-compile/ \
+#&& cp .env ./context/base/rdkit-postgres-compile
 
 docker-compose -f ./context/base/docker-compose.build.yml build
 docker-compose -f ./context/app/docker-compose.build.yml build

@@ -1,5 +1,5 @@
 FROM debian:stretch
-LABEL maintainer="markussitzmann@gmail.com "
+LABEL maintainer="markus.sitzmann@gmail.com "
 
 RUN sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
 
