@@ -3,6 +3,9 @@ Chembience
 
 .. image:: https://circleci.com/gh/chembience/chembience/tree/master.svg?style=shield
     :target: https://circleci.com/gh/chembience/chembience/tree/master
+    
+.. image:: https://zenodo.org/badge/124780116.svg
+   :target: https://zenodo.org/badge/latestdoi/124780116
 
 
 
