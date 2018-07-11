@@ -1,7 +1,7 @@
 Chembience
 =======
 
-.. image:: https://circleci.com/gh/chembience/chembience/tree/master.svg?style=svg
+.. image:: https://circleci.com/gh/chembience/chembience/tree/master.svg?style=shield
     :target: https://circleci.com/gh/chembience/chembience/tree/master
 
 
@@ -31,7 +31,7 @@ local Nginx server, while the Jupyter installation is just connecting by a web s
 
 Creation and deployment of all Chembience-based containers and services is orchestrated by
 `docker-compose <https://docs.docker.com/compose/>`_. All Docker images required for starting up any of the Chembience
-containers are continuously built and tested at `CircleCi.com <https://docs.docker.com/compose/>` and made available
+containers are continuously built and tested at `CircleCi.com <https://circleci.com>`_ and made available
 from the `Chembience Docker hub repository <https://hub.docker.com/u/chembience/>`_). Alternatively, the Docker images
 can also be built locally on the user's host machine by using the build script provided in root directory of this Github
 repository.
