@@ -13,7 +13,7 @@ jobs:
           command: |
             rm -rf ~/chembient
             docker system prune -f --volumes
-            ./docker/rm-all-images
+            ./docker/rm-all-images || true
             ./env-prepare
             docker login -u $DOCKER_USER -p $DOCKER_PASS
   rdkit-conda-compile:
