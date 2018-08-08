@@ -1,5 +1,5 @@
 ARG build_label
-FROM chembience/rdkit_conda_compile:$build_label as rdkit-build
+#FROM chembience/rdkit_conda_compile:$build_label as rdkit-build
 FROM chembience/python_base:$build_label
 LABEL maintainer="markus.sitzmann@gmail.com "
 
@@ -42,7 +42,7 @@ COPY ./.env /opt/rdkit/env
 COPY . /opt/rdkit
 COPY ./app-context /opt/rdkit/app-context
 
-RUN rm -rf /tmp/*.tar.bz2
+#RUN rm -rf /tmp/*.tar.bz2
 
 COPY docker-entrypoint.sh /
 
