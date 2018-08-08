@@ -43,7 +43,7 @@ WORKDIR /home/rdkit
 
 RUN git clone https://github.com/chembience/conda-rdkit.git
 WORKDIR conda-rdkit
-RUN git checkout chembience
+RUN git checkout chembience-test
 
 ENV PATH /opt/conda/bin:$PATH
 

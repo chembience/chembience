@@ -18,13 +18,22 @@ RUN apt-get -y --no-install-recommends install \
 
 COPY --from=rdkit-build /opt/conda/conda-bld/linux-64/*.tar.bz2 /tmp/
 
+#RUN /bin/bash -c "source activate chembience" && \
+#    conda install --offline /tmp/boost-*.tar.bz2  && \
+#    conda install --offline /tmp/cairo-*.tar.bz2 && \
+#    conda install --offline /tmp/cairocffi-*.tar.bz2 && \
+#    conda install --offline /tmp/eigen-*.tar.bz2  && \
+#    conda install --offline /tmp/nox-*.tar.bz2  && \
+#    conda install --offline /tmp/rdkit-*.tar.bz2 && \
+#    conda clean -pt
+
 RUN /bin/bash -c "source activate chembience" && \
-    conda install --offline /tmp/boost-*.tar.bz2  && \
-    conda install --offline /tmp/cairo-*.tar.bz2 && \
-    conda install --offline /tmp/cairocffi-*.tar.bz2 && \
-    conda install --offline /tmp/eigen-*.tar.bz2  && \
-    conda install --offline /tmp/nox-*.tar.bz2  && \
-    conda install --offline /tmp/rdkit-*.tar.bz2 && \
+    #conda install --offline /tmp/boost-*.tar.bz2  && \
+    conda install cairo && \
+    conda install cairocffi && \
+    #conda install --offline /tmp/eigen-*.tar.bz2  && \
+    #conda install --offline /tmp/nox-*.tar.bz2  && \
+    conda install rdkit && \
     conda clean -pt
 
 RUN mkdir -p /opt/rdkit
