@@ -16,7 +16,7 @@ RUN apt-get -y --no-install-recommends install \
     libfreetype6 \
     && rm -rf /var/lib/apt/lists/*
 
-COPY --from=rdkit-build /opt/conda/conda-bld/linux-64/*.tar.bz2 /tmp/
+#COPY --from=rdkit-build /opt/conda/conda-bld/linux-64/*.tar.bz2 /tmp/
 
 #RUN /bin/bash -c "source activate chembience" && \
 #    conda install --offline /tmp/boost-*.tar.bz2  && \
