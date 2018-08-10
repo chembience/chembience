@@ -16,21 +16,6 @@ jobs:
             ./docker/rm-all-images || true
             ./env-prepare
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-#  rdkit-conda-compile:
-#    machine:
-#      image: circleci/classic:201711-01
-#      docker_layer_caching: true
-#    steps:
-#      - checkout
-#      - run:
-#          name: Compile Conda RDKit
-#          working_directory: .
-#          command: |
-#            ./env-prepare
-#            docker login -u $DOCKER_USER -p $DOCKER_PASS
-#            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures rdkit-conda-compile
-#            docker-compose -f ./context/base/docker-compose.build.yml build rdkit-conda-compile
-#            docker-compose -f ./context/base/docker-compose.build.yml push rdkit-conda-compile
   rdkit-postgres-compile:
     machine:
       image: circleci/classic:201711-01
@@ -253,13 +238,6 @@ workflows:
   chembience-compile-build:
     jobs:
       - prepare
-#      - rdkit-conda-compile:
-#          requires:
-#            - prepare
-#          filters:
-#            branches:
-#              only:
-#                - compile
       - rdkit-postgres-compile:
           requires:
             - prepare
@@ -280,7 +258,6 @@ workflows:
       - rdkit-base:
           requires:
             - prepare
- #           - rdkit-conda-compile
             - python-base
       - django-base:
           requires:

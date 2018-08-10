@@ -11,8 +11,8 @@ services:
       - CHEMBIENCE_GID
 
 
-  python_base:
-    image: chembience/python_base:${CHEMBIENCE_BUILD_LABEL}
+  python-base:
+    image: chembience/python-base:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: python/
       args:
@@ -21,47 +21,38 @@ services:
       - base
 
 
-  rdkit_base:
-    image: chembience/rdkit_base:${CHEMBIENCE_BUILD_LABEL}
+  rdkit-base:
+    image: chembience/rdkit-base:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: rdkit/
       args:
         build_label: ${CHEMBIENCE_BUILD_LABEL}
     depends_on:
-      - python_base
-#      - rdkit-conda-compile
+      - python-base
 
 
-  django_base:
-    image: chembience/django_base:${CHEMBIENCE_BUILD_LABEL}
+  django-base:
+    image: chembience/django-base:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: django/
       args:
         build_label: ${CHEMBIENCE_BUILD_LABEL}
     depends_on:
-      - rdkit_base
+      - rdkit-base
 
 
-  jupyter_base:
-    image: chembience/jupyter_base:${CHEMBIENCE_BUILD_LABEL}
+  jupyter-base:
+    image: chembience/jupyter-base:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: jupyter/
       args:
         build_label: ${CHEMBIENCE_BUILD_LABEL}
     depends_on:
-      - rdkit_base
-
-
-#  rdkit-conda-compile:
-#    image: chembience/rdkit_conda_compile:${CHEMBIENCE_BUILD_LABEL}
-#    build:
-#      context: rdkit-conda-compile/
-#      args:
-#        build_label: ${CHEMBIENCE_BUILD_LABEL}
+      - rdkit-base
 
 
   rdkit-postgres-compile:
-    image: chembience/rdkit_postgres_compile:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/rdkit-postgres-compile:${CHEMBIENCE_BUILD_LABEL}
     build:
       context: rdkit-postgres-compile/
       args:
