@@ -103,7 +103,7 @@ jobs:
           command: |
             ./env-prepare
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures jupyter_base
+            docker-compose -f ./context/base/docker-compose.build.yml pull --ignore-pull-failures jupyter-base
             docker-compose -f ./context/base/docker-compose.build.yml build jupyter-base
             docker-compose -f ./context/base/docker-compose.build.yml push jupyter-base
   proxy:
