@@ -7,12 +7,11 @@ tmp/*
 /media
 context/app/.env
 context/base/.env
-context/base/base/chembience/bin/.env
+context/base/sphere/app-context/.env
 context/base/django/.env
 context/base/django/app-context/.env
 context/base/jupyter/.env
 context/base/jupyter/app-context/.env
-context/base/rdkit-conda-compile/.env
 context/base/rdkit-postgres-compile/.env
 context/base/rdkit/.env
 context/base/rdkit/app-context/.env

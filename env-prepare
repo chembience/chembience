@@ -11,7 +11,7 @@ sed -i -e "s/@CHEMBIENCE_GID/${CGID}/g" .env
 
 cp .env ./context/base
 cp .env ./context/app
-cp .env ./context/base/base/chembience/bin
+cp .env ./context/base/sphere/app-context
 cp .env ./context/base/django
 cp .env ./context/base/django/app-context
 cp .env ./context/base/rdkit
