@@ -4,9 +4,9 @@ services:
 
   shell:
     image: chembience/shell:${CHEMBIENCE_BUILD_LABEL}
-    container_name: chembience_shell
+    container_name: chembience-shell
     volumes:
-      - "${CHEMBIENCE_SPHERE}:/home/sphere"
+      - ${CHEMBIENCE_SPHERE}:/home/sphere
     networks:
       - sphere
     environment:

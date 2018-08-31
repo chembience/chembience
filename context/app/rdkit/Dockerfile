@@ -1,5 +1,5 @@
 ARG build_label
-FROM chembience/rdkit_base:$build_label
+FROM chembience/rdkit-base:$build_label
 LABEL maintainer="markus.sitzmann@gmail.com "
 
 WORKDIR /home/app

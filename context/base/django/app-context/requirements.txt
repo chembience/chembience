@@ -1,4 +1,3 @@
 django
 djangorestframework
 django-extensions
-django-finalware

@@ -3,10 +3,10 @@ version: '3'
 services:
 
   jupyter:
-    image: chembience/jupyter_base:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/jupyter-base:${CHEMBIENCE_BUILD_LABEL}
     volumes:
-      - "${CHEMBIENCE_SPHERE}:/home/sphere"
-      - "${JUPYTER_APP_HOME}:/home/app"
+      - ${CHEMBIENCE_SPHERE}:/home/sphere
+      - ${JUPYTER_APP_HOME}:/home/app
     environment:
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID

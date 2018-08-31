@@ -1,5 +1,5 @@
 ARG build_label
-FROM chembience/django_base:$build_label
+FROM chembience/django-base:$build_label
 LABEL maintainer="markus.sitzmann@gmail.com "
 
 ENV PATH /opt/conda/bin:$PATH

@@ -4,11 +4,11 @@ services:
 
   app:
     image: chembience/rdkit:${CHEMBIENCE_BUILD_LABEL}
-    container_name: chembience_rdkit
+    container_name: chembience-rdkit
     volumes:
-      - "${RDKIT_APP_HOME}:/home/app"
-      - "${CHEMBIENCE_SPHERE}:/home/sphere"
-      - "${CHEMBIENCE_SHARE}:/share"
+      - ${RDKIT_APP_HOME}:/home/app
+      - ${CHEMBIENCE_SPHERE}:/home/sphere
+      - ${CHEMBIENCE_SHARE}:/share
     networks:
       - sphere
     environment:
@@ -26,7 +26,7 @@ services:
 
   db:
     image: chembience/db:${CHEMBIENCE_BUILD_LABEL}
-    container_name: chembience_db
+    container_name: chembience-db
     volumes:
       - db_volume:/var/lib/postgresql
     networks:

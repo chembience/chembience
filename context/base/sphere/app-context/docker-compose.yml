@@ -1,0 +1,73 @@
+version: '3'
+
+services:
+
+  proxy:
+    image: chembience/proxy:${CHEMBIENCE_BUILD_LABEL}
+    container_name: chembience-proxy
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ${CHEMBIENCE_SPHERE}:/home/sphere
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/conf.d:/etc/nginx/conf.d
+      - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/vhost.d:/etc/nginx/vhost.d
+      - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/html:/usr/share/nginx/html
+      - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/certs:/etc/nginx/certs:ro
+      - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/htpasswd:/etc/nginx/htpasswd:ro
+    networks:
+      - sphere
+    labels:
+      - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
+
+  lets-encrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion:stable
+    container_name: chembience-lets-encrypt
+    restart: unless-stopped
+    depends_on:
+      - proxy
+    volumes:
+      - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/conf.d:/etc/nginx/conf.d
+      - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/vhost.d:/etc/nginx/vhost.d
+      - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/html:/usr/share/nginx/html
+      - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/certs:/etc/nginx/certs:rw
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    logging:
+      options:
+        max-size: ${NGINX_LETSENCRYPT_LOG_MAX_SIZE:-2m}
+        max-file: ${NGINX_LETSENCRYPT_LOG_MAX_FILE:-10}
+#    environment:
+#     - "ACME_CA_URI=https://acme-staging.api.letsencrypt.org/directory"
+#     - "DEBUG=true"
+
+  db:
+    image: chembience/db:${CHEMBIENCE_BUILD_LABEL}
+    container_name: chembience-db
+    volumes:
+      - db_volume:/var/lib/postgresql
+    networks:
+      - sphere
+    environment:
+      - DEBUG=false
+      - CHEMBIENCE_UID
+      - CHEMBIENCE_GID
+      - DB_USER=${CHEMBIENCE_DB_USER}
+      - DB_PASS=${CHEMBIENCE_DB_PASSWORD}
+      - DB_NAME=${CHEMBIENCE_DB_USER}
+      - DB_TEMPLATE=
+      - DB_EXTENSION=rdkit
+      - REPLICATION_MODE=
+      - REPLICATION_USER=
+      - REPLICATION_PASS=
+      - REPLICATION_SSLMODE=
+
+volumes:
+  db_volume:
+
+networks:
+  sphere:
+
+
+
