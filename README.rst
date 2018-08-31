@@ -46,39 +46,42 @@ container or the Nginx-based *Proxy* container are brought up together at once. 
 a different set of the available Chembience container components can be easily configured and put together by means
 of the docker-compose configuration file.
 
-If the Chembience *Proxy* is being used, it acts as a reverse proxy which allows for spinning up additional *App*
-containers, or updating and removing existing ones while avoiding interference with web traffic to other running
-Chembience containers and services. The *Proxy* works in a way that it automatically discovers any existing or newly
-starting *App* container inside the *Chembience Sphere* virtual network and looks up their (sub) domain
-specification. It then makes the *App* containers accessible to the outside of the *Chembience Sphere* network
-under their specified domain names which might include any Web-accessible domain or are
-restricted to sub domains at localhost for locally running Web applications.
+Another component of Chembience is the Chembience *Proxy* which is a fork of the
+`jwilder/nginx-proxy project<https://github.com/jwilder/nginx-proxy>`_. The *Proxy* acts as a reverse proxy in front of
+all *App* containers and allows for spinning up additional container instance, or updating and removing existing ones
+while avoiding interference with web traffic to other running Chembience containers and services. The *Proxy* works in
+a way that it automatically discoversany existing or newly starting *App* container inside the *Chembience Sphere*
+virtual network and looks up their (sub) domain specification. It then makes the *App* containers accessible to the
+outside of the *Chembience Sphere* network under their specified domain names which might include any Web-accessible
+domain or are restricted to sub domains at localhost for locally running Web applications. The Chembience *Proxy*
 
 Any of the *Chembience App* containers can be easily added, cloned, removed or reconfigured. After initialization of
 the Chembience base system (see `Quick Start: Base Installation`_ below), any of the *App* directories initially created
-during first start-up can be moved, renamed, or copied to create multiple, independent and specialized application
-containers, which can be tracked separately as software projects on their own in separate VCS repositories. If further
-infrastructure containers are needed for a project (e.g. Solr, elasticsearch, or additional Postgres container
-instances), they can be easily integrated, too.
+as a prototype instance during first start-up can be moved, renamed, or copied to create multiple, independent and
+specialized application containers, which can be tracked separately as software projects on their own in separate VCS
+repositories. If further infrastructure containers are needed for a project (e.g. Solr, elasticsearch, or additional
+Postgres container instances), they can be easily integrated, too.
 
 Current release version of the most important packages are:
 
+* RDKit 2018.03.4
 * Python 3.6.5
-* Django 2.0 + Django Rest Framework 3.8.2
-* RDKit 2018.03.2
+* Django 2.1 + Django Rest Framework 3.8.2
 * Jupyter 5.5.0
-* Postgres 10.4
+* Postgres 10.5
+* Nginx 1.14 (Reverse Proxy)
 
 History
 -------
 
-The development of Chembience originally started as a component for the `InChI-Resolver <http://www.inchi-resolver.org/>`_
+The development of Chembience originally started as a component for the `InChI-Resolver <https://www.inchi-resolver.org/>`_
 project (the alpha version of the InChI resolver is currently in the process of being migrated from a predecessor version
 of Chembience to the current version provided here).
 
 Releases
 --------
 
+- 0.2.3 (August 2018), update to RDKit 2018.03.4, Postgres 10.5, Django 2.1 and Nginx 1.14, further project clean-up
 - 0.2.2 (July 2018), CircleCi builds, automated UID and GID configuration, clean up & bug fixes
 - 0.2.1 (June 2018), update to RDKit 2018.03.2, switch to Postgres 10.4
 - 0.2.0 (May 2018), switch to RDKit 2018.03, addition of Jupyter *App* container, project clean-up
@@ -304,8 +307,7 @@ It will keep anything persistent you have created and stored so far in the datab
 all life-circle commands should work as expected, in fact, ``up`` and  ``down`` are just short cuts for their respective
 ``docker-compose`` commands.
 
-[... more to come ...]
 
 For any bug reports, comments or suggestion please use the tools here at Github or contact me at my email.
 
-Markus Sitzmann, 2018-05-14
+Markus Sitzmann, 2018-08-31
