@@ -47,7 +47,7 @@ a different set of the available Chembience container components can be easily c
 of the docker-compose configuration file.
 
 Another component of Chembience is the Chembience *Proxy* which is a fork of the
-`jwilder/nginx-proxy project<https://github.com/jwilder/nginx-proxy>`_. The *Proxy* acts as a reverse proxy in front of
+`jwilder/nginx-proxy project <https://github.com/jwilder/nginx-proxy>`_. The *Proxy* acts as a reverse proxy in front of
 all *App* containers and allows for spinning up additional container instance, or updating and removing existing ones
 while avoiding interference with web traffic to other running Chembience containers and services. The *Proxy* works in
 a way that it automatically discoversany existing or newly starting *App* container inside the *Chembience Sphere*
