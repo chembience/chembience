@@ -6,9 +6,9 @@ services:
     image: chembience/rdkit:${CHEMBIENCE_BUILD_LABEL}
     container_name: chembience-rdkit
     volumes:
-      - "${RDKIT_APP_HOME}:/home/app"
-      - "${CHEMBIENCE_SPHERE}:/home/sphere"
-      - "${CHEMBIENCE_SHARE}:/share"
+      - ${RDKIT_APP_HOME}:/home/app
+      - ${CHEMBIENCE_SPHERE}:/home/sphere
+      - ${CHEMBIENCE_SHARE}:/share
     networks:
       - sphere
     environment:

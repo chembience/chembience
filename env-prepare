@@ -18,5 +18,4 @@ cp .env ./context/base/rdkit
 cp .env ./context/base/rdkit/app-context
 cp .env ./context/base/jupyter
 cp .env ./context/base/jupyter/app-context
-cp .env ./context/base/rdkit-conda-compile
 cp .env ./context/base/rdkit-postgres-compile

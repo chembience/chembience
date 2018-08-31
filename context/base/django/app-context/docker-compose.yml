@@ -6,11 +6,11 @@ services:
     image: chembience/django:${CHEMBIENCE_BUILD_LABEL}
     container_name: chembience-django
     volumes:
-      - "${DJANGO_APP_HOME}:/home/app"
-      - "${CHEMBIENCE_SPHERE}:/home/sphere"
-      - "${CHEMBIENCE_SHARE}:/share"
+      - ${DJANGO_APP_HOME}:/home/app
+      - ${CHEMBIENCE_SPHERE}:/home/sphere
+      - ${CHEMBIENCE_SHARE}:/share
     ports:
-       - "${DJANGO_APP_CONNECTION_PORT}:80"
+       - ${DJANGO_APP_CONNECTION_PORT}:80
     networks:
       - sphere
     environment:
@@ -33,9 +33,9 @@ services:
     container_name: chembience-proxy
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - "${CHEMBIENCE_SPHERE}:/home/sphere"
+      - ${CHEMBIENCE_SPHERE}:/home/sphere
     ports:
-      - "${PROXY_EXTERNAL_PORT}:80"
+      - ${PROXY_EXTERNAL_PORT}:80
     networks:
       - sphere
 

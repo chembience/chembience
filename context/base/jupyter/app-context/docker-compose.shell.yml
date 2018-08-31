@@ -6,7 +6,7 @@ services:
     image: chembience/shell:${CHEMBIENCE_BUILD_LABEL}
     container_name: chembience-shell
     volumes:
-      - "${CHEMBIENCE_SPHERE}:/home/chembience"
+      - ${CHEMBIENCE_SPHERE}:/home/chembience
     networks:
       - sphere
     environment:
