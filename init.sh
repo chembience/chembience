@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./env-prepare
+env-prepare.sh
 
 source .env
 

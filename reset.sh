@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-
 source .env
 
 docker-compose -f $DJANGO_APP_HOME/docker-compose.yml down
