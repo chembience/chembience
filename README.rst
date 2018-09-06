@@ -7,7 +7,11 @@ Chembience
 .. image:: https://zenodo.org/badge/124780116.svg
    :target: https://zenodo.org/badge/latestdoi/124780116
 
+.. image:: https://img.shields.io/github/release/chembience/chembience.svg
+   :target: https://img.shields.io/github/release/chembience/chembience.svg
 
+.. image:: https://img.shields.io/github/license/chembience/chembience.svg
+   :target: https://img.shields.io/github/license/chembience/chembience.svg
 
 Overview
 --------
