@@ -10,7 +10,7 @@ sed -i -e "s/@CHEMBIENCE_UID/${CUID}/g" .env
 sed -i -e "s/@CHEMBIENCE_GID/${CGID}/g" .env
 
 cp .env ./context/build
-cp .env ./context/build/sphere/app-context
+cp .env ./context/build/base/app-context
 cp .env ./context/build/django
 cp .env ./context/build/django/app-context
 cp .env ./context/build/rdkit

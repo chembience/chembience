@@ -5,7 +5,7 @@ services:
   base:
     image: chembience/base:${CHEMBIENCE_BUILD_LABEL}
     build:
-      context: sphere/
+      context: base/
     environment:
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
