@@ -38,8 +38,8 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ${CHEMBIENCE_SPHERE}:/home/sphere
     ports:
-      - ${PROXY_EXTERNAL_PORT:-80}:80
-    # - ${PROXY_EXTERNAL_SSL_PORT:-443}:443
+      - ${CHEMBIENCE_PROXY_EXTERNAL_PORT:-80}:80
+    # - ${CHEMBIENCE_PROXY_EXTERNAL_SSL_PORT:-443}:443
     networks:
       - sphere
 
