@@ -17,8 +17,9 @@ if [ -z "$(ls -A /home/sphere)" ];  then
     echo "Initialization of Chembience sphere directory ..."
     mkdir -p /home/sphere
     chown -R $CHEMBIENCE_UID:$CHEMBIENCE_GID /home/sphere
-    cp /opt/sphere/app-context/* /home/sphere
+    cp -r /opt/sphere/app-context/* /home/sphere
     cp /opt/sphere/env /home/sphere/.env
+    mv /home/sphere/circleci /home/sphere/.circleci
     chown -R $CHEMBIENCE_UID:$CHEMBIENCE_GID /home/sphere
     echo "Done."
 else

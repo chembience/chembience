@@ -16,11 +16,11 @@ fi
 if [ -z "$(ls -A /home/app)" ]; then
     echo "Initializing home directory for django app ..."
     cp -rf /opt/django/* /home/app/
-    #mv /home/app/project_template/appsite /home/app/appsite
     mv /home/app/app-context/* /home/app/
     mv /home/app/project-template/appsite/ /home/app/appsite
     mv /home/app/env /home/app/.env
-    rm -rf /home/app/docker-compose.init.yml /home/app/project_template /home/app/app-context
+    mv /home/app/circleci /home/app/.circleci
+    rm -rf /home/app/docker-compose.init.yml /home/app/project-template /home/app/app-context
     chown -R $CHEMBIENCE_UID:$CHEMBIENCE_GID /home/app
     echo "Done."
 else
