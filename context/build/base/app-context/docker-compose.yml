@@ -42,7 +42,7 @@ services:
     logging:
       options:
         max-size: ${CHEMBIENCE_PROXY_NGINX_LOG_MAX_SIZE:-2m}
-        max-file: ${CHEMBIENCE_PROXY_NGINX_LOG_MAX_SIZE:-10}
+        max-file: ${CHEMBIENCE_PROXY_NGINX_LOG_MAX_FILE:-10}
 #    environment:
 #     - "ACME_CA_URI=https://acme-staging.api.letsencrypt.org/directory"
 #     - "DEBUG=true"

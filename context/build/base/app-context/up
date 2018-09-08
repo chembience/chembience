@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+if [ $# -eq 0 ]
+  then
+    docker-compose up &
+  else
+    docker-compose up $1 &
+fi
+

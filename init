@@ -15,7 +15,8 @@ docker-compose -f ./context/build/django/docker-compose.init.yml run --rm django
 docker-compose -f ./context/build/rdkit/docker-compose.init.yml run --rm rdkit
 docker-compose -f ./context/build/jupyter/docker-compose.init.yml run --rm jupyter
 
-cp .env $CHEMBIENCE_SHARE \
+cp .env $CHEMBIENCE_SPHERE \
+&& cp .env $CHEMBIENCE_SHARE \
 && cp .env $DJANGO_APP_HOME \
 && cp .env $RDKIT_APP_HOME \
 && cp .env $JUPYTER_APP_HOME
