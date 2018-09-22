@@ -9,8 +9,6 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
     supervisor \
     && rm -rf /var/lib/apt/lists/*
 
-COPY ./nginx /home/nginx/
-
 RUN chown -R www-data.www-data /home/nginx && \
     echo "daemon off;" >> /etc/nginx/nginx.conf && \
     rm /etc/nginx/sites-enabled/default && \

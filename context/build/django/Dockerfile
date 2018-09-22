@@ -4,10 +4,11 @@ LABEL maintainer="markus.sitzmann@gmail.com"
 
 ENV PATH /opt/conda/bin:$PATH
 
-RUN mkdir -p /opt/django
+RUN mkdir -p /opt/django /home/nginx
 
 COPY ./.env /opt/django/env
 COPY . /opt/django
+COPY ./app-context/nginx /home/nginx
 
 COPY docker-entrypoint.sh /
 COPY requirements.txt /

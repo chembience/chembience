@@ -4,10 +4,11 @@ LABEL maintainer="markus.sitzmann@gmail.com "
 
 ENV PATH /opt/conda/bin:$PATH
 
-RUN mkdir -p /opt/jupyter
+RUN mkdir -p /opt/jupyter /home/nginx
 
 COPY ./.env /opt/jupyter/env
 COPY . /opt/jupyter
+COPY ./app-context/nginx /home/nginx
 
 COPY docker-entrypoint.sh /
 COPY requirements.txt /
