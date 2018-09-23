@@ -47,26 +47,6 @@ services:
 #     - "ACME_CA_URI=https://acme-staging.api.letsencrypt.org/directory"
 #     - "DEBUG=true"
 
-  db:
-    image: chembience/db:${CHEMBIENCE_BUILD_LABEL}
-    container_name: chembience-db
-    volumes:
-      - db_volume:/var/lib/postgresql
-    networks:
-      - sphere
-    environment:
-      - DEBUG=false
-      - CHEMBIENCE_UID
-      - CHEMBIENCE_GID
-      - DB_USER=${CHEMBIENCE_DB_USER}
-      - DB_PASS=${CHEMBIENCE_DB_PASSWORD}
-      - DB_NAME=${CHEMBIENCE_DB_USER}
-      - DB_TEMPLATE=
-      - DB_EXTENSION=rdkit
-      - REPLICATION_MODE=
-      - REPLICATION_USER=
-      - REPLICATION_PASS=
-      - REPLICATION_SSLMODE=
 
 volumes:
   db_volume:
