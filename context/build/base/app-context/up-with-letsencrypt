@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+if [ $# -eq 0 ]
+  then
+    docker-compose -f ./docker-compose.letsencrypt.yml up &
+  else
+    docker-compose -f ./docker-compose.letsencrypt.yml up $1 &
+fi
+
