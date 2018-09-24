@@ -23,30 +23,7 @@ services:
         max-file: ${CHEMBIENCE_PROXY_NGINX_LOG_MAX_FILE:-10}
     networks:
       - sphere
-    labels:
-      - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
-
-
-#  lets-encrypt:
-#    image: jrcs/letsencrypt-nginx-proxy-companion:stable
-#    container_name: chembience-lets-encrypt
-#    restart: unless-stopped
-#    depends_on:
-#      - proxy
-#    volumes:
-#      - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/conf.d:/etc/nginx/conf.d
-#      - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/vhost.d:/etc/nginx/vhost.d
-#      - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/html:/usr/share/nginx/html
-#      - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/certs:/etc/nginx/certs:rw
-#      - /var/run/docker.sock:/var/run/docker.sock:ro
-#    logging:
-#      options:
-#        max-size: ${CHEMBIENCE_PROXY_NGINX_LOG_MAX_SIZE:-2m}
-#        max-file: ${CHEMBIENCE_PROXY_NGINX_LOG_MAX_FILE:-10}
-#    #environment:
-#    # - "ACME_CA_URI=https://acme-staging.api.letsencrypt.org/directory"
-#    # - "DEBUG=true"
-
+    
 networks:
   sphere:
 
