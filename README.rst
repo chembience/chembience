@@ -33,14 +33,14 @@ notebooks locally on a Web browser (currently only a Python kernel is supported)
 All prototype *Apps* have pre-configured access to a `Postgres <https://www.postgresql.org/>`_ databases
 system running in a separate Docker container (*Database*) on the same Docker virtual network (*Chembience Sphere*).
 Any of the *App* Docker images and the Postgres database image have the `RDKit <http://www.rdkit.org/>`_  toolkit integrated
- either as Python module or Postgres extension. Additionally, both the Django and the Jupyter *App* packages
+either as Python module or Postgres extension. Additionally, both the Django and the Jupyter *App* packages
 provide a `Nginx <https://www.nginx.com>`_-based web server instance as component of their Docker image.
 
 Creation and deployment of all Chembience-based Docker images and containers is orchestrated by
 `docker-compose <https://docs.docker.com/compose/>`_. All Docker images required for starting up any of the Chembience
 *App* packages are continuously built and tested at `CircleCi.com <https://circleci.com>`_ and made available
 from the `Chembience Docker hub repository <https://hub.docker.com/u/chembience/>`_). Alternatively, the Docker images
-can also be built locally on the user's host machine by using the proviced build script.
+can also be built locally on the user's host machine by using the provided build script.
 
 If a Chembience-based application is started, a Docker virtual network (*Chembience Sphere*) is created on the Docker
 host system, as well as the requested *App* and infrastructure containers, e.g. the *Database* container,
@@ -363,13 +363,13 @@ and the command::
     ./up-with-letsencryt
 
  The *Proxy* will connect to port 80 and 443 of the host system. If these ports aren't available, set variable
-``CHEMBIENCE_PROXY_EXTERNAL_PORT`` and ``CHEMBIENCE_PROXY_EXTERNAL_SSL_PORT`` of the ``.env``file of the current directory
+``CHEMBIENCE_PROXY_EXTERNAL_PORT`` and ``CHEMBIENCE_PROXY_EXTERNAL_SSL_PORT`` of the ``.env`` file of the current directory
 before using ``./up-with-letsencrypt``.
 
 Additionally, before any Django *App* is brought up, set both the variable ``DJANGO_APP_VIRTUAL_HOSTNAME`` and ``LETSENCRYPT_HOST``
 in the ``.env`` file of the Django app hto your URL-domain, e.g. "www.example.com". Also, specify variable
 ``LETSENCRYPT_EMAIL`` there. For a test run, keep variable ``LETSENCRYPT_TEST`` to ``true`` and check with ``docker-compose logs``
-in directory ``~/chembient/sphere`` for error messages. For the final registration run set `LETSENCRYPT_TEST`` to ``false``.
+in directory ``~/chembient/sphere`` for error messages. For the final registration run set ``LETSENCRYPT_TEST`` to ``false``.
 Also consult `this page <https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion>`_ for further advice (the
 package described there is used for Chembience SSL support, however, for an initial set-up of Chembience no further
 configuration is required)
