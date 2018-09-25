@@ -16,53 +16,52 @@ Chembience
 Overview
 --------
 
-**Chembience** is a `Docker <https://docs.docker.com/>`_ based platform intended for the fast development of
+**Chembience** is a `Docker <https://docs.docker.com/>`_ based platform supporting the fast development of
 `chemoinformatics <https://en.wikipedia.org/wiki/Cheminformatics>`_-centric web applications and microservices.
-It supports a clean separation of your scientific web service implementation work from any infrastructure-related
-configuration requirements. The following schema provides an overview.
+It creates a clean separation between your scientific web service implementation and any host-specific or
+infrastructure-related configuration requirements. The following schema provides an overview.
 
 .. image:: docs/_images/chembience.png
 
 At its current development stage, Chembience provides three base types of prototype application (*App*) packages: (1) a
 `Django <https://www.djangoproject.com/>`_/`Django REST framework <https://www.django-rest-framework.org/>`_-based
 *App* which is specifically suited for the development of web-based `Python <https://www.python.org/>`_
-(REST) services, (2) a RDKit/Python shell-based *App* which allows for the execution of Python scripts (including RDKit,
-see below), and (3), a `Jupyter <https://www.jupyter.org/>`_-based *App* which let you run Jupyter
+REST and microservices, (2) a RDKit/Python shell-based *App* which allows for the execution of Python scripts (including
+RDKit, see below), and (3), a `Jupyter <https://www.jupyter.org/>`_-based *App* which let you run Jupyter
 notebooks locally on a Web browser (currently only a Python kernel is supported).
 
 All prototype *Apps* have pre-configured access to a `Postgres <https://www.postgresql.org/>`_ databases
 system running in a separate Docker container (*Database*) on the same Docker virtual network (*Chembience Sphere*).
-Any of the *App* Docker images and the Postgres database image have the `RDKit <http://www.rdkit.org/>`_  toolkit readily
-installed (either as Python module or Postgres extension). Additionally, both the Django and the Jupyter *App* packages
+Any of the *App* Docker images and the Postgres database image have the `RDKit <http://www.rdkit.org/>`_  toolkit integrated
+ either as Python module or Postgres extension. Additionally, both the Django and the Jupyter *App* packages
 provide a `Nginx <https://www.nginx.com>`_-based web server instance as component of their Docker image.
 
 Creation and deployment of all Chembience-based Docker images and containers is orchestrated by
 `docker-compose <https://docs.docker.com/compose/>`_. All Docker images required for starting up any of the Chembience
 *App* packages are continuously built and tested at `CircleCi.com <https://circleci.com>`_ and made available
 from the `Chembience Docker hub repository <https://hub.docker.com/u/chembience/>`_). Alternatively, the Docker images
-can also be built locally on the user's host machine by using the build script provided in root directory of this Github
-repository.
+can also be built locally on the user's host machine by using the proviced build script.
 
 If a Chembience-based application is started, a Docker virtual network (*Chembience Sphere*) is created on the Docker
 host system, as well as the requested *App* and infrastructure containers, e.g. the *Database* container,
 are brought up together at once. Depending on the current use case, a different set of the available Chembience
-container components can be easily configured and put together by means of the docker-compose configuration file.
+container components can be easily configured and put together by adjusting the docker-compose configuration file.
 
-Another component of Chembience is the Chembience *Proxy* which has bben created as a fork of the
+Another component of Chembience is the Chembience *Proxy* which has been created as a fork of the
 `jwilder/nginx-proxy project <https://github.com/jwilder/nginx-proxy>`_. The *Proxy* acts as a reverse proxy in front of
 all *App* containers and allows for spinning up additional container instance, or updating and removing existing ones
-while avoiding interference with web traffic to other running Chembience containers and services. The *Proxy* works in
+while avoiding interference with web traffic to other running Chembience-based services and containers. The *Proxy* works in
 a way that it automatically discovers any existing or newly starting *App* container inside the *Chembience Sphere*
 virtual network and looks up their (sub) domain specification. It then makes the *App* containers accessible to the
-outside of the *Chembience Sphere* network under their specified domain names which might include a DNS-registered
+outside of the *Chembience Sphere* network under their specified domain names which might be either a DNS-registered
 Web domain, or any sub domain at localhost for locally running Web applications.
 
 All of the Chembience *App* packages can be easily altered, cloned, removed, or reconfigured. After the initialization of
 the Chembience base system (see `Quick Start: Base Installation`_ below), the initially created *App* package directories
 can be moved, renamed, or copied, in order to create multiple, specialized application packages, which then can be
-tracked as separate software projects of their own. If additional infrastructure packages are needed
-for a project (e.g. Solr, elasticsearch, or additional Postgres container instances), they can be easily configured
-as additional components as part of docker-compose configuration, too.
+handled as software projects of their own. If additional infrastructure packages are needed
+for a project (e.g. Solr, elasticsearch, or additional Postgres container instances), they can be easily integrated
+as additional components as part of docker-compose configuration.
 
 Current release version of the most important packages are:
 
@@ -76,13 +75,14 @@ Current release version of the most important packages are:
 History
 -------
 
-The development of Chembience originally started as a component for the `InChI-Resolver <https://www.inchi-resolver.org/>`_
+The development of Chembience originally started as a component of the `InChI-Resolver <https://www.inchi-resolver.org/>`_
 project (the alpha version of the InChI resolver is currently in the process of being migrated from a predecessor version
 of Chembience to the current version provided here).
 
 Releases
 --------
 
+- 0.2.4 (September 2018), SSL certificate registration with `Let's Encrypt <https://letsencrypt.org/>`_, project improvements
 - 0.2.3 (August 2018), update to RDKit 2018.03.4, Postgres 10.5, Django 2.1 and Nginx 1.14, further project clean-up
 - 0.2.2 (July 2018), CircleCi builds, automated UID and GID configuration, clean up & bug fixes
 - 0.2.1 (June 2018), update to RDKit 2018.03.2, switch to Postgres 10.4
@@ -158,12 +158,12 @@ which has the following layout ::
 For this quick start section, only the most important of these files will be discussed. The command ``./up`` will start
 up the Django *App* container and the *Database* container (the initial configuration of the containers is provided in
 the ``.env`` file and the ``docker-compose.yml`` file, **NOTE**: the Django *App* container connects to
-port 8000 of the host system, if this port is already in use, it can by reconfigured in ``.env``). If everything went
-fine, you should now be able to go to ::
+port 8000 of the host system, if this port is already in use, it can by reconfigured in ``.env``, see variable
+``DJANGO_APP_CONNECTION_PORT``). If everything went fine, you should now be able to go to ::
 
     http://localhost:8000      (you should see the welcome page of a bare Django installation)
 
-For the initial setup of Django, still a few steps have to be done. Since Django runs inside a Docker container you can
+For the initial setup of Django, still a few steps needs to be done. Since Django runs inside a Docker container you can
 not directly access Django's ``manage.py`` script to set up things. Instead you have to use the ``django-manage-py``
 script provided in the current directory which passes any arguments to the ``manage.py`` script of the Django instance
 running inside the Django *App* container.
@@ -183,21 +183,22 @@ and login into the Django admin application with the just set up account and pas
 
 If you want to start the development of own Django apps, go into the ``appsite`` directory. If you already know how to develop
 with Django, this should look familiar to you. If not, go to the `official Django tutorial <https://docs.djangoproject.com/en/2.0/intro/tutorial01/>`_
-as a starting point (you can jump there to section *Creating the Polls app* because anything before is already done, also any
+as a starting point (you can jump there to section *Creating the Polls app* because anything before this step is already done, also any
 database setup sections can be skipped). Because the ``appsite`` directory is bind-mounted by Docker into the Django *App* container,
 anything you change there is immediately represented inside the container and the web service you are working on
-(for some changes in ``appsite/appsite`` and settings.py a container restart might be necessary).
+(for some changes in ``appsite/appsite`` and settings.py a container restart might be necessary, using  ``./down`` and
+ ``./up``).
 
 In order to bring the whole Chembience stack of Django *App* and *Database* down again, use the ``down`` script::
 
     ./down
 
-It will keep anything persistent you have created and stored so far in the database. If you are familiar with ``docker-compose``,
+Anything you have created and stored so far in the database has been persisted. If you are familiar with ``docker-compose``,
 all life-circle commands should work as expected, in fact, ``up`` and  ``down`` are just short cuts for their respective
 ``docker-compose`` commands.
 
 Starting with Chembience version 0.2.4, the Chembience *Proxy* container has to be started separately (see below).
-This isn't required if only a local development instance of the Chembience Django *App* is supposed to be run.
+However, this isn't required for the purpose of a locally running development instance of the Chembience Django *App*.
 
 Quick Start: RDKit App Container
 --------------------------------
@@ -221,7 +222,7 @@ You will see the following layout::
    up
 
 For this quick start section, only the most important of these files will be discussed. The ``./up`` command will start
-up the database and the *App* container running just a regular python shell. For connecting to the database, do the
+up the database and the *App* container executing a regular python shell interactively. For connecting to the database, do the
 following (if you use an unchanged Chembience configuration, use the shown database connection parameters verbatim,
 they are not just placeholders):
 
@@ -276,9 +277,9 @@ which has the following layout ::
 
 For this quick start section, only the most important of these files will be discussed. The command ``./up`` will start
 up the Jupyter *App* container and the *Database* container (the initial configuration of the containers is provided in
-the ``.env`` file and the ``docker-compose.yml`` file, ***NOTE**: the Jupyter *App* container connect to 8001 of the
-host system, respectively, if this port is already in use, it can by reconfigured in ``.env``). If everything went fine,
-you should now be able to go to ::
+the ``.env`` file and the ``docker-compose.yml`` file, ***NOTE**: the Jupyter *App* container connect to port 8001 of the
+host system, respectively, if this port is already in use, it can by reconfigured in ``.env``, , see variable
+``JUPYTER_APP_CONNECTION_PORT``). If everything went fine, you should now be able to go to ::
 
     http://localhost:8001       (you should see the login page of the Jupyter notebook server)
 
@@ -311,16 +312,70 @@ of the Jupyter *App* (or Jupyter notebook in general).
 Quick Start: Proxy
 ------------------
 
-If everything went
-fine, you should now be able to go to ::
+Beginning with Chembience version 0.2.4, the *Proxy* container isn't started as part of the Django and Jupyter *App*
+package anymore. Instead, it has to be started separately. If Chembience is used in default configuration, go into
+directory ::
+
+    cd ~/chembient/sphere
+
+and use the ``up`` script there ::
+
+    ./up
+
+This will make the *Proxy* available at ::
 
     http://localhost        (don't worry, the reverse proxy will report with *503 Service Temporarily Unavailable* there)
 
-and ::
+The *Proxy* will connect to port 80 of the host system. If this port is in use, set variable ``CHEMBIENCE_PROXY_EXTERNAL_PORT``
+of the ``.env``file of the current directory before using ``./up``. If either the Django or Jupyter *App* are running,
+they are also now available from the *Proxy* (if this doesn't work your local network configuration might not allow
+for resolving subdomains) ::
 
-    http://django.localhost    (you should see the welcome page of a bare Django installation, subdomain access using the proxy)
-    http://localhost:8000      (alternative direct access to the App container
+    http://django.localhost
+    http://jupyter.localhost
 
+Please note, that using the *Proxy* isn't necessary when using Chembience just for development purpose.
+
+Using the Proxy in production setting and with HTTP
+----------------------------------------------------
+
+As a prerequisite, your DNS-registered domain (e.g. www.example.com) has to be set up properly with your domain provider.
+Unfortunately it is hard to give a general description here.
+
+Bring the proxy up as described in the `Quick Start: Proxy`_ section. The port the *Proxy* is connecting to needs to
+be set to a outside-accessible port on your public web server/host (usually port 80).
+
+Additionally, before any Django *App* is brought up, the variable DJANGO_APP_VIRTUAL_HOSTNAME in the ``.env`` file of
+the Django app has to be set to the URL-domain, e.g. "www.example.com".
+
+Using the Proxy in production setting and with HTTPS
+----------------------------------------------------
+
+As a prerequisite, your DNS-registered domain (e.g. www.example.com) has to be set up properly with your domain provider.
+Unfortunately it is hard to give a general description here.
+
+For HTTPS access, the *Proxy* container has to be started from ::
+
+    cd ~/chembient/sphere
+
+and the command::
+
+    ./up-with-letsencryt
+
+ The *Proxy* will connect to port 80 and 443 of the host system. If these ports aren't available, set variable
+``CHEMBIENCE_PROXY_EXTERNAL_PORT`` and ``CHEMBIENCE_PROXY_EXTERNAL_SSL_PORT`` of the ``.env``file of the current directory
+before using ``./up-with-letsencrypt``.
+
+Additionally, before any Django *App* is brought up, set both the variable ``DJANGO_APP_VIRTUAL_HOSTNAME`` and ``LETSENCRYPT_HOST``
+in the ``.env`` file of the Django app hto your URL-domain, e.g. "www.example.com". Also, specify variable
+``LETSENCRYPT_EMAIL`` there. For a test run, keep variable ``LETSENCRYPT_TEST`` to ``true`` and check with ``docker-compose logs``
+in directory ``~/chembient/sphere`` for error messages. For the final registration run set `LETSENCRYPT_TEST`` to ``false``.
+Also consult `this page <https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion>`_ for further advice (the
+package described there is used for Chembience SSL support, however, for an initial set-up of Chembience no further
+configuration is required)
+
+Bugs, Comments and anything else
+--------------------------------
 
 For any bug reports, comments or suggestion please use the tools here at Github or contact me at my email.
 
