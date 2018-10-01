@@ -1,4 +1,6 @@
 #!/bin/bash
 set -e
 
+./env-prepare
+
 docker-compose -f ./docker-compose.build.yml build
