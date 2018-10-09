@@ -75,9 +75,7 @@ Current release version of the most important packages are:
 History
 -------
 
-The development of Chembience originally started as a component of the `InChI-Resolver <https://www.inchi-resolver.org/>`_
-project (the alpha version of the InChI resolver is currently in the process of being migrated from a predecessor version
-of Chembience to the current version provided here).
+The development of Chembience originally started as a component of the `InChI-Resolver <https://pototype0.inchi-resolver.org/openapi>`_ project (the alpha version of the InChI resolver is currently in the process of being migrated from a predecessor version of Chembience to the current version provided here).
 
 Releases
 --------
