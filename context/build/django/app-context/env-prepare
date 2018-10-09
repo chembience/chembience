@@ -9,5 +9,5 @@ cp chembience.django.env .env
 sed -i -e "s/@CHEMBIENCE_UID/${CUID}/g" .env
 sed -i -e "s/@CHEMBIENCE_GID/${CGID}/g" .env
 
-sed -i -e 's?@CHEMBIENT_ROOT?'`pwd`'?' .env
+sed -i -e 's?@DJANGO_APP_HOME?'`pwd`'?' .env
 
