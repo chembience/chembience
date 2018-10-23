@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+
+CUID="$(stat -c %u ~)"
+CGID="$(stat -c %g ~)"
+
+cp chembience.rdkit.env .env
+
+sed -i -e "s/@CHEMBIENCE_UID/${CUID}/g" .env
+sed -i -e "s/@CHEMBIENCE_GID/${CGID}/g" .env
+
+sed -i -e 's?@RDKIT_APP_HOME?'`pwd`'?' .env
+

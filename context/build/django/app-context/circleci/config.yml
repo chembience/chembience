@@ -12,6 +12,7 @@ jobs:
           working_directory: .
           command: |
             docker system prune -f --volumes
+            ./env-prepare
 
   app:
     machine:
@@ -23,6 +24,7 @@ jobs:
           name: build app
           working_directory: .
           command: |
+            ./env-prepare
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose -f docker-compose.build.yml pull --ignore-pull-failures
             docker-compose -f docker-compose.build.yml build
