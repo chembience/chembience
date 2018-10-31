@@ -16,10 +16,10 @@ RUN apt-get -y --no-install-recommends install \
     && rm -rf /var/lib/apt/lists/*
 
 RUN /bin/bash -c "source activate chembience" && \
-    conda install cairo && \
-    conda install cairocffi && \
-    conda install -c rdkit rdkit && \
-    conda clean -pt
+    CONDA_PY=37 conda install cairo && \
+    CONDA_PY=37 conda install cairocffi && \
+    CONDA_PY=37 conda install -c conda-forge rdkit && \
+    CONDA_PY=37 conda clean -pt
 
 RUN mkdir -p /opt/rdkit
 

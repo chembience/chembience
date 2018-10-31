@@ -13,7 +13,7 @@ COPY ./app-context/nginx /home/nginx
 COPY docker-entrypoint.sh /
 COPY requirements.txt /
 
-RUN CONDA_PY=36 conda config --add channels conda-forge
+RUN CONDA_PY=37 conda config --add channels conda-forge
 
 RUN /bin/bash -c "source activate chembience" && \
-    CONDA_PY=36 conda install --yes --file /requirements.txt
+    CONDA_PY=37 conda install --yes --file /requirements.txt
