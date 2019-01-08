@@ -1,5 +1,5 @@
-ARG build_label
-FROM chembience/python-base:$build_label
+ARG build_tag
+FROM chembience/python-base:$build_tag
 LABEL maintainer="markus.sitzmann@gmail.com "
 
 ENV PATH /opt/conda/bin:$PATH

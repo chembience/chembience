@@ -3,7 +3,7 @@ version: '3'
 services:
 
   base:
-    image: chembience/base:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/base:${CHEMBIENCE_VERSION}
     build:
       context: base/
     environment:
@@ -12,51 +12,51 @@ services:
 
 
   python-base:
-    image: chembience/python-base:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/python-base:${CHEMBIENCE_VERSION}
     build:
       context: python/
       args:
-        build_label: ${CHEMBIENCE_BUILD_LABEL}
+        build_tag: ${CHEMBIENCE_VERSION}
     depends_on:
       - base
 
 
   rdkit-base:
-    image: chembience/rdkit-base:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/rdkit-base:${CHEMBIENCE_VERSION}
     build:
       context: rdkit/
       args:
-        build_label: ${CHEMBIENCE_BUILD_LABEL}
+        build_tag: ${CHEMBIENCE_VERSION}
     depends_on:
       - python-base
 
 
   django-base:
-    image: chembience/django-base:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/django-base:${CHEMBIENCE_VERSION}
     build:
       context: django/
       args:
-        build_label: ${CHEMBIENCE_BUILD_LABEL}
+        build_tag: ${CHEMBIENCE_VERSION}
     depends_on:
       - rdkit-base
 
 
   jupyter-base:
-    image: chembience/jupyter-base:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/jupyter-base:${CHEMBIENCE_VERSION}
     build:
       context: jupyter/
       args:
-        build_label: ${CHEMBIENCE_BUILD_LABEL}
+        build_tag: ${CHEMBIENCE_VERSION}
     depends_on:
       - rdkit-base
 
 
   rdkit-postgres-compile:
-    image: chembience/rdkit-postgres-compile:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/rdkit-postgres-compile:${CHEMBIENCE_VERSION}
     build:
       context: rdkit-postgres-compile/
       args:
-        build_label: ${CHEMBIENCE_BUILD_LABEL}
+        build_tag: ${CHEMBIENCE_VERSION}
 
 
 

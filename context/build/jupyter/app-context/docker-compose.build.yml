@@ -3,11 +3,11 @@ version: '3'
 services:
 
   jupyter:
-    image: chembience/jupyter:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/jupyter:${CHEMBIENCE_VERSION}
     build:
       context: .
       args:
-        build_label: ${CHEMBIENCE_BUILD_LABEL}
+        build_label: ${CHEMBIENCE_VERSION}
 
 
 

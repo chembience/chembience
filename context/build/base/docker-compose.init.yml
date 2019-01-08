@@ -3,7 +3,7 @@ version: '3'
 services:
 
   base:
-    image: chembience/base:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/base:${CHEMBIENCE_VERSION}
     volumes:
       - ${CHEMBIENCE_SPHERE}:/home/sphere
       - ${CHEMBIENCE_SHARE}:/share

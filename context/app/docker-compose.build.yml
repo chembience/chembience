@@ -3,53 +3,53 @@ version: '3'
 services:
 
   proxy:
-    image: chembience/proxy:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/proxy:${CHEMBIENCE_VERSION}
     build:
       context: https://github.com/chembience/nginx-proxy.git#chembience
 
 
   shell:
-    image: chembience/shell:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/shell:${CHEMBIENCE_VERSION}
     build:
       context: shell/
       args:
-        build_label: ${CHEMBIENCE_BUILD_LABEL}
+        build_tag: ${CHEMBIENCE_VERSION}
     command: bash
 
 
   db:
-    image: chembience/db:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/db:${CHEMBIENCE_VERSION}
     build:
       context: https://github.com/chembience/docker-postgresql.git#chembience
       args:
-        build_label: ${CHEMBIENCE_BUILD_LABEL}
+        build_tag: ${CHEMBIENCE_VERSION}
 
 
   django:
-    image: chembience/django:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/django:${CHEMBIENCE_VERSION}
     build:
       context: django/
       args:
-        build_label: ${CHEMBIENCE_BUILD_LABEL}
+        build_tag: ${CHEMBIENCE_VERSION}
     volumes:
       - "${DJANGO_APP_HOME}:/home/app"
 
 
   jupyter:
-    image: chembience/jupyter:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/jupyter:${CHEMBIENCE_VERSION}
     build:
       context: jupyter/
       args:
-        build_label: ${CHEMBIENCE_BUILD_LABEL}
+        build_tag: ${CHEMBIENCE_VERSION}
     volumes:
       - "${JUPYTER_APP_HOME}:/home/app"
 
 
   rdkit:
-    image: chembience/rdkit:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/rdkit:${CHEMBIENCE_VERSION}
     build:
       context: rdkit/
       args:
-        build_label: ${CHEMBIENCE_BUILD_LABEL}
+        build_tag: ${CHEMBIENCE_VERSION}
     volumes:
       - "${RDKIT_APP_HOME}:/home/app"

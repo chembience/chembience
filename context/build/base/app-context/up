@@ -3,8 +3,8 @@ set -e
 
 if [ $# -eq 0 ]
   then
-    docker-compose up &
+    docker-compose -f ./docker-compose.letsencrypt.yml up &
   else
-    docker-compose up $1 &
+    docker-compose -f ./docker-compose.letsencrypt.yml up $1 &
 fi
 

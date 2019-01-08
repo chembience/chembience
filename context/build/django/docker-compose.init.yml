@@ -3,7 +3,7 @@ version: '3'
 services:
 
   django:
-    image: chembience/django-base:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/django-base:${CHEMBIENCE_VERSION}
     volumes:
       - "${CHEMBIENCE_SPHERE}:/home/sphere"
       - "${DJANGO_APP_HOME}:/home/app"

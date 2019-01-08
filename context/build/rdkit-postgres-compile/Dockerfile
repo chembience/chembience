@@ -1,4 +1,4 @@
-ARG build_label
+ARG build_tag
 FROM debian:stretch
 LABEL maintainer="markus.sitzmann@gmail.com"
 

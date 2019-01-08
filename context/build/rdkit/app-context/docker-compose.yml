@@ -3,7 +3,7 @@ version: '3'
 services:
 
   app:
-    image: chembience/rdkit:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/rdkit:${CHEMBIENCE_VERSION}
     container_name: chembience-rdkit
     volumes:
       - ${RDKIT_APP_HOME}:/home/app
@@ -25,7 +25,7 @@ services:
 
 
   db:
-    image: chembience/db:${CHEMBIENCE_BUILD_LABEL}
+    image: chembience/db:${CHEMBIENCE_VERSION}
     container_name: chembience-db
     volumes:
       - db_volume:/var/lib/postgresql
@@ -33,7 +33,7 @@ services:
       - sphere
     environment:
       - DEBUG=false
-      - CHEMBIENCE_BUILD_LABEL
+      - CHEMBIENCE_VERSION
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
       - DB_USER=${CHEMBIENCE_DB_USER}
