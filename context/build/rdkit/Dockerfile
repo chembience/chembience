@@ -3,6 +3,7 @@ FROM chembience/python-base:$build_tag
 LABEL maintainer="markus.sitzmann@gmail.com "
 
 ENV PATH /opt/conda/bin:$PATH
+ENV CONDA_PY 37
 
 RUN apt-get -y --no-install-recommends install \
     libcairo2 \
@@ -16,10 +17,10 @@ RUN apt-get -y --no-install-recommends install \
     && rm -rf /var/lib/apt/lists/*
 
 RUN /bin/bash -c "source activate chembience" && \
-    CONDA_PY=37 conda install cairo && \
-    CONDA_PY=37 conda install cairocffi && \
-    CONDA_PY=37 conda install -c conda-forge rdkit && \
-    CONDA_PY=37 conda clean -pt
+    CONDA_PY=$CONDA_PY conda install cairo && \
+    CONDA_PY=$CONDA_PY conda install cairocffi && \
+    CONDA_PY=$CONDA_PY conda install -c conda-forge rdkit && \
+    CONDA_PY=$CONDA_PY conda clean -pt
 
 RUN mkdir -p /opt/rdkit
 
