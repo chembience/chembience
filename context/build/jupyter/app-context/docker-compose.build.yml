@@ -7,7 +7,7 @@ services:
     build:
       context: .
       args:
-        build_label: ${CHEMBIENCE_VERSION}
+        build_tag: ${CHEMBIENCE_VERSION}
 
 
 

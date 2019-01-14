@@ -241,11 +241,6 @@ workflows:
       - rdkit-postgres-compile:
           requires:
             - prepare
-          filters:
-            branches:
-              only:
-                - compile
-      - proxy:
           requires:
             - prepare
       - base:
