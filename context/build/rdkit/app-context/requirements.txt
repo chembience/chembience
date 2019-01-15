@@ -1,8 +1,6 @@
 Pillow
 markdown
-psycopg2-binary
 pygments
-hashids
 requests
 lxml
 six

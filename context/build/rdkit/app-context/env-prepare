@@ -1,10 +1,14 @@
 #!/bin/bash
 set -e
 
+source .env
+
 CUID="$(stat -c %u ~)"
 CGID="$(stat -c %g ~)"
 
 cp chembience.rdkit.env .env
+
+sed -i -e "s/@CHEMBIENCE_VERSION/${CHEMBIENCE_VERSION}/g" .env
 
 sed -i -e "s/@CHEMBIENCE_UID/${CUID}/g" .env
 sed -i -e "s/@CHEMBIENCE_GID/${CGID}/g" .env

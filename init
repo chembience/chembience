@@ -21,7 +21,9 @@ cp .env $CHEMBIENCE_SPHERE \
 && cp .env $RDKIT_APP_HOME \
 && cp .env $JUPYTER_APP_HOME
 
-
+cd $DJANGO_APP_HOME && ./init \
+&& cd $RDKIT_APP_HOME && ./init \
+&& cd $JUPYTER_APP_HOME && ./init
 
 
 
