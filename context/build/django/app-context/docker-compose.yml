@@ -3,7 +3,7 @@ version: '3'
 services:
 
   app:
-    image: chembience/django:${CHEMBIENCE_VERSION}
+    image: chembience/django:${DJANGO_APP_VERSION}
     container_name: chembience-django
     volumes:
       - ${DJANGO_APP_HOME}:/home/app

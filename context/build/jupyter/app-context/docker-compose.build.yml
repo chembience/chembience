@@ -3,7 +3,7 @@ version: '3'
 services:
 
   jupyter:
-    image: chembience/jupyter:${CHEMBIENCE_VERSION}
+    image: chembience/jupyter:${JUPYTER_APP_VERSION}
     build:
       context: .
       args:

@@ -3,7 +3,7 @@ version: '3'
 services:
 
   rdkit:
-    image: chembience/rdkit:${CHEMBIENCE_VERSION}
+    image: chembience/rdkit:${RDKIT_APP_VERSION}
     build:
       context: .
       args:

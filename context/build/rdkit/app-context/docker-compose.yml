@@ -3,7 +3,7 @@ version: '3'
 services:
 
   app:
-    image: chembience/rdkit:${CHEMBIENCE_VERSION}
+    image: chembience/rdkit:${RDKIT_APP_VERSION}
     container_name: chembience-rdkit
     volumes:
       - ${RDKIT_APP_HOME}:/home/app
