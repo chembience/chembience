@@ -66,10 +66,10 @@ as additional components as part of docker-compose configuration.
 Current release version of the most important packages are:
 
 * RDKit 2018.09.1
-* Python 3.7.0
+* Python 3.7.1
 * Django 2.1 + Django Rest Framework 3.9.0
 * Jupyter 5.7.0
-* Postgres 10.5
+* Postgres 10.6
 * Nginx 1.14 (Reverse Proxy)
 
 History
@@ -80,6 +80,7 @@ The development of Chembience originally started as a component of the `InChI-Re
 Releases
 --------
 
+- 0.2.7 (January 2019), maintenance release
 - 0.2.6 (November 2018), update to RDKit 2018.09.1 and Python 3.7
 - 0.2.5 (October 2018), update to RDKit 2018.09, project improvements for production settings (easier Nginx proxy config; separation of app services and proxy)
 - 0.2.4 (September 2018), SSL certificate registration with `Let's Encrypt <https://letsencrypt.org/>`_, project improvements
