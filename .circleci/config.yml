@@ -289,12 +289,14 @@ workflows:
       - django-test:
           requires:
             - prepare
+            - rdkit-test
             - django
             - db
             - proxy
       - jupyter-test:
           requires:
             - prepare
+            - django-test
             - jupyter
             - db
             - proxy
