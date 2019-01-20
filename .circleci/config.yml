@@ -169,7 +169,7 @@ jobs:
   django-test:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -198,7 +198,7 @@ jobs:
   jupyter-test:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -224,7 +224,7 @@ jobs:
   rdkit-test:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run: 
@@ -283,17 +283,18 @@ workflows:
             - rdkit-base
       - rdkit-test:
           requires:
+            - prepare
             - rdkit
             - db
       - django-test:
           requires:
-            - rdkit-test
+            - prepare
             - django
             - db
             - proxy
       - jupyter-test:
           requires:
-            - django-test
+            - prepare
             - jupyter
             - db
             - proxy
