@@ -19,7 +19,7 @@ RUN apt-get -y --no-install-recommends install \
 RUN /bin/bash -c "source activate chembience" && \
     CONDA_PY=$CONDA_PY conda install cairo && \
     CONDA_PY=$CONDA_PY conda install cairocffi && \
-    CONDA_PY=$CONDA_PY conda install -c conda-forge rdkit && \
+    CONDA_PY=$CONDA_PY conda install -c conda-forge rdkit=2018.09.2 && \
     CONDA_PY=$CONDA_PY conda clean -pt
 
 RUN mkdir -p /opt/rdkit
