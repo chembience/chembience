@@ -51,6 +51,5 @@ services:
       context: rdkit/
       args:
         build_tag: ${CHEMBIENCE_VERSION}
-        rdkit_build_version: ${RDKIT_VERSION}
     volumes:
       - "${RDKIT_APP_HOME}:/home/app"

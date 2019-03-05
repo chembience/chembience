@@ -23,16 +23,16 @@ infrastructure-related configuration requirements. The following schema provides
 
 .. image:: docs/_images/chembience.png
 
-At its current development stage, Chembience provides three base types of prototype application (*App*) packages: (1) a
+At its current development stage, Chembience provides three types of prototype application (*App*) packages: (1) a
 `Django <https://www.djangoproject.com/>`_/`Django REST framework <https://www.django-rest-framework.org/>`_-based
 *App* which is specifically suited for the development of web-based `Python <https://www.python.org/>`_
 REST and microservices, (2) a RDKit/Python shell-based *App* which allows for the execution of Python scripts (including
 RDKit, see below), and (3), a `Jupyter <https://www.jupyter.org/>`_-based *App* which let you run Jupyter
 notebooks locally on a Web browser (currently only a Python kernel is supported).
 
-All prototype *Apps* have pre-configured access to a `Postgres <https://www.postgresql.org/>`_ databases
-system running in a separate Docker container (*Database*) on the same Docker virtual network (*Chembience Sphere*).
-Any of the *App* Docker images and the Postgres database image have the `RDKit <http://www.rdkit.org/>`_  toolkit integrated
+All prototype *Apps* have pre-configured access to a `Postgres <https://www.postgresql.org/>`_ databases instance
+(*Database*) running in a separate Docker container on the same Docker virtual network (*Chembience Sphere*).
+Any of the *App* Docker images and the Postgres database image have the `RDKit <http://www.rdkit.org/>`_  toolkit installed
 either as Python module or Postgres extension. Additionally, both the Django and the Jupyter *App* packages
 provide a `Nginx <https://www.nginx.com>`_-based web server instance as component of their Docker image.
 
@@ -65,11 +65,11 @@ as additional components as part of docker-compose configuration.
 
 Current release version of the most important packages are:
 
-* RDKit 2018.09.1
+* RDKit 2018.09.2
 * Python 3.7.1
-* Django 2.1 + Django Rest Framework 3.9.0
-* Jupyter 5.7.0
-* Postgres 10.6
+* Django 2.1 + Django Rest Framework 3.9.2
+* Jupyter 5.7.4
+* Postgres 10.7
 * Nginx 1.14 (Reverse Proxy)
 
 History
@@ -80,6 +80,7 @@ The development of Chembience originally started as a component of the `InChI-Re
 Releases
 --------
 
+- 0.2.8 (March 2019), update to RDKit 2018.09.2 and Postgres 10.7
 - 0.2.7 (January 2019), maintenance release
 - 0.2.6 (November 2018), update to RDKit 2018.09.1 and Python 3.7
 - 0.2.5 (October 2018), update to RDKit 2018.09, project improvements for production settings (easier Nginx proxy config; separation of app services and proxy)
@@ -113,8 +114,8 @@ and run the following command (it is important that you do this from inside the 
     ./init
 
 As a first step, this will download all necessary Chembience Docker images to your system and may take a while for the
-initial setup (approx 3.5GB of downloads from DockerHub). After a successful download, a new directory ``chembient/`` is created
-in your home directory ::
+initial setup (approx 3.5GB of downloads from DockerHub). After a successful download, a new directory ``chembient/`` is
+created in your home directory ::
 
     cd ~/chembient
 
@@ -187,8 +188,8 @@ with Django, this should look familiar to you. If not, go to the `official Djang
 as a starting point (you can jump there to section *Creating the Polls app* because anything before this step is already done, also any
 database setup sections can be skipped). Because the ``appsite`` directory is bind-mounted by Docker into the Django *App* container,
 anything you change there is immediately represented inside the container and the web service you are working on
-(for some changes in ``appsite/appsite`` and settings.py a container restart might be necessary, using  ``./down`` and
- ``./up``).
+(if not, touch directory ``appsite`` , for some changes in ``appsite/appsite`` and settings.py a container restart might
+ be necessary, using  ``./short`` ).
 
 In order to bring the whole Chembience stack of Django *App* and *Database* down again, use the ``down`` script::
 
@@ -321,7 +322,7 @@ directory ::
 
 and use the ``up`` script there ::
 
-    ./up
+    ./up-without-letsencrypt
 
 This will make the *Proxy* available at ::
 
@@ -335,7 +336,7 @@ for resolving subdomains) ::
     http://django.localhost
     http://jupyter.localhost
 
-Please note, that using the *Proxy* isn't necessary when using Chembience just for development purpose.
+Please note that using the *Proxy* isn't necessary when using Chembience just for development purpose.
 
 Using the Proxy in production setting and with HTTP
 ----------------------------------------------------
@@ -361,14 +362,14 @@ For HTTPS access, the *Proxy* container has to be started from ::
 
 and the command::
 
-    ./up-with-letsencryt
+    ./up
 
  The *Proxy* will connect to port 80 and 443 of the host system. If these ports aren't available, set variable
 ``CHEMBIENCE_PROXY_EXTERNAL_PORT`` and ``CHEMBIENCE_PROXY_EXTERNAL_SSL_PORT`` of the ``.env`` file of the current directory
-before using ``./up-with-letsencrypt``.
+before using the up command.
 
 Additionally, before any Django *App* is brought up, set both the variable ``DJANGO_APP_VIRTUAL_HOSTNAME`` and ``LETSENCRYPT_HOST``
-in the ``.env`` file of the Django app hto your URL-domain, e.g. "www.example.com". Also, specify variable
+in the ``.env`` file of the Django app to your URL-domain, e.g. "www.example.com". Also, specify variable
 ``LETSENCRYPT_EMAIL`` there. For a test run, keep variable ``LETSENCRYPT_TEST`` to ``true`` and check with ``docker-compose logs``
 in directory ``~/chembient/sphere`` for error messages. For the final registration run set ``LETSENCRYPT_TEST`` to ``false``.
 Also consult `this page <https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion>`_ for further advice (the
@@ -380,4 +381,4 @@ Bugs, Comments and anything else
 
 For any bug reports, comments or suggestion please use the tools here at Github or contact me at my email.
 
-Markus Sitzmann, 2018-09-23
+Markus Sitzmann, 2019-03-05
