@@ -188,8 +188,8 @@ with Django, this should look familiar to you. If not, go to the `official Djang
 as a starting point (you can jump there to section *Creating the Polls app* because anything before this step is already done, also any
 database setup sections can be skipped). Because the ``appsite`` directory is bind-mounted by Docker into the Django *App* container,
 anything you change there is immediately represented inside the container and the web service you are working on
-(if not, touch directory ``appsite`` ; for some changes in ``appsite/appsite`` and settings.py a container restart might
-be necessary, using  ``./short`` ).
+(if not, touch directory ``appsite``; for some changes in ``appsite/appsite`` and settings.py a container restart might
+be necessary, using  ``./short``).
 
 In order to bring the whole Chembience stack of Django *App* and *Database* down again, use the ``down`` script::
 
