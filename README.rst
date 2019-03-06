@@ -364,7 +364,7 @@ and the command::
 
     ./up
 
- The *Proxy* will connect to port 80 and 443 of the host system. If these ports aren't available, set variable
+The *Proxy* will connect to port 80 and 443 of the host system. If these ports aren't available, set variable
 ``CHEMBIENCE_PROXY_EXTERNAL_PORT`` and ``CHEMBIENCE_PROXY_EXTERNAL_SSL_PORT`` of the ``.env`` file of the current directory
 before using the up command.
 
