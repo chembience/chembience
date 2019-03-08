@@ -6,7 +6,7 @@ LABEL maintainer="markus.sitzmann@gmail.com"
 ENV RDBASE="/opt/rdkit"
 ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$RDBASE/lib:/usr/lib/x86_64-linux-gnu"
 
-ENV PG_VERSION=10
+ENV PG_VERSION=11
 
 ENV RDKIT_BRANCH="Release_2018_09"
 

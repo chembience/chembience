@@ -11,7 +11,7 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
  && echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
  && apt-get update && apt-get -y --no-install-recommends install \
-    postgresql-client-10 \
+    postgresql-client-11 \
     joe
 
 COPY ./app-context/.env /opt/sphere/env
