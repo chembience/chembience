@@ -1,5 +1,5 @@
 Chembience
-=======
+==========
 
 .. image:: https://circleci.com/gh/chembience/chembience/tree/master.svg?style=shield
     :target: https://circleci.com/gh/chembience/chembience/tree/master
@@ -99,7 +99,7 @@ Please have at least `Docker CE 17.09 <https://docs.docker.com/engine/installati
 
 
 Quick Start: Base Installation
-------------------------
+------------------------------
 
 Clone the repository::
 
@@ -126,6 +126,7 @@ which has the following layout ::
              /jupyter
              /share
              /sphere
+
 The first three directories contain a prototype versions of the Django-, RDKit and Jupyter-based applications, respectively.
 The location and name of these base application directories is freely configurable (in fact, it isn't even required to keep them in the
 ``chembient`` parent directory). The ``share/`` directory can be used to store resources and (python) packages that should
@@ -253,7 +254,7 @@ The same is true for any python module or package put into the ``~/chembience/sh
 
 
 Quick Start: Jupyter App Container
----------------------------------
+----------------------------------
 
 After the quick start installation of Chembience (see previous section `Quick Start: Base Installation`_), go into directory ::
 
