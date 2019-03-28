@@ -69,7 +69,7 @@ Current release version of the most important packages are:
 * Python 3.7.1
 * Django 2.1 + Django Rest Framework 3.9.2
 * Jupyter 5.7.4
-* Postgres 10.7
+* Postgres 11.2
 * Nginx 1.14 (Reverse Proxy)
 
 History
@@ -80,6 +80,7 @@ The development of Chembience originally started as a component of the `InChI-Re
 Releases
 --------
 
+- 0.2.9 (April 2019), update to Postgres 11.2
 - 0.2.8 (March 2019), update to RDKit 2018.09.2 and Postgres 10.7
 - 0.2.7 (January 2019), maintenance release
 - 0.2.6 (November 2018), update to RDKit 2018.09.1 and Python 3.7
