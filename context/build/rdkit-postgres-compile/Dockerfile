@@ -19,7 +19,8 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
     curl wget gosu sudo unzip tar bzip2 \
     git gnupg2 \
     cmake \
-    build-essential
+    build-essential \
+    python3
 
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
  && echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
@@ -46,6 +47,7 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
     cd $RDBASE/build && \
 
     cmake \
+      -DPYTHON_EXECUTABLE="/usr/bin/python3" && \
       -DRDK_BUILD_INCHI_SUPPORT=ON \
       -DRDK_BUILD_PGSQL=ON \
       -DRDK_BUILD_AVALON_SUPPORT=ON \
