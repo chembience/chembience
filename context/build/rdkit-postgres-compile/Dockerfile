@@ -19,8 +19,7 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
     curl wget gosu sudo unzip tar bzip2 \
     git gnupg2 \
     cmake \
-    build-essential \
-    python3
+    build-essential
 
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
  && echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
@@ -32,23 +31,28 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
 
     python-numpy \
     python-dev \
-    sqlite3 \
-    libsqlite3-dev \
-    libboost-dev \
+    libboost-all-dev \
     libboost-system-dev \
     libboost-thread-dev \
     libboost-serialization-dev \
     libboost-python-dev \
     libboost-regex-dev \
-    libeigen3-dev && \
+    libeigen3-dev \
+    libeigen3-dev \
+    python3 \
+    libpython3-all-dev \
+    python3-numpy \
+    python3-pip \
+    python3-pil \
+    python3-pandas && \
 
     git clone -b $RDKIT_BRANCH --single-branch https://github.com/rdkit/rdkit.git && \
     mkdir $RDBASE/build && \
     cd $RDBASE/build && \
 
     cmake \
-      -DPYTHON_EXECUTABLE="/usr/bin/python3" && \
       -DRDK_BUILD_INCHI_SUPPORT=ON \
+      -DPYTHON_EXECUTABLE="/usr/bin/python3" \
       -DRDK_BUILD_PGSQL=ON \
       -DRDK_BUILD_AVALON_SUPPORT=ON \
       -DPostgreSQL_TYPE_INCLUDE_DIR="/usr/include/postgresql/${PG_VERSION}/server" \
