@@ -31,6 +31,8 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
 
     python-numpy \
     python-dev \
+    sqlite3 \
+    libsqlite3-dev \
     libboost-all-dev \
     libboost-system-dev \
     libboost-thread-dev \
