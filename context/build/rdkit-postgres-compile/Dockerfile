@@ -8,7 +8,7 @@ ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$RDBASE/lib:/usr/lib/x86_64-linux-gnu"
 
 ENV PG_VERSION=11
 
-ENV RDKIT_BRANCH="Release_2018_09"
+ENV RDKIT_BRANCH="Release_2019_03_b1b"
 
 RUN apt-get update && apt-get -y --no-install-recommends install \
     ca-certificates \
@@ -60,5 +60,5 @@ RUN cmake -Wno-dev \
   -D RDK_OPTIMIZE_NATIVE=ON \
   ..
 
-RUN make -j $(nproc) \
- && make install
+RUN make -j $(nproc) && make install
+

@@ -1,7 +1,9 @@
-from rdkit import Chem
+from rdkit import Chem, __version__
 import psycopg2
 import pprint
 import time
+
+print(__version__)
 
 m = Chem.MolFromSmiles('Cc1ccccc1')
 print(m)
