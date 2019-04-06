@@ -8,16 +8,13 @@ ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$RDBASE/lib:/usr/lib/x86_64-linux-gnu"
 
 ENV PG_VERSION=11
 
-ENV RDKIT_BRANCH="Release_2018_09"
-
-WORKDIR /opt
-
-RUN sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+ENV RDKIT_BRANCH="Release_2019_03_1b1"
 
 RUN apt-get update && apt-get -y --no-install-recommends install \
     ca-certificates \
-    curl wget gosu sudo unzip tar bzip2 \
-    git gnupg2 \
+    wget \
+    git \
+    gnupg2 \
     cmake \
     build-essential
 
@@ -25,12 +22,9 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
  && echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
  && apt-get update && apt-get install -y --no-install-recommends  \
     postgresql-server-dev-all \
-    postgresql-client \
+    postgresql-client-${PG_VERSION} \
     postgresql-plpython-${PG_VERSION} \
     postgresql-plpython3-${PG_VERSION} \
-
-    python-numpy \
-    python-dev \
     libboost-all-dev \
     libboost-system-dev \
     libboost-thread-dev \
@@ -40,22 +34,31 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
     libeigen3-dev \
     libeigen3-dev \
     python3 \
-    libpython3-all-dev \
+    libpython3-dev \
     python3-numpy \
     python3-pip \
     python3-pil \
-    python3-pandas && \
+    python3-pandas
 
-    git clone -b $RDKIT_BRANCH --single-branch https://github.com/rdkit/rdkit.git && \
-    mkdir $RDBASE/build && \
-    cd $RDBASE/build && \
+WORKDIR /opt
 
-    cmake \
-      -DRDK_BUILD_INCHI_SUPPORT=ON \
-      -DPYTHON_EXECUTABLE="/usr/bin/python3" \
-      -DRDK_BUILD_PGSQL=ON \
-      -DRDK_BUILD_AVALON_SUPPORT=ON \
-      -DPostgreSQL_TYPE_INCLUDE_DIR="/usr/include/postgresql/${PG_VERSION}/server" \
-      -DPostgreSQL_ROOT="/usr/lib/postgresql/${PG_VERSION}" .. && \
-    make -j `nproc` && \
-    make install
+RUN git clone -b $RDKIT_BRANCH --single-branch https://github.com/rdkit/rdkit.git
+
+WORKDIR $RDBASE/build
+
+RUN cmake -Wno-dev \
+  -D RDK_BUILD_PGSQL=ON \
+  -D RDK_PGSQL_STATIC=ON \
+  -D RDK_BUILD_INCHI_SUPPORT=ON \
+  -D PYTHON_EXECUTABLE="/usr/bin/python3" \
+  -D PYTHON_INCLUDE_DIR="/usr/include/python3.5" \
+  -D PostgreSQL_TYPE_INCLUDE_DIR="/usr/include/postgresql/${PG_VERSION}/server" \
+  -D PostgreSQL_ROOT="/usr/lib/postgresql/${PG_VERSION}" \
+  -D RDK_BUILD_PGSQL=ON \
+  -D RDK_BUILD_INCHI_SUPPORT=ON \
+  -D RDK_BUILD_THREADSAFE_SSS=ON \
+  -D RDK_OPTIMIZE_NATIVE=ON \
+  ..
+
+RUN make -j $(nproc) \
+ && make install
