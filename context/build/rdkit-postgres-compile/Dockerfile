@@ -10,12 +10,14 @@ ENV PG_VERSION=11
 
 ENV RDKIT_BRANCH="Release_2019_03_1b1"
 
+
 RUN apt-get update && apt-get -y --no-install-recommends install ca-certificates wget git gnupg2 cmake
 
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
  && echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
  && apt-get update && apt-get install -y --no-install-recommends  \
     build-essential \
+    zlib1g-dev \
     postgresql-server-dev-all \
     postgresql-client-${PG_VERSION} \
     postgresql-plpython-${PG_VERSION} \
