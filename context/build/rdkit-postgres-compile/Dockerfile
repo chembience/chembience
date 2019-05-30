@@ -22,7 +22,7 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
     postgresql-client-${PG_VERSION} \
     postgresql-plpython-${PG_VERSION} \
     postgresql-plpython3-${PG_VERSION} \
-    libboost-dev\
+    libboost-dev \
     libboost-system1.67-dev \
     libboost-thread1.67-dev \
     libboost-serialization1.67-dev \

@@ -67,13 +67,4 @@ services:
         build_tag: ${CHEMBIENCE_VERSION}
 
 
-  nextmove-molhash-compile:
-    image: chembience/nextmove-molhash-compile:${CHEMBIENCE_VERSION}
-    build:
-      context: nextmove-molhash-compile/
-      args:
-        build_tag: ${CHEMBIENCE_VERSION}
-    depends_on:
-      - rdkit-compile
-
 

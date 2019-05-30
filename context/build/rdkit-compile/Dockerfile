@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends  \
     ca-certificates \
     build-essential \
     libboost-dev \
+    libboost-all-dev \
     libboost-system1.67-dev \
     libboost-thread1.67-dev \
     libboost-serialization1.67-dev \
