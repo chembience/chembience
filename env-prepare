@@ -18,5 +18,7 @@ cp .env ./context/build/rdkit
 cp .env ./context/build/rdkit/app-context
 cp .env ./context/build/jupyter
 cp .env ./context/build/jupyter/app-context
+cp .env ./context/build/rdkit-compile
 cp .env ./context/build/rdkit-postgres-compile
+cp .env ./context/build/nextmove-molhash-compile
 cp .env ./context/app

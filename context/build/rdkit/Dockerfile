@@ -1,10 +1,10 @@
 ARG build_tag
 FROM chembience/python-base:$build_tag
-LABEL maintainer="markus.sitzmann@gmail.com "
+LABEL maintainer="markus.sitzmann@gmail.com"
 
 ENV PATH /opt/conda/bin:$PATH
 ENV CONDA_PY 37
-ENV RDKIT_VERSION 2019.03.1
+ENV RDKIT_VERSION 2019.03.2
 
 RUN apt-get -y --no-install-recommends install \
     libcairo2 \

@@ -3,5 +3,6 @@ set -e
 
 ./env-prepare
 
-docker-compose -f ./context/build/docker-compose.build.yml build
-docker-compose -f ./context/app/docker-compose.build.yml build
+docker-compose -f ./context/build/docker-compose.build.yml build rdkit-compile
+#docker-compose -f ./context/app/docker-compose.build.yml build
+

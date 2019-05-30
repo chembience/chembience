@@ -51,6 +51,14 @@ services:
       - rdkit-base
 
 
+  rdkit-compile:
+    image: chembience/rdkit-compile:${CHEMBIENCE_VERSION}
+    build:
+      context: rdkit-compile/
+      args:
+        build_tag: ${CHEMBIENCE_VERSION}
+
+
   rdkit-postgres-compile:
     image: chembience/rdkit-postgres-compile:${CHEMBIENCE_VERSION}
     build:
@@ -59,5 +67,13 @@ services:
         build_tag: ${CHEMBIENCE_VERSION}
 
 
+  nextmove-molhash-compile:
+    image: chembience/nextmove-molhash-compile:${CHEMBIENCE_VERSION}
+    build:
+      context: nextmove-molhash-compile/
+      args:
+        build_tag: ${CHEMBIENCE_VERSION}
+    depends_on:
+      - rdkit-compile
 
 
