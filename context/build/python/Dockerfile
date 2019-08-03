@@ -4,7 +4,7 @@ LABEL maintainer="markus.sitzmann@gmail.com "
 
 ENV PATH /opt/conda/bin:$PATH
 ENV CONDA_PY 37
-ENV CONDA_PACKAGE Miniconda3-4.5.12-Linux-x86_64.sh
+ENV CONDA_PACKAGE Miniconda3-4.7.10-Linux-x86_64.sh
 
 RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
     wget --quiet https://repo.continuum.io/miniconda/$CONDA_PACKAGE && \
