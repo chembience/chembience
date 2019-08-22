@@ -33,7 +33,7 @@ jobs:
 
 workflows:
   version: 2
-  wagtail-cms:
+  django-build:
     jobs:
       - prepare
       - app:
