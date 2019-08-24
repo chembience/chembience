@@ -23,21 +23,21 @@ infrastructure-related configuration requirements. The following schema provides
 
 .. image:: docs/_images/chembience.png
 
-At its current development stage, Chembience provides three types of prototype application (*App*) packages: (1) a
+At its current development stage, Chembience provides three types of template application (*App*) packages: (1) a
 `Django <https://www.djangoproject.com/>`_/`Django REST framework <https://www.django-rest-framework.org/>`_-based
 *App* which is specifically suited for the development of web-based `Python <https://www.python.org/>`_
 REST and microservices, (2) a RDKit/Python shell-based *App* which allows for the execution of Python scripts (including
 RDKit, see below), and (3), a `Jupyter <https://www.jupyter.org/>`_-based *App* which let you run Jupyter
 notebooks locally on a Web browser (currently only a Python kernel is supported).
 
-All prototype *Apps* have pre-configured access to a `Postgres <https://www.postgresql.org/>`_ databases instance
+All template *Apps* have pre-configured access to a `Postgres <https://www.postgresql.org/>`_ databases instance
 (*Database*) running in a separate Docker container on the same Docker virtual network (*Chembience Sphere*).
 Any of the *App* Docker images and the Postgres database image have the `RDKit <http://www.rdkit.org/>`_  toolkit installed
 either as Python module or Postgres extension. Additionally, both the Django and the Jupyter *App* packages
 provide a `Nginx <https://www.nginx.com>`_-based web server instance as component of their Docker image.
 
 Creation and deployment of all Chembience-based Docker images and containers is orchestrated by
-`docker-compose <https://docs.docker.com/compose/>`_. All Docker images required for starting up any of the Chembience
+`docker-compose <https://docs.docker.com/compose/>`_. All Docker images required for starting up one of the Chembience
 *App* packages are continuously built and tested at `CircleCi.com <https://circleci.com>`_ and made available
 from the `Chembience Docker hub repository <https://hub.docker.com/u/chembience/>`_). Alternatively, the Docker images
 can also be built locally on the user's host machine by using the provided build script.
@@ -137,8 +137,8 @@ The location and name of these base application directories is freely configurab
 be common to all *App* packages. The ``sphere/`` directory holds scripts and files related to all core infrastructure
 components (e.g. the *Database* and *Proxy* containers).
 
-Quick Start: Django App Container
----------------------------------
+Quick Start: Django Template App
+--------------------------------
 
 After the quick start installation of Chembience (see previous section `Quick Start: Base Installation`_), go into directory ::
 
@@ -184,7 +184,7 @@ instead of ``manage.py`` these are the same steps as for any Django installation
 
 After running these commands you should be able to go to::
 
-    http://localhost:8000/localhost/admin
+    http://localhost:8000/admin
 
 and login into the Django admin application with the just set up account and password.
 
@@ -207,8 +207,8 @@ all life-circle commands should work as expected, in fact, ``up`` and  ``down`` 
 Starting with Chembience version 0.2.4, the Chembience *Proxy* container has to be started separately (see below).
 However, this isn't required for the purpose of a locally running development instance of the Chembience Django *App*.
 
-Quick Start: RDKit App Container
---------------------------------
+Quick Start: RDKit Template App
+-------------------------------
 
 After the quick start installation of Chembience (see section `Quick Start: Base Installation`_), go into directory ::
 
@@ -257,8 +257,8 @@ directory you can run it like this::
 The same is true for any python module or package put into the ``~/chembience/share`` directory.
 
 
-Quick Start: Jupyter App Container
-----------------------------------
+Quick Start: Jupyter App
+------------------------
 
 After the quick start installation of Chembience (see previous section `Quick Start: Base Installation`_), go into directory ::
 
