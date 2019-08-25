@@ -1,3 +1,4 @@
 django
 djangorestframework
 django-extensions
+django-dbbackup>=3
