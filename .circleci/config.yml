@@ -4,7 +4,7 @@ jobs:
   prepare:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -19,7 +19,7 @@ jobs:
   rdkit-postgres-compile:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -34,7 +34,7 @@ jobs:
   rdkit-compile:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -49,7 +49,7 @@ jobs:
   base:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -64,7 +64,7 @@ jobs:
   python-base:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -79,7 +79,7 @@ jobs:
   rdkit-base:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -94,7 +94,7 @@ jobs:
   django-base:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -109,7 +109,7 @@ jobs:
   jupyter-base:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -124,7 +124,7 @@ jobs:
   proxy:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -139,7 +139,7 @@ jobs:
   shell:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -154,7 +154,7 @@ jobs:
   db:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -169,7 +169,7 @@ jobs:
   django:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -198,7 +198,7 @@ jobs:
   jupyter:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -224,7 +224,7 @@ jobs:
   rdkit:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
