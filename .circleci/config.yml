@@ -31,21 +31,21 @@ jobs:
              docker-compose -f ./context/build/docker-compose.build.yml pull --ignore-pull-failures rdkit-postgres-compile
              docker-compose -f ./context/build/docker-compose.build.yml build rdkit-postgres-compile
              docker-compose -f ./context/build/docker-compose.build.yml push rdkit-postgres-compile
-  rdkit-compile:
-    machine:
-      image: circleci/classic:201711-01
-      docker_layer_caching: false
-    steps:
-      - checkout
-      - run:
-          name: Compile RDKit
-          working_directory: .
-          command: |
-            ./env-prepare
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f ./context/build/docker-compose.build.yml pull --ignore-pull-failures rdkit-compile
-            docker-compose -f ./context/build/docker-compose.build.yml build rdkit-compile
-            docker-compose -f ./context/build/docker-compose.build.yml push rdkit-compile
+#  rdkit-compile:
+#    machine:
+#      image: circleci/classic:201711-01
+#      docker_layer_caching: false
+#    steps:
+#      - checkout
+#      - run:
+#          name: Compile RDKit
+#          working_directory: .
+#          command: |
+#            ./env-prepare
+#            docker login -u $DOCKER_USER -p $DOCKER_PASS
+#            docker-compose -f ./context/build/docker-compose.build.yml pull --ignore-pull-failures rdkit-compile
+#            docker-compose -f ./context/build/docker-compose.build.yml build rdkit-compile
+#            docker-compose -f ./context/build/docker-compose.build.yml push rdkit-compile
   base:
     machine:
       image: circleci/classic:201711-01
