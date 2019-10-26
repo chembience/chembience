@@ -252,7 +252,10 @@ workflows:
   version: 2
   chembience-compile-build:
     jobs:
-      - prepare
+      - prepare:
+          filters:
+            branches:
+              only: deploy
       - rdkit-postgres-compile:
           requires:
             - prepare
