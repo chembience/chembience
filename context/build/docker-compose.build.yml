@@ -51,12 +51,12 @@ services:
       - rdkit-base
 
 
-  rdkit-compile:
-    image: chembience/rdkit-compile:${CHEMBIENCE_VERSION}
-    build:
-      context: rdkit-compile/
-      args:
-        build_tag: ${CHEMBIENCE_VERSION}
+#  rdkit-compile:
+#    image: chembience/rdkit-compile:${CHEMBIENCE_VERSION}
+#    build:
+#      context: rdkit-compile/
+#      args:
+#        build_tag: ${CHEMBIENCE_VERSION}
 
 
   rdkit-postgres-compile:

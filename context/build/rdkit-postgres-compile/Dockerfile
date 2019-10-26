@@ -8,7 +8,7 @@ ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$RDBASE/lib:/usr/lib/x86_64-linux-gnu"
 
 ENV PG_VERSION=11
 
-ENV RDKIT_BRANCH="Release_2019_09_1b1"
+ENV RDKIT_BRANCH="Release_2019_09_1"
 
 
 RUN apt-get update && apt-get -y --no-install-recommends install ca-certificates wget git gnupg2 cmake

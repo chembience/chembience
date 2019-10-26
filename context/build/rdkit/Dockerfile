@@ -4,12 +4,12 @@ LABEL maintainer="markus.sitzmann@gmail.com"
 
 ENV PATH /opt/conda/bin:$PATH
 ENV CONDA_PY 37
-ENV RDKIT_VERSION 2019.09.1b1
+ENV RDKIT_VERSION 2019.09.1
 
 RUN /bin/bash -c "source activate chembience" && \
     CONDA_PY=$CONDA_PY conda install cairo && \
-#    CONDA_PY=$CONDA_PY conda install -c rdkit rdkit=$RDKIT_VERSION && \
-    CONDA_PY=$CONDA_PY conda install -c rdkit/label/beta rdkit=$RDKIT_VERSION && \
+    CONDA_PY=$CONDA_PY conda install -c rdkit rdkit=$RDKIT_VERSION && \
+#    CONDA_PY=$CONDA_PY conda install -c rdkit/label/beta rdkit=$RDKIT_VERSION && \
     CONDA_PY=$CONDA_PY conda clean -pt
 
 RUN mkdir -p /opt/rdkit
