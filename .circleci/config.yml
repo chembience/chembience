@@ -256,54 +256,96 @@ workflows:
       - rdkit-postgres-compile:
           requires:
             - prepare
+          filters:
+            branches:
+              only: deploy
 #      - rdkit-compile:
 #          requires:
 #            - prepare
+#          filters:
+#            branches:
+#              only: deploy
       - proxy:
           requires:
            - prepare
+          filters:
+            branches:
+              only: deploy
       - base:
           requires:
             - prepare
+          filters:
+            branches:
+              only: deploy
       - python-base:
           requires:
             - prepare
             - base
+          filters:
+            branches:
+              only: deploy
       - rdkit-base:
           requires:
             - prepare
             - python-base
+          filters:
+            branches:
+              only: deploy
       - django-base:
           requires:
             - prepare
             - rdkit-base
+          filters:
+            branches:
+              only: deploy
       - jupyter-base:
           requires:
             - prepare
             - rdkit-base
+          filters:
+            branches:
+              only: deploy
       - db:
           requires:
             - prepare
             - base
             - rdkit-postgres-compile
+          filters:
+            branches:
+              only: deploy
       - shell:
           requires:
             - prepare
             - base
+          filters:
+            branches:
+              only: deploy
       - django:
           requires:
             - django-base
+          filters:
+            branches:
+              only: deploy
       - jupyter:
           requires:
             - jupyter-base
+          filters:
+            branches:
+              only: deploy
       - rdkit:
           requires:
             - rdkit-base
+          filters:
+            branches:
+              only: deploy
       - rdkit-test:
           requires:
             - prepare
             - rdkit
             - db
+          filters:
+            branches:
+              only: deploy
       - django-test:
           requires:
             - prepare
@@ -311,6 +353,9 @@ workflows:
             - django
             - db
             - proxy
+          filters:
+            branches:
+              only: deploy
       - jupyter-test:
           requires:
             - prepare
@@ -318,5 +363,7 @@ workflows:
             - jupyter
             - db
             - proxy
-
+          filters:
+            branches:
+              only: deploy
 
