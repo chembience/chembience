@@ -256,9 +256,9 @@ workflows:
       - rdkit-postgres-compile:
           requires:
             - prepare
-      - rdkit-compile:
-          requires:
-            - prepare
+#      - rdkit-compile:
+#          requires:
+#            - prepare
       - proxy:
           requires:
            - prepare
