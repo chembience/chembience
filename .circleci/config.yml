@@ -325,7 +325,7 @@ workflows:
           requires:
             - prepare
             - rdkit
-            - db
+            #- db
           filters:
             branches:
               only: deploy
@@ -334,7 +334,7 @@ workflows:
             - prepare
             - rdkit-test
             - django
-            - db
+            #- db
             - proxy
           filters:
             branches:
@@ -344,7 +344,7 @@ workflows:
             - prepare
             - django-test
             - jupyter
-            - db
+            #- db
             - proxy
           filters:
             branches:
