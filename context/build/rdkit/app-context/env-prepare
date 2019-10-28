@@ -8,10 +8,22 @@ CGID="$(stat -c %g ~)"
 
 cp chembience.rdkit.env .env
 
-sed -i -e "s/@CHEMBIENCE_VERSION/${CHEMBIENCE_VERSION}/g" .env
+declare -a files=('./.env' './chembience.rdkit.env')
+for f in "${files[@]}"; do
+    echo "$f"
+    sed -i -e "s/@CHEMBIENCE_VERSION/${CHEMBIENCE_VERSION}/g" $f
 
-sed -i -e "s/@CHEMBIENCE_UID/${CUID}/g" .env
-sed -i -e "s/@CHEMBIENCE_GID/${CGID}/g" .env
+    sed -i -e "s/@CHEMBIENCE_UID/${CUID}/g" $f
+    sed -i -e "s/@CHEMBIENCE_GID/${CGID}/g" $f
 
-sed -i -e 's?@RDKIT_APP_HOME?'`pwd`'?' .env
+    sed -i -e 's?@RDKIT_APP_HOME?'`pwd`'?' $f
 
+    sed -i -e "s/@CHEMBIENCE_POSTGRES_RDKIT_VERSION/${CHEMBIENCE_POSTGRES_RDKIT_VERSION}/g" $f
+    sed -i -e "s/@CHEMBIENCE_DB_USER/${CHEMBIENCE_DB_USER}/g" $f
+    sed -i -e "s/@CHEMBIENCE_DB_NAME/${CHEMBIENCE_DB_NAME}/g" $f
+    sed -i -e "s/@CHEMBIENCE_DB_HOST/${CHEMBIENCE_DB_HOST}/g" $f
+    sed -i -e "s/@CHEMBIENCE_DB_PORT/${CHEMBIENCE_DB_PORT}/g" $f
+    sed -i -e "s/@CHEMBIENCE_DB_PASSWORD/${CHEMBIENCE_DB_PASSWORD}/g" $f
+
+    sed -i -e "s/@POSTGRES_ROOT_PASSWORD/${POSTGRES_ROOT_PASSWORD}/g" $f
+done
