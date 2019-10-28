@@ -31,27 +31,6 @@ services:
     command: ["/home/nginx/run.sh"]
 
 
-#  db:
-#    image: chembience/db:${CHEMBIENCE_VERSION}
-#    container_name: chembience-db
-#    volumes:
-#      - db_volume:/var/lib/postgresql
-#    networks:
-#      - sphere
-#    environment:
-#      - DEBUG=false
-#      - CHEMBIENCE_UID
-#      - CHEMBIENCE_GID
-#      - DB_USER=${CHEMBIENCE_DB_USER}
-#      - DB_PASS=${CHEMBIENCE_DB_PASSWORD}
-#      - DB_NAME=${CHEMBIENCE_DB_USER}
-#      - DB_TEMPLATE=
-#      - DB_EXTENSION=rdkit
-#      - REPLICATION_MODE=
-#      - REPLICATION_USER=
-#      - REPLICATION_PASS=
-#      - REPLICATION_SSLMODE=
-
   db:
     image: chembience/postgres-rdkit:${CHEMBIENCE_POSTGRES_RDKIT_VERSION}
     container_name: chembience-postgres-rdkit-db

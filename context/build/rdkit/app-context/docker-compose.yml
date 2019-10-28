@@ -23,30 +23,26 @@ services:
     entrypoint: ["/home/app/docker-entrypoint.sh"]
     command: ["python"]
 
+
   db:
-    image: chembience/db:${CHEMBIENCE_POSTGRES_RDKIT_VERSION}
-    container_name: chembience-db
+    image: chembience/postgres-rdkit:${CHEMBIENCE_POSTGRES_RDKIT_VERSION}
+    container_name: chembience-rdkit-db
     volumes:
-      - db_volume:/var/lib/postgresql
+      - rdkit_db_volume:/var/lib/postgresql
+      - ${RDKIT_APP_HOME}/postgres-init.d:/docker-entrypoint-initdb.d
+    #restart: always
     networks:
       - sphere
     environment:
-      - DEBUG=false
-      - CHEMBIENCE_VERSION
-      - CHEMBIENCE_UID
-      - CHEMBIENCE_GID
-      - DB_USER=${CHEMBIENCE_DB_USER}
-      - DB_PASS=${CHEMBIENCE_DB_PASSWORD}
-      - DB_NAME=${CHEMBIENCE_DB_USER}
-      - DB_TEMPLATE=
-      - DB_EXTENSION=rdkit
-      - REPLICATION_MODE=
-      - REPLICATION_USER=
-      - REPLICATION_PASS=
-      - REPLICATION_SSLMODE=
+      - POSTGRES_PASSWORD=${POSTGRES_ROOT_PASSWORD}
+      - CHEMBIENCE_POSTGRES_RDKIT_VERSION=${CHEMBIENCE_POSTGRES_RDKIT_VERSION}
+      - CHEMBIENCE_DB_USER=${CHEMBIENCE_DB_USER}
+      - CHEMBIENCE_DB_NAME=${CHEMBIENCE_DB_NAME}
+      - CHEMBIENCE_DB_PASSWORD=${CHEMBIENCE_DB_PASSWORD}
+
 
 volumes:
-  db_volume:
+  rdkit_db_volume:
 
 networks:
   sphere:

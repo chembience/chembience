@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+
+docker-compose down
+docker volume rm chembience_django_db_volume

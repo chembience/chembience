@@ -10,7 +10,7 @@ print(m)
 
 time.sleep(30)
 
-conn_string = "host='db' dbname='chembience' user='chembience' password='Arg0'"
+conn_string = "host='db' dbname='chembience' user='chembience' password='Chembience0'"
 conn = psycopg2.connect(conn_string)
 cursor = conn.cursor()
 

@@ -151,21 +151,21 @@ jobs:
             docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures shell
             docker-compose -f ./context/app/docker-compose.build.yml build shell
             docker-compose -f ./context/app/docker-compose.build.yml push shell
-  db:
-    machine:
-      image: circleci/classic:201711-01
-      docker_layer_caching: false
-    steps:
-      - checkout
-      - run:
-          name: Build db
-          working_directory: .
-          command: |
-            ./env-prepare
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures db
-            docker-compose -f ./context/app/docker-compose.build.yml build db
-            docker-compose -f ./context/app/docker-compose.build.yml push db
+#  db:
+#    machine:
+#      image: circleci/classic:201711-01
+#      docker_layer_caching: false
+#    steps:
+#      - checkout
+#      - run:
+#          name: Build db
+#          working_directory: .
+#          command: |
+#            ./env-prepare
+#            docker login -u $DOCKER_USER -p $DOCKER_PASS
+#            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures db
+#            docker-compose -f ./context/app/docker-compose.build.yml build db
+#            docker-compose -f ./context/app/docker-compose.build.yml push db
   django:
     machine:
       image: circleci/classic:201711-01
@@ -256,18 +256,6 @@ workflows:
           filters:
             branches:
               only: deploy
-#      - rdkit-postgres-compile:
-#          requires:
-#            - prepare
-#          filters:
-#            branches:
-#              only: deploy
-#      - rdkit-compile:
-#          requires:
-#            - prepare
-#          filters:
-#            branches:
-#              only: deploy
       - proxy:
           requires:
            - prepare
@@ -308,14 +296,6 @@ workflows:
           filters:
             branches:
               only: deploy
-#      - db:
-#          requires:
-#            - prepare
-#            - base
-#            - rdkit-postgres-compile
-#          filters:
-#            branches:
-#              only: deploy
       - shell:
           requires:
             - prepare
