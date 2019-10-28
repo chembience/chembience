@@ -17,14 +17,6 @@ services:
     command: bash
 
 
-  db:
-    image: chembience/db:${CHEMBIENCE_VERSION}
-    build:
-      context: https://github.com/chembience/docker-postgresql.git#chembience
-      args:
-        build_tag: ${CHEMBIENCE_VERSION}
-
-
   django:
     image: chembience/django:${CHEMBIENCE_VERSION}
     build:

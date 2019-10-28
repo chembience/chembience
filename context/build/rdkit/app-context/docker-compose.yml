@@ -23,9 +23,8 @@ services:
     entrypoint: ["/home/app/docker-entrypoint.sh"]
     command: ["python"]
 
-
   db:
-    image: chembience/db:${CHEMBIENCE_VERSION}
+    image: chembience/db:${CHEMBIENCE_POSTGRES_RDKIT_VERSION}
     container_name: chembience-db
     volumes:
       - db_volume:/var/lib/postgresql

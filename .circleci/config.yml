@@ -16,21 +16,21 @@ jobs:
             ./docker/rm-all-images || true
             ./env-prepare
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-  rdkit-postgres-compile:
-    machine:
-      image: circleci/classic:201711-01
-      docker_layer_caching: false
-    steps:
-      - checkout
-      - run:
-          name: Compile Postgres RDKit
-          working_directory: .
-          command: |
-             ./env-prepare
-             docker login -u $DOCKER_USER -p $DOCKER_PASS
-             docker-compose -f ./context/build/docker-compose.build.yml pull --ignore-pull-failures rdkit-postgres-compile
-             docker-compose -f ./context/build/docker-compose.build.yml build rdkit-postgres-compile
-             docker-compose -f ./context/build/docker-compose.build.yml push rdkit-postgres-compile
+#  rdkit-postgres-compile:
+#    machine:
+#      image: circleci/classic:201711-01
+#      docker_layer_caching: false
+#    steps:
+#      - checkout
+#      - run:
+#          name: Compile Postgres RDKit
+#          working_directory: .
+#          command: |
+#             ./env-prepare
+#             docker login -u $DOCKER_USER -p $DOCKER_PASS
+#             docker-compose -f ./context/build/docker-compose.build.yml pull --ignore-pull-failures rdkit-postgres-compile
+#             docker-compose -f ./context/build/docker-compose.build.yml build rdkit-postgres-compile
+#             docker-compose -f ./context/build/docker-compose.build.yml push rdkit-postgres-compile
 #  rdkit-compile:
 #    machine:
 #      image: circleci/classic:201711-01
@@ -256,12 +256,12 @@ workflows:
           filters:
             branches:
               only: deploy
-      - rdkit-postgres-compile:
-          requires:
-            - prepare
-          filters:
-            branches:
-              only: deploy
+#      - rdkit-postgres-compile:
+#          requires:
+#            - prepare
+#          filters:
+#            branches:
+#              only: deploy
 #      - rdkit-compile:
 #          requires:
 #            - prepare
@@ -308,14 +308,14 @@ workflows:
           filters:
             branches:
               only: deploy
-      - db:
-          requires:
-            - prepare
-            - base
-            - rdkit-postgres-compile
-          filters:
-            branches:
-              only: deploy
+#      - db:
+#          requires:
+#            - prepare
+#            - base
+#            - rdkit-postgres-compile
+#          filters:
+#            branches:
+#              only: deploy
       - shell:
           requires:
             - prepare
