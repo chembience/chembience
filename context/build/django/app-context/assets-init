@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+
+./django-manage-py collectstatic --noinput &&\
+docker-compose restart app
+
+exit 1

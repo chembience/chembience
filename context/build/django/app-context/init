@@ -1,7 +1,4 @@
 #!/bin/bash
 
-./env-prepare
-
-echo 'Done.'
-
-exit 0
+./env-prepare &&\
+docker-compose up &

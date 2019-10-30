@@ -10,7 +10,6 @@ cp chembience.rdkit.env .env
 
 declare -a files=('./.env' './chembience.rdkit.env')
 for f in "${files[@]}"; do
-    echo "$f"
     sed -i -e "s/@CHEMBIENCE_VERSION/${CHEMBIENCE_VERSION}/g" $f
 
     sed -i -e "s/@CHEMBIENCE_UID/${CUID}/g" $f

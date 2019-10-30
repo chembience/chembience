@@ -4,7 +4,7 @@ jobs:
   prepare:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -17,7 +17,7 @@ jobs:
   app:
     machine:
       image: circleci/classic:201711-01
-      docker_layer_caching: true
+      docker_layer_caching: false
     steps:
       - checkout
       - run:
@@ -33,7 +33,7 @@ jobs:
 
 workflows:
   version: 2
-  django-build:
+  chembience-django-build:
     jobs:
       - prepare
       - app:

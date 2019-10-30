@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+./django-manage-py makemigrations &&\
+./django-manage-py migrate &&\
+./django-manage-py collectstatic &&\
+./django-manage-py createsuperuser
+
+
+
