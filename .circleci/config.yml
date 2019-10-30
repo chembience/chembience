@@ -16,36 +16,6 @@ jobs:
             ./docker/rm-all-images || true
             ./env-prepare
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-#  rdkit-postgres-compile:
-#    machine:
-#      image: circleci/classic:201711-01
-#      docker_layer_caching: false
-#    steps:
-#      - checkout
-#      - run:
-#          name: Compile Postgres RDKit
-#          working_directory: .
-#          command: |
-#             ./env-prepare
-#             docker login -u $DOCKER_USER -p $DOCKER_PASS
-#             docker-compose -f ./context/build/docker-compose.build.yml pull --ignore-pull-failures rdkit-postgres-compile
-#             docker-compose -f ./context/build/docker-compose.build.yml build rdkit-postgres-compile
-#             docker-compose -f ./context/build/docker-compose.build.yml push rdkit-postgres-compile
-#  rdkit-compile:
-#    machine:
-#      image: circleci/classic:201711-01
-#      docker_layer_caching: false
-#    steps:
-#      - checkout
-#      - run:
-#          name: Compile RDKit
-#          working_directory: .
-#          command: |
-#            ./env-prepare
-#            docker login -u $DOCKER_USER -p $DOCKER_PASS
-#            docker-compose -f ./context/build/docker-compose.build.yml pull --ignore-pull-failures rdkit-compile
-#            docker-compose -f ./context/build/docker-compose.build.yml build rdkit-compile
-#            docker-compose -f ./context/build/docker-compose.build.yml push rdkit-compile
   base:
     machine:
       image: circleci/classic:201711-01
@@ -151,21 +121,6 @@ jobs:
             docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures shell
             docker-compose -f ./context/app/docker-compose.build.yml build shell
             docker-compose -f ./context/app/docker-compose.build.yml push shell
-#  db:
-#    machine:
-#      image: circleci/classic:201711-01
-#      docker_layer_caching: false
-#    steps:
-#      - checkout
-#      - run:
-#          name: Build db
-#          working_directory: .
-#          command: |
-#            ./env-prepare
-#            docker login -u $DOCKER_USER -p $DOCKER_PASS
-#            docker-compose -f ./context/app/docker-compose.build.yml pull --ignore-pull-failures db
-#            docker-compose -f ./context/app/docker-compose.build.yml build db
-#            docker-compose -f ./context/app/docker-compose.build.yml push db
   django:
     machine:
       image: circleci/classic:201711-01
@@ -325,7 +280,6 @@ workflows:
           requires:
             - prepare
             - rdkit
-            #- db
           filters:
             branches:
               only: deploy
@@ -334,7 +288,6 @@ workflows:
             - prepare
             - rdkit-test
             - django
-            #- db
             - proxy
           filters:
             branches:
@@ -344,7 +297,6 @@ workflows:
             - prepare
             - django-test
             - jupyter
-            #- db
             - proxy
           filters:
             branches:
