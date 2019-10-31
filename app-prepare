@@ -21,10 +21,9 @@ cp .env $CHEMBIENCE_SPHERE \
 && cp .env $RDKIT_APP_HOME \
 && cp .env $JUPYTER_APP_HOME
 
-# post 0.3 no initialization here anymore:
-#cd $DJANGO_APP_HOME && ./init \
-#&& cd $RDKIT_APP_HOME && ./init \
-#&& cd $JUPYTER_APP_HOME && ./init
+cd $DJANGO_APP_HOME && ./release-prepare && rm ./release-prepare \
+&& cd $RDKIT_APP_HOME && ./release-prepare && rm ./release-prepare \
+&& cd $JUPYTER_APP_HOME && ./release-prepare && rm ./release-prepare
 
 
 
