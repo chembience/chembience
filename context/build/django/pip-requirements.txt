@@ -1,0 +1,7 @@
+uwsgi
+sqlparse
+django
+djangorestframework
+django-extensions
+django-dbbackup
+
