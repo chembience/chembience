@@ -127,3 +127,18 @@ STATIC_ROOT = os.path.join("/home/app", "static/")
 
 MEDIA_ROOT = os.path.join("/home/app", "media/")
 MEDIA_URL = "/media/"
+
+### BACKUP ###
+
+BACKUP_ROOT = os.path.join("/home/app", 'backup')
+
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': BACKUP_ROOT}
+
+DBBACKUP_CONNECTORS = {
+    'default': {
+        'USER': 'postgres',
+        'PASSWORD': os.environ['POSTGRES_ROOT_PASSWORD'],
+        'HOST': os.environ['CHEMBIENCE_DB_HOST']
+    }
+}
