@@ -21,9 +21,9 @@ cp .env $CHEMBIENCE_SPHERE \
 && cp .env $RDKIT_APP_HOME \
 && cp .env $JUPYTER_APP_HOME
 
-cd $DJANGO_APP_HOME && ./release-prepare && rm ./release-prepare \
-&& cd $RDKIT_APP_HOME && ./release-prepare && rm ./release-prepare \
-&& cd $JUPYTER_APP_HOME && ./release-prepare && rm ./release-prepare
+cd $DJANGO_APP_HOME && ./app-prepare && rm ./app-prepare \
+&& cd $RDKIT_APP_HOME && ./app-prepare && rm ./app-prepare \
+&& cd $JUPYTER_APP_HOME && ./app-prepare && rm ./app-prepare
 
 
 
