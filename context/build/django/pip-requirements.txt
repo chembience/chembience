@@ -1,7 +1,3 @@
-uwsgi
-sqlparse
-django
-djangorestframework
-django-extensions
-django-dbbackup
+django-dbbackup>=3
+
 
