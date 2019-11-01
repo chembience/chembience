@@ -3,7 +3,7 @@ set -e
 
 test -f .env && source .env
 
-declare -a files=(./chembience.django.env')
+declare -a files=('./chembience.django.env')
 for f in "${files[@]}"; do
     sed -i -e "s/@CHEMBIENCE_VERSION/${CHEMBIENCE_VERSION}/g" $f
     sed -i -e "s/@CHEMBIENCE_POSTGRES_RDKIT_VERSION/${CHEMBIENCE_POSTGRES_RDKIT_VERSION}/g" $f
