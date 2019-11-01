@@ -146,7 +146,7 @@ jobs:
           name: Django test
           working_directory: .
           command: |
-            ./init && cd ~/chembient/django && ./up && sleep 120 && ./django-manage-py migrate
+            ./app-prepare && cd ~/chembient/django && ./init && sleep 120 && ./django-manage-py migrate
             ./django-manage-py createsuperuser --username test --noinput --email test@test.org
             ./django-manage-py collectstatic
             ./down
@@ -175,7 +175,7 @@ jobs:
           name: Jupyter test
           working_directory: .
           command: |
-            ./init && sleep 60 && cd ~/chembient/jupyter && ./up && sleep 120 && ./jupyter --version && ./down
+            ./app-prepare && sleep 60 && cd ~/chembient/jupyter && ./init && sleep 120 && ./jupyter --version && ./down
   rdkit:
     machine:
       image: circleci/classic:201711-01
@@ -201,7 +201,7 @@ jobs:
           name: Test RDKit
           working_directory: .
           command: |
-            ./init && sleep 120 && cd ~/chembient/rdkit && ./run script.py && sleep 60
+            ./app-prepare && sleep 120 && cd ~/chembient/rdkit && ./init && ./run script.py && sleep 60
 
 workflows:
   version: 2
