@@ -2,6 +2,8 @@
 
 ./env-prepare
 
+mkdir -p notebooks
+
 echo 'Done.'
 
 exit 0
