@@ -1,6 +1,6 @@
 uwsgi
 sqlparse
-django
+django<3
 djangorestframework
 django-extensions
 

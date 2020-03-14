@@ -4,7 +4,7 @@ LABEL maintainer="markus.sitzmann@gmail.com"
 
 ENV PATH /opt/conda/bin:$PATH
 ENV CONDA_PY 37
-ENV RDKIT_VERSION 2019.09.1
+ENV RDKIT_VERSION 2019.09.3
 
 RUN /bin/bash -c "source activate chembience" && \
     CONDA_PY=$CONDA_PY conda install cairo && \
