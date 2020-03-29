@@ -5,7 +5,7 @@ LABEL maintainer="markus.sitzmann@gmail.com"
 ENV RDBASE="/opt/rdkit"
 ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$RDBASE/lib:/usr/lib/x86_64-linux-gnu"
 
-ENV RDKIT_BRANCH="Release_2019_09_3"
+ENV RDKIT_BRANCH="Release_2020_03_1"
 
 RUN apt-get update && apt-get install -y --no-install-recommends  \
     git \
