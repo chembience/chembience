@@ -65,8 +65,8 @@ as additional components as part of docker-compose configuration.
 
 Current release version of the most important packages are:
 
-* RDKit 2020.03.1
-* Python 3.7.6
+* RDKit 2020.03.2
+* Python 3.8.3
 * Django 2.2 + Django Rest Framework 3.11
 * Jupyter 6.0
 * Postgres 11.7
@@ -80,6 +80,7 @@ The development of Chembience originally started as a component of the `InChI-Re
 Releases
 --------
 
+- 0.2.17 (June 2020), update Python 3.8 (3.8.3) and RDKit 2020.03.2
 - 0.2.16 (April 2020), update to RDKit 2020.03
 - 0.2.15 (March 2020), update to Python 3.7.6, RDKit 2019.09.3, Postgres 11.7 and Django 2.2.8/DRF 3.11, Jupyter 6.0.4, Nginx 1.17
 - 0.2.14 (October 2019), update to RDKit 2019.09
@@ -390,4 +391,4 @@ Bugs, Comments and anything else
 
 For any bug reports, comments or suggestion please use the tools here at Github or contact me at my email.
 
-Markus Sitzmann, 2020-03-14
+Markus Sitzmann, 2020-06-02
