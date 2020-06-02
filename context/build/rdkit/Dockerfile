@@ -3,7 +3,7 @@ FROM chembience/python-base:$build_tag
 LABEL maintainer="markus.sitzmann@gmail.com"
 
 ENV PATH /opt/conda/bin:$PATH
-ENV CONDA_PY 37
+ENV CONDA_PY 38
 ENV RDKIT_VERSION 2020.03.2
 
 RUN /bin/bash -c "source activate chembience" && \

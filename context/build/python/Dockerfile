@@ -3,8 +3,8 @@ FROM chembience/base:$build_tag
 LABEL maintainer="markus.sitzmann@gmail.com "
 
 ENV PATH /opt/conda/bin:$PATH
-ENV CONDA_PY 37
-ENV CONDA_PACKAGE Miniconda3-4.7.10-Linux-x86_64.sh
+ENV CONDA_PY 38
+ENV CONDA_PACKAGE Miniconda3-py38_4.8.2-Linux-x86_64.sh
 
 RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
     wget --quiet https://repo.continuum.io/miniconda/$CONDA_PACKAGE && \
