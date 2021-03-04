@@ -5,7 +5,9 @@ LABEL maintainer="markus.sitzmann@gmail.com"
 ENV RDBASE="/opt/rdkit"
 ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$RDBASE/lib:/usr/lib/x86_64-linux-gnu"
 
-ENV RDKIT_BRANCH="Release_2020_03_2"
+ENV BOOST_VERSION="1.67-dev"
+
+ENV RDKIT_BRANCH="Release_2020_09_3"
 
 RUN apt-get update && apt-get install -y --no-install-recommends  \
     git \
@@ -15,12 +17,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends  \
     build-essential \
     libboost-dev \
     libboost-all-dev \
-    libboost-system1.67-dev \
-    libboost-thread1.67-dev \
-    libboost-serialization1.67-dev \
-    libboost-python1.67-dev \
-    libboost-regex1.67-dev \
-    libboost-iostreams1.67-dev \
+    libboost-system${BOOST_VERSION} \
+    libboost-thread${BOOST_VERSION} \
+    libboost-serialization${BOOST_VERSION} \
+    libboost-python${BOOST_VERSION} \
+    libboost-regex${BOOST_VERSION} \
+    libboost-iostreams${BOOST_VERSION} \
     libcairo2-dev \
     libeigen3-dev \
     python3-dev \

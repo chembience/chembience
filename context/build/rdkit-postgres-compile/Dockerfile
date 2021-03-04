@@ -6,9 +6,11 @@ LABEL maintainer="markus.sitzmann@gmail.com"
 ENV RDBASE="/opt/rdkit"
 ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$RDBASE/lib:/usr/lib/x86_64-linux-gnu"
 
-ENV PG_VERSION=11
+ENV PG_VERSION=12
 
-ENV RDKIT_BRANCH="Release_2020_03_2"
+ENV BOOST_VERSION="1.67-dev"
+
+ENV RDKIT_BRANCH="Release_2020_09_3"
 
 
 RUN apt-get update && apt-get -y --no-install-recommends install ca-certificates wget git gnupg2 cmake
@@ -17,18 +19,19 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
  && echo 'deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
  && apt-get update && apt-get install -y --no-install-recommends  \
     build-essential \
+    libfreetype6-dev \
     zlib1g-dev \
     postgresql-server-dev-all \
     postgresql-client-${PG_VERSION} \
-    postgresql-plpython-${PG_VERSION} \
+    #postgresql-plpython-${PG_VERSION} \
     postgresql-plpython3-${PG_VERSION} \
     libboost-dev \
-    libboost-system1.67-dev \
-    libboost-thread1.67-dev \
-    libboost-serialization1.67-dev \
-    libboost-python1.67-dev \
-    libboost-regex1.67-dev \
-    libboost-iostreams1.67-dev \
+    libboost-system${BOOST_VERSION} \
+    libboost-thread${BOOST_VERSION} \
+    libboost-serialization${BOOST_VERSION} \
+    libboost-python${BOOST_VERSION} \
+    libboost-regex${BOOST_VERSION} \
+    libboost-iostreams${BOOST_VERSION} \
     libeigen3-dev \
     python3 \
     python3-dev \

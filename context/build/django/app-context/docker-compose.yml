@@ -32,7 +32,7 @@ services:
 
 
   db:
-    image: chembience/db:${CHEMBIENCE_VERSION}
+    image: chembience/postgres-rdkit:postgres-13.rdkit-2020.09
     container_name: chembience-db
     volumes:
       - db_volume:/var/lib/postgresql
@@ -42,15 +42,9 @@ services:
       - DEBUG=false
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
-      - DB_USER=${CHEMBIENCE_DB_USER}
-      - DB_PASS=${CHEMBIENCE_DB_PASSWORD}
-      - DB_NAME=${CHEMBIENCE_DB_USER}
-      - DB_TEMPLATE=
-      - DB_EXTENSION=rdkit
-      - REPLICATION_MODE=
-      - REPLICATION_USER=
-      - REPLICATION_PASS=
-      - REPLICATION_SSLMODE=
+      - POSTGRES_USER=${CHEMBIENCE_DB_USER}
+      - POSTGRES_PASSWORD=${CHEMBIENCE_DB_PASSWORD}
+      - DB_NAME=CHEMBIENCE
 
 volumes:
   db_volume:
