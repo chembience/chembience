@@ -3,7 +3,7 @@ FROM chembience/rdkit-base:$build_tag
 LABEL maintainer="markus.sitzmann@gmail.com"
 
 ENV PATH /opt/conda/bin:$PATH
-ENV CONDA_PY 37
+ENV CONDA_PY 39
 
 RUN mkdir -p /opt/django /home/nginx
 
