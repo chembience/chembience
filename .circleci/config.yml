@@ -261,34 +261,44 @@ workflows:
            - prepare
           filters:
             branches:
-              only: deploy
+              only:
+                - deploy
+                - develop
       - base:
           requires:
             - prepare
           filters:
             branches:
-              only: deploy
+              only:
+               - deploy
+               - develop
       - python-base:
           requires:
             - prepare
             - base
           filters:
             branches:
-              only: deploy
+              only:
+                - deploy
+                - develop
       - rdkit-base:
           requires:
             - prepare
             - python-base
           filters:
             branches:
-              only: deploy
+              only:
+                - deploy
+                - develop
       - django-base:
           requires:
             - prepare
             - rdkit-base
           filters:
             branches:
-              only: deploy
+              only:
+                - deploy
+                - develop
       - jupyter-base:
           requires:
             - prepare
@@ -302,25 +312,33 @@ workflows:
             - base
           filters:
             branches:
-              only: deploy
+              only:
+                - deploy
+                - develop
       - django:
           requires:
             - django-base
           filters:
             branches:
-              only: deploy
+              only:
+                - deploy
+                - develop
       - jupyter:
           requires:
             - jupyter-base
           filters:
             branches:
-              only: deploy
+              only:
+                - deploy
+                - develop
       - rdkit:
           requires:
             - rdkit-base
           filters:
             branches:
-              only: deploy
+              only:
+                - deploy
+                - develop
       - rdkit-test:
           requires:
             - prepare
@@ -328,7 +346,9 @@ workflows:
             - db
           filters:
             branches:
-              only: deploy
+              only:
+                - deploy
+                - develop
       - django-test:
           requires:
             - prepare
@@ -338,7 +358,9 @@ workflows:
             - proxy
           filters:
             branches:
-              only: deploy
+              only:
+                - deploy
+                - develop
       - jupyter-test:
           requires:
             - prepare
@@ -348,5 +370,7 @@ workflows:
             - proxy
           filters:
             branches:
-              only: deploy
+              only:
+                - deploy
+                - develop
 
