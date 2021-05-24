@@ -3,8 +3,8 @@ set -e
 
 test -f .env && source .env
 
-CUID="$(stat -c %u ~)"
-CGID="$(stat -c %g ~)"
+CUID="$(id -u)"
+CGID="$(id -g)"
 
 cp chembience.jupyter.env .env
 

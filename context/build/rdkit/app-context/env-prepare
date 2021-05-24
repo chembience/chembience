@@ -3,8 +3,8 @@ set -e
 
 test -f .env && source .env
 
-CUID="$(stat -c %u ~)"
-CGID="$(stat -c %g ~)"
+CUID="$(id -u)"
+CGID="$(id -g)"
 
 cp chembience.rdkit.env .env
 
@@ -25,6 +25,6 @@ for f in "${files[@]}"; do
     sed -i -e "s/@CHEMBIENCE_DB_PORT/${CHEMBIENCE_DB_PORT}/g" $f
     sed -i -e "s/@CHEMBIENCE_DB_PASSWORD/${CHEMBIENCE_DB_PASSWORD}/g" $f
 
-    sed -i -e "s/@POSTGRES_ROOT_PASSWORD/${POSTGRES_ROOT_PASSWORD}/g" $f
+    sed -i -e "s/@POSTGRES_PASSWORD/${POSTGRES_PASSWORD}/g" $f
     sed -i -e "s/@POSTGRES_USER/${POSTGRES_USER}/g" $f
 done

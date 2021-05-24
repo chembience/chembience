@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-CUID="$(stat -c %u ~)"
-CGID="$(stat -c %g ~)"
+CUID="$(id -u)"
+CGID="$(id -g)"
 
 cp chembience.env .env
 
