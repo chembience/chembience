@@ -26,12 +26,12 @@ services:
       - LETSENCRYPT_EMAIL
       - LETSENCRYPT_TEST
     depends_on:
-      - db
+      - postgres
     entrypoint: ["/home/app/docker-entrypoint.sh"]
     command: ["/home/nginx/run.sh"]
 
 
-  db:
+  postgres:
     image: chembience/postgres-rdkit:${CHEMBIENCE_POSTGRES_RDKIT_VERSION}
     container_name: chembience-postgres-rdkit-db
     volumes:
@@ -41,11 +41,11 @@ services:
     networks:
       - sphere
     environment:
-      - POSTGRES_PASSWORD=${POSTGRES_ROOT_PASSWORD}
-      - CHEMBIENCE_POSTGRES_RDKIT_VERSION=${CHEMBIENCE_POSTGRES_RDKIT_VERSION}
-      - CHEMBIENCE_DB_USER=${CHEMBIENCE_DB_USER}
-      - CHEMBIENCE_DB_NAME=${CHEMBIENCE_DB_NAME}
-      - CHEMBIENCE_DB_PASSWORD=${CHEMBIENCE_DB_PASSWORD}
+      - POSTGRES_PASSWORD
+      - CHEMBIENCE_POSTGRES_RDKIT_VERSION
+      - CHEMBIENCE_DB_USER
+      - CHEMBIENCE_DB_NAME
+      - CHEMBIENCE_DB_PASSWORD
 
 volumes:
   django_db_volume:

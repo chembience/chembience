@@ -1,22 +1,23 @@
 ARG build_tag
 FROM chembience/base:$build_tag
+ARG conda_py
+ARG conda_package
+
 LABEL maintainer="markus.sitzmann@gmail.com "
 
 ENV PATH /opt/conda/bin:$PATH
-ENV CONDA_PY 39
-ENV CONDA_PACKAGE Miniconda3-py39_4.9.2-Linux-x86_64.sh
 
 RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
-    wget --quiet https://repo.continuum.io/miniconda/$CONDA_PACKAGE && \
-    /bin/bash /$CONDA_PACKAGE -b -p /opt/conda && \
-    rm $CONDA_PACKAGE
+    wget --quiet https://repo.continuum.io/miniconda/$conda_package && \
+    /bin/bash /$conda_package -b -p /opt/conda && \
+    rm $conda_package
 
 COPY requirements.txt /
 
-RUN CONDA_PY=$CONDA_PY conda install anaconda-client --yes && \
-    CONDA_PY=$CONDA_PY conda config --add channels conda-forge && \
-    CONDA_PY=$CONDA_PY conda create --verbose --yes -n chembience
+RUN CONDA_PY=$conda_py conda install anaconda-client --yes && \
+    CONDA_PY=$conda_py conda config --add channels conda-forge && \
+    CONDA_PY=$conda_py conda create --verbose --yes -n chembience
 
 RUN /bin/bash -c "source activate chembience" && \
-    CONDA_PY=$CONDA_PY conda install --yes --file /requirements.txt && \
-    CONDA_PY=$CONDA_PY conda update --all
+    CONDA_PY=$conda_py conda install --yes --file /requirements.txt && \
+    CONDA_PY=$conda_py conda update --all

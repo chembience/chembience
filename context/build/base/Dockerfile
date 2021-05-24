@@ -11,7 +11,7 @@ RUN apt-get --allow-releaseinfo-change update && apt-get -y --no-install-recomme
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
  && echo 'deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
  && apt-get --allow-releaseinfo-change update && apt-get -y --no-install-recommends install \
-    postgresql-client-11 \
+    postgresql-client-13 \
     joe
 
 COPY ./app-context/.env /opt/sphere/env

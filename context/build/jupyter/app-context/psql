@@ -5,8 +5,8 @@ source .env
 
 if [ $# -eq 0 ]
   then
-    docker-compose exec db psql -h db -U $CHEMBIENCE_DB_USER $CHEMBIENCE_DB_NAME
+    docker-compose exec db psql -h postgres -U $CHEMBIENCE_DB_USER $CHEMBIENCE_DB_NAME
   else
-    docker-compose exec db psql -h db -U $CHEMBIENCE_DB_USER $CHEMBIENCE_DB_NAME $1
+    docker-compose exec db psql -h postgres -U $CHEMBIENCE_DB_USER $CHEMBIENCE_DB_NAME $1
 fi
 
