@@ -3,10 +3,5 @@ set -e
 
 source .env
 
-if [ $# -eq 0 ]
-  then
-    docker-compose exec db psql -h postgres -U $CHEMBIENCE_DB_USER $CHEMBIENCE_DB_NAME
-  else
-    docker-compose exec db psql -h postgres -U $CHEMBIENCE_DB_USER $CHEMBIENCE_DB_NAME $1
-fi
+docker-compose exec postgres psql -h $CHEMBIENCE_POSTGRES_HOST -U $CHEMBIENCE_POSTGRES_USER $CHEMBIENCE_POSTGRES_NAME "$@"
 

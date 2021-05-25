@@ -11,20 +11,13 @@ cp chembience.django.env .env
 declare -a files=('./.env' './chembience.django.env')
 for f in "${files[@]}"; do
     echo "$f"
-    sed -i -e "s/@CHEMBIENCE_VERSION/${CHEMBIENCE_VERSION}/g" $f
-
+    sed -i -e 's?@APP_HOME?'`pwd`'?' $f
     sed -i -e "s/@CHEMBIENCE_UID/${CUID}/g" $f
     sed -i -e "s/@CHEMBIENCE_GID/${CGID}/g" $f
 
-    sed -i -e 's?@DJANGO_APP_HOME?'`pwd`'?' $f
+    sed -i -e "s/@CHEMBIENCE_VERSION/${CHEMBIENCE_VERSION}/g" $f
 
-    sed -i -e "s/@POSTGRES_RDKIT_VERSION/${CHEMBIENCE_POSTGRES_RDKIT_VERSION}/g" $f
-    sed -i -e "s/@CHEMBIENCE_DB_USER/${CHEMBIENCE_DB_USER}/g" $f
-    sed -i -e "s/@CHEMBIENCE_DB_NAME/${CHEMBIENCE_DB_NAME}/g" $f
-    sed -i -e "s/@CHEMBIENCE_DB_HOST/${CHEMBIENCE_DB_HOST}/g" $f
-    sed -i -e "s/@CHEMBIENCE_DB_PORT/${CHEMBIENCE_DB_PORT}/g" $f
-    sed -i -e "s/@CHEMBIENCE_DB_PASSWORD/${CHEMBIENCE_DB_PASSWORD}/g" $f
-
+    sed -i -e "s/@POSTGRES_RDKIT_VERSION/${POSTGRES_RDKIT_VERSION}/g" $f
     sed -i -e "s/@POSTGRES_PASSWORD/${POSTGRES_PASSWORD}/g" $f
     sed -i -e "s/@POSTGRES_USER/${POSTGRES_USER}/g" $f
 done
