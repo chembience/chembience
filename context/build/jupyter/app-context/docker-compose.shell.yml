@@ -6,14 +6,15 @@ services:
     image: chembience/shell:${CHEMBIENCE_VERSION}
     container_name: chembience-shell
     volumes:
-      - ${CHEMBIENCE_SPHERE}:/home/chembience
+      - ${CHEMBIENCE_SPHERE}:/home/sphere
     networks:
       - sphere
     environment:
+      - CHEMBIENCE_VERSION
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
-    command: bash
     entrypoint: [""]
+    command: bash
 
 networks:
   sphere:

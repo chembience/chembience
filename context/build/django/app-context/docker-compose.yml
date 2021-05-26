@@ -33,7 +33,7 @@ services:
 
   postgres:
     image: chembience/postgres-rdkit:${CHEMBIENCE_POSTGRES_RDKIT_VERSION}
-    container_name: chembience-postgres-rdkit-db
+    container_name: chembience-django-db
     volumes:
       - django_db_volume:/var/lib/postgresql
       - ${APP_HOME}/postgres-init.d:/docker-entrypoint-initdb.d

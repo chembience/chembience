@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 if ! id "app" >/dev/null 2>&1; then
     groupadd -g $CHEMBIENCE_GID app && \

@@ -5,7 +5,6 @@ ARG conda_py
 LABEL maintainer="markus.sitzmann@gmail.com"
 
 ENV PATH /opt/conda/bin:$PATH
-#ENV CONDA_PY 39
 
 RUN mkdir -p /opt/django /home/nginx
 
@@ -16,7 +15,6 @@ COPY ./app-context/nginx /home/nginx
 COPY docker-entrypoint.sh /
 COPY requirements.txt /
 
-RUN CONDA_PY=$conda_py conda config --add channels conda-forge
-
-RUN /bin/bash -c "source activate chembience" && \
+RUN CONDA_PY=$conda_py conda config --add channels conda-forge && \
+    /bin/bash -c "source activate chembience" && \
     CONDA_PY=$conda_py conda install --yes --file /requirements.txt

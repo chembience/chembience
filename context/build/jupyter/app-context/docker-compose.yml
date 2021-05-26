@@ -3,25 +3,25 @@ version: '3'
 services:
 
   app:
-    image: chembience/jupyter:${JUPYTER_APP_VERSION}
+    image: chembience/jupyter:${APP_VERSION}
     container_name: chembience-jupyter
     volumes:
-      - ${JUPYTER_APP_HOME}:/home/app
+      - ${APP_HOME}:/home/app
       - ${CHEMBIENCE_SPHERE}:/home/sphere
       - ${CHEMBIENCE_SHARE}:/share
     ports:
-       - ${JUPYTER_APP_CONNECTION_PORT}:80
+       - ${APP_CONNECTION_PORT}:80
     networks:
       - sphere
     environment:
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
-      - CHEMBIENCE_DB_USER
-      - CHEMBIENCE_DB_HOST
-      - CHEMBIENCE_DB_PORT
-      - CHEMBIENCE_DB_PASSWORD
-      - APP_VIRTUAL_HOSTNAME=${JUPYTER_APP_VIRTUAL_HOSTNAME}
-      - VIRTUAL_HOST=${JUPYTER_APP_VIRTUAL_HOSTNAME}
+      - CHEMBIENCE_POSTGRES_USER
+      - CHEMBIENCE_POSTGRES_HOST
+      - CHEMBIENCE_POSTGRES_PORT
+      - CHEMBIENCE_POSTGRES_PASSWORD
+      - APP_VIRTUAL_HOSTNAME=${APP_VIRTUAL_HOSTNAME}
+      - VIRTUAL_HOST=${APP_VIRTUAL_HOSTNAME}
       - JUPYTER_CONFIG_DIR=/home/app/${JUPYTER_CONFIG_DIR}
       - JUPYTER_NOTEBOOK_DIR=/home/app/${JUPYTER_NOTEBOOK_DIR}
       - JUPYTER_PASSWORD
@@ -36,16 +36,13 @@ services:
     container_name: chembience-jupyter-db
     volumes:
       - jupyter_db_volume:/var/lib/postgresql
-      - ${JUPYTER_APP_HOME}/postgres-init.d:/docker-entrypoint-initdb.d
+      - ${APP_HOME}/postgres-init.d:/docker-entrypoint-initdb.d
     #restart: always
     networks:
       - sphere
     environment:
       - POSTGRES_PASSWORD
-      - CHEMBIENCE_POSTGRES_RDKIT_VERSION
-      - CHEMBIENCE_DB_USER
-      - CHEMBIENCE_DB_NAME
-      - CHEMBIENCE_DB_PASSWORD
+      - POSTGRES_USER
 
 volumes:
   jupyter_db_volume:

@@ -3,7 +3,7 @@ version: '3'
 services:
 
   proxy:
-    image: chembience/proxy:${CHEMBIENCE_VERSION}
+    image: {$CHEMBIENCE_PROXY_IMAGE}
     container_name: chembience-proxy
     restart: unless-stopped
     volumes:

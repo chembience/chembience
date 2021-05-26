@@ -9,13 +9,13 @@ else
     echo "Creating user ..." && \
     groupadd -g $CHEMBIENCE_GID app && \
     useradd --shell /bin/bash -u $CHEMBIENCE_UID -g $CHEMBIENCE_GID -o -c "" -M app && \
-    export HOME=$CHEMBIENCE_HOME && \
+    export HOME=/home/app && \
     echo "Done."
 fi
 
 if [ -z "$(ls -A /home/app)" ]; then
     echo "Initializing home directory for Jupyter app ..."
-    cp -rf /opt/jupyter/* /home/app
+    cp -rf /opt/jupyter/* /home/app/
     mv /home/app/app-context/* /home/app/
     mv /home/app/env /home/app/.env
     mv /home/app/circleci /home/app/.circleci
