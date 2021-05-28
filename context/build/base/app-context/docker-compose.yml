@@ -3,7 +3,7 @@ version: '3'
 services:
 
   proxy:
-    image: {$CHEMBIENCE_PROXY_IMAGE}
+    image: jwilder/nginx-proxy:0.9.0
     container_name: chembience-proxy
     restart: unless-stopped
     volumes:

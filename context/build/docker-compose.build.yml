@@ -22,6 +22,7 @@ services:
     depends_on:
       - base
 
+
   rdkit-base:
     image: chembience/rdkit-base:${CHEMBIENCE_VERSION}
     build:

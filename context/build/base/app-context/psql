@@ -3,10 +3,4 @@ set -e
 
 source .env
 
-if [ $# -eq 0 ]
-  then
-    docker-compose -f docker-compose.shell.yml run --rm shell psql -h $CHEMBIENCE_DB_HOST -U chembience chembience
-  else
-    docker-compose -f docker-compose.shell.yml run --rm shell psql $1
-fi
-
+docker-compose -f docker-compose.shell.yml run --rm shell psql -h $CHEMBIENCE_POSTGRES_HOST -U $CHEMBIENCE_POSTGRES_USER $CHEMBIENCE_POSTGRES_NAME "$@"

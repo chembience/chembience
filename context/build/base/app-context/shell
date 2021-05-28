@@ -1,9 +1,5 @@
 #!/bin/bash
 
-if [ $# -eq 0 ]
-  then
-    docker-compose -f docker-compose.shell.yml run --rm shell bash
-  else
-    docker-compose -f docker-compose.yml exec $1 bash
-fi
+docker-compose -f docker-compose.shell.yml run --rm shell bash "$@"
+
 

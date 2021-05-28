@@ -2,6 +2,7 @@ from rdkit import Chem, __version__
 import psycopg2
 import pprint
 import time
+from os import environ
 
 print(__version__)
 
@@ -10,7 +11,7 @@ print(m)
 
 time.sleep(30)
 
-conn_string = "host='db' dbname='chembience' user='chembience' password='Chembience0'"
+conn_string = "host='postgres' dbname='chembience' user='chembience' password='Chembience0'"
 conn = psycopg2.connect(conn_string)
 cursor = conn.cursor()
 

@@ -13,8 +13,8 @@ services:
       - CHEMBIENCE_VERSION
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
-    command: bash
     entrypoint: [""]
+    command: bash
 
 networks:
   sphere:
