@@ -10,7 +10,6 @@ cp chembience.jupyter.env .env
 
 declare -a files=('./.env' './chembience.jupyter.env')
 for f in "${files[@]}"; do
-    echo "$f"
     sed -i -e 's?@APP_HOME?'`pwd`'?' $f
     sed -i -e "s/@CHEMBIENCE_UID/${CUID}/g" $f
     sed -i -e "s/@CHEMBIENCE_GID/${CGID}/g" $f

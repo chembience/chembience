@@ -2,11 +2,6 @@ version: '3'
 
 services:
 
-#  proxy:
-#    image: chembience/proxy:${CHEMBIENCE_VERSION}
-#    build:
-#      context: https://github.com/chembience/nginx-proxy.git#chembience
-
 
   shell:
     image: chembience/shell:${CHEMBIENCE_VERSION}

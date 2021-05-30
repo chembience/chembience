@@ -1,5 +1,6 @@
 ARG build_tag
 FROM chembience/jupyter-base:$build_tag
+
 LABEL maintainer="markus.sitzmann@gmail.com "
 
 ENV PATH /opt/conda/bin:$PATH

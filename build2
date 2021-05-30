@@ -1,0 +1,85 @@
+#!/bin/bash
+set -e
+
+if [ $# -eq 0 ]; then
+    echo "no targets provided (django|rdkit|jupyter|flask|all)"
+    exit 1
+fi
+
+build_base() {
+    ./env-prepare
+    docker-compose -f ./context/build/docker-compose.build.yml build base python-base rdkit-base
+    docker-compose -f ./context/app/docker-compose.build.yml build shell
+}
+
+build_django () {
+    build_base
+    docker-compose -f ./context/build/docker-compose.build.yml build django-base
+    docker-compose -f ./context/app/docker-compose.build.yml build django
+}
+
+build_rdkit () {
+    build_base
+    docker-compose -f ./context/build/docker-compose.build.yml build rdkit-base
+    docker-compose -f ./context/app/docker-compose.build.yml build rdkit
+}
+
+build_jupyter () {
+    build_base
+    docker-compose -f ./context/build/docker-compose.build.yml build jupyter-base
+    docker-compose -f ./context/app/docker-compose.build.yml build jupyter
+}
+
+
+build_django=false
+build_rdkit=false
+build_jupyter=false
+build_flask=false
+
+while :; do
+    case $1 in
+        django) build_django=true
+        ;;
+        rdkit) build_rdkit=true
+        ;;
+        jupyter) build_jupyter=true
+        ;;
+        flask) build_flask=true
+        ;;
+        all) build_django=true;
+             build_rdkit=true;
+             build_jupyter=true;
+             build_flask=true;
+        ;;
+        *) break
+    esac
+    shift
+done
+
+if [ $build_django = true ]
+then
+  echo "Building Chembience Django Template App"
+  build_django
+  echo "--------------------------------------"
+  echo " Finished building Django Template App"
+  echo "--------------------------------------"
+fi
+
+if [ $build_rdkit = true ]
+then
+  echo "Building Chembience RDKit Template App"
+  build_rdkit
+  echo "--------------------------------------"
+  echo " Finished building RDKit Template App"
+  echo "--------------------------------------"
+fi
+
+if [ $build_jupyter = true ]
+then
+  echo "Building Chembience Jupyter Template App"
+  build_jupyter
+  echo "--------------------------------------"
+  echo "Finished building Jupyter Template App"
+  echo "--------------------------------------"
+fi
+
