@@ -6,10 +6,17 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
+BUILD_BASE=true
+
 build_base() {
+    if [ $BUILD_BASE = false ]
+    then
+      return
+    fi
     ./env-prepare
     docker-compose -f ./context/build/docker-compose.build.yml build base python-base rdkit-base
     docker-compose -f ./context/app/docker-compose.build.yml build shell
+    BUILD_BASE=false
 }
 
 build_django () {

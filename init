@@ -9,8 +9,13 @@ fi
 source .env
 
 CWD=$(pwd)
+INIT_BASE=true
 
 init_base() {
+  if [ $INIT_BASE = false ]
+  then
+    return
+  fi
   ./env-prepare
   mkdir -p $CHEMBIENCE_SPHERE
   mkdir -p $CHEMBIENCE_SHARE
@@ -19,6 +24,7 @@ init_base() {
   cp .env $CHEMBIENCE_SHARE
   cd $CHEMBIENCE_SPHERE
   ./init
+  INIT_BASE=false
   cd $CWD
 }
 
