@@ -18,6 +18,7 @@ COPY ./app-context/.env /opt/sphere/env
 COPY . /opt/sphere
 COPY ./app-context /opt/sphere/app-context
 
+RUN true
 COPY docker-entrypoint.sh /
 
 RUN true
