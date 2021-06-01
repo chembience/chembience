@@ -11,6 +11,7 @@ sed -i -e "s/@CHEMBIENCE_GID/${CGID}/g" .env
 
 export
 echo $CUID $CGID
+cat .env
 
 cp .env ./context/build
 cp .env ./context/build/base
