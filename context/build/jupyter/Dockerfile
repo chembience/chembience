@@ -8,16 +8,16 @@ ENV PATH /opt/conda/bin:$PATH
 
 RUN mkdir -p /opt/jupyter /home/nginx
 
-ADD ./.env /opt/jupyter/env
-RUN true
+COPY ./.env /opt/jupyter/env
+#RUN true
 
-ADD . /opt/jupyter
-RUN true
+COPY . /opt/jupyter
+#RUN true
 
-ADD ./app-context/nginx /home/nginx
-RUN true
+COPY ./app-context/nginx /home/nginx
+#RUN true
 
-ADD docker-entrypoint.sh /
+COPY docker-entrypoint.sh /
 RUN true
 
 ADD requirements.txt /

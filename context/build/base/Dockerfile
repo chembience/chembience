@@ -14,16 +14,16 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
     postgresql-client-13 \
     joe
 
-ADD ./app-context/.env /opt/sphere/env
-RUN true
+COPY ./app-context/.env /opt/sphere/env
+#RUN true
 
-ADD . /opt/sphere
-RUN true
+COPY . /opt/sphere
+#RUN true
 
-ADD ./app-context /opt/sphere/app-context
-RUN true
+COPY ./app-context /opt/sphere/app-context
+#RUN true
 
-ADD docker-entrypoint.sh /
+COPY docker-entrypoint.sh /
 RUN true
 
 RUN cd /tmp \

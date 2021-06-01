@@ -8,16 +8,16 @@ ENV PATH /opt/conda/bin:$PATH
 
 RUN mkdir -p /opt/django /home/nginx
 
-ADD ./.env /opt/django/env
-RUN true
+COPY ./.env /opt/django/env
+#RUN true
 
-ADD . /opt/django
-RUN true
+COPY . /opt/django
+#RUN true
 
-ADD ./app-context/nginx /home/nginx
-RUN true
+COPY ./app-context/nginx /home/nginx
+#RUN true
 
-ADD docker-entrypoint.sh /
+COPY docker-entrypoint.sh /
 RUN true
 
 ADD requirements.txt /
