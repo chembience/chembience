@@ -33,7 +33,7 @@ jobs:
 
       - name: Push Django Image
         run: |
-          docker-compose -f ./context/build/docker-compose.build.yml push base django
-          docker-compose -f ./context/app/docker-compose.build.yml push base django
+          docker-compose -f ./context/build/docker-compose.build.yml push base
+          docker-compose -f ./context/app/docker-compose.build.yml push django
 
           
