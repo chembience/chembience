@@ -11,13 +11,15 @@ ENV PATH /opt/conda/bin:$PATH
 RUN mkdir -p /opt/rdkit
 
 ADD ./.env /opt/rdkit/env
-ADD . /opt/rdkit
-ADD ./app-context /opt/rdkit/app-context
+RUN true
 
+ADD . /opt/rdkit
+RUN true
+
+ADD ./app-context /opt/rdkit/app-context
 RUN true
 
 ADD docker-entrypoint.sh /
-
 RUN true
 
 RUN /bin/bash -c "source activate chembience" && \

@@ -12,10 +12,7 @@ RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
     /bin/bash /$conda_package -b -p /opt/conda && \
     rm $conda_package
 
-RUN true
-
 ADD requirements.txt /
-
 RUN true
 
 RUN CONDA_PY=$conda_py conda install anaconda-client --yes && \
