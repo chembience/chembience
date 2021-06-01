@@ -20,6 +20,8 @@ ADD ./app-context /opt/sphere/app-context
 
 ADD docker-entrypoint.sh /
 
+RUN true
+
 RUN cd /tmp \
     && git clone https://github.com/chembience/pychembience.git \
     && cp -r pychembience /opt \
