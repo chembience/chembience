@@ -10,11 +10,11 @@ ENV PATH /opt/conda/bin:$PATH
 
 RUN mkdir -p /opt/rdkit
 
-COPY ./.env /opt/rdkit/env
-COPY . /opt/rdkit
-COPY ./app-context /opt/rdkit/app-context
+ADD ./.env /opt/rdkit/env
+ADD . /opt/rdkit
+ADD ./app-context /opt/rdkit/app-context
 
-COPY docker-entrypoint.sh /
+ADD docker-entrypoint.sh /
 
 RUN /bin/bash -c "source activate chembience" && \
     CONDA_PY=$conda_py conda install cairo && \

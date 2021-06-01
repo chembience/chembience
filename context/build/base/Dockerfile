@@ -14,11 +14,11 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
     postgresql-client-13 \
     joe
 
-COPY ./app-context/.env /opt/sphere/env
-COPY . /opt/sphere
-COPY ./app-context /opt/sphere/app-context
+ADD ./app-context/.env /opt/sphere/env
+ADD . /opt/sphere
+ADD ./app-context /opt/sphere/app-context
 
-COPY docker-entrypoint.sh /
+ADD docker-entrypoint.sh /
 
 RUN cd /tmp \
     && git clone https://github.com/chembience/pychembience.git \

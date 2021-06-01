@@ -8,12 +8,12 @@ ENV PATH /opt/conda/bin:$PATH
 
 RUN mkdir -p /opt/django /home/nginx
 
-COPY ./.env /opt/django/env
-COPY . /opt/django
-COPY ./app-context/nginx /home/nginx
+ADD ./.env /opt/django/env
+ADD . /opt/django
+ADD ./app-context/nginx /home/nginx
 
-COPY docker-entrypoint.sh /
-COPY requirements.txt /
+ADD docker-entrypoint.sh /
+ADD requirements.txt /
 
 RUN /bin/bash -c "source activate chembience" && \
     CONDA_PY=$conda_py conda config --add channels conda-forge && \
