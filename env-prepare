@@ -9,6 +9,9 @@ cp chembience.env .env
 sed -i -e "s/@CHEMBIENCE_UID/${CUID}/g" .env
 sed -i -e "s/@CHEMBIENCE_GID/${CGID}/g" .env
 
+export
+echo $CUID $CGID
+
 cp .env ./context/build
 cp .env ./context/build/base
 cp .env ./context/build/base/app-context
@@ -19,3 +22,4 @@ cp .env ./context/build/rdkit/app-context
 cp .env ./context/build/jupyter
 cp .env ./context/build/jupyter/app-context
 cp .env ./context/app
+
