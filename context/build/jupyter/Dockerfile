@@ -12,7 +12,6 @@ COPY ./.env /opt/jupyter/env
 COPY . /opt/jupyter
 COPY ./app-context/nginx /home/nginx
 
-RUN true
 COPY docker-entrypoint.sh /
 COPY requirements.txt /
 

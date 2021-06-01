@@ -67,9 +67,9 @@ if [ $build_django = true ]
 then
   echo "Building Chembience Django Template App"
   build_django
-  echo "--------------------------------------"
+  echo "---------------------------------------"
   echo " Finished building Django Template App"
-  echo "--------------------------------------"
+  echo "---------------------------------------"
 fi
 
 if [ $build_rdkit = true ]
@@ -85,8 +85,8 @@ if [ $build_jupyter = true ]
 then
   echo "Building Chembience Jupyter Template App"
   build_jupyter
-  echo "--------------------------------------"
-  echo "Finished building Jupyter Template App"
-  echo "--------------------------------------"
+  echo "----------------------------------------"
+  echo " Finished building Jupyter Template App"
+  echo "----------------------------------------"
 fi
 
