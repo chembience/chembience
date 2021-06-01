@@ -9,18 +9,23 @@ ENV PATH /opt/conda/bin:$PATH
 RUN mkdir -p /opt/jupyter /home/nginx
 
 COPY ./.env /opt/jupyter/env
-#RUN true
+#dirty bug fix
+RUN true
 
 COPY . /opt/jupyter
-#RUN true
+#dirty bug fix
+RUN true
 
 COPY ./app-context/nginx /home/nginx
-#RUN true
+#dirty bug fix
+RUN true
 
 COPY docker-entrypoint.sh /
+#dirty bug fix
 RUN true
 
 ADD requirements.txt /
+#dirty bug fix
 RUN true
 
 RUN CONDA_PY=$conda_py conda config --add channels conda-forge && \

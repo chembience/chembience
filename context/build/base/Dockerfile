@@ -15,15 +15,19 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
     joe
 
 COPY ./app-context/.env /opt/sphere/env
-#RUN true
+#dirty bug fix
+RUN true
 
 COPY . /opt/sphere
-#RUN true
+#dirty bug fix
+RUN true
 
 COPY ./app-context /opt/sphere/app-context
-#RUN true
+#dirty bug fix
+RUN true
 
 COPY docker-entrypoint.sh /
+#dirty bug fix
 RUN true
 
 RUN cd /tmp \

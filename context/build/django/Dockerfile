@@ -9,18 +9,23 @@ ENV PATH /opt/conda/bin:$PATH
 RUN mkdir -p /opt/django /home/nginx
 
 COPY ./.env /opt/django/env
-#RUN true
+#dirty bug fix
+RUN true
 
 COPY . /opt/django
-#RUN true
+#dirty bug fix
+RUN true
 
 COPY ./app-context/nginx /home/nginx
-#RUN true
+#dirty bug fix
+RUN true
 
 COPY docker-entrypoint.sh /
+#dirty bug fix
 RUN true
 
 ADD requirements.txt /
+#dirty bug fix
 RUN true
 
 RUN /bin/bash -c "source activate chembience" && \
