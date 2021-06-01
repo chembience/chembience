@@ -12,6 +12,8 @@ ADD ./.env /opt/django/env
 ADD . /opt/django
 ADD ./app-context/nginx /home/nginx
 
+RUN true
+
 ADD docker-entrypoint.sh /
 ADD requirements.txt /
 

@@ -14,7 +14,11 @@ ADD ./.env /opt/rdkit/env
 ADD . /opt/rdkit
 ADD ./app-context /opt/rdkit/app-context
 
+RUN true
+
 ADD docker-entrypoint.sh /
+
+RUN true
 
 RUN /bin/bash -c "source activate chembience" && \
     CONDA_PY=$conda_py conda install cairo && \

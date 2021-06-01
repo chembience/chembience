@@ -18,6 +18,8 @@ ADD ./app-context/.env /opt/sphere/env
 ADD . /opt/sphere
 ADD ./app-context /opt/sphere/app-context
 
+RUN true
+
 ADD docker-entrypoint.sh /
 
 RUN true

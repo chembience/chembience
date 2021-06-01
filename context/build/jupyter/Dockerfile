@@ -12,6 +12,8 @@ ADD ./.env /opt/jupyter/env
 ADD . /opt/jupyter
 ADD ./app-context/nginx /home/nginx
 
+RUN true
+
 ADD docker-entrypoint.sh /
 ADD requirements.txt /
 
