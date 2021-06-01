@@ -29,11 +29,13 @@ jobs:
 
       - name: Build Django Template App
         run: |
-          ./build django
+          ./env-prepare
+          docker-compose -f ./context/build/docker-compose.build.yml build base python-base rdkit-base django-base
+          docker-compose -f ./context/app/docker-compose.build.yml build shell django
 
       - name: Push Django Image
         run: |
-          docker-compose -f ./context/build/docker-compose.build.yml push base django-base
-          docker-compose -f ./context/app/docker-compose.build.yml push django
+          docker-compose -f ./context/build/docker-compose.build.yml push base python-base rdkit-base django-base
+          docker-compose -f ./context/app/docker-compose.build.yml push shell django
 
           
