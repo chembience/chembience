@@ -16,8 +16,8 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
 
 COPY ./app-context/.env /opt/sphere/env
 COPY . /opt/sphere
-COPY ./app-context /opt/sphere/app-context
-COPY docker-entrypoint.sh /docker-entrypoint.base.sh
+#COPY ./app-context /opt/sphere/app-context
+COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN cd /tmp \
     && git clone https://github.com/chembience/pychembience.git \
@@ -26,4 +26,4 @@ RUN cd /tmp \
 
 #VOLUME /home/sphere
 
-ENTRYPOINT ["/docker-entrypoint.base.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
