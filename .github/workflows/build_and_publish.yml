@@ -44,11 +44,11 @@ jobs:
         run: |
           ./init django
           cd ~/chembient/django
-          ./up
+          docker-compose up
           ./django-manage-py migrate
           ./django-manage-py createsuperuser --username test --noinput --email test@test.org
           ./django-manage-py collectstatic
-          ./remove
+          docker-compose down
 
       - name: Django Template App push
         run: |
@@ -64,9 +64,9 @@ jobs:
         run: |
           ./init jupyter
           cd ~/chembient/jupyter
-          ./up
+          docker-compose up
           ./jupyter --version
-          ./remove
+          docker-compose down
 
       - name: Jupyter Template App push
         run: |
@@ -82,7 +82,7 @@ jobs:
           ./init
           cd ~/chembient/rdkit
           ./run script.py
-          ./remove
+          docker-compose down
 
       - name: RDKit Template App push
         run: |
