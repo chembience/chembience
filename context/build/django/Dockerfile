@@ -9,24 +9,12 @@ ENV PATH /opt/conda/bin:$PATH
 RUN mkdir -p /opt/django /home/nginx
 
 COPY ./.env /opt/django/env
-#dirty bug fix
-RUN true
-
 COPY . /opt/django
-#dirty bug fix
-RUN true
-
 COPY ./app-context/nginx /home/nginx
-#dirty bug fix
-RUN true
-
 COPY docker-entrypoint.sh /
-#dirty bug fix
-RUN true
 
-ADD requirements.txt /
-#dirty bug fix
-RUN true
+COPY requirements.txt /
+
 
 RUN /bin/bash -c "source activate chembience" && \
     CONDA_PY=$conda_py conda config --add channels conda-forge && \

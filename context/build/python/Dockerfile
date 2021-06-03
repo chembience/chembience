@@ -13,8 +13,6 @@ RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
     rm $conda_package
 
 COPY requirements.txt /
-#dirty bug fix
-RUN true
 
 RUN CONDA_PY=$conda_py conda install anaconda-client --yes && \
     CONDA_PY=$conda_py conda config --add channels conda-forge && \
