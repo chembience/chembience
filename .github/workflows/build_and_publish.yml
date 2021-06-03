@@ -40,6 +40,16 @@ jobs:
           docker-compose -f ./context/build/docker-compose.build.yml build django-base
           docker-compose -f ./context/app/docker-compose.build.yml build django
 
+      - name: Django Template App test
+        run: |
+          ./init django
+          cd ~/chembient/django
+          ./up
+          ./django-manage-py migrate
+          ./django-manage-py createsuperuser --username test --noinput --email test@test.org
+          ./django-manage-py collectstatic
+          ./remove
+
       - name: Django Template App push
         run: |
           docker-compose -f ./context/build/docker-compose.build.yml push django-base
@@ -50,6 +60,14 @@ jobs:
           docker-compose -f ./context/build/docker-compose.build.yml build jupyter-base
           docker-compose -f ./context/app/docker-compose.build.yml build jupyter
 
+      - name: Jupyter Template App test
+        run: |
+          ./init jupyter
+          cd ~/chembient/jupyter
+          ./up
+          ./jupyter --version
+          ./remove
+
       - name: Jupyter Template App push
         run: |
           docker-compose -f ./context/build/docker-compose.build.yml push jupyter-base
@@ -59,7 +77,18 @@ jobs:
         run: |
           docker-compose -f ./context/app/docker-compose.build.yml build rdkit
 
+      - name: RDKit Template App test
+        run: |
+          ./init
+          cd ~/chembient/rdkit
+          ./run script.py
+          ./remove
+
       - name: RDKit Template App push
         run: |
           docker-compose -f ./context/app/docker-compose.build.yml push rdkit
+
+
+
+
 
