@@ -8,12 +8,13 @@ ENV PATH /opt/conda/bin:$PATH
 
 RUN mkdir -p /opt/jupyter /home/nginx
 
-COPY ./.env /opt/jupyter/env
 COPY . /opt/jupyter
+COPY ./.env /opt/jupyter/env
 COPY ./app-context/nginx /home/nginx
-COPY docker-entrypoint.sh /
-COPY requirements.txt /
 
-RUN CONDA_PY=$conda_py conda config --add channels conda-forge && \
-    /bin/bash -c "source activate chembience" && \
-    CONDA_PY=$conda_py conda install --yes --file /requirements.txt
+COPY docker-entrypoint.sh /
+COPY requirements.txt /opt/jupyter
+
+RUN /bin/bash -c "source activate chembience" && \
+    CONDA_PY=$conda_py conda config --add channels conda-forge && \
+    CONDA_PY=$conda_py conda install --yes --file /opt/jupyter/requirements.txt
