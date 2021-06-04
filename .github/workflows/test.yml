@@ -37,9 +37,9 @@ jobs:
         run: |
           ./init jupyter
           cd ~/chembient/jupyter
-          docker-compose up -d
+          ./up
           ./jupyter --version
-          docker-compose log
+          docker-compose logs
           docker-compose down
 
       - name: RDKit Template App test
@@ -47,7 +47,7 @@ jobs:
           ./init rdkit
           cd ~/chembient/rdkit
           ./run script.py
-          docker-compose log
+          docker-compose logs
           docker-compose down
 
 
