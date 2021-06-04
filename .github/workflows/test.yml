@@ -26,12 +26,12 @@ jobs:
         run: |
           ./init django
           cd ~/chembient/django
-          docker-compose up -d
+          ./up
           ./django-manage-py migrate
           ./django-manage-py createsuperuser --username test --noinput --email test@test.org
           ./django-manage-py collectstatic
-          docker-compose log
-          docker-compose down
+          docker-compose logs
+          ./remove
 
       - name: Jupyter Template App test
         run: |
