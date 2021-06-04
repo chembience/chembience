@@ -79,7 +79,7 @@ jobs:
 
       - name: RDKit Template App test
         run: |
-          ./init
+          ./init rdkit
           cd ~/chembient/rdkit
           ./run script.py
           docker-compose down
