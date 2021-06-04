@@ -23,7 +23,7 @@ jobs:
           ./env-prepare
 
       - name: Django Template App test
-        shell: 'script -q -e -c "bash {0}"'
+        shell: 'script -q -e -c "bash --noprofile --norc -eo pipefail {0}"'
         run: |
           ./init django
           cd ~/chembient/django
@@ -36,7 +36,7 @@ jobs:
           rm -rf ~/chembient/django
 
       - name: Jupyter Template App test
-        shell: 'script -q -e -c "bash {0}"'
+        shell: 'script -q -e -c "bash --noprofile --norc -eo pipefail {0}"'
         run: |
           ./init jupyter
           cd ~/chembient/jupyter
@@ -46,7 +46,7 @@ jobs:
           rm -rf ~/chembient/jupyter
 
       - name: RDKit Template App test
-        shell: 'script -q -e -c "bash {0}"'
+        shell: 'script -q -e -c "bash --noprofile --norc -eo pipefail {0}"'
         run: |
           ./init rdkit
           cd ~/chembient/rdkit
