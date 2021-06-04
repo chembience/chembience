@@ -28,7 +28,6 @@ jobs:
           ./init django
           cd ~/chembient/django
           docker-compose up -d
-          sleep 120
           ./django-manage-py migrate
           ./django-manage-py createsuperuser --username test --noinput --email test@test.org
           ./django-manage-py collectstatic
@@ -40,7 +39,7 @@ jobs:
         run: |
           ./init jupyter
           cd ~/chembient/jupyter
-          docker-compose up
+          docker-compose up -d
           ./jupyter --version
           docker-compose logs
           docker-compose down
