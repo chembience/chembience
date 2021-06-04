@@ -31,7 +31,7 @@ jobs:
           ./django-manage-py migrate
           ./django-manage-py createsuperuser --username test --noinput --email test@test.org
           ./django-manage-py collectstatic
-          docker-compose logs
+          rumms
           docker-compose down
           rm -rf ~/chembient/django
 
@@ -42,7 +42,6 @@ jobs:
           cd ~/chembient/jupyter
           docker-compose up -d
           ./jupyter --version
-          docker-compose logs
           docker-compose down
           rm -rf ~/chembient/jupyter
 
@@ -52,7 +51,6 @@ jobs:
           ./init rdkit
           cd ~/chembient/rdkit
           ./run script.py
-          docker-compose logs
           docker-compose down
           rm -rf ~/chembient/rdkit
 
