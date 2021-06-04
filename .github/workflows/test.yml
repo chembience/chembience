@@ -26,7 +26,7 @@ jobs:
         run: |
           ./init django
           cd ~/chembient/django
-          docker-compose up
+          docker-compose up &
           ./django-manage-py migrate
           ./django-manage-py createsuperuser --username test --noinput --email test@test.org
           ./django-manage-py collectstatic
