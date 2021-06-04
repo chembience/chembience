@@ -23,6 +23,7 @@ jobs:
           ./env-prepare
 
       - name: Django Template App test
+        shell: 'script -q -e -c "bash {0}"'
         run: |
           ./init django
           cd ~/chembient/django
@@ -35,6 +36,7 @@ jobs:
           docker-compose down
 
       - name: Jupyter Template App test
+        shell: 'script -q -e -c "bash {0}"'
         run: |
           ./init jupyter
           cd ~/chembient/jupyter
@@ -44,6 +46,7 @@ jobs:
           docker-compose down
 
       - name: RDKit Template App test
+        shell: 'script -q -e -c "bash {0}"'
         run: |
           ./init rdkit
           cd ~/chembient/rdkit
