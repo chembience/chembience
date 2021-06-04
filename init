@@ -6,6 +6,7 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
+./env-prepare
 source .env
 
 CWD=$(pwd)
@@ -16,7 +17,6 @@ init_base() {
   then
     return
   fi
-  ./env-prepare
   mkdir -p $CHEMBIENCE_SPHERE
   mkdir -p $CHEMBIENCE_SHARE
   docker-compose -f ./context/build/base/docker-compose.init.yml run --rm base
