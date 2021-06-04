@@ -3,4 +3,4 @@ set -e
 
 echo "Running $@"
 
-docker-compose exec -t app bash -ci "gosu app bash -c 'jupyter $*'"
+docker-compose exec app bash -ci "gosu app bash -c 'jupyter $*'"
