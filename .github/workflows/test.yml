@@ -20,7 +20,7 @@ jobs:
 
       - name: prepare
         run: |
-          ./init all
+          ./env-prepare
 
       - name: Django Template App test
         run: |
@@ -30,6 +30,7 @@ jobs:
           ./django-manage-py migrate
           ./django-manage-py createsuperuser --username test --noinput --email test@test.org
           ./django-manage-py collectstatic
+          docker-compose log
           docker-compose down
 
       - name: Jupyter Template App test
@@ -38,6 +39,7 @@ jobs:
           cd ~/chembient/jupyter
           docker-compose up -d
           ./jupyter --version
+          docker-compose log
           docker-compose down
 
       - name: RDKit Template App test
@@ -45,6 +47,7 @@ jobs:
           ./init rdkit
           cd ~/chembient/rdkit
           ./run script.py
+          docker-compose log
           docker-compose down
 
 
