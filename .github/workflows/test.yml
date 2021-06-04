@@ -26,21 +26,21 @@ jobs:
         run: |
           ./init django
           cd ~/chembient/django
-          ./up
+          docker-compose up &
           ./django-manage-py migrate
           ./django-manage-py createsuperuser --username test --noinput --email test@test.org
           ./django-manage-py collectstatic
           docker-compose logs
-          ./remove
+          docker-compose down &
 
       - name: Jupyter Template App test
         run: |
           ./init jupyter
           cd ~/chembient/jupyter
-          ./up
+          docker-compose up &
           ./jupyter --version
           docker-compose logs
-          docker-compose down
+          docker-compose down &
 
       - name: RDKit Template App test
         run: |
