@@ -33,6 +33,7 @@ jobs:
           ./django-manage-py collectstatic
           docker-compose logs
           docker-compose down
+          rm -rf ~/chembient/django
 
       - name: Jupyter Template App test
         shell: 'script -q -e -c "bash {0}"'
@@ -43,6 +44,7 @@ jobs:
           ./jupyter --version
           docker-compose logs
           docker-compose down
+          rm -rf ~/chembient/jupyter
 
       - name: RDKit Template App test
         shell: 'script -q -e -c "bash {0}"'
@@ -52,6 +54,7 @@ jobs:
           ./run script.py
           docker-compose logs
           docker-compose down
+          rm -rf ~/chembient/rdkit
 
 
 
