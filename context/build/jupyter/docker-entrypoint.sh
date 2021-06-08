@@ -18,7 +18,7 @@ if [ -z "$(ls -A /home/app)" ]; then
     cp -rf /opt/jupyter/* /home/app/
     mv /home/app/app-context/* /home/app/
     mv /home/app/env /home/app/.env
-    mv /home/app/circleci /home/app/.circleci
+#   mv /home/app/circleci /home/app/.circleci
     rm -rf /home/app/docker-compose.init.yml /home/app/app-context
     mkdir -p $JUPYTER_NOTEBOOK_DIR
     chown -R $CHEMBIENCE_UID:$CHEMBIENCE_GID /home/app

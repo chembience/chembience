@@ -19,7 +19,7 @@ if [ -z "$(ls -A /home/app)" ]; then
     mv /home/app/app-context/* /home/app/
     mv /home/app/project-template/appsite/ /home/app/appsite
     mv /home/app/env /home/app/.env
-    mv /home/app/circleci /home/app/.circleci
+#   mv /home/app/circleci /home/app/.circleci
     rm -rf /home/app/docker-compose.init.yml /home/app/project-template /home/app/app-context
     chown -R $CHEMBIENCE_UID:$CHEMBIENCE_GID /home/app
     echo "Done."

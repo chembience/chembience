@@ -10,5 +10,9 @@ COPY nginx /home/nginx
 COPY requirements.txt /
 
 RUN /bin/bash -c "source activate chembience" && \
-    CONDA_PY=$conda_py pip install -r /requirements.txt
-    #CONDA_PY=$CONDA_PY conda install --yes --file /requirements.txt
+    #CONDA_PY=$conda_py pip install -r /requirements.txt
+    CONDA_PY=$CONDA_PY conda install --yes --file /requirements.txt
+    conda clean -afy && \
+    find /opt/conda/ -follow -type f -name '*.a' -delete && \
+    find /opt/conda/ -follow -type f -name '*.pyc' -delete && \
+    find /opt/conda/ -follow -type f -name '*.js.map' -delete

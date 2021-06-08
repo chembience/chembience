@@ -2,10 +2,7 @@ numpy
 Pillow
 markdown
 psycopg2
-pygments
 requests
-lxml
-six
-
+conda-pack
 
 

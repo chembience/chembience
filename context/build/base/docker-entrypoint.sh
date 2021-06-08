@@ -19,7 +19,7 @@ if [ -z "$(ls -A /home/sphere)" ];  then
     chown -R $CHEMBIENCE_UID:$CHEMBIENCE_GID /home/sphere
     cp -r /opt/sphere/app-context/* /home/sphere
     cp /opt/sphere/env /home/sphere/.env
-    mv /home/sphere/circleci /home/sphere/.circleci
+#   mv /home/sphere/circleci /home/sphere/.circleci
     chown -R $CHEMBIENCE_UID:$CHEMBIENCE_GID /home/sphere
     echo "Done."
 else
