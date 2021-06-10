@@ -16,8 +16,4 @@ COPY docker-entrypoint.sh /
 
 RUN /bin/bash -c "source activate chembience" && \
     CONDA_PY=$conda_py conda install cairo && \
-    CONDA_PY=$conda_py conda install -c rdkit rdkit=$rdkit_version && \
-    conda clean -afy && \
-    find /opt/conda/ -follow -type f -name '*.a' -delete && \
-    find /opt/conda/ -follow -type f -name '*.pyc' -delete && \
-    find /opt/conda/ -follow -type f -name '*.js.map' -delete
+    CONDA_PY=$conda_py conda install -c rdkit rdkit=$rdkit_version

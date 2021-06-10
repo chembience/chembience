@@ -11,4 +11,3 @@ COPY requirements.txt /
 
 RUN /bin/bash -c "source activate chembience" && \
     CONDA_PY=$conda_py pip install -r /requirements.txt
-    #CONDA_PY=$CONDA_PY conda install --yes --file /requirements.txt
