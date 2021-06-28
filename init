@@ -24,6 +24,7 @@ init_base() {
   cp .env $CHEMBIENCE_SHARE
   cd $CHEMBIENCE_SPHERE
   ./init
+  docker network ls|grep chembience_sphere > /dev/null || docker network create --driver bridge chembience_sphere
   INIT_BASE=false
   cd $CWD
 }

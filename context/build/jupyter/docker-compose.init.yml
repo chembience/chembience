@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 
 services:
 
@@ -12,8 +12,8 @@ services:
       - CHEMBIENCE_GID
       - JUPYTER_NOTEBOOK_DIR=/home/app/${JUPYTER_NOTEBOOK_DIR}
       - JUPYTER_CONFIG_DIR=/home/app/${JUPYTER_CONFIG_DIR}
-    networks:
-      - sphere
+    #networks:
+    #  - sphere
 
-networks:
-  sphere:
+#networks:
+#  sphere:

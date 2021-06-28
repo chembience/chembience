@@ -1,10 +1,10 @@
-version: '3'
+version: '3.9'
 
 services:
 
   app:
     image: chembience/rdkit:${APP_VERSION}
-    container_name: chembience-rdkit
+    container_name: ${APP_NAME}
     volumes:
       - ${APP_HOME}:/home/app
       - ${CHEMBIENCE_SPHERE}:/home/sphere
@@ -26,9 +26,9 @@ services:
 
   postgres:
     image: chembience/postgres-rdkit:${CHEMBIENCE_POSTGRES_RDKIT_VERSION}
-    container_name: chembience-rdkit-db
+    container_name: ${APP_NAME}_postgres
     volumes:
-      - rdkit_db_volume:/var/lib/postgresql
+      - postgres_db_volume:/var/lib/postgresql
       - ${APP_HOME}/postgres-init.d:/docker-entrypoint-initdb.d
     #restart: always
     networks:
@@ -38,7 +38,13 @@ services:
       - POSTGRES_USER
 
 volumes:
-  rdkit_db_volume:
+  postgres_db_volume:
 
 networks:
+  app_network:
+    external:
+      name: ${APP_NAME}_backend
   sphere:
+    external:
+      name: chembience_sphere
+

@@ -1,5 +1,4 @@
 #!/bin/bash
 set -e
 
-docker-compose down
-docker volume rm chembience_jupyter_db_volume
+docker-compose down -v

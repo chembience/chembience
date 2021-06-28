@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 
 services:
 
@@ -10,8 +10,8 @@ services:
     environment:
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
-    networks:
-      - sphere
+    #networks:
+    #  - sphere
 
-networks:
-  sphere:
+#networks:
+#  sphere:

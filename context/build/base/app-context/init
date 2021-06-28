@@ -2,4 +2,11 @@
 
 ./env-prepare
 
+if [ -z $(docker network ls --filter name=^chembience_sphere$ --format="{{ .Name }}") ] ; then
+     echo "Creating chembience sphere network"
+     docker network create chembience_sphere ;
+fi
+
+echo "Done."
+
 exit 0

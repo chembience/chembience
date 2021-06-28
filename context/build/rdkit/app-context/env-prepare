@@ -11,6 +11,8 @@ cp chembience.rdkit.env .env
 declare -a files=('./.env' './chembience.rdkit.env')
 for f in "${files[@]}"; do
     sed -i -e 's?@APP_HOME?'`pwd`'?' $f
+    sed -i -e "s/@APP_NAME/${RDKIT_APP_NAME}/g" $f
+
     sed -i -e "s/@CHEMBIENCE_UID/${CUID}/g" $f
     sed -i -e "s/@CHEMBIENCE_GID/${CGID}/g" $f
 

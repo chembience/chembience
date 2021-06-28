@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 
 services:
 
@@ -18,6 +18,9 @@ services:
 
 networks:
   sphere:
+    external:
+      name: chembience_sphere
+
 
 
 

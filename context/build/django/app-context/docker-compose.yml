@@ -1,10 +1,10 @@
-version: '3'
+version: '3.9'
 
 services:
 
   app:
     image: chembience/django:${APP_VERSION}
-    container_name: chembience-django
+    container_name: ${APP_NAME}
     volumes:
       - ${APP_HOME}:/home/app
       - ${CHEMBIENCE_SPHERE}:/home/sphere
@@ -12,6 +12,7 @@ services:
     ports:
        - ${APP_CONNECTION_PORT}:80
     networks:
+      - app_network
       - sphere
     environment:
       - CHEMBIENCE_UID
@@ -33,19 +34,25 @@ services:
 
   postgres:
     image: chembience/postgres-rdkit:${CHEMBIENCE_POSTGRES_RDKIT_VERSION}
-    container_name: chembience-django-db
+    container_name: ${APP_NAME}_postgres
     volumes:
-      - django_db_volume:/var/lib/postgresql
+      - postgres_db_volume:/var/lib/postgresql
       - ${APP_HOME}/postgres-init.d:/docker-entrypoint-initdb.d
     #restart: always
     networks:
-      - sphere
+      - app_network
     environment:
       - POSTGRES_PASSWORD
       - POSTGRES_USER
 
 volumes:
-  django_db_volume:
+  postgres_db_volume:
 
 networks:
+  app_network:
+    external:
+      name: ${APP_NAME}_backend
   sphere:
+    external:
+      name: chembience_sphere
+
