@@ -5,6 +5,7 @@ on:
     branches:
       #- master
       - ci
+      - develop*
     tags:
       - v*
 

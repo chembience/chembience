@@ -2,7 +2,7 @@
 set -e
 
 if [ $# -eq 0 ]; then
-    echo "no targets provided (django|rdkit|jupyter|flask|all)"
+    echo "no targets provided (django|rdkit|jupyter|all)"
     exit 1
 fi
 
