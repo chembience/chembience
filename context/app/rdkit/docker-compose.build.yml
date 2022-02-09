@@ -5,7 +5,7 @@ services:
   rdkit:
     image: chembience/rdkit:${APP_VERSION}
     build:
-      context: .
+      context: ""
       args:
         build_tag: ${CHEMBIENCE_VERSION}
 

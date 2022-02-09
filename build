@@ -14,27 +14,28 @@ build_base() {
       return
     fi
     ./env-prepare
-    docker-compose -f ./context/build/docker-compose.build.yml build base python-base rdkit-base
-    docker-compose -f ./context/app/docker-compose.build.yml build shell
+    docker-compose -f ./context/build/docker-compose.build.yml build base
+    #docker-compose -f ./context/build/docker-compose.build.yml build base python-base rdkit-base
+    #docker-compose -f ./context/app/docker-compose.build.yml build shell
     BUILD_BASE=false
 }
 
 build_django () {
     build_base
-    docker-compose -f ./context/build/docker-compose.build.yml build django-base
-    docker-compose -f ./context/app/docker-compose.build.yml build django
+    #docker-compose -f ./context/build/docker-compose.build.yml build django-base
+    docker-compose -f ./context/build/docker-compose.build.yml build django
 }
 
 build_rdkit () {
     build_base
-    docker-compose -f ./context/build/docker-compose.build.yml build rdkit-base
-    docker-compose -f ./context/app/docker-compose.build.yml build rdkit
+    #docker-compose -f ./context/build/docker-compose.build.yml build rdkit-base
+    #docker-compose -f ./context/build/docker-compose.build.yml build rdkit
 }
 
 build_jupyter () {
     build_base
-    docker-compose -f ./context/build/docker-compose.build.yml build jupyter-base
-    docker-compose -f ./context/app/docker-compose.build.yml build jupyter
+    #docker-compose -f ./context/build/docker-compose.build.yml build jupyter-base
+    docker-compose -f ./context/build/docker-compose.build.yml build jupyter
 }
 
 

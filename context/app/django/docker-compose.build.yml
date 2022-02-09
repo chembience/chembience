@@ -5,7 +5,7 @@ services:
   django:
     image: chembience/django:${APP_VERSION}
     build:
-      context: .
+      context: ../../build/django/app-context
       args:
         build_tag: ${CHEMBIENCE_VERSION}
 

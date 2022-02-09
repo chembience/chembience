@@ -1,9 +1,13 @@
 ARG build_tag
-FROM chembience/rdkit-base:$build_tag
+FROM chembience/rdkit:$build_tag
+ARG conda_py
 
-LABEL maintainer="markus.sitzmann@gmail.com "
+LABEL maintainer="markussitzmann@gmail.com "
 
-WORKDIR /home/app
+ENV PATH /home/app:/opt/conda/bin:$PATH
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["/bin/bash"]
+COPY requirements.txt /
+
+
+RUN /bin/bash -c "source activate chembience" && \
+    CONDA_PY=$conda_py pip install -r /requirements.txt

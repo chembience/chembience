@@ -3,7 +3,7 @@ version: '3.9'
 services:
 
   app:
-    image: chembience/django:${APP_VERSION}
+    image: ${APP_NAME}q:${APP_VERSION}
     container_name: ${APP_NAME}
     volumes:
       - ${APP_HOME}:/home/app
@@ -30,7 +30,6 @@ services:
       - postgres
     entrypoint: ["/home/app/docker-entrypoint.sh"]
     command: ["/home/nginx/run.sh"]
-
 
   postgres:
     image: chembience/postgres-rdkit:${CHEMBIENCE_POSTGRES_RDKIT_VERSION}

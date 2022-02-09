@@ -1,23 +1,14 @@
 ARG build_tag
-FROM chembience/jupyter-base:$build_tag
+FROM chembience/jupyter:$build_tag
+ARG conda_py
 
 LABEL maintainer="markus.sitzmann@gmail.com "
 
 ENV PATH /opt/conda/bin:$PATH
 
-RUN apt-get update && apt-get -y --no-install-recommends install \
-    nginx \
-    supervisor \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get autoremove -y \
-    && apt-get clean
+COPY nginx /home/nginx
+COPY requirements.txt /
 
-RUN chown -R www-data.www-data /home/nginx && \
-    echo "daemon off;" >> /etc/nginx/nginx.conf && \
-    rm /etc/nginx/sites-enabled/default && \
-    ln -s /home/nginx/nginx.conf /etc/nginx/sites-enabled/ && \
-    ln -s /home/nginx/sites-includes/ /etc/nginx/ && \
-    ln -s /home/nginx/supervisord.conf /etc/supervisor/conf.d/
+RUN /bin/bash -c "source activate chembience" && \
+    CONDA_PY=$conda_py pip install -r /requirements.txt
 
-EXPOSE 80
-CMD ["/home/nginx/run.sh"]
