@@ -76,11 +76,11 @@ WSGI_APPLICATION = 'appsite.wsgi.application'
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ['CHEMBIENCE_POSTGRES_USER'],
-            'USER':  os.environ['CHEMBIENCE_POSTGRES_USER'],
-            'PASSWORD': os.environ['CHEMBIENCE_POSTGRES_PASSWORD'],
-            'HOST': os.environ['CHEMBIENCE_POSTGRES_HOST'],
-            'PORT': os.environ['CHEMBIENCE_POSTGRES_PORT']
+            'NAME': os.environ['POSTGRES_NAME'],
+            'USER':  os.environ['POSTGRES_USER'],
+            'PASSWORD': os.environ['POSTGRES_PASSWORD'],
+            'HOST': os.environ['POSTGRES_HOST'],
+            'PORT': os.environ['POSTGRES_PORT']
     }
 }
 

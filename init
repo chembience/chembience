@@ -40,6 +40,10 @@ init_django() {
   sed -i -e 's?@APP_HOME?'${DJANGO_APP_HOME}'?g' app.template.env
   sed -i -e 's?@APP_NAME?'${DJANGO_APP_NAME}'?g' app.template.env
   sed -i -e 's?@APP_VERSION?'${DJANGO_APP_VERSION}'?g' app.template.env
+  sed -i -e 's?@APP_CONNECTION_PORT?'${DJANGO_APP_CONNECTION_PORT}'?g' app.template.env
+  sed -i -e 's?@APP_VIRTUAL_HOSTNAME?'${DJANGO_APP_VIRTUAL_HOSTNAME}'?g' app.template.env
+  sed -i -e 's?@CHEMBIENCE_SHARE?'${CHEMBIENCE_SHARE}'?g' app.template.env
+
   cp app.template.env app.env
   ./env-parse
   ./init
