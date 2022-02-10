@@ -9,6 +9,7 @@ services:
       args:
         conda_package: ${CONDA_PACKAGE}
         conda_py: ${CONDA_PY}
+        rdkit_version: ${RDKIT_VERSION}
     environment:
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID

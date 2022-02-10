@@ -3,9 +3,9 @@ version: '3.9'
 services:
 
   django:
-    image: chembience/django:${APP_VERSION}
+    image: ${APP_NAME}:${APP_VERSION}
     build:
-      context: ../../build/django/app-context
+      context: .
       args:
         build_tag: ${CHEMBIENCE_VERSION}
 

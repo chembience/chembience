@@ -2,12 +2,14 @@ FROM debian:bullseye-slim
 LABEL maintainer="markus.sitzmann@gmail.com "
 ARG conda_py
 ARG conda_package
+ARG rdkit_version
 
 ENV PATH /opt/conda/bin:$PATH
 
 RUN apt-get --allow-releaseinfo-change update && apt-get -y --no-install-recommends install \
     ca-certificates \
-    curl wget gosu sudo unzip tar bzip2 git gnupg2 joe postgresql-client-13
+    curl wget gosu sudo unzip tar bzip2 git gnupg2 joe postgresql-client-13 libfontconfig1 libxrender1 	libxext6
+
 
 #RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
 # && echo 'deb http://apt.postgresql.org/pub/repos/apt/ bullseye-pgdg main' > /etc/apt/sources.list.d/pgdg.list \

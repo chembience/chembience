@@ -46,7 +46,7 @@ init_django() {
 
   cp app.template.env app.env
   ./env-parse
-  ./init
+  ./build
   cp app.env .env
   rm app.template.env
   cd $CWD
