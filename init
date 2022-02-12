@@ -50,20 +50,39 @@ init_django() {
 init_rdkit() {
   init_base
   mkdir -p $RDKIT_APP_HOME
-  docker-compose -f ./context/build/rdkit/docker-compose.init.yml run --rm rdkit
-  cp .env $RDKIT_APP_HOME
+  cp -r ./context/app/rdkit/* $RDKIT_APP_HOME
+  cp -r ./context/share/* $RDKIT_APP_HOME
   cd $RDKIT_APP_HOME
-  ./init
+  cp $CWD/.env .
+  sed -i -e 's?@APP_HOME?'${RDKIT_APP_HOME}'?g' app.template.env
+  sed -i -e 's?@APP_NAME?'${RDKIT_APP_NAME}'?g' app.template.env
+  sed -i -e 's?@APP_VERSION?'${RDKIT_APP_VERSION}'?g' app.template.env
+  sed -i -e 's?@CHEMBIENCE_SHARE?'${CHEMBIENCE_SHARE}'?g' app.template.env
+  cp app.template.env app.env
+  ./env-parse
+  cp app.env .env
+  rm app.template.env
   cd $CWD
 }
 
 init_jupyter () {
   init_base
   mkdir -p $JUPYTER_APP_HOME
-  docker-compose -f ./context/build/jupyter/docker-compose.init.yml run --rm jupyter
-  cp .env $JUPYTER_APP_HOME
+  cp -r ./context/app/jupyter/* $JUPYTER_APP_HOME
+  cp -r ./context/share/* $JUPYTER_APP_HOME
   cd $JUPYTER_APP_HOME
-  ./init
+  cp $CWD/.env .
+  sed -i -e 's?@APP_HOME?'${JUPYTER_APP_HOME}'?g' app.template.env
+  sed -i -e 's?@APP_NAME?'${JUPYTER_APP_NAME}'?g' app.template.env
+  sed -i -e 's?@APP_VERSION?'${JUPYTER_APP_VERSION}'?g' app.template.env
+  sed -i -e 's?@APP_CONNECTION_PORT?'${JUPYTER_APP_CONNECTION_PORT}'?g' app.template.env
+  sed -i -e 's?@APP_VIRTUAL_HOSTNAME?'${JUPYTER_APP_VIRTUAL_HOSTNAME}'?g' app.template.env
+  sed -i -e 's?@CHEMBIENCE_SHARE?'${CHEMBIENCE_SHARE}'?g' app.template.env
+  cp app.template.env app.env
+  ./env-parse
+  ./build
+  cp app.env .env
+  rm app.template.env
   cd $CWD
 }
 
@@ -113,23 +132,3 @@ fi
 echo "-------------------------------------------------------------"
 echo " Initialization has been finished (please read output above)"
 echo "-------------------------------------------------------------"
-
-
-#mkdir -p $APP_HOME
-#if [ -z "$(ls -A $APP_HOME)" ]; then
-#  echo "init cactvs django app server at ${APP_HOME}"
-#  cp -r ./context/app/pycactvs-django-app-server/* $APP_HOME
-#  cp -r ./context/share/* $APP_HOME
-#  cd $APP_HOME
-#  cp $CWD/.env .
-#  sed -i -e 's?@CACTVS_HOME?'${CACTVS_HOME}/pycactvs-conda'?g' app.template.env
-#  sed -i -e 's?@APP_HOME?'${APP_HOME}'?g' app.template.env
-#  cp app.template.env app.env
-#  ./env-parse
-#  ./init
-#  cp app.env .env
-#  rm app.template.env
-#  cd $CWD
-#else
-#  echo "app server home directory isn't empty; skipping initializing content there"
-#fi

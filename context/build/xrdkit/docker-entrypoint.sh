@@ -13,17 +13,17 @@ else
     echo "Done."
 fi
 
-if [ -z "$(ls -A /home/app)" ]; then
-    echo "Initializing home directory for RDKit app ..."
-    cp -rf /opt/rdkit/* /home/app
-    mv /home/app/app-context/* /home/app/
-    mv /home/app/env /home/app/.env
-    #mv /home/app/circleci /home/app/.circleci
-    rm -rf /home/app/docker-compose.init.yml /home/app/app-context
-    chown -R $CHEMBIENCE_UID:$CHEMBIENCE_GID /home/app
-    echo "Done."
-else
-    echo "RDKit app home directory isn't empty; skipping initializing content there"
-fi
+#if [ -z "$(ls -A /home/app)" ]; then
+#    echo "Initializing home directory for RDKit app ..."
+#    cp -rf /opt/rdkit/* /home/app
+#    mv /home/app/app-context/* /home/app/
+#    mv /home/app/env /home/app/.env
+#    #mv /home/app/circleci /home/app/.circleci
+#    rm -rf /home/app/docker-compose.init.yml /home/app/app-context
+#    chown -R $CHEMBIENCE_UID:$CHEMBIENCE_GID /home/app
+#    echo "Done."
+#else
+#    echo "RDKit app home directory isn't empty; skipping initializing content there"
+#fi
 
 exec "$@"

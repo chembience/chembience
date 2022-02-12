@@ -18,14 +18,7 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
 
 RUN mkdir -p /home/nginx /opt/django
 COPY requirements.txt /opt/django
-
-
-#COPY . /opt/django
-#COPY ./.env /opt/django/env
-#COPY ../../app/django/nginx /home/nginx
-
 COPY docker-entrypoint.sh /
-COPY requirements.txt /opt/django
 
 RUN /bin/bash -c "source activate chembience" && \
     CONDA_PY=$conda_py conda install --freeze-installed --yes --file /opt/django/requirements.txt && \

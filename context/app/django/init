@@ -1,7 +1,6 @@
 #!/bin/bash
 
 cp app.env .env
-
 source .env
 docker tag chembience/django:$CHEMBIENCE_VERSION $APP_NAME:$APP_VERSION
 
@@ -20,24 +19,3 @@ fi
 echo "done"
 
 exit 0
-
-
-#!/bin/bash
-
-#./env-prepare
-#
-#source .env
-#NETWORK_NAME=${APP_NAME}_backend
-#if [ -z $(docker network ls --filter name=^${NETWORK_NAME}$ --format="{{ .Name }}") ] ; then
-#     echo "Creating app backend network $NETWORK_NAME"
-#     docker network create ${NETWORK_NAME} ;
-#fi
-#if [ -z $(docker network ls --filter name=^chembience_sphere$ --format="{{ .Name }}") ] ; then
-#     echo "Creating chembience sphere network"
-#     docker network create chembience_sphere ;
-#fi
-#
-#echo "Done."
-#
-#
-#exit 0

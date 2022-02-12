@@ -14,28 +14,6 @@ services:
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
 
-#  python-base:
-#    image: chembience/python-base:${CHEMBIENCE_VERSION}
-#    build:
-#      context: python/
-#      args:
-#        build_tag: ${CHEMBIENCE_VERSION}
-#        conda_py: ${CONDA_PY}
-#        conda_package: ${CONDA_PACKAGE}
-#    depends_on:
-#      - base
-
-#  rdkit:
-#    image: chembience/rdkit:${CHEMBIENCE_VERSION}
-#    build:
-#      context: rdkit/
-#      args:
-#        build_tag: ${CHEMBIENCE_VERSION}
-#        conda_py: ${CONDA_PY}
-#        rdkit_version: ${RDKIT_VERSION}
-#    depends_on:
-#      - base
-
   django:
     image: chembience/django:${CHEMBIENCE_VERSION}
     build:

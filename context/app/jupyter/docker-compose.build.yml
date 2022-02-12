@@ -3,9 +3,9 @@ version: '3.9'
 services:
 
   jupyter:
-    image: chembience/jupyter:${APP_VERSION}
+    image: ${APP_NAME}:${APP_VERSION}
     build:
-      context: ""
+      context: .
       args:
         build_tag: ${CHEMBIENCE_VERSION}
 
