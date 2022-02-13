@@ -18,13 +18,13 @@ build_base() {
     BUILD_BASE=false
 }
 
+build_rdkit () {
+    build_base
+}
+
 build_django () {
     build_base
     docker-compose -f ./context/build/docker-compose.build.yml build django
-}
-
-build_rdkit () {
-    build_base
 }
 
 build_jupyter () {

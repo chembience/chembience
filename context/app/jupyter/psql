@@ -3,5 +3,5 @@ set -e
 
 source .env
 
-docker-compose exec postgres psql -h $CHEMBIENCE_POSTGRES_HOST -U $CHEMBIENCE_POSTGRES_USER $CHEMBIENCE_POSTGRES_NAME "$@"
+docker-compose exec postgres psql -h $POSTGRES_HOST -U $POSTGRES_USER $POSTGRES_NAME "$@"
 

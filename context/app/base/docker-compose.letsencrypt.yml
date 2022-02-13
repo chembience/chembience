@@ -46,7 +46,7 @@ services:
 networks:
   sphere:
     external:
-      name: chembience_sphere
+      name: chembience_network
 
 
 
