@@ -32,41 +32,23 @@ jobs:
         run: |
           ./env-prepare
           docker-compose -f ./context/build/docker-compose.build.yml build base
-#          docker-compose -f ./context/app/docker-compose.build.yml build shell
-#          docker-compose -f ./context/build/docker-compose.build.yml push base python-base rdkit-base
-#          docker-compose -f ./context/app/docker-compose.build.yml push shell
 
       - name: Django Template App build
         run: |
           docker-compose -f ./context/build/docker-compose.build.yml build django
-#          docker-compose -f ./context/app/docker-compose.build.yml build django
-
 
       - name: Django Template App push
         run: |
           docker-compose -f ./context/build/docker-compose.build.yml push django
- #         docker-compose -f ./context/app/docker-compose.build.yml push django
 
-#      - name: Jupyter Template App build
-#        run: |
-#          docker-compose -f ./context/build/docker-compose.build.yml build jupyter-base
-#          docker-compose -f ./context/app/docker-compose.build.yml build jupyter
-#
-#
-#      - name: Jupyter Template App push
-#        run: |
-#          docker-compose -f ./context/build/docker-compose.build.yml push jupyter-base
-#          docker-compose -f ./context/app/docker-compose.build.yml push jupyter
-#
-#
-#      - name: RDKit Template App build
-#        run: |
-#          docker-compose -f ./context/app/docker-compose.build.yml build rdkit
-#
-#
-#      - name: RDKit Template App push
-#        run: |
-#          docker-compose -f ./context/app/docker-compose.build.yml push rdkit
+      - name: Jupyter Template App build
+        run: |
+          docker-compose -f ./context/app/docker-compose.build.yml build jupyter
+
+      - name: Jupyter Template App push
+        run: |
+          docker-compose -f ./context/app/docker-compose.build.yml push jupyter
+
 
 
 
