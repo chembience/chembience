@@ -34,6 +34,14 @@ jobs:
           docker-compose -f ./context/build/docker-compose.build.yml build base
           docker-compose -f ./context/build/docker-compose.build.yml push base
 
+      - name: RDKit Template App build
+        run: |
+          docker-compose -f ./context/build/docker-compose.build.yml build rdkit
+
+      - name: RDKit Template App push
+        run: |
+          docker-compose -f ./context/build/docker-compose.build.yml push rdkit
+
       - name: Django Template App build
         run: |
           docker-compose -f ./context/build/docker-compose.build.yml build django
