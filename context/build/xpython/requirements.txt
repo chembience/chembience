@@ -1,8 +1,0 @@
-numpy
-Pillow
-markdown
-psycopg2
-requests
-conda-pack
-
-

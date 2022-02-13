@@ -60,6 +60,7 @@ init_rdkit() {
   sed -i -e 's?@CHEMBIENCE_SHARE?'${CHEMBIENCE_SHARE}'?g' app.template.env
   cp app.template.env app.env
   ./env-parse
+  ./build
   cp app.env .env
   rm app.template.env
   cd $CWD
