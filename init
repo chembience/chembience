@@ -34,8 +34,8 @@ init_django() {
   cd $DJANGO_APP_HOME
   cp $CWD/.env .
   sed -i -e 's?@APP_HOME?'${DJANGO_APP_HOME}'?g' app.template.env
-  sed -i -e 's?@APP_NAME?'${DJANGO_APP_NAME}'?g' app.template.env
-  sed -i -e 's?@APP_VERSION?'${DJANGO_APP_VERSION}'?g' app.template.env
+  sed -i -e 's?@APP_NAME?'django-rdkit-app'?g' app.template.env
+  sed -i -e 's?@APP_VERSION?'${CHEMBIENCE_VERSION}'?g' app.template.env
   sed -i -e 's?@APP_CONNECTION_PORT?'${DJANGO_APP_CONNECTION_PORT}'?g' app.template.env
   sed -i -e 's?@APP_VIRTUAL_HOSTNAME?'${DJANGO_APP_VIRTUAL_HOSTNAME}'?g' app.template.env
   sed -i -e 's?@CHEMBIENCE_SHARE?'${CHEMBIENCE_SHARE}'?g' app.template.env
@@ -55,8 +55,8 @@ init_rdkit() {
   cd $RDKIT_APP_HOME
   cp $CWD/.env .
   sed -i -e 's?@APP_HOME?'${RDKIT_APP_HOME}'?g' app.template.env
-  sed -i -e 's?@APP_NAME?'${RDKIT_APP_NAME}'?g' app.template.env
-  sed -i -e 's?@APP_VERSION?'${RDKIT_APP_VERSION}'?g' app.template.env
+  sed -i -e 's?@APP_NAME?'rdkit-app'?g' app.template.env
+  sed -i -e 's?@APP_VERSION?'${CHEMBIENCE_VERSION}'?g' app.template.env
   sed -i -e 's?@CHEMBIENCE_SHARE?'${CHEMBIENCE_SHARE}'?g' app.template.env
   cp app.template.env app.env
   ./env-parse
@@ -74,8 +74,8 @@ init_jupyter () {
   cd $JUPYTER_APP_HOME
   cp $CWD/.env .
   sed -i -e 's?@APP_HOME?'${JUPYTER_APP_HOME}'?g' app.template.env
-  sed -i -e 's?@APP_NAME?'${JUPYTER_APP_NAME}'?g' app.template.env
-  sed -i -e 's?@APP_VERSION?'${JUPYTER_APP_VERSION}'?g' app.template.env
+  sed -i -e 's?@APP_NAME?'jupyter-rdkit-app'?g' app.template.env
+  sed -i -e 's?@APP_VERSION?'${CHEMBIENCE_VERSION}'?g' app.template.env
   sed -i -e 's?@APP_CONNECTION_PORT?'${JUPYTER_APP_CONNECTION_PORT}'?g' app.template.env
   sed -i -e 's?@APP_VIRTUAL_HOSTNAME?'${JUPYTER_APP_VIRTUAL_HOSTNAME}'?g' app.template.env
   sed -i -e 's?@CHEMBIENCE_SHARE?'${CHEMBIENCE_SHARE}'?g' app.template.env

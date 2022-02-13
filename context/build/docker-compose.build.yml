@@ -15,7 +15,7 @@ services:
       - CHEMBIENCE_GID
 
   django:
-    image: chembience/django:${CHEMBIENCE_VERSION}
+    image: chembience/django-rdkit-app:${CHEMBIENCE_VERSION}
     build:
       context: django/
       args:
@@ -25,7 +25,7 @@ services:
       - base
 
   jupyter:
-    image: chembience/jupyter:${CHEMBIENCE_VERSION}
+    image: chembience/jupyter-rdkit-app:${CHEMBIENCE_VERSION}
     build:
       context: jupyter/
       args:
@@ -34,6 +34,14 @@ services:
     depends_on:
       - base
 
-
+  rdkit:
+    image: chembience/rdkit-app:${CHEMBIENCE_VERSION}
+    build:
+      context: rdkit/
+      args:
+        build_tag: ${CHEMBIENCE_VERSION}
+        conda_py: ${CONDA_PY}
+    depends_on:
+      - base
 
 

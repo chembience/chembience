@@ -20,6 +20,7 @@ build_base() {
 
 build_rdkit () {
     build_base
+    docker-compose -f ./context/build/docker-compose.build.yml build rdkit
 }
 
 build_django () {

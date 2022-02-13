@@ -2,7 +2,6 @@
 
 cp app.env .env
 source .env
-docker tag chembience/base:$CHEMBIENCE_VERSION $APP_NAME:$APP_VERSION
 
 NETWORK_NAME=${APP_NAME}_backend
 if [ -z $(docker network ls --filter name=^${NETWORK_NAME}$ --format="{{ .Name }}") ] ; then
