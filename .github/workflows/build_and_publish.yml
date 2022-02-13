@@ -43,11 +43,11 @@ jobs:
 
       - name: Jupyter Template App build
         run: |
-          docker-compose -f ./context/app/docker-compose.build.yml build jupyter
+          docker-compose -f ./context/build/docker-compose.build.yml build jupyter
 
       - name: Jupyter Template App push
         run: |
-          docker-compose -f ./context/app/docker-compose.build.yml push jupyter
+          docker-compose -f ./context/build/docker-compose.build.yml push jupyter
 
 
 
