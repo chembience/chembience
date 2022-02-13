@@ -35,6 +35,8 @@ for f in "${files[@]}"; do
     sed -i -e "s/@POSTGRES_HOST/${POSTGRES_HOST}/g" $f
     sed -i -e "s/@POSTGRES_PORT/${POSTGRES_PORT}/g" $f
 
+    sed -i -e "s/@JUPYTER_PASSWORD/${JUPYTER_PASSWORD}/g" $f
+
     sed -i -e "s/@CONDA_PY/${CONDA_PY}/g" $f
     sed -i -e "s/@CONDA_PACKAGE/${CONDA_PACKAGE}/g" $f
 done
