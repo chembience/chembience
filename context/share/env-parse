@@ -35,6 +35,10 @@ for f in "${files[@]}"; do
     sed -i -e "s/@POSTGRES_HOST/${POSTGRES_HOST}/g" $f
     sed -i -e "s/@POSTGRES_PORT/${POSTGRES_PORT}/g" $f
 
+    sed -i -e 's?@DJANGO_SUPERUSER_USERNAME?'${DJANGO_SUPERUSER_USERNAME}'?g' $f
+    sed -i -e 's?@DJANGO_SUPERUSER_PASSWORD?'${DJANGO_SUPERUSER_PASSWORD}'?g' $f
+    sed -i -e 's?@DJANGO_SUPERUSER_EMAIL?'${DJANGO_SUPERUSER_EMAIL}'?g' $f
+
     sed -i -e "s/@JUPYTER_PASSWORD/${JUPYTER_PASSWORD}/g" $f
 
     sed -i -e "s/@CONDA_PY/${CONDA_PY}/g" $f

@@ -3,7 +3,7 @@ version: '3.9'
 services:
 
   app:
-    image: ${APP_NAME}:${APP_VERSION}
+    image: chembience/django-jupyter-app:${CHEMBIENCE_VERSION}
     container_name: ${APP_NAME}
     volumes:
       - ${APP_HOME}:/home/app

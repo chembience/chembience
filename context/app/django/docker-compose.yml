@@ -3,7 +3,7 @@ version: '3.9'
 services:
 
   app:
-    image: ${APP_NAME}:${APP_VERSION}
+    image: chembience/django-rdkit-app:${CHEMBIENCE_VERSION}
     container_name: ${APP_NAME}
     volumes:
       - ${APP_HOME}:/home/app
@@ -17,6 +17,9 @@ services:
     environment:
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
+      - DJANGO_SUPERUSER_PASSWORD
+      - DJANGO_SUPERUSER_USERNAME
+      - DJANGO_SUPERUSER_EMAIL
       - POSTGRES_NAME
       - POSTGRES_USER
       - POSTGRES_HOST

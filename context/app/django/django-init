@@ -3,8 +3,8 @@ set -e
 
 ./django-manage-py makemigrations &&\
 ./django-manage-py migrate &&\
-./django-manage-py collectstatic &&\
-./django-manage-py createsuperuser
+./django-manage-py collectstatic --noinput &&\
+./django-manage-py createsuperuser --noinput
 
 
 

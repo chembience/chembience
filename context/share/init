@@ -1,9 +1,7 @@
 #!/bin/bash
 
 ./env-parse
-
 cp app.env .env
-#source .env
 
 echo "done"
 
