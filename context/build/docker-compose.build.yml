@@ -15,7 +15,7 @@ services:
       - CHEMBIENCE_GID
 
   django:
-    image: chembience/django-rdkit-app:${CHEMBIENCE_VERSION}
+    image: chembience/django-rdkit:${CHEMBIENCE_VERSION}
     build:
       context: django/
       args:
@@ -25,7 +25,7 @@ services:
       - base
 
   jupyter:
-    image: chembience/jupyter-rdkit-app:${CHEMBIENCE_VERSION}
+    image: chembience/jupyter-rdkit:${CHEMBIENCE_VERSION}
     build:
       context: jupyter/
       args:
@@ -35,7 +35,7 @@ services:
       - base
 
   rdkit:
-    image: chembience/rdkit-app:${CHEMBIENCE_VERSION}
+    image: chembience/rdkit:${CHEMBIENCE_VERSION}
     build:
       context: rdkit/
       args:
