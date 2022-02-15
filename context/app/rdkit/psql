@@ -1,7 +1,0 @@
-#!/bin/bash
-set -e
-
-source .env
-
-docker-compose exec postgres psql -h $CHEMBIENCE_POSTGRES_HOST -U $CHEMBIENCE_POSTGRES_USER $CHEMBIENCE_POSTGRES_NAME "$@"
-

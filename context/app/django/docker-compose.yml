@@ -12,8 +12,8 @@ services:
     ports:
        - ${APP_CONNECTION_PORT}:80
     networks:
-      - app_network
-      - chembience_network
+      - app-network
+      - chembience-network
     environment:
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
@@ -34,25 +34,23 @@ services:
 
   postgres:
     image: chembience/postgres-rdkit:${POSTGRES_RDKIT_VERSION}
-    container_name: ${APP_NAME}_postgres
+    container_name: ${APP_NAME}-postgres
     volumes:
-      - postgres_db_volume:/var/lib/postgresql
+      - postgres-db-volume:/var/lib/postgresql
       - ${APP_HOME}/postgres-init.d:/docker-entrypoint-initdb.d
     networks:
-      - app_network
+      - app-network
     environment:
       - POSTGRES_PASSWORD
       - POSTGRES_USER
     #restart: always
 
 volumes:
-  postgres_db_volume:
+  postgres-db-volume:
 
 networks:
-  app_network:
-    external:
-      name: ${APP_NAME}_backend
-  chembience_network:
-    external:
-      name: chembience_network
+  app-network:
+    name: ${APP_NAME}-backend
+  chembience-network:
+    name: chembience-network
 

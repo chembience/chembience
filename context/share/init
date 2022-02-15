@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cp app.env .env
+source .env
+
+echo "done"
+
+exit 0

@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-./init
 docker-compose run --rm app python "$@"
 
 
