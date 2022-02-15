@@ -21,7 +21,6 @@ init_base() {
   mkdir -p $CHEMBIENCE_SHARE
   cp .env $CHEMBIENCE_SPHERE
   cp .env $CHEMBIENCE_SHARE
-  docker network ls|grep chembience_network > /dev/null || docker network create --driver bridge chembience_network
   INIT_BASE=false
   cd $CWD
 }
@@ -40,9 +39,7 @@ init_django() {
   sed -i -e 's?@APP_VIRTUAL_HOSTNAME?'${DJANGO_APP_VIRTUAL_HOSTNAME}'?g' app.template.env
   sed -i -e 's?@CHEMBIENCE_SHARE?'${CHEMBIENCE_SHARE}'?g' app.template.env
   cp app.template.env app.env
-  ./env-parse
-  ./build
-  cp app.env .env
+  ./init
   rm app.template.env
   cd $CWD
 }
@@ -59,9 +56,7 @@ init_rdkit() {
   sed -i -e 's?@APP_VERSION?'${CHEMBIENCE_VERSION}'?g' app.template.env
   sed -i -e 's?@CHEMBIENCE_SHARE?'${CHEMBIENCE_SHARE}'?g' app.template.env
   cp app.template.env app.env
-  ./env-parse
-  ./build
-  cp app.env .env
+  ./init
   rm app.template.env
   cd $CWD
 }
@@ -81,9 +76,7 @@ init_jupyter () {
   sed -i -e 's?@CHEMBIENCE_SHARE?'${CHEMBIENCE_SHARE}'?g' app.template.env
   cp app.template.env app.env
   mkdir -p ${JUPYTER_NOTEBOOK_DIR}
-  ./env-parse
-  ./build
-  cp app.env .env
+  ./init
   rm app.template.env
   cd $CWD
 }

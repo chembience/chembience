@@ -49,7 +49,7 @@ services:
       - POSTGRES_PASSWORD
 
 volumes:
-  postgres_db_volume:
+  postgres-db-volume:
 
 networks:
   app-network:

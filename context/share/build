@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-./env-parse
+#./env-parse
 ./init
 
 docker-compose -f ./docker-compose.build.yml build

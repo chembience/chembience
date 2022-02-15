@@ -8,6 +8,9 @@ fi
 
 export PYTHONPATH=/home/app:/share:$PYTHONPATH
 
+mkdir -p /home/app/notebooks
+chown app.app /home/app/jupyter.log
+
 touch /home/app/jupyter.log
 chown app.app /home/app/jupyter.log
 
