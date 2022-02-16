@@ -4,7 +4,7 @@ services:
 
   app:
     image: chembience/rdkit:${CHEMBIENCE_VERSION}
-    container_name: ${APP_NAME}
+    container_name: ${APP_NAME}-container
     volumes:
       - ${APP_HOME}:/home/app
       - ${CHEMBIENCE_SHARE}:/share
@@ -26,7 +26,7 @@ services:
 
   postgres:
     image: chembience/postgres-rdkit:${POSTGRES_RDKIT_VERSION}
-    container_name: ${APP_NAME}-postgres
+    container_name: ${APP_NAME}-postgres-container
     volumes:
       - postgres-db-volume:/var/lib/postgresql
       - ${APP_HOME}/postgres-init.d:/docker-entrypoint-initdb.d
