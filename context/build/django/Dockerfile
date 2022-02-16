@@ -6,19 +6,13 @@ LABEL maintainer="markus.sitzmann@gmail.com"
 
 ENV PATH /opt/conda/bin:$PATH
 
-RUN apt-get update && apt-get -y --no-install-recommends install \
-    nginx \
-    #nginx-extras-dbg \
-    #nginx-extras \
-    supervisor \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get autoremove -y \
-    && apt-get clean
-
-
 RUN mkdir -p /home/nginx /opt/django
 COPY requirements.txt /opt/django
-COPY docker-entrypoint.sh /
+
+RUN apt-get update && apt-get -y --no-install-recommends install nginx supervisor && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get autoremove -y && \
+    apt-get clean
 
 RUN /bin/bash -c "source activate chembience" && \
     CONDA_PY=$conda_py conda install --freeze-installed --yes --file /opt/django/requirements.txt && \
@@ -26,7 +20,6 @@ RUN /bin/bash -c "source activate chembience" && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.pyc' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete
-
 
 RUN chown -R www-data.www-data /home/nginx && \
     echo "daemon off;" >> /etc/nginx/nginx.conf && \

@@ -3,7 +3,7 @@ version: '3.9'
 services:
 
   app:
-    image: chembience/django-rdkit-app:${CHEMBIENCE_VERSION}
+    image: chembience/django-rdkit:${CHEMBIENCE_VERSION}
     container_name: ${APP_NAME}
     volumes:
       - ${APP_HOME}:/home/app

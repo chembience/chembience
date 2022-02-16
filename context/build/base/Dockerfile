@@ -14,10 +14,10 @@ RUN apt-get --allow-releaseinfo-change update && apt-get -y --no-install-recomme
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
-RUN cd /tmp \
-    && git clone https://github.com/chembience/pychembience.git \
-    && cp -r pychembience /opt \
-    && rm -rf pychembience
+RUN cd /tmp && \
+    git clone https://github.com/chembience/pychembience.git && \
+    cp -r pychembience /opt && \
+    rm -rf pychembience
 
 RUN mkdir -p /opt/python
 COPY requirements.txt /opt/python
@@ -25,9 +25,8 @@ COPY requirements.txt /opt/python
 RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
     wget --quiet https://repo.continuum.io/miniconda/$conda_package && \
     /bin/bash /$conda_package -b -p /opt/conda && \
-    rm $conda_package
-
-RUN CONDA_PY=$conda_py conda install --freeze-installed anaconda-client --yes && \
+    rm $conda_package && \
+    CONDA_PY=$conda_py conda install --freeze-installed anaconda-client --yes && \
     CONDA_PY=$conda_py conda config --add channels conda-forge && \
     CONDA_PY=$conda_py conda create --verbose --yes -n chembience && \
     /bin/bash -c "source activate chembience" && \

@@ -8,8 +8,6 @@ ENV PATH /opt/conda/bin:$PATH
 
 RUN apt-get update && apt-get -y --no-install-recommends install \
     nginx \
-    #nginx-extras-dbg \
-    #nginx-extras \
     supervisor \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get autoremove -y \
@@ -18,7 +16,6 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
 
 RUN mkdir -p /home/nginx /opt/jupyter
 COPY requirements.txt /opt/jupyter
-COPY docker-entrypoint.sh /
 
 RUN /bin/bash -c "source activate chembience" && \
     CONDA_PY=$conda_py conda install --freeze-installed --yes --file /opt/jupyter/requirements.txt && \

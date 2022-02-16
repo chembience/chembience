@@ -3,14 +3,13 @@ version: '3.9'
 services:
 
   app:
-    image: chembience-rdkit-app:${CHEMBIENCE_VERSION}
+    image: chembience/rdkit:${CHEMBIENCE_VERSION}
     container_name: ${APP_NAME}
     volumes:
       - ${APP_HOME}:/home/app
       - ${CHEMBIENCE_SHARE}:/share
     networks:
       - app-network
-      - chembience-network
     environment:
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
@@ -47,6 +46,5 @@ volumes:
 networks:
   app-network:
     name: ${APP_NAME}-backend
-  chembience-network:
-    name: chembience-network
+
 

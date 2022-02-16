@@ -3,7 +3,7 @@ version: '3.9'
 services:
 
   app:
-    image: chembience/django-jupyter-app:${CHEMBIENCE_VERSION}
+    image: chembience/jupyter-rdkit:${CHEMBIENCE_VERSION}
     container_name: ${APP_NAME}
     volumes:
       - ${APP_HOME}:/home/app
@@ -13,7 +13,6 @@ services:
        - ${APP_CONNECTION_PORT}:8888
     networks:
       - app-network
-      - chembience-network
     environment:
       - CHEMBIENCE_UID
       - CHEMBIENCE_GID
@@ -54,6 +53,5 @@ volumes:
 networks:
   app-network:
     name: ${APP_NAME}-backend
-  chembience-network:
-    name: chembience-network
+
 
