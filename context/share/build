@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+cp app.env .env
 ./init
 
 docker-compose -f ./docker-compose.build.yml build app
