@@ -1,5 +1,6 @@
+ARG source_image
 ARG build_tag
-FROM chembience-rdkit:$build_tag
+FROM $source_image:$build_tag
 ARG conda_py
 
 LABEL maintainer="markussitzmann@gmail.com "

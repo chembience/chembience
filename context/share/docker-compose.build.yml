@@ -8,6 +8,7 @@ services:
       context: .
       args:
         build_tag: ${APP_VERSION}
+        source_image: ${APP_NAME}
 
   chembience-image:
     image: ${CHEMBIENCE_IMAGE_NAME}:${CHEMBIENCE_VERSION}
