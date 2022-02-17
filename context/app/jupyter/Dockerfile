@@ -1,5 +1,5 @@
 ARG build_tag
-FROM chembience/jupyter-rdkit:$build_tag
+FROM chembience-jupyter-rdkit:$build_tag
 ARG conda_py
 
 LABEL maintainer="markus.sitzmann@gmail.com "

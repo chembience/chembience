@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+
+  app:
+    image: ${APP_NAME}:${APP_VERSION}
+    build:
+      context: .
+      args:
+        build_tag: ${APP_VERSION}
+
+  chembience-image:
+    image: ${CHEMBIENCE_IMAGE_NAME}:${CHEMBIENCE_VERSION}
+
+

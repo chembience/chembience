@@ -18,6 +18,7 @@ for f in "${files[@]}"; do
 
     sed -i -e 's?@APP_HOME?$'{APP_HOME}'?g' $f
     sed -i -e "s/@APP_NAME/${APP_NAME}/g" $f
+    sed -i -e "s/@APP_CONTAINER_NAME/${APP_CONTAINER_NAME}/g" $f
     sed -i -e "s/@APP_VERSION/${APP_VERSION}/g" $f
     sed -i -e "s/@APP_UID/${CUID}/g" $f
     sed -i -e "s/@APP_GID/${CGID}/g" $f

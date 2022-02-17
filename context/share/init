@@ -3,6 +3,10 @@
 ./env-parse
 cp app.env .env
 
+source .env
+docker-compose -f docker-compose.build.yml pull chembience-image
+docker tag ${CHEMBIENCE_IMAGE_NAME}:${CHEMBIENCE_VERSION} ${APP_NAME}:${APP_VERSION}
+
 echo "done"
 
 exit 0
