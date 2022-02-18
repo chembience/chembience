@@ -1,11 +1,7 @@
 #!/bin/bash
 
 ./env-parse
-
-#if [ -z $(docker network ls --filter name=^chembience_network$ --format="{{ .Name }}") ] ; then
-#     echo "Creating chembience network"
-#     docker network create chembience_network ;
-#fi
+cp proxy.env .env
 
 echo "Done."
 

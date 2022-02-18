@@ -17,9 +17,7 @@ init_base() {
   then
     return
   fi
-#  mkdir -p $CHEMBIENCE_SPHERE
   mkdir -p $CHEMBIENCE_SHARE
-#  cp .env $CHEMBIENCE_SPHERE
   cp .env $CHEMBIENCE_SHARE
   INIT_BASE=false
   cd $CWD
@@ -28,7 +26,6 @@ init_base() {
 init_proxy() {
   mkdir -p $CHEMBIENCE_PROXY_HOME
   cp -r ./context/app/proxy/* $CHEMBIENCE_PROXY_HOME
-  #cp -r ./context/share/* $DJANGO_APP_HOME
   cp ./context/share/stop ./context/share/remove $CHEMBIENCE_PROXY_HOME
   cd $CHEMBIENCE_PROXY_HOME
   cp proxy.template.env proxy.env
