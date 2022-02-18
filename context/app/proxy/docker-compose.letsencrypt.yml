@@ -7,7 +7,6 @@ services:
     container_name: chembience-proxy
     restart: unless-stopped
     volumes:
-    #  - ${CHEMBIENCE_PROXY_HOME}:/home/sphere
       - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/conf.d:/etc/nginx/conf.d
       - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/vhost.d:/etc/nginx/vhost.d
       - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/html:/usr/share/nginx/html
@@ -21,7 +20,6 @@ services:
       - chembience-network
     labels:
       - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
-
 
   lets-encrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion:stable

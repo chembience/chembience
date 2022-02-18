@@ -7,7 +7,6 @@ services:
     container_name: chembience-proxy
     restart: unless-stopped
     volumes:
-    #  - ${CHEMBIENCE_SPHERE}:/home/sphere
       - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/conf.d:/etc/nginx/conf.d
       - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/vhost.d:/etc/nginx/vhost.d
       - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/html:/usr/share/nginx/html
