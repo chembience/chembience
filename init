@@ -28,6 +28,7 @@ init_proxy() {
   cp -r ./context/app/proxy/* $CHEMBIENCE_PROXY_HOME
   cp ./context/share/stop ./context/share/remove $CHEMBIENCE_PROXY_HOME
   cd $CHEMBIENCE_PROXY_HOME
+  cp proxy.template.env .env
   cp proxy.template.env proxy.env
   ./init
   cp $CWD/.env .
