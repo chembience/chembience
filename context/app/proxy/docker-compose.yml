@@ -7,7 +7,7 @@ services:
     container_name: chembience-proxy
     restart: unless-stopped
     volumes:
-      - ${CHEMBIENCE_SPHERE}:/home/sphere
+    #  - ${CHEMBIENCE_SPHERE}:/home/sphere
       - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/conf.d:/etc/nginx/conf.d
       - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/vhost.d:/etc/nginx/vhost.d
       - ${CHEMBIENCE_PROXY_FILE_PATH:-./data}/html:/usr/share/nginx/html
@@ -18,12 +18,11 @@ services:
       - ${CHEMBIENCE_PROXY_EXTERNAL_PORT:-80}:80
       - ${CHEMBIENCE_PROXY_EXTERNAL_SSL_PORT:-443}:443
     networks:
-      - sphere
+      - chembience-network
     
 networks:
-  sphere:
-    external:
-      name: chembience_sphere
+  chembience-network:
+    name: chembience-network
 
 
 

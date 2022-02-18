@@ -1,6 +1,0 @@
-#!/bin/bash
-set -e
-
-docker-compose -f ./docker-compose.letsencrypt.yml stop lets-encrypt proxy
-
-

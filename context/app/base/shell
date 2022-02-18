@@ -1,5 +1,0 @@
-#!/bin/bash
-
-docker-compose -f docker-compose.shell.yml run --rm shell bash "$@"
-
-

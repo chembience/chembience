@@ -16,6 +16,11 @@ for f in "${files[@]}"; do
 
     sed -i -e "s/@CHEMBIENCE_VERSION/${CHEMBIENCE_VERSION}/g" $f
 
+#    sed -i -e "s/@CHEMBIENCE_PROXY_FILE_PATH/${CHEMBIENCE_PROXY_FILE_PATH}/g" $f
+#    sed -i -e "s/@CHEMBIENCE_PROXY_EXTERNAL_PORT/${CHEMBIENCE_PROXY_EXTERNAL_PORT}/g" $f
+#    sed -i -e "s/@CHEMBIENCE_PROXY_EXTERNAL_SSL_PORT/${CHEMBIENCE_PROXY_EXTERNAL_SSL_PORT}/g" $f
+#    sed -i -e "s/@CHEMBIENCE_PROXY_NGINX_LOG_MAX_SIZE/${CHEMBIENCE_PROXY_NGINX_LOG_MAX_SIZE}/g" $f
+
     sed -i -e 's?@APP_HOME?$'{APP_HOME}'?g' $f
     sed -i -e "s/@APP_NAME/${APP_NAME}/g" $f
     sed -i -e "s/@APP_CONTAINER_NAME/${APP_CONTAINER_NAME}/g" $f

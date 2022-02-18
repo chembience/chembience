@@ -37,7 +37,6 @@ build_jupyter () {
 build_django=false
 build_rdkit=false
 build_jupyter=false
-build_flask=false
 
 while :; do
     case $1 in
@@ -47,12 +46,9 @@ while :; do
         ;;
         jupyter) build_jupyter=true
         ;;
-        flask) build_flask=true
-        ;;
         all) build_django=true;
              build_rdkit=true;
              build_jupyter=true;
-             build_flask=true;
         ;;
         *) break
     esac

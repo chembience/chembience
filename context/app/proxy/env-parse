@@ -1,0 +1,26 @@
+#!/bin/bash
+set -e
+
+echo "PWD $(pwd)"
+
+test -f .env && source .env
+
+CUID="$(id -u)"
+CGID="$(id -g)"
+
+declare -a files=('./.env ./proxy.env')
+for f in "${files[@]}"; do
+
+#    sed -i -e "s/@CHEMBIENCE_UID/${CUID}/g" $f
+#    sed -i -e "s/@CHEMBIENCE_GID/${CGID}/g" $f
+#
+#    sed -i -e "s/@CHEMBIENCE_VERSION/${CHEMBIENCE_VERSION}/g" $f
+
+    sed -i -e "s/@CHEMBIENCE_PROXY_FILE_PATH/${CHEMBIENCE_PROXY_FILE_PATH}/g" $f
+    sed -i -e "s/@CHEMBIENCE_PROXY_EXTERNAL_PORT/${CHEMBIENCE_PROXY_EXTERNAL_PORT}/g" $f
+    sed -i -e "s/@CHEMBIENCE_PROXY_EXTERNAL_SSL_PORT/${CHEMBIENCE_PROXY_EXTERNAL_SSL_PORT}/g" $f
+    sed -i -e "s/@CHEMBIENCE_PROXY_NGINX_LOG_MAX_SIZE/${CHEMBIENCE_PROXY_NGINX_LOG_MAX_SIZE}/g" $f
+
+done
+
+
