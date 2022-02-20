@@ -1,8 +1,8 @@
 Chembience
 ==========
 
-
 .. image:: https://github.com/chembience/chembience/actions/workflows/build_and_publish.yml/badge.svg?branch=ci
+    :target: https://circleci.com/gh/chembience/chembience/tree/master
 
 .. image:: https://circleci.com/gh/chembience/chembience/tree/master.svg?style=shield
     :target: https://circleci.com/gh/chembience/chembience/tree/master
