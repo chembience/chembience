@@ -1,6 +1,9 @@
 Chembience
 ==========
 
+.. image:: https://github.com/chembience/chembience/actions/workflows/build-and-publish.yml/badge.svg
+
+
 .. image:: https://circleci.com/gh/chembience/chembience/tree/master.svg?style=shield
     :target: https://circleci.com/gh/chembience/chembience/tree/master
     
