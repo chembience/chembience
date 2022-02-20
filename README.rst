@@ -1,8 +1,8 @@
 Chembience
 ==========
 
-.. image:: https://github.com/chembience/chembience/actions/workflows/build-and-publish.yml/badge.svg
 
+.. image:: https://github.com/chembience/chembience/actions/workflows/build_and_publish.yml/badge.svg?branch=ci
 
 .. image:: https://circleci.com/gh/chembience/chembience/tree/master.svg?style=shield
     :target: https://circleci.com/gh/chembience/chembience/tree/master
@@ -83,6 +83,7 @@ The development of Chembience originally started as a component of the `InChI-Re
 Releases
 --------
 
+- 0.4.0 (February 2022), new major release: rework of the project structure, update RDKit to version 2021.09.4, update to Postgres 13 with RDKit 2021.09.4 extension, update to Python 3.9.x/Miniconda3-py39_4.10.3-Linux-x86_64.sh, change build system from CircleCi to GitHub Actions, update to Django 4.0.x/Django Restframework 3.13.x, update to Nginx 1.19, update to Jupyter 6.4.x, update of Docker Images to Debian Bullseye-Slim, smaller Docker images
 - 0.2.18 (March 2021), update to RDKit 2020.09.3 and Postgres 13 (new dependency to chembience/docker-postgres-rdkit-compile)
 - 0.2.17 (June 2020), update Python 3.8 (3.8.3) and RDKit 2020.03.2
 - 0.2.16 (April 2020), update to RDKit 2020.03
