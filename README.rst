@@ -2,11 +2,8 @@ Chembience
 ==========
 
 .. image:: https://github.com/chembience/chembience/actions/workflows/build_and_publish.yml/badge.svg?branch=ci
-    :target: https://circleci.com/gh/chembience/chembience/tree/master
+    :target: https://github.com/chembience/chembience/actions
 
-.. image:: https://circleci.com/gh/chembience/chembience/tree/master.svg?style=shield
-    :target: https://circleci.com/gh/chembience/chembience/tree/master
-    
 .. image:: https://zenodo.org/badge/124780116.svg
    :target: https://zenodo.org/badge/latestdoi/124780116
 
