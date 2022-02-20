@@ -21,7 +21,7 @@ Overview
 It creates a clean separation between your scientific web service implementation and any host-specific or
 infrastructure-related configuration requirements. The following schema provides an overview.
 
-.. image:: docs/_images/chembience.png
+.. image:: docs/_images/chembience.svg
 
 At its current development stage, Chembience provides three types of template application (*App*) packages: (1) a
 `Django <https://www.djangoproject.com/>`_/`Django REST framework <https://www.django-rest-framework.org/>`_-based
