@@ -68,12 +68,12 @@ as additional components as part of docker-compose configuration.
 
 Current release version of the most important packages are:
 
-* RDKit 2020.09.3
-* Python 3.8.6
-* Django 2.2 + Django Rest Framework 3.11
-* Jupyter 6.0
+* RDKit 2021.09.4
+* Python 3.9.5
+* Django 4.0 + Django Rest Framework 3.13
+* Jupyter 6.4
 * Postgres 13
-* Nginx 1.17 (Reverse Proxy)
+* Nginx 1.19 (Reverse Proxy)
 
 History
 -------
