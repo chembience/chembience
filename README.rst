@@ -19,49 +19,57 @@ Overview
 **Chembience** is a `Docker <https://docs.docker.com/>`_ based platform supporting the fast development of
 `chemoinformatics <https://en.wikipedia.org/wiki/Cheminformatics>`_-centric web applications and microservices.
 It creates a clean separation between your scientific web service implementation and any host-specific or
-infrastructure-related configuration requirements. The following schema provides an overview.
+infrastructure-related configuration requirements. The following schema gives an overview.
 
 .. image:: docs/_images/chembience.svg
 
-At its current development stage, Chembience provides three types of template application (*App*) packages: (1) a
-`Django <https://www.djangoproject.com/>`_/`Django REST framework <https://www.django-rest-framework.org/>`_-based
-*App* which is specifically suited for the development of web-based `Python <https://www.python.org/>`_
-REST and microservices, (2) a RDKit/Python shell-based *App* which allows for the execution of Python scripts (including
-RDKit, see below), and (3), a `Jupyter <https://www.jupyter.org/>`_-based *App* which let you run Jupyter
-notebooks locally on a Web browser (currently only a Python kernel is supported).
+Chembience allows for the easy installation of pre-configured template application packages in just a few steps.
+Each of the Chembience applications is Docker-based and provides access to a readily configured
+`Postgres <https://www.postgresql.org/>`_ databases instance (*Database*) running in a separate Docker container
+instance on the same Docker virtual network (*Chembience Backend Network*). Additionally, all Chembience Docker
+application or database images have the `RDKit <http://www.rdkit.org/>`_  toolkit installed, either as Python
+module or Postgres extension.
 
-All template *Apps* have pre-configured access to a `Postgres <https://www.postgresql.org/>`_ databases instance
-(*Database*) running in a separate Docker container on the same Docker virtual network (*Chembience Sphere*).
-Any of the *App* Docker images and the Postgres database image have the `RDKit <http://www.rdkit.org/>`_  toolkit installed
-either as Python module or Postgres extension. Additionally, both the Django and the Jupyter *App* packages
-provide a `Nginx <https://www.nginx.com>`_-based web server instance as component of their Docker image.
+Currently, three Chembience application packages are available:
+(1) *Django-RDKit*, a`Django <https://www.djangoproject.com/>`_/`Django REST framework <https://www.django-rest-framework.org/>`_-based
+application which is specifically suited for starting the development of web-based `Python <https://www.python.org/>`_
+REST and microservices, (2) *Jupyter-RDKit*, a `Jupyter <https://www.jupyter.org/>`_-based application which lets you
+execute Jupyter notebooks locally on a Web browser, and (3) a basic *RDKit* application, which allows for the execution
+of Python scripts including any RDKit functionality.
+For communication with the web or the Chembience *Proxy* module
+(see below), the *Django-RDKit* package provides a `Nginx <https://www.nginx.com>`_-based web server instance as a
+component of its Docker image.
 
-Creation and deployment of all Chembience-based Docker images and containers is orchestrated by
-`docker-compose <https://docs.docker.com/compose/>`_. All Docker images required for starting up one of the Chembience
-*App* packages are continuously built and tested at `CircleCi.com <https://circleci.com>`_ and made available
-from the `Chembience Docker hub repository <https://hub.docker.com/u/chembience/>`_). Alternatively, the Docker images
-can also be built locally on the user's host machine by using the provided build script.
+Creation and deployment of all Chembience-based Docker images and application containers can be orchestrated by the
+developer with the help of `docker-compose <https://docs.docker.com/compose/>`_. Any Docker image required for starting
+up one of the Chembience applications or components is continuously built and tested with
+`Github Actions <https://github.com/chembience/chembience/actions>`_ and made available for pulling from the
+`Chembience Docker hub repository <https://hub.docker.com/u/chembience/>`_). Alternatively, the
+Docker images can also be built locally on the user's host machine by using the provided build script.
 
-If a Chembience-based application is started, a Docker virtual network (*Chembience Sphere*) is created on the Docker
-host system, as well as the requested *App* and infrastructure containers, e.g. the *Database* container,
+If a Chembience-based application is started, a Docker virtual network (*Chembience Backend Network*) is created on the
+Docker host system, as well as the requested Chembience application and components containers, e.g. the *Database* container,
 are brought up together at once. Depending on the current use case, a different set of the available Chembience
 container components can be easily configured and put together by adjusting the docker-compose configuration file.
 
-Another component of Chembience is the Chembience *Proxy* which has been created as a fork of the
+Another Docker container-based component of Chembience is the Chembience *Proxy* module which is based on the
 `jwilder/nginx-proxy project <https://github.com/jwilder/nginx-proxy>`_. The *Proxy* acts as a reverse proxy in front of
-all *App* containers and allows for spinning up additional container instance, or updating and removing existing ones
-while avoiding interference with web traffic to other running Chembience-based services and containers. The *Proxy* works in
-a way that it automatically discovers any existing or newly starting *App* container inside the *Chembience Sphere*
-virtual network and looks up their (sub) domain specification. It then makes the *App* containers accessible to the
-outside of the *Chembience Sphere* network under their specified domain names which might be either a DNS-registered
-Web domain, or any sub domain at localhost for locally running Web applications.
+Chembience *Django-RDKit* application containers and allows for spinning up additional application instance, or
+updating and removing existing ones, while avoiding interference with web traffic to other running Chembience-based
+services and containers. The *Proxy* works in a way that it automatically discovers any existing or newly starting
+application containers inside a secondary Docker virtual network between the application container and
+the proxy module. During the start up of the application container, the *Proxy* is capable of detecting the (sub) domain
+specification given in the configuration of the application which makes the application accessible from the
+outside of the *Chembience Backend* network under the specified application domain names, the latter either being a
+DNS-registered Web domain or any sub domain at localhost in case of a locally running Web application. If configured
+accordingly, a SSL/TLS certificate can be automatically registered with `Let's Encrypt <https://letsencrypt.org/>`_
 
-All of the Chembience *App* packages can be easily altered, cloned, removed, or reconfigured. After the initialization of
-the Chembience base system (see `Quick Start: Base Installation`_ below), the initially created *App* package directories
-can be moved, renamed, or copied, in order to create multiple, specialized application packages, which then can be
-handled as software projects of their own. If additional infrastructure packages are needed
-for a project (e.g. Solr, elasticsearch, or additional Postgres container instances), they can be easily integrated
-as additional components as part of docker-compose configuration.
+In general, all of the Chembience application packages can be easily altered, cloned, removed, or reconfigured. After
+the initialization of the Chembience base system (see `Quick Start: Base Installation`_ below), the file directory of
+any Chembience application initially created as a template can be moved, renamed, extended, or copied, allowing for
+the creation of multiple, specialized application packages, which then can be handled as software projects of their own.
+If additional infrastructure packages are required for a project (e.g. Solr, elasticsearch, or additional Postgres container
+instances), they can be easily add as additional components of the docker-compose service configuration.
 
 Current release version of the most important packages are:
 
@@ -71,11 +79,6 @@ Current release version of the most important packages are:
 * Jupyter 6.4
 * Postgres 13
 * Nginx 1.19 (Reverse Proxy)
-
-History
--------
-
-The development of Chembience originally started as a component of the `InChI-Resolver <https://prototype0.inchi-resolver.org/openapi>`_ project (the alpha version of the InChI resolver is currently in the process of being migrated from a predecessor version of Chembience to the current version provided here).
 
 Releases
 --------
@@ -107,7 +110,9 @@ Releases
 Requirements
 ------------
 
-Please have at least `Docker CE 17.09 <https://docs.docker.com/engine/installation/>`_ and `Docker Compose 1.17 <https://docs.docker.com/compose/install/>`_ installed on your system.
+Please have at least `Docker CE 20.10 <https://docs.docker.com/engine/installation/>`_
+and `Docker Compose 1.29 <https://docs.docker.com/compose/install/>`_ installed on your system. Chembience might run
+with earlier versions of both software packages but this is untested. Additionally a recent version of git is required.
 
 
 Quick Start: Base Installation
@@ -123,11 +128,13 @@ Then, change into the newly created directory ::
 
 and run the following command (it is important that you do this from inside the ``chembience`` directory) ::
 
-    ./init
+    ./init all
 
-As a first step, this will download all necessary Chembience Docker images to your system and may take a while for the
-initial setup (approx 3.5GB of downloads from DockerHub). After a successful download, a new directory ``chembient/`` is
-created in your home directory ::
+(Note: alternatively, you might initialize only specific applications or components of Chembience, respectively. This
+is done by specifying 'django', 'jupyter', 'rdkit', 'proxy', or any combinations of those, instead of 'all').
+
+As a first step, this will download some of the necessary Chembience Docker images to your system which may take a while
+for the initial setup. After a successful download, a new directory ``chembient/`` has been created in your home directory ::
 
     cd ~/chembient
 
@@ -137,7 +144,7 @@ which has the following layout ::
              /rdkit
              /jupyter
              /share
-             /sphere
+             /proxy
 
 The first three directories contain a prototype versions of the Django-, RDKit and Jupyter-based applications, respectively.
 The location and name of these base application directories is freely configurable (in fact, it isn't even required to keep them in the
