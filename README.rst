@@ -174,7 +174,7 @@ directory ::
 
     cd ~/chembient/django
 
-which has the following layout ::
+which has the following layout: ::
 
     .env
     app.env
@@ -201,28 +201,27 @@ For this quick start section, only the most important of these files will be dis
 up an instance of the  *Django-RDKit* application container and the Postgres *Database* container. The initial
 configuration of the containers is provided in the ``.env`` file and orchestrated by the ``docker-compose.yml`` file.
 
-**NOTE**: in its default configuration, the *Django-RDKit application container connects to port 8000 of the host system.
+**NOTE**: in its default configuration, the *Django-RDKit* application container connects to port 8000 of the host system.
 If this port is already in use, set variable ``APP_CONNECTION_PORT`` in file ``app.env`` and run the local ``init`` script.
 
 If everything went fine, you should now be able to go to ::
 
     http://localhost:8000      (you should see the welcome page of a bare Django installation)
 
-For the initial setup of Django, still a few steps needs to be done. Since Django runs inside a Docker container you can
+For the initial setup of Django, still a few steps needs to be done. Since Django runs inside a Docker container, you can
 not directly access Django's administration script ``manage.py`` in order to set up things. Instead, you have to use
 the ``django-manage-py`` script provided in the current directory which passes any arguments to the ``manage.py`` script
 of the Django instance running inside the *Django-RDKit* application container.
 
 To finalize the initial setup of Django in your container instance, run these commands (except for using
 ``django-manage-py`` instead of ``manage.py`` these are the same steps as for any Django installation including the
-set up Django's admin pages) ::
+set up of Django's admin pages) ::
 
     ./django-manage-py migrate           (creates the initial Django database tables)
     ./django-manage-py createsuperuser   (will prompt you to create a Django superuser account)
-    ./django-manage-py collectstatic     (adds all media (css, js, templates) for the Django admin application;
-    creates a ``static/`` directory in the django directory)
+    ./django-manage-py collectstatic     (adds all media (css, js, templates) for the Django admin application; creates a ``static/`` directory in the django directory)
 
-After running these commands you should be able to go to::
+After running these commands you should be able to go to ::
 
     http://localhost:8000/admin
 
@@ -231,7 +230,7 @@ and login into the Django admin application with the just set up account and pas
 Since Chembience 0.4.0 a shortcut script ``django-init`` is provided which runs the three above commands at once and
 creates a superuser with default password ``Django0Django0`` if no superuseruser account has been created before. ::
 
-    ./django-init   (then go to http://localhost:8000/admin
+    ./django-init   (then go to http://localhost:8000/admin)
 
 From here, you can start the development of your own Django application. The basic Django project installation can
 be found in the local ``appsite`` directory. If you already know how to develop apps with Django framework, this should
@@ -275,53 +274,91 @@ After the quick start installation of Chembience (see previous section `Quick St
 which has the following layout ::
 
     .env
+    app.env
     build
     docker-compose.build.yml
-    docker-compose.shell.yml
     docker-compose.yml
     docker-entrypoint.sh
     Dockerfile
-    down
+    env-parse
+    init
     jupyter
     jupyter_notebook_config.py
+    nginx
     notebooks
+    postgres-init.d
     psql
+    remove
     requirements.txt
     shell
+    stop
     up
 
 For this quick start section, only the most important of these files will be discussed. The command ``./up`` will start
-up the Jupyter *App* container and the *Database* container (the initial configuration of the containers is provided in
-the ``.env`` file and the ``docker-compose.yml`` file, ***NOTE**: the Jupyter *App* container connect to port 8001 of the
-host system, respectively, if this port is already in use, it can by reconfigured in ``.env``, , see variable
-``JUPYTER_APP_CONNECTION_PORT``). If everything went fine, you should now be able to go to ::
+up an instance of the  *Jupyter-RDKit* application container and the Postgres *Database* container. The initial
+configuration of the containers is provided in the ``.env`` file and orchestrated by the ``docker-compose.yml`` file.
+
+**NOTE**: in its default configuration, the *Jupyter-RDKit* application container connects to port 8001 of the host system.
+If this port is already in use, set variable ``APP_CONNECTION_PORT`` in file ``app.env`` and run the local ``init`` script.
+
+If everything went fine, you should now be able to go to ::
 
     http://localhost:8001       (you should see the login page of the Jupyter notebook server)
 
 Login to the Jupyter notebook server with the password ``Jupyter0``. If you know Jupyter, everything should look familiar
 to you now. If you are new to Jupyter, you can find the `documentation here <http://jupyter-notebook.readthedocs.io/>`_.
 Since Jupyter runs inside a Docker container, its ``jupyter`` command is not accessible directly; instead you have to
-use the ``jupyter`` script inside the Juypter *App* directory which will pass all subcommands into the running container::
+use the ``jupyter`` script inside the *Juypter-RDKit* application directory which will pass all subcommands into the
+running container::
 
     ./jupyter [subcommands]
 
-If you want to add and run existing Jupyter notebooks to the Jupyter *App* container, you need to place them in directory::
+If you want to add and run existing Jupyter notebooks to the *Juypter-RDKit* application, you need to place them in
+directory::
 
     ~chembient/jupyter/notebooks
 
 Likewise, if you create new Jupyter notebooks in the Jupyter app and safe them, you will find them at this directory.
 
-In order to bring the whole Chembience stack of Jupyter *App* amd *Database* down again, use the ``down`` script::
+For connecting to the database, do the following (if you use an unchanged Chembience configuration, use the shown
+database connection parameters verbatim, they are not just placeholders):
 
-    ./down
+.. code-block:: python
 
-It will keep anything persistent you have created and stored so far in the database. If you are familiar with ``docker-compose``,
-all life-circle commands should work as expected, in fact, ``up`` and  ``down`` are just short cuts for their respective
-``docker-compose`` commands.
+    import psycopg2
+    import pprint
 
-Starting with Chembience version 0.2.4, the Chembience *Proxy* container has to be started separately (see below).
-However, although the *Proxy* would allow to do so, it is *strictly* not recommended to run a public facing instance
-of the Jupyter *App* (or Jupyter notebook in general).
+    conn_string = "host='db' dbname='chembience' user='chembience' password='Chembience0'"
+    conn = psycopg2.connect(conn_string)
+    cursor = conn.cursor()
+
+    # rdkit extension installed?
+    cursor.execute("select * from pg_extension")
+    extensions = cursor.fetchall()
+    pprint.pprint(extensions)
+
+
+In order to remove the whole Chembience stack of *Jupyter-RDKit* application and *Database* container down again, use the
+``remove`` script::
+
+    ./remove  (**WARNING**: This will remove anything including the content of the database.)
+
+If you just want to shutdown the application without loss of data and a later restart, use the ``stop`` script::
+
+    ./stop  (later restart with ./up again)
+
+Generally, if you are familiar with ``docker-compose``, all life-circle commands of docker-compose should work as
+expected. For changes in the configuration of the *Jupyter-RDKit* application, edit file ``app.env`` accordingly and run
+the local ``init`` script::
+
+    ./init      (after editing file 'app.env')
+
+If you need additional python packages not present in the default Chembience **Django-RDKit**, add them to file
+``requirements.txt`` and run::
+
+    ./build
+
+This will build a new local Docker image with the required packages added.
 
 
 Quick Start: RDKit Template App
@@ -392,13 +429,12 @@ local script ``init``::
 Quick Start: Proxy
 ------------------
 
-Beginning with Chembience version 0.2.4, the *Proxy* container isn't started as part of the Django and Jupyter *App*
-package anymore. Instead, it has to be started separately. If Chembience is used in default configuration, go into
-directory ::
+Beginning with Chembience version 0.2.4, the *Proxy* container is not started as part of the Django anymore. Instead,
+it has to be started separately. If Chembience is used in default configuration, go into directory ::
 
-    cd ~/chembient/sphere
+    cd ~/chembient/proxy
 
-and use the ``up`` script there ::
+and use the ``up-without-letsencrypt`` script there ::
 
     ./up-without-letsencrypt
 
@@ -406,13 +442,17 @@ This will make the *Proxy* available at ::
 
     http://localhost        (don't worry, the reverse proxy will report with *503 Service Temporarily Unavailable* there)
 
-The *Proxy* will connect to port 80 of the host system. If this port is in use, set variable ``CHEMBIENCE_PROXY_EXTERNAL_PORT``
-of the ``.env``file of the current directory before using ``./up``. If either the Django or Jupyter *App* are running,
-they are also now available from the *Proxy* (if this doesn't work your local network configuration might not allow
+The *Proxy* will connect to port 80 and 443 of the host system. If these ports are in use, adjust
+variable ``CHEMBIENCE_PROXY_EXTERNAL_PORT`` and ``CHEMBIENCE_PROXY_EXTERNAL_SSL_PORT`` at the local file ``proxy.env``
+and run the ``init`` script: ::
+
+    ./init      (after editing file 'proxy.env')
+
+before using ``./up-without-letsencrypt``. If a basic Chembience *Django-RDKit* application instance is running,
+it also should be available from the *Proxy* (if this doesn't work, your local network configuration might not allow
 for resolving subdomains) ::
 
     http://django.localhost
-    http://jupyter.localhost
 
 Please note that using the *Proxy* isn't necessary when using Chembience just for development purpose.
 
@@ -423,10 +463,11 @@ As a prerequisite, your DNS-registered domain (e.g. www.example.com) has to be s
 Unfortunately it is hard to give a general description here.
 
 Bring the proxy up as described in the `Quick Start: Proxy`_ section. The port the *Proxy* is connecting to needs to
-be set to a outside-accessible port on your public web server/host (usually port 80).
+be set to an outside-accessible port on your public web server/host (usually port 80).
 
-Additionally, before any Django *App* is brought up, the variable DJANGO_APP_VIRTUAL_HOSTNAME in the ``.env`` file of
-the Django app has to be set to the URL-domain, e.g. "www.example.com".
+Additionally, before any *Django-RDKit* application is brought up, the variable ``APP_VIRTUAL_HOSTNAME`` in
+the ``app.env`` file of the Django application has to be set to the URL-domain, e.g. "www.example.com" (**Note**: don't
+forget to run the init script of the Django application if the APP_VIRTUAL_HOSTNAME had to be changed).
 
 Using the Proxy in production setting and with HTTPS
 ----------------------------------------------------
@@ -436,27 +477,28 @@ Unfortunately it is hard to give a general description here.
 
 For HTTPS access, the *Proxy* container has to be started from ::
 
-    cd ~/chembient/sphere
+    cd ~/chembient/proxy
 
 and the command::
 
     ./up
 
-The *Proxy* will connect to port 80 and 443 of the host system. If these ports aren't available, set variable
-``CHEMBIENCE_PROXY_EXTERNAL_PORT`` and ``CHEMBIENCE_PROXY_EXTERNAL_SSL_PORT`` of the ``.env`` file of the current directory
-before using the up command.
+The ports the *Proxy* is connecting to need to be set to an outside-accessible port on your public web server/host
+(usually port 80 and 443).
 
-Additionally, before any Django *App* is brought up, set both the variable ``DJANGO_APP_VIRTUAL_HOSTNAME`` and ``LETSENCRYPT_HOST``
-in the ``.env`` file of the Django app to your URL-domain, e.g. "www.example.com". Also, specify variable
-``LETSENCRYPT_EMAIL`` there. For a test run, keep variable ``LETSENCRYPT_TEST`` to ``true`` and check with ``docker-compose logs``
-in directory ``~/chembient/sphere`` for error messages. For the final registration run set ``LETSENCRYPT_TEST`` to ``false``.
-Also consult `this page <https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion>`_ for further advice (the
-package described there is used for Chembience SSL support, however, for an initial set-up of Chembience no further
-configuration is required)
+Additionally, before any Chembience *Django-RDKit* application is brought up, set both the variable
+``APP_VIRTUAL_HOSTNAME`` and ``LETSENCRYPT_HOST`` in the ``app.env`` file of the Django application to your URL-domain,
+e.g. "www.example.com" (**Note**: don't forget to run the init script of the Django application if any changes have
+been made to the configuration).
+Also, specify variable ``LETSENCRYPT_EMAIL`` there. For a test run, keep variable ``LETSENCRYPT_TEST`` to ``true`` and
+check with ``docker-compose logs`` in directory ``~/chembient/proxy`` for error messages. For the final registration run
+set ``LETSENCRYPT_TEST`` to ``false``. Also consult `this page <https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion>`_
+for further advice (the package described there is used for Chembience SSL support, however, for an initial set-up of
+Chembience no further configuration is required)
 
 Bugs, Comments and anything else
 --------------------------------
 
-For any bug reports, comments or suggestion please use the tools here at Github or contact me at my email.
+For any bug reports, comments or suggestion please use the tools here at Github or contact me by email.
 
 Markus Sitzmann, 2022-02-22
