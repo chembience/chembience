@@ -1,7 +1,7 @@
 Chembience
 ==========
 
-.. image:: https://github.com/chembience/chembience/actions/workflows/build_and_publish.yml/badge.svg?branch=ci
+.. image:: https://github.com/chembience/chembience/actions/workflows/build_and_publish.yml/badge.svg?branch=master
     :target: https://github.com/chembience/chembience/actions
 
 .. image:: https://zenodo.org/badge/124780116.svg
