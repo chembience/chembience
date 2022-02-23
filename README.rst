@@ -31,7 +31,7 @@ application or database images have the `RDKit <http://www.rdkit.org/>`_  toolki
 module or Postgres extension.
 
 Currently, three Chembience application packages are available:
-(1) *Django-RDKit*, a`Django <https://www.djangoproject.com/>`_/`Django REST framework <https://www.django-rest-framework.org/>`_-based
+(1) *Django-RDKit*, a`Django <https://www.djangoproject.com/>`_ /`Django REST framework <https://www.django-rest-framework.org/>`_-based
 application which is specifically suited for starting the development of web-based `Python <https://www.python.org/>`_
 REST and microservices, (2) *Jupyter-RDKit*, a `Jupyter <https://www.jupyter.org/>`_-based application which lets you
 execute Jupyter notebooks locally on a Web browser, and (3) a basic *RDKit* application, which allows for the execution
@@ -43,8 +43,8 @@ component of its Docker image.
 Creation and deployment of all Chembience-based Docker images and application containers can be orchestrated by the
 developer with the help of `docker-compose <https://docs.docker.com/compose/>`_. Any Docker image required for starting
 up one of the Chembience applications or components is continuously built and tested with
-`Github Actions <https://github.com/chembience/chembience/actions>`_ and made available for pulling from the
-`Chembience Docker hub repository <https://hub.docker.com/u/chembience/>`_). Alternatively, the
+`Github Actions <https://github.com/chembience/chembience/actions>`_ and made available at
+`Chembience Docker hub repository <https://hub.docker.com/u/chembience/>`_) for pulling by Docker. Alternatively, the
 Docker images can also be built locally on the user's host machine by using the provided build script.
 
 If a Chembience-based application is started, a Docker virtual network (*Chembience Backend Network*) is created on the
