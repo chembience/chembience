@@ -84,21 +84,16 @@ Current release version of the most important packages are:
 Releases
 --------
 
-- 0.4.0 (February 2022), new major release: rework of the project structure, update RDKit to version 2021.09.4, update
-to Postgres 13 with RDKit 2021.09.4 extension, update to Python 3.9.x/Miniconda3-py39_4.10.3-Linux-x86_64.sh, change
-build system from CircleCi to GitHub Actions, update to Django 4.0.x/Django Restframework 3.13.x, update to Nginx 1.19,
-update to Jupyter 6.4.x, update of Docker Images to Debian Bullseye-Slim, smaller Docker images
+- 0.4.0 (February 2022), new major release: rework of the project structure, update RDKit to version 2021.09.4, update to Postgres 13 with RDKit 2021.03.4 extension, update to Python 3.9.x/Miniconda3-py39_4.10.3-Linux-x86_64.sh, change build system from CircleCi to GitHub Actions, update to Django 4.0.x/Django Restframework 3.13.x, update to Nginx 1.19, update to Jupyter 6.4.x, update of Docker Images to Debian Bullseye-Slim, smaller Docker images
 - 0.3.0 (no public release)
 - 0.2.18 (March 2021), update to RDKit 2020.09.3 and Postgres 13 (new dependency to chembience/docker-postgres-rdkit-compile)
 - 0.2.17 (June 2020), update Python 3.8 (3.8.3) and RDKit 2020.03.2
 - 0.2.16 (April 2020), update to RDKit 2020.03
-- 0.2.15 (March 2020), update to Python 3.7.6, RDKit 2019.09.3, Postgres 11.7 and Django 2.2.8/DRF 3.11, Jupyter 6.0.4,
-Nginx 1.17
+- 0.2.15 (March 2020), update to Python 3.7.6, RDKit 2019.09.3, Postgres 11.7 and Django 2.2.8/DRF 3.11, Jupyter 6.0.4, Nginx 1.17
 - 0.2.14 (October 2019), update to RDKit 2019.09
 - 0.2.13 (September 2019), update to RDKit 2019.03.4, Postgres 11.5 and Django 2.2.6
 - 0.2.12 (August 2019), update to RDKit 2019.03.3, Postgres 11.4; (Mini)Conda has been updated to version 4.7.10
-- 0.2.11 (June 2019), update to RDKit 2019.03.2, Django 2.2, Postgres 11.3; all Docker images are now based on Debian
-buster
+- 0.2.11 (June 2019), update to RDKit 2019.03.2, Django 2.2, Postgres 11.3; all Docker images are now based on Debian buster
 - 0.2.10 (Easter 2019), update to RDKit 2019.03
 - 0.2.9 (April 2019), update to Postgres 11.2
 - 0.2.8 (March 2019), update to RDKit 2018.09.2 and Postgres 10.7
@@ -118,7 +113,8 @@ Requirements
 
 Please have at least `Docker CE 20.10 <https://docs.docker.com/engine/installation/>`_
 and `Docker Compose 1.29 <https://docs.docker.com/compose/install/>`_ installed on your system. Chembience might run
-with earlier versions of both software packages but this is untested. Additionally a recent version of git is required.
+with earlier versions of both software packages but this is untested. Additionally a reasonable recent version of git
+is required.
 
 
 Quick Start: Base Installation
@@ -158,14 +154,19 @@ which has the following structure ::
 
 The first three directories contain base versions of the *Django-RDKit*, *Jupyter-RDKit*, and the basic *RDKIT*
 application, respectively.  Their specific configuration will be discussed in the following sections.
-The ``share/`` directory can be used to share resources including (python) among Chembience application instances.
-Finally, the ``proxy/`` directory is the home of the Chembience *Proxy* module. Its configuration and usage will also
-be described in a section below.
+The ``share/`` directory can be used to share resources and python packages among Chembience application instances.
+Finally, the ``proxy/`` directory is the home of the Chembience *Proxy* module. Its configuration and usage is also
+described in a section below.
 
-... The location and name of these base application directories is freely re-configurable,
-in fact, it isn't even required to keep them in the ``chembient`` parent directory).
+The location and name of these base application directories is freely re-configurable, in fact, it isn't even required
+to keep them in the ``chembient`` parent directory. Reconfiguration can either be accomplished by setting the variables
+``DJANGO_APP_HOME``, ``JUPYTER_APP_HOME``, ``RDKIT_APP_HOME`` or ``CHEMBIENCE_PROXY_HOME`` in file ``settings.env`` at
+the root directory of the cloned chembience directory before running the ``init`` script; or later, by setting the
+variable ``APP_HOME`` or ``PROXY_HOME`` in file ``app.env`` or ``proxy.env``, respectively, at the corresponding app/proxy
+directory before running the ``init`` script there.
 
-Quick Start: Django Template App
+
+Quick Start: *Django-RDKit* App
 --------------------------------
 
 After the base installation of Chembience (see previous section `Quick Start: Base Installation`_), go into
@@ -201,10 +202,7 @@ up an instance of the  *Django-RDKit* application container and the Postgres *Da
 configuration of the containers is provided in the ``.env`` file and orchestrated by the ``docker-compose.yml`` file.
 
 **NOTE**: in its default configuration, the *Django-RDKit application container connects to port 8000 of the host system.
-For reconfiguration, see below.
-
-If this port is already in use, it can by reconfigured in ``.env``, see
-variable ``DJANGO_APP_CONNECTION_PORT``).
+If this port is already in use, set variable ``APP_CONNECTION_PORT`` in file ``app.env`` and run the local ``init`` script.
 
 If everything went fine, you should now be able to go to ::
 
@@ -216,8 +214,8 @@ the ``django-manage-py`` script provided in the current directory which passes a
 of the Django instance running inside the *Django-RDKit* application container.
 
 To finalize the initial setup of Django in your container instance, run these commands (except for using
-``django-manage-py`` instead of ``manage.py`` these are the same steps as for any Django installation for setting up
-Django's admin pages) ::
+``django-manage-py`` instead of ``manage.py`` these are the same steps as for any Django installation including the
+set up Django's admin pages) ::
 
     ./django-manage-py migrate           (creates the initial Django database tables)
     ./django-manage-py createsuperuser   (will prompt you to create a Django superuser account)
@@ -230,79 +228,45 @@ After running these commands you should be able to go to::
 
 and login into the Django admin application with the just set up account and password.
 
-If you want to start the development of own Django apps, go into the ``appsite`` directory. If you already know how to
-develop with Django, this should look familiar to you. If not, go to the
-`official Django tutorial <https://docs.djangoproject.com/en/4.0/intro/tutorial01/>`_ as a starting point (you can jump
-there to section *Creating the Polls app* because anything before this step is already done, also the
-database setup sections can be skipped). Because the ``appsite`` directory is bind-mounted by Docker into the Django-RDKit
-application container, anything you change there is immediately represented inside the container and the web service
-you are working on (if not, touch directory ``appsite``; for some changes in ``appsite/appsite`` and settings.py a
-container restart might be necessary, using  ``docker-compose restart``).
+Since Chembience 0.4.0 a shortcut script ``django-init`` is provided which runs the three above commands at once and
+creates a superuser with default password ``Django0Django0`` if no superuseruser account has been created before. ::
+
+    ./django-init   (then go to http://localhost:8000/admin
+
+From here, you can start the development of your own Django application. The basic Django project installation can
+be found in the local ``appsite`` directory. If you already know how to develop apps with Django framework, this should
+look familiar to you. If not, go to the `official Django tutorial <https://docs.djangoproject.com/en/4.0/intro/tutorial01/>`_ as a
+starting point (you can jump there to section *Creating the Polls app* because anything before this step is already
+done, also the database setup sections can be skipped). Because the ``appsite`` directory is bind-mounted by Docker
+into the Django-RDKit application container, anything changes are immediately represented inside the container
+and the web service you are working on (if not, touch directory ``appsite``; for some changes in ``appsite/appsite`` and
+Django's ``settings.py`` a container restart might be necessary by running ``docker-compose restart``. Check also the
+nginx and uwsgi configuration in directory ``~/chembient/django/nginx``).
 
 In order to remove the whole Chembience stack of *Django-RDKit* application and *Database* container down again, use the
-``down`` script::
+``remove`` script::
 
-    ./remove
+    ./remove  (**WARNING**: This will remove anything including the content of the database.)
 
-**WARNING**: This will remove anything including the content of the database. If you are familiar with ``docker-compose``,
-all life-circle commands should work as expected, in fact, ``up`` and  ``down`` are just short cuts for their respective
-``docker-compose`` commands.
+If you just want to shutdown the application without loss of data and a later restart, use the ``stop`` script::
 
-Starting with Chembience version 0.2.4, the Chembience *Proxy* container has to be started separately (see below).
-However, this isn't required for the purpose of a locally running development instance of the Chembience Django *App*.
+    ./stop  (later restart with ./up again)
 
-Quick Start: RDKit Template App
--------------------------------
+Generally, if you are familiar with ``docker-compose``, all life-circle commands of docker-compose should work as
+expected. For changes in the configuration of the *Django-RDKit* application, edit file ``app.env`` accordingly and run
+the local ``init`` script::
 
-After the quick start installation of Chembience (see section `Quick Start: Base Installation`_), go into directory ::
+    ./init      (after editing file 'app.env')
 
-    cd ~/chembient/rdkit
+If you need additional python packages not present in the default Chembience **Django-RDKit**, add them to file
+``requirements.txt`` and run::
 
-You will see the following layout::
+    ./build
 
-   build
-   context
-   docker-compose.build.yml
-   docker-compose.shell.yml
-   docker-compose.yml
-   docker-entrypoint.sh
-   Dockerfile
-   psql
-   requirements.txt
-   run
-   up
+This will build a new local Docker image with the required packages added.
 
-For this quick start section, only the most important of these files will be discussed. The ``./up`` command will start
-up the database and the *App* container executing a regular python shell interactively. For connecting to the database, do the
-following (if you use an unchanged Chembience configuration, use the shown database connection parameters verbatim,
-they are not just placeholders):
-
-.. code-block:: python
-
-    import psycopg2
-    import pprint
-
-    conn_string = "host='db' dbname='chembience' user='chembience' password='Chembience0'"
-    conn = psycopg2.connect(conn_string)
-    cursor = conn.cursor()
-
-    # rdkit extension installed?
-    cursor.execute("select * from pg_extension")
-    extensions = cursor.fetchall()
-    pprint.pprint(extensions)
-
-If you use the ``./run`` command, it does the same without starting an interactive shell, however it will pass any command
-line arguments to the Python interpreter of the *App* container. The Python interpreter has the current directory
-(``~/chembience/rdkit``) available on its PYTHONPATH, i.e. if you add a script named script.py to the RDKit *App*
-directory you can run it like this::
-
-    ./run script.py
-
-The same is true for any python module or package put into the ``~/chembience/share`` directory.
-
-
-Quick Start: Jupyter App
-------------------------
+Quick Start: *Jupyter App*
+--------------------------
 
 After the quick start installation of Chembience (see previous section `Quick Start: Base Installation`_), go into directory ::
 
@@ -358,6 +322,71 @@ all life-circle commands should work as expected, in fact, ``up`` and  ``down`` 
 Starting with Chembience version 0.2.4, the Chembience *Proxy* container has to be started separately (see below).
 However, although the *Proxy* would allow to do so, it is *strictly* not recommended to run a public facing instance
 of the Jupyter *App* (or Jupyter notebook in general).
+
+
+Quick Start: RDKit Template App
+-------------------------------
+
+After the quick start installation of Chembience (see section `Quick Start: Base Installation`_), go into directory ::
+
+    cd ~/chembient/rdkit
+
+You will see the following layout::
+
+    .env
+    app.env
+    build
+    docker-compose.build.yml
+    docker-compose.yml
+    docker-entrypoint.sh
+    Dockerfile
+    env-parse
+    init
+    postgres-init.d
+    psql
+    remove
+    requirements.txt
+    run
+    script.py
+    shell
+    stop
+    up
+
+For this quick start section, only the most important of these files will be discussed. The ``./up`` command will start
+up the database and the *RDKIT* application container executing a regular python shell interactively. For connecting to
+the database, do the following (if you use an unchanged Chembience configuration, use the shown database connection
+parameters verbatim, they are not just placeholders):
+
+.. code-block:: python
+
+    import psycopg2
+    import pprint
+
+    conn_string = "host='db' dbname='chembience' user='chembience' password='Chembience0'"
+    conn = psycopg2.connect(conn_string)
+    cursor = conn.cursor()
+
+    # rdkit extension installed?
+    cursor.execute("select * from pg_extension")
+    extensions = cursor.fetchall()
+    pprint.pprint(extensions)
+
+If you use the ``./run`` command, it does the same without starting an interactive shell, however, it will pass any
+command line arguments to the Python interpreter running in the *RDKit* application container. The Python interpreter
+has the current directory (``~/chembience/rdkit``) available on its PYTHONPATH, i.e. if you add a script named script.py
+to the RDKit *App* directory you can run it like this::
+
+    ./run script.py
+
+The same is true for any python module or package put into the ``~/chembience/share`` directory.
+
+For changes in the configuration of the *RDKit* application container, edit file ``app.env`` accordingly and run the
+local script ``init``::
+
+    ./init      (after editing file 'app.env')
+
+
+
 
 
 Quick Start: Proxy
