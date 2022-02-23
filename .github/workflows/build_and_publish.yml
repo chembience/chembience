@@ -1,4 +1,4 @@
-name: Chembience build and publish
+name: Chembience Build
 
 on:
   push:
