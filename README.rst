@@ -17,7 +17,7 @@ Overview
 --------
 
 **Chembience** is a `Docker <https://docs.docker.com/>`_ based platform supporting the fast development of
-`chemoinformatics <https://en.wikipedia.org/wiki/Cheminformatics>`_-centric web applications and microservices.
+`cheminformatics <https://en.wikipedia.org/wiki/Cheminformatics>`_-centric web applications and microservices.
 It creates a clean separation between your scientific web service implementation and any host-specific or
 infrastructure-related configuration requirements. The following schema gives an overview.
 
@@ -25,27 +25,28 @@ infrastructure-related configuration requirements. The following schema gives an
 
 Chembience allows for the easy installation of pre-configured template application packages in just a few steps.
 Each of the Chembience applications is Docker-based and provides access to a readily configured
-`Postgres <https://www.postgresql.org/>`_ databases instance (*Database*) running in a separate Docker container
-instance on the same Docker virtual network (*Chembience Backend Network*). Additionally, all Chembience Docker
-application or database images have the `RDKit <http://www.rdkit.org/>`_  toolkit installed, either as Python
-module or Postgres extension.
+`Postgres <https://www.postgresql.org/>`_ *Databases* instance running in a separate Docker container
+instance on the same Docker virtual network (*Chembience Backend Network*). For the efficient handling of
+chemistry-related data and information, all Chembience applications and the *Database* image have the
+`RDKit <http://www.rdkit.org/>`_ toolkit installed, either as Python module or Postgres extension, respectively.
+For the connection to the intranet or local network, some of application Docker images provide a
+`Nginx <https://www.nginx.com>`_-based web server instance as a component of their Docker images.
+For outside-facing traffic to the Internet, a pre-configured *Proxy* module is available which acts as a reverse proxy
+including the management of SSL/TLS certificates.
 
-Currently, three Chembience application packages are available:
-(1) *Django-RDKit*, a`Django <https://www.djangoproject.com/>`_ /`Django REST framework <https://www.django-rest-framework.org/>`_-based
+Currently, three Chembience template application packages are available:
+(1) *Django-RDKit*, a `Django <https://www.djangoproject.com/>`_ /`Django REST framework <https://www.django-rest-framework.org/>`_-based
 application which is specifically suited for starting the development of web-based `Python <https://www.python.org/>`_
 REST and microservices, (2) *Jupyter-RDKit*, a `Jupyter <https://www.jupyter.org/>`_-based application which lets you
-execute Jupyter notebooks locally on a Web browser, and (3) a basic *RDKit* application, which allows for the execution
-of Python scripts including any RDKit functionality.
-For communication with the web or the Chembience *Proxy* module
-(see below), the *Django-RDKit* package provides a `Nginx <https://www.nginx.com>`_-based web server instance as a
-component of its Docker image.
+execute Jupyter notebooks locally at a Web browser, and (3) a basic *RDKit* application, which allows for the execution
+of Python/RDKit-based scripts.
 
 Creation and deployment of all Chembience-based Docker images and application containers can be orchestrated by the
 developer with the help of `docker-compose <https://docs.docker.com/compose/>`_. Any Docker image required for starting
 up one of the Chembience applications or components is continuously built and tested with
-`Github Actions <https://github.com/chembience/chembience/actions>`_ and made available at
-`Chembience Docker hub repository <https://hub.docker.com/u/chembience/>`_) for pulling by Docker. Alternatively, the
-Docker images can also be built locally on the user's host machine by using the provided build script.
+`Github Actions <https://github.com/chembience/chembience/actions>`_ and made available for Docker pull at
+`Chembience Docker hub repository <https://hub.docker.com/u/chembience/>`_). Alternatively,
+the Docker images can also be built and extended locally on the user's host machine by using the provided build scripts.
 
 If a Chembience-based application is started, a Docker virtual network (*Chembience Backend Network*) is created on the
 Docker host system, as well as the requested Chembience application and components containers, e.g. the *Database* container,
@@ -59,17 +60,17 @@ updating and removing existing ones, while avoiding interference with web traffi
 services and containers. The *Proxy* works in a way that it automatically discovers any existing or newly starting
 application containers inside a secondary Docker virtual network between the application container and
 the proxy module. During the start up of the application container, the *Proxy* is capable of detecting the (sub) domain
-specification given in the configuration of the application which makes the application accessible from the
+specification given in the configuration of the application. This makes the application accessible from the
 outside of the *Chembience Backend* network under the specified application domain names, the latter either being a
 DNS-registered Web domain or any sub domain at localhost in case of a locally running Web application. If configured
 accordingly, a SSL/TLS certificate can be automatically registered with `Let's Encrypt <https://letsencrypt.org/>`_
 
 In general, all of the Chembience application packages can be easily altered, cloned, removed, or reconfigured. After
 the initialization of the Chembience base system (see `Quick Start: Base Installation`_ below), the file directory of
-any Chembience application initially created as a template can be moved, renamed, extended, or copied, allowing for
+a Chembience application initially created as a template can be moved, renamed, extended, or copied. This allows for
 the creation of multiple, specialized application packages, which then can be handled as software projects of their own.
-If additional infrastructure packages are required for a project (e.g. Solr, elasticsearch, or additional Postgres container
-instances), they can be easily add as additional components of the docker-compose service configuration.
+If additional infrastructure packages are required for a project (e.g. Solr, elasticsearch, or additional Postgres
+container instances), they can be easily add as additional components of the docker-compose service configuration.
 
 Current release version of the most important packages are:
 
@@ -83,16 +84,21 @@ Current release version of the most important packages are:
 Releases
 --------
 
-- 0.4.0 (February 2022), new major release: rework of the project structure, update RDKit to version 2021.09.4, update to Postgres 13 with RDKit 2021.09.4 extension, update to Python 3.9.x/Miniconda3-py39_4.10.3-Linux-x86_64.sh, change build system from CircleCi to GitHub Actions, update to Django 4.0.x/Django Restframework 3.13.x, update to Nginx 1.19, update to Jupyter 6.4.x, update of Docker Images to Debian Bullseye-Slim, smaller Docker images
+- 0.4.0 (February 2022), new major release: rework of the project structure, update RDKit to version 2021.09.4, update
+to Postgres 13 with RDKit 2021.09.4 extension, update to Python 3.9.x/Miniconda3-py39_4.10.3-Linux-x86_64.sh, change
+build system from CircleCi to GitHub Actions, update to Django 4.0.x/Django Restframework 3.13.x, update to Nginx 1.19,
+update to Jupyter 6.4.x, update of Docker Images to Debian Bullseye-Slim, smaller Docker images
 - 0.3.0 (no public release)
 - 0.2.18 (March 2021), update to RDKit 2020.09.3 and Postgres 13 (new dependency to chembience/docker-postgres-rdkit-compile)
 - 0.2.17 (June 2020), update Python 3.8 (3.8.3) and RDKit 2020.03.2
 - 0.2.16 (April 2020), update to RDKit 2020.03
-- 0.2.15 (March 2020), update to Python 3.7.6, RDKit 2019.09.3, Postgres 11.7 and Django 2.2.8/DRF 3.11, Jupyter 6.0.4, Nginx 1.17
+- 0.2.15 (March 2020), update to Python 3.7.6, RDKit 2019.09.3, Postgres 11.7 and Django 2.2.8/DRF 3.11, Jupyter 6.0.4,
+Nginx 1.17
 - 0.2.14 (October 2019), update to RDKit 2019.09
 - 0.2.13 (September 2019), update to RDKit 2019.03.4, Postgres 11.5 and Django 2.2.6
 - 0.2.12 (August 2019), update to RDKit 2019.03.3, Postgres 11.4; (Mini)Conda has been updated to version 4.7.10
-- 0.2.11 (June 2019), update to RDKit 2019.03.2, Django 2.2, Postgres 11.3; all Docker images are now based on Debian buster
+- 0.2.11 (June 2019), update to RDKit 2019.03.2, Django 2.2, Postgres 11.3; all Docker images are now based on Debian
+buster
 - 0.2.10 (Easter 2019), update to RDKit 2019.03
 - 0.2.9 (April 2019), update to Postgres 11.2
 - 0.2.8 (March 2019), update to RDKit 2018.09.2 and Postgres 10.7
