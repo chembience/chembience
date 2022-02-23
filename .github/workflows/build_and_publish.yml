@@ -1,4 +1,4 @@
-name: Docker
+name: Chembience build and publish
 
 on:
   push:
@@ -6,7 +6,8 @@ on:
       - ci
       - develop*
       - image
-
+    tags:
+      - v*
   pull_request:
 
 
