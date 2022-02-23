@@ -130,72 +130,93 @@ and run the following command (it is important that you do this from inside the 
 
     ./init all
 
-(Note: alternatively, you might initialize only specific applications or components of Chembience, respectively. This
-is done by specifying 'django', 'jupyter', 'rdkit', 'proxy', or any combinations of those, instead of 'all').
+During the initial setup, the init command is downloading some of the necessary Chembience Docker images to your system
+which may take some time.
 
-As a first step, this will download some of the necessary Chembience Docker images to your system which may take a while
-for the initial setup. After a successful download, a new directory ``chembient/`` has been created in your home directory ::
+**Note**: alternatively, you might want to initialize only specific applications or components of Chembience,
+respectively. This is done by specifying ``django``, ``jupyter``, ``rdkit``, ``proxy``, or any combinations of those,
+instead of ``all`` as initialization target.
+
+After a successful download and run of the initialization, a new directory ``chembient/`` has
+been created in your home directory ::
 
     cd ~/chembient
 
-which has the following layout ::
+which has the following structure ::
 
     chembient/django
-             /rdkit
              /jupyter
+             /rdkit
              /share
              /proxy
 
-The first three directories contain a prototype versions of the Django-, RDKit and Jupyter-based applications, respectively.
-The location and name of these base application directories is freely configurable (in fact, it isn't even required to keep them in the
-``chembient`` parent directory). The ``share/`` directory can be used to store resources and (python) packages that should
-be common to all *App* packages. The ``sphere/`` directory holds scripts and files related to all core infrastructure
-components (e.g. the *Database* and *Proxy* containers).
+The first three directories contain base versions of the *Django-RDKit*, *Jupyter-RDKit*, and the basic *RDKIT*
+application, respectively.  Their specific configuration will be discussed in the following sections.
+The ``share/`` directory can be used to share resources including (python) among Chembience application instances.
+Finally, the ``proxy/`` directory is the home of the Chembience *Proxy* module. Its configuration and usage will also
+be described in a section below.
+
+... The location and name of these base application directories is freely re-configurable,
+in fact, it isn't even required to keep them in the ``chembient`` parent directory).
 
 Quick Start: Django Template App
 --------------------------------
 
-After the quick start installation of Chembience (see previous section `Quick Start: Base Installation`_), go into directory ::
+After the base installation of Chembience (see previous section `Quick Start: Base Installation`_), go into
+directory ::
 
     cd ~/chembient/django
 
 which has the following layout ::
 
     .env
+    app.env
     appsite
     build
+    django-init
     django-manage-py
     docker-compose.build.yml
-    docker-compose.shell.yml
     docker-compose.yml
     docker-entrypoint.sh
     Dockerfile
-    down
+    env-parse
+    init
+    nginx
+    postgres-init.d
     psql
+    remove
     requirements.txt
     shell
     up
-    uswgi-log
+    uwsgi-log
 
 For this quick start section, only the most important of these files will be discussed. The command ``./up`` will start
-up the Django *App* container and the *Database* container (the initial configuration of the containers is provided in
-the ``.env`` file and the ``docker-compose.yml`` file, **NOTE**: the Django *App* container connects to
-port 8000 of the host system, if this port is already in use, it can by reconfigured in ``.env``, see variable
-``DJANGO_APP_CONNECTION_PORT``). If everything went fine, you should now be able to go to ::
+up an instance of the  *Django-RDKit* application container and the Postgres *Database* container. The initial
+configuration of the containers is provided in the ``.env`` file and orchestrated by the ``docker-compose.yml`` file.
+
+**NOTE**: in its default configuration, the *Django-RDKit application container connects to port 8000 of the host system.
+For reconfiguration, see below.
+
+If this port is already in use, it can by reconfigured in ``.env``, see
+variable ``DJANGO_APP_CONNECTION_PORT``).
+
+If everything went fine, you should now be able to go to ::
 
     http://localhost:8000      (you should see the welcome page of a bare Django installation)
 
 For the initial setup of Django, still a few steps needs to be done. Since Django runs inside a Docker container you can
-not directly access Django's ``manage.py`` script to set up things. Instead you have to use the ``django-manage-py``
-script provided in the current directory which passes any arguments to the ``manage.py`` script of the Django instance
-running inside the Django *App* container.
+not directly access Django's administration script ``manage.py`` in order to set up things. Instead, you have to use
+the ``django-manage-py`` script provided in the current directory which passes any arguments to the ``manage.py`` script
+of the Django instance running inside the *Django-RDKit* application container.
 
-To finalize the initial setup of Django in your container instance, run these commands (except for using ``django-manage-py``
-instead of ``manage.py`` these are the same steps as for any Django installation for setting up Django's admin pages) ::
+To finalize the initial setup of Django in your container instance, run these commands (except for using
+``django-manage-py`` instead of ``manage.py`` these are the same steps as for any Django installation for setting up
+Django's admin pages) ::
 
     ./django-manage-py migrate           (creates the initial Django database tables)
     ./django-manage-py createsuperuser   (will prompt you to create a Django superuser account)
-    ./django-manage-py collectstatic     (adds all media (css, js, templates) for the Django admin application; creates a static/ directory in the django directory)
+    ./django-manage-py collectstatic     (adds all media (css, js, templates) for the Django admin application;
+    creates a ``static/`` directory in the django directory)
 
 After running these commands you should be able to go to::
 
@@ -203,19 +224,21 @@ After running these commands you should be able to go to::
 
 and login into the Django admin application with the just set up account and password.
 
-If you want to start the development of own Django apps, go into the ``appsite`` directory. If you already know how to develop
-with Django, this should look familiar to you. If not, go to the `official Django tutorial <https://docs.djangoproject.com/en/2.0/intro/tutorial01/>`_
-as a starting point (you can jump there to section *Creating the Polls app* because anything before this step is already done, also any
-database setup sections can be skipped). Because the ``appsite`` directory is bind-mounted by Docker into the Django *App* container,
-anything you change there is immediately represented inside the container and the web service you are working on
-(if not, touch directory ``appsite``; for some changes in ``appsite/appsite`` and settings.py a container restart might
-be necessary, using  ``./short``).
+If you want to start the development of own Django apps, go into the ``appsite`` directory. If you already know how to
+develop with Django, this should look familiar to you. If not, go to the
+`official Django tutorial <https://docs.djangoproject.com/en/4.0/intro/tutorial01/>`_ as a starting point (you can jump
+there to section *Creating the Polls app* because anything before this step is already done, also the
+database setup sections can be skipped). Because the ``appsite`` directory is bind-mounted by Docker into the Django-RDKit
+application container, anything you change there is immediately represented inside the container and the web service
+you are working on (if not, touch directory ``appsite``; for some changes in ``appsite/appsite`` and settings.py a
+container restart might be necessary, using  ``docker-compose restart``).
 
-In order to bring the whole Chembience stack of Django *App* and *Database* down again, use the ``down`` script::
+In order to remove the whole Chembience stack of *Django-RDKit* application and *Database* container down again, use the
+``down`` script::
 
-    ./down
+    ./remove
 
-Anything you have created and stored so far in the database has been persisted. If you are familiar with ``docker-compose``,
+**WARNING**: This will remove anything including the content of the database. If you are familiar with ``docker-compose``,
 all life-circle commands should work as expected, in fact, ``up`` and  ``down`` are just short cuts for their respective
 ``docker-compose`` commands.
 
@@ -253,7 +276,7 @@ they are not just placeholders):
     import psycopg2
     import pprint
 
-    conn_string = "host='db' dbname='chembience' user='chembience' password='Arg0'"
+    conn_string = "host='db' dbname='chembience' user='chembience' password='Chembience0'"
     conn = psycopg2.connect(conn_string)
     cursor = conn.cursor()
 

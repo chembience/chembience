@@ -102,6 +102,7 @@ init_jupyter () {
 init_django=false
 init_rdkit=false
 init_jupyter=false
+init_proxy=false
 
 while :; do
     case $1 in
