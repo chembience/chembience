@@ -16,7 +16,7 @@ Chembience
 Overview
 --------
 
-**Chembience** is a `Docker <https://docs.docker.com/>`_ based platform supporting the fast development of
+**Chembience** is a `Docker <https://docs.docker.com/>`_-based platform supporting the fast development of
 `cheminformatics <https://en.wikipedia.org/wiki/Cheminformatics>`_-centric web applications and microservices.
 It creates a clean separation between your scientific web service implementation and any host-specific or
 infrastructure-related configuration requirements. The following schema gives an overview.
@@ -26,7 +26,7 @@ infrastructure-related configuration requirements. The following schema gives an
 Chembience allows for the easy installation of pre-configured template application packages in just a few steps.
 Each of the Chembience applications is Docker-based and provides access to a readily configured
 `Postgres <https://www.postgresql.org/>`_ *Databases* instance running in a separate Docker container
-instance on the same Docker virtual network (*Chembience Backend Network*). For the efficient handling of
+on the same Docker virtual network (*Chembience Backend Network*). For the efficient handling of
 chemistry-related data and information, all Chembience applications and the *Database* image have the
 `RDKit <http://www.rdkit.org/>`_ toolkit installed, either as Python module or Postgres extension, respectively.
 For the connection to the intranet or local network, some of application Docker images provide a
@@ -39,9 +39,9 @@ Currently, three Chembience template application packages are available:
 application which is specifically suited for starting the development of web-based `Python <https://www.python.org/>`_
 REST and microservices, (2) *Jupyter-RDKit*, a `Jupyter <https://www.jupyter.org/>`_-based application which lets you
 execute Jupyter notebooks locally at a Web browser, and (3) a basic *RDKit* application, which allows for the execution
-of Python/RDKit-based scripts.
+of Python scripts including any RDKit functionality.
 
-Creation and deployment of all Chembience-based Docker images and application containers can be orchestrated by the
+The creation and deployment of all Chembience-based Docker images and application containers can be orchestrated by the
 developer with the help of `docker-compose <https://docs.docker.com/compose/>`_. Any Docker image required for starting
 up one of the Chembience applications or components is continuously built and tested with
 `Github Actions <https://github.com/chembience/chembience/actions>`_ and made available for Docker pull at
@@ -49,7 +49,7 @@ up one of the Chembience applications or components is continuously built and te
 the Docker images can also be built and extended locally on the user's host machine by using the provided build scripts.
 
 If a Chembience-based application is started, a Docker virtual network (*Chembience Backend Network*) is created on the
-Docker host system, as well as the requested Chembience application and components containers, e.g. the *Database* container,
+Docker host system, as well as the requested Chembience application and components, e.g. the *Database* container,
 are brought up together at once. Depending on the current use case, a different set of the available Chembience
 container components can be easily configured and put together by adjusting the docker-compose configuration file.
 
@@ -227,8 +227,9 @@ After running these commands you should be able to go to ::
 
 and login into the Django admin application with the just set up account and password.
 
-Since Chembience 0.4.0 a shortcut script ``django-init`` is provided which runs the three above commands at once and
-creates a superuser with default password ``Django0Django0`` if no superuseruser account has been created before. ::
+** Note**: since Chembience 0.4.0 a shortcut script ``django-init`` is provided which runs the three above commands at
+once and creates a superuser with default password ``Django0Django0`` if no superuseruser account has been created
+before. ::
 
     ./django-init   (then go to http://localhost:8000/admin)
 
@@ -237,17 +238,17 @@ be found in the local ``appsite`` directory. If you already know how to develop 
 look familiar to you. If not, go to the `official Django tutorial <https://docs.djangoproject.com/en/4.0/intro/tutorial01/>`_ as a
 starting point (you can jump there to section *Creating the Polls app* because anything before this step is already
 done, also the database setup sections can be skipped). Because the ``appsite`` directory is bind-mounted by Docker
-into the Django-RDKit application container, anything changes are immediately represented inside the container
-and the web service you are working on (if not, touch directory ``appsite``; for some changes in ``appsite/appsite`` and
-Django's ``settings.py`` a container restart might be necessary by running ``docker-compose restart``. Check also the
+into the Django-RDKit application container, any changes are immediately active inside the container
+and the web service you are developing (if not, touch directory ``appsite``; for some changes in ``appsite/appsite`` and
+Django's ``settings.py``, a container restart might be necessary by running ``docker-compose restart``. Check also the
 nginx and uwsgi configuration in directory ``~/chembient/django/nginx``).
 
-In order to remove the whole Chembience stack of *Django-RDKit* application and *Database* container down again, use the
-``remove`` script::
+In order to remove the whole Chembience stack of the *Django-RDKit* application and *Database* container down again, use
+the ``remove`` script::
 
-    ./remove  (**WARNING**: This will remove anything including the content of the database.)
+    ./remove  (WARNING: This will remove anything including the content of the database.)
 
-If you just want to shutdown the application without loss of data and a later restart, use the ``stop`` script::
+If you just want to shutdown the application without loss of data and for a later restart, use the ``stop`` script::
 
     ./stop  (later restart with ./up again)
 
@@ -257,7 +258,7 @@ the local ``init`` script::
 
     ./init      (after editing file 'app.env')
 
-If you need additional python packages not present in the default Chembience **Django-RDKit**, add them to file
+If you need additional python packages not present in the default Chembience *Django-RDKit* application, add them to file
 ``requirements.txt`` and run::
 
     ./build
@@ -267,11 +268,11 @@ This will build a new local Docker image with the required packages added.
 Quick Start: *Jupyter App*
 --------------------------
 
-After the quick start installation of Chembience (see previous section `Quick Start: Base Installation`_), go into directory ::
+After the initial installation of Chembience (see previous section `Quick Start: Base Installation`_), go into directory ::
 
     cd ~/chembient/jupyter
 
-which has the following layout ::
+which has the following layout: ::
 
     .env
     app.env
@@ -318,7 +319,8 @@ directory::
 
     ~chembient/jupyter/notebooks
 
-Likewise, if you create new Jupyter notebooks in the Jupyter app and safe them, you will find them at this directory.
+Likewise, if you create new Jupyter notebooks in the *Jupyter-RDKit* application and safe them, you will find them at
+this directory.
 
 For connecting to the database, do the following (if you use an unchanged Chembience configuration, use the shown
 database connection parameters verbatim, they are not just placeholders):
@@ -338,12 +340,12 @@ database connection parameters verbatim, they are not just placeholders):
     pprint.pprint(extensions)
 
 
-In order to remove the whole Chembience stack of *Jupyter-RDKit* application and *Database* container down again, use the
+In order to remove the whole Chembience stack of the *Jupyter-RDKit* application and *Database* container down again, use the
 ``remove`` script::
 
     ./remove  (**WARNING**: This will remove anything including the content of the database.)
 
-If you just want to shutdown the application without loss of data and a later restart, use the ``stop`` script::
+If you just want to shutdown the application without loss of data and for a later restart, use the ``stop`` script::
 
     ./stop  (later restart with ./up again)
 
@@ -353,7 +355,7 @@ the local ``init`` script::
 
     ./init      (after editing file 'app.env')
 
-If you need additional python packages not present in the default Chembience **Django-RDKit**, add them to file
+If you need additional python packages not present in the default Chembience *Jupyter-RDKit*, add them to file
 ``requirements.txt`` and run::
 
     ./build
@@ -390,7 +392,7 @@ You will see the following layout::
     up
 
 For this quick start section, only the most important of these files will be discussed. The ``./up`` command will start
-up the database and the *RDKIT* application container executing a regular python shell interactively. For connecting to
+up the database and the *RDKIT* application executing a regular interactive python shell. For connecting to
 the database, do the following (if you use an unchanged Chembience configuration, use the shown database connection
 parameters verbatim, they are not just placeholders):
 
@@ -410,8 +412,8 @@ parameters verbatim, they are not just placeholders):
 
 If you use the ``./run`` command, it does the same without starting an interactive shell, however, it will pass any
 command line arguments to the Python interpreter running in the *RDKit* application container. The Python interpreter
-has the current directory (``~/chembience/rdkit``) available on its PYTHONPATH, i.e. if you add a script named script.py
-to the RDKit *App* directory you can run it like this::
+has the current application directory (``~/chembience/rdkit``) available on its PYTHONPATH, i.e. if you add a script
+named script.py to the RDKit *App* directory you can run it like this::
 
     ./run script.py
 
@@ -421,9 +423,6 @@ For changes in the configuration of the *RDKit* application container, edit file
 local script ``init``::
 
     ./init      (after editing file 'app.env')
-
-
-
 
 
 Quick Start: Proxy
@@ -443,13 +442,13 @@ This will make the *Proxy* available at ::
     http://localhost        (don't worry, the reverse proxy will report with *503 Service Temporarily Unavailable* there)
 
 The *Proxy* will connect to port 80 and 443 of the host system. If these ports are in use, adjust
-variable ``CHEMBIENCE_PROXY_EXTERNAL_PORT`` and ``CHEMBIENCE_PROXY_EXTERNAL_SSL_PORT`` at the local file ``proxy.env``
-and run the ``init`` script: ::
+variable ``CHEMBIENCE_PROXY_EXTERNAL_PORT`` and ``CHEMBIENCE_PROXY_EXTERNAL_SSL_PORT`` at the file ``proxy.env``
+and run the local ``init`` script: ::
 
     ./init      (after editing file 'proxy.env')
 
 before using ``./up-without-letsencrypt``. If a basic Chembience *Django-RDKit* application instance is running,
-it also should be available from the *Proxy* (if this doesn't work, your local network configuration might not allow
+it also should be available from the *Proxy* now (if this doesn't work, your local network configuration might not allow
 for resolving subdomains) ::
 
     http://django.localhost
@@ -462,7 +461,7 @@ Using the Proxy in production setting and with HTTP
 As a prerequisite, your DNS-registered domain (e.g. www.example.com) has to be set up properly with your domain provider.
 Unfortunately it is hard to give a general description here.
 
-Bring the proxy up as described in the `Quick Start: Proxy`_ section. The port the *Proxy* is connecting to needs to
+Bring the proxy up as described in the `Quick Start: Proxy`_ section. The port, the *Proxy* is connecting to, needs to
 be set to an outside-accessible port on your public web server/host (usually port 80).
 
 Additionally, before any *Django-RDKit* application is brought up, the variable ``APP_VIRTUAL_HOSTNAME`` in
