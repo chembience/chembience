@@ -1,0 +1,6 @@
+Pillow
+markdown
+pygments
+requests
+lxml
+six

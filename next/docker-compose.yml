@@ -1,0 +1,17 @@
+services:
+
+  rdkit:
+    image: chembience/rdkit:${CHEMBIENCE_VERSION}
+    build:
+      context: rdkit/
+      args:
+        conda_package: 'continuumio/miniconda3'
+        conda_tag: '24.11.1-0'
+        conda_py: '312'
+        rdkit_version: 'Release_2024_09_5'
+    environment:
+      - CHEMBIENCE_UID=${CHEMBIENCE_UID:-1000}
+      - CHEMBIENCE_GID=${CHEMBIENCE_GID:-1000}
+    working_dir: "/home/app"
+    entrypoint: [ "/docker-entrypoint.sh" ]
+    command: [ "python" ]
