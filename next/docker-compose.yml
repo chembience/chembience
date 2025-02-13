@@ -15,3 +15,29 @@ services:
     working_dir: "/home/app"
     entrypoint: [ "/docker-entrypoint.sh" ]
     command: [ "python" ]
+
+  django:
+    image: chembience/django:${CHEMBIENCE_VERSION}
+    build:
+      context: django/
+      args:
+        build_tag: ${CHEMBIENCE_VERSION}
+    environment:
+      - CHEMBIENCE_UID=${CHEMBIENCE_UID:-1000}
+      - CHEMBIENCE_GID=${CHEMBIENCE_GID:-1000}
+      - DJANGO_VIRTUAL_HOSTNAME=${APP_VIRTUAL_HOSTNAME:-localhost}
+      - DJANGO_SUPERUSER_PASSWORD
+      - DJANGO_SUPERUSER_USERNAME
+      - DJANGO_SUPERUSER_EMAIL
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_NAME=${POSTGRES_NAME:-postgres}
+      - POSTGRES_HOST=${POSTGRES_HOST:-postgres}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+    ports:
+      - "8000:80"
+    volumes:
+      - ~/app:/home/app
+    working_dir: "/home/app"
+    entrypoint: [ "/docker-entrypoint.sh" ]
+    command: [ "/home/nginx/run.sh" ]

@@ -1,0 +1,9 @@
+django>=5
+uwsgi
+sqlparse
+django
+djangorestframework
+django-extensions
+psycopg2
+
+

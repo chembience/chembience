@@ -1,6 +1,2 @@
-Pillow
-markdown
-pygments
-requests
-lxml
-six
+rdkit==2024.09.5
+
