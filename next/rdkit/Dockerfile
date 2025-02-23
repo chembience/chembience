@@ -5,13 +5,13 @@ ARG conda_py
 
 LABEL maintainer="markussitzmann@gmail.com "
 
+RUN apt-get --allow-releaseinfo-change update && \
+    apt-get -y --no-install-recommends install gosu joe postgresql-client
 
 RUN mkdir -p /home/app /opt/python
-COPY requirements.txt /opt/python
+#COPY requirements.txt /opt/python
 
 ENV PATH /home/app:/opt/conda/bin:$PATH
-
-RUN apt-get --allow-releaseinfo-change update && apt-get -y --no-install-recommends install gosu joe postgresql-client
 
 COPY requirements.txt /opt/python/
 COPY docker-entrypoint.sh /

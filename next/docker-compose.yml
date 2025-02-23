@@ -1,3 +1,17 @@
+
+x-common-environment: &common-env
+  CHEMBIENCE_UID: ${CHEMBIENCE_UID:-1000}
+  CHEMBIENCE_GID: ${CHEMBIENCE_GID:-1000}
+  DJANGO_VIRTUAL_HOSTNAME: ${APP_VIRTUAL_HOSTNAME:-localhost}
+  DJANGO_SUPERUSER_PASSWORD: Django0Django0
+  DJANGO_SUPERUSER_USERNAME: admin
+  DJANGO_SUPERUSER_EMAIL: admin@domain.com
+  POSTGRES_USER: chembience
+  POSTGRES_PASSWORD: Chembience0
+  POSTGRES_NAME: ${POSTGRES_NAME:-chembience}
+  POSTGRES_HOST: ${POSTGRES_HOST:-postgres}
+  POSTGRES_PORT: ${POSTGRES_PORT:-5432}
+
 services:
 
   rdkit:
@@ -10,8 +24,7 @@ services:
         conda_py: '312'
         rdkit_version: 'Release_2024_09_5'
     environment:
-      - CHEMBIENCE_UID=${CHEMBIENCE_UID:-1000}
-      - CHEMBIENCE_GID=${CHEMBIENCE_GID:-1000}
+      <<: *common-env
     working_dir: "/home/app"
     networks:
       - app-network
@@ -19,23 +32,13 @@ services:
     command: [ "python" ]
 
   django:
-    image: chembience/django:${CHEMBIENCE_VERSION}
+    image: chembience/rdkit-django:${CHEMBIENCE_VERSION}
     build:
       context: django/
       args:
         build_tag: ${CHEMBIENCE_VERSION}
     environment:
-      - CHEMBIENCE_UID=${CHEMBIENCE_UID:-1000}
-      - CHEMBIENCE_GID=${CHEMBIENCE_GID:-1000}
-      - DJANGO_VIRTUAL_HOSTNAME=${APP_VIRTUAL_HOSTNAME:-localhost}
-      - DJANGO_SUPERUSER_PASSWORD
-      - DJANGO_SUPERUSER_USERNAME
-      - DJANGO_SUPERUSER_EMAIL
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
-      - POSTGRES_NAME=${POSTGRES_NAME:-postgres}
-      - POSTGRES_HOST=${POSTGRES_HOST:-postgres}
-      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+      <<: *common-env
     ports:
       - "8000:8000"
       #- "8000:8000"
@@ -48,16 +51,22 @@ services:
     command: ["gunicorn", "appsite.wsgi:application", "--bind", "0.0.0.0:8000"]
 
   postgres:
-    image: postgres:17.2
+    image: chembience/rdkit-postgres:${CHEMBIENCE_VERSION}
+    build:
+      context: postgres/
+      args:
+        build_tag: ${CHEMBIENCE_VERSION}
     volumes:
-      - postgres-db-volume:/var/lib/postgresql
+      - postgres-db-volume:/home/postgres
       #- ${APP_HOME}/postgres-init.d:/docker-entrypoint-initdb.d
     environment:
-      - POSTGRES_PASSWORD
-      - POSTGRES_USER
+      <<: *common-env
+    ports:
+      - "5432:5432"
     networks:
       - app-network
-    #restart: always
+    working_dir: "/home/postgres/"
+    entrypoint: [ "/docker-entrypoint.sh" ]
 
 volumes:
   postgres-db-volume:
