@@ -13,6 +13,8 @@ services:
       - CHEMBIENCE_UID=${CHEMBIENCE_UID:-1000}
       - CHEMBIENCE_GID=${CHEMBIENCE_GID:-1000}
     working_dir: "/home/app"
+    networks:
+      - app-network
     entrypoint: [ "/docker-entrypoint.sh" ]
     command: [ "python" ]
 
@@ -35,9 +37,33 @@ services:
       - POSTGRES_HOST=${POSTGRES_HOST:-postgres}
       - POSTGRES_PORT=${POSTGRES_PORT:-5432}
     ports:
-      - "8000:80"
+      - "8000:8000"
+      #- "8000:8000"
     volumes:
       - ~/app:/home/app
-    working_dir: "/home/app"
+    networks:
+      - app-network
+    working_dir: "/home/app/"
     entrypoint: [ "/docker-entrypoint.sh" ]
-    command: [ "/home/nginx/run.sh" ]
+    command: ["gunicorn", "appsite.wsgi:application", "--bind", "0.0.0.0:8000"]
+
+  postgres:
+    image: postgres:17.2
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql
+      #- ${APP_HOME}/postgres-init.d:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
+    networks:
+      - app-network
+    #restart: always
+
+volumes:
+  postgres-db-volume:
+
+networks:
+  app-network:
+    name: app-backend
+  chembience-network:
+    name: chembience-network

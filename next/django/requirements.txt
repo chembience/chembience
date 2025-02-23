@@ -1,7 +1,6 @@
-django>=5
-uwsgi
+gunicorn
 sqlparse
-django
+django>=5
 djangorestframework
 django-extensions
 psycopg2
