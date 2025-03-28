@@ -48,7 +48,7 @@ services:
       - app-network
     working_dir: "/home/app/"
     entrypoint: [ "/docker-entrypoint.sh" ]
-    command: ["gunicorn", "appsite.wsgi:application", "--bind", "0.0.0.0:8000"]
+    command: ["gunicorn", "appsite.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "8"]
 
   postgres:
     image: chembience/rdkit-postgres:${CHEMBIENCE_VERSION}
