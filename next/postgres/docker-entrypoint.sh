@@ -6,15 +6,10 @@ if ! id "app" >/dev/null 2>&1; then
     useradd --shell /bin/bash -u $CHEMBIENCE_UID -g $CHEMBIENCE_GID -o -c "" -M app
 fi
 
-gosu app bash -c "
-  initdb -D /home/postgres/postgres_data && \
-  pg_ctl -D /home/postgres/postgres_data start
-"
+if [ ! -d "/home/postgres/postgres_data" ]; then
+    gosu app initdb -D /home/postgres/postgres_data
+fi
 
-echo 'done'
-#export PYTHONPATH=/home/app:/share:$PYTHONPATH
+exec gosu app postgres -D /home/postgres/postgres_data
 
-#gosu app "$@"
-
-#gosu myuser bash -c "whoami && pwd && ls -l"
 

@@ -41,7 +41,6 @@ services:
       <<: *common-env
     ports:
       - "8000:8000"
-      #- "8000:8000"
     volumes:
       - ~/app:/home/app
     networks:
@@ -57,7 +56,7 @@ services:
       args:
         build_tag: ${CHEMBIENCE_VERSION}
     volumes:
-      - postgres-db-volume:/home/postgres
+      - ~/app/postgres:/home/postgres
       #- ${APP_HOME}/postgres-init.d:/docker-entrypoint-initdb.d
     environment:
       <<: *common-env
