@@ -13,7 +13,7 @@ RUN mkdir -p /home/postgres /opt/python
 RUN mkdir -p /home/postgres/postgres_data && \
     chown -R ${CHEMBIENCE_UID}:${CHEMBIENCE_GID} /home/postgres
 
-ENV PATH /opt/conda/bin:$PATH
+ENV PATH=/opt/conda/bin:$PATH
 
 COPY docker-entrypoint.sh /
 

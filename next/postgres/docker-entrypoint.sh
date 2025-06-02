@@ -13,3 +13,6 @@ fi
 exec gosu app postgres -D /home/postgres/postgres_data
 
 
+
+
+dyvfsf

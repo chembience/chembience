@@ -1,12 +1,12 @@
-ARG build_tag
+ARG build_tag=latest
 FROM chembience/rdkit:$build_tag
 ARG conda_py
 
 LABEL maintainer="markus.sitzmann@gmail.com"
 
 # set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 RUN mkdir -p /home/nginx /home/template /opt/django
 
@@ -14,7 +14,7 @@ COPY docker-entrypoint.sh /
 COPY requirements.txt /opt/django
 COPY template/* /home/template
 
-ENV PATH /opt/conda/bin:$PATH
+ENV PATH=/opt/conda/bin:$PATH
 
 RUN /bin/bash -c "source activate chembience" && \
     CONDA_PY=$conda_py conda install --yes --file /opt/django/requirements.txt && \
