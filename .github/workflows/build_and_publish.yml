@@ -1,15 +1,13 @@
-name: Docker
+name: Chembience Build
 
 on:
   push:
     branches:
-      #- master
       - ci
       - develop*
       - image
     tags:
       - v*
-
   pull_request:
 
 
