@@ -1,0 +1,27 @@
+
+    APP_HOME=~/app
+
+### CHEMBIENCE ENV ###
+
+    CHEMBIENCE_VERSION=0.5.0
+
+    CHEMBIENCE_UID=1000
+    CHEMBIENCE_GID=1000
+
+### DJANGO APP ENV ###
+
+    #DJANGO_APP_HOME=~/chembient/django
+    DJANGO_CONNECTION_PORT=8000
+    DJANGO_VIRTUAL_HOSTNAME=django.localhost,localhost
+
+    DJANGO_SUPERUSER_USERNAME=admin
+    DJANGO_SUPERUSER_PASSWORD=Django0Django0
+    DJANGO_SUPERUSER_EMAIL=admin@domain.com
+
+### POSTGRES ENV ###
+
+    #POSTGRES_RDKIT_VERSION=postgres-13.rdkit-2021.03
+
+    POSTGRES_PASSWORD=Chembience0
+    POSTGRES_USER=chembience
+    POSTGRES_NAME=chembience

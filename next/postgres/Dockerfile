@@ -16,6 +16,8 @@ RUN mkdir -p /home/postgres/postgres_data && \
 ENV PATH=/opt/conda/bin:$PATH
 
 COPY docker-entrypoint.sh /
+COPY pg_hba.conf /
+COPY postgresql.conf /
 
 RUN CONDA_PY=$conda_py conda config --add channels conda-forge && \
     CONDA_PY=$conda_py conda create --verbose --yes -n chembience && \

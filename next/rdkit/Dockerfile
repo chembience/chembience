@@ -6,7 +6,7 @@ ARG conda_py
 LABEL maintainer="markussitzmann@gmail.com "
 
 RUN apt-get --allow-releaseinfo-change update && \
-    apt-get -y --no-install-recommends install gosu joe postgresql-client
+    apt-get -y --no-install-recommends install gosu joe postgresql-client telnet
 
 RUN mkdir -p /home/app /opt/python
 #COPY requirements.txt /opt/python
