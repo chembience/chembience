@@ -10,7 +10,6 @@
 
 ### DJANGO APP ENV ###
 
-    #DJANGO_APP_HOME=~/chembient/django
     DJANGO_CONNECTION_PORT=8000
     DJANGO_VIRTUAL_HOSTNAME=django.localhost,localhost
 
@@ -19,8 +18,6 @@
     DJANGO_SUPERUSER_EMAIL=admin@domain.com
 
 ### POSTGRES ENV ###
-
-    #POSTGRES_RDKIT_VERSION=postgres-13.rdkit-2021.03
 
     POSTGRES_PASSWORD=Chembience0
     POSTGRES_USER=chembience

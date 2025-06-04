@@ -8,9 +8,11 @@ LABEL maintainer="markus.sitzmann@gmail.com"
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-RUN mkdir -p /home/nginx /home/template /opt/django
+RUN mkdir -p /home/template /opt/django
 
 COPY docker-entrypoint.sh /
+COPY docker-compose.yml /
+COPY env /
 COPY requirements.txt /opt/django
 COPY template/* /home/template
 

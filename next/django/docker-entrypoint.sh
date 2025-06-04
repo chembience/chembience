@@ -29,9 +29,9 @@ if [ ! -d /home/app/appsite ]; then
     mkdir -p backup
 
     echo "📋 Copying starter files (non-overwriting)..."
-    cp -n /home/template/env /home/app/.env || echo "⚠️  .env already exists, skipping"
-    cp -n /home/template/manage.sh /home/app || echo "⚠️  manage.sh already exists, skipping"
-    cp -n /home/template/docker-compose.yml /home/app || echo "⚠️  docker-compose.yml already exists, skipping"
+    cp -n /env /home/app/.env || echo "⚠️  .env already exists, skipping"
+    cp -n /home/template/manage /home/app || echo "⚠️  manage already exists, skipping"
+    cp -n /docker-compose.yml /home/app || echo "⚠️  docker-compose.yml already exists, skipping"
 
     echo "🔒 Setting ownership to app:app..."
     chown -R app:app /home/app

@@ -44,7 +44,6 @@ services:
         build_tag: ${CHEMBIENCE_VERSION}
     volumes:
       - ${APP_HOME}/postgres:/home/postgres
-      #- ${APP_HOME}/postgres-init.d:/docker-entrypoint-initdb.d
     environment:
       <<: *common-env
     ports:
@@ -59,7 +58,6 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-
 
 volumes:
   postgres-db-volume:
