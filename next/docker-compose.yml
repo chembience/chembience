@@ -68,6 +68,8 @@ services:
       - app-network
     working_dir: "/home/postgres/"
     entrypoint: [ "/docker-entrypoint.sh" ]
+    #command: ["gosu", "app", "postgres", "-D", "/home/postgres/postgres_data"]
+
 
 volumes:
   postgres-db-volume:

@@ -18,29 +18,29 @@ fi
 mkdir -p /home/postgres
 chown -R "$CHEMBIENCE_UID":"$CHEMBIENCE_GID" /home/postgres
 
-DATA_DIR="/home/postgres/postgres_data"
+#DATA_DIR="/home/postgres/postgres_data"
 
-if [ ! -d "$DATA_DIR" ]; then
-    echo "🗃 Initializing PostgreSQL data directory at $DATA_DIR..."
-    gosu app initdb -D "$DATA_DIR"
+if [ ! -d "/home/postgres/postgres_data" ]; then
+    echo "🗃 Initializing PostgreSQL data directory ..."
+    gosu app initdb -D "/home/postgres/postgres_data"
 
     echo "⚙️ Replacing PostgreSQL config files if available..."
     if [ -f /postgresql.conf ]; then
         echo "  ✅ Copying custom postgresql.conf"
-        cp /postgresql.conf "$DATA_DIR/postgresql.conf"
+        cp /postgresql.conf "/home/postgres/postgres_data/postgresql.conf"
     else
         echo "  ⚠️  /postgresql.conf not found, using default"
     fi
 
     if [ -f /pg_hba.conf ]; then
         echo "  ✅ Copying custom pg_hba.conf"
-        cp /pg_hba.conf "$DATA_DIR/pg_hba.conf"
+        cp /pg_hba.conf "/home/postgres/postgres_data/pg_hba.conf"
     else
         echo "  ⚠️  /pg_hba.conf not found, using default"
     fi
 
     echo "🚀 Starting temporary server to configure initial DB..."
-    gosu app pg_ctl -D "$DATA_DIR" -o "-c listen_addresses='localhost'" -w start
+    gosu app pg_ctl -D "/home/postgres/postgres_data" -o "-c listen_addresses='localhost'" -w start
 
     echo "USER $POSTGRES_USER"
     echo "NAME $POSTGRES_NAME"
@@ -53,11 +53,14 @@ if [ ! -d "$DATA_DIR" ]; then
 EOSQL
 
     echo "🛑 Stopping temporary server..."
-    gosu app pg_ctl -D "$DATA_DIR" -m fast -w stop
+    gosu app pg_ctl -D "/home/postgres/postgres_data" -m fast -w stop
 else
-    echo "📂 Using existing data directory at $DATA_DIR"
+    echo "📂 Using existing data directory"
 fi
 
 
-echo "🚀 Launching PostgreSQL server..."
-exec gosu app postgres -D "$DATA_DIR"
+#echo "🚀 Launching PostgreSQL server..."
+#exec gosu app postgres -D "$DATA_DIR"
+
+echo "🚦 Starting postgres main process: $*"
+exec "$@"

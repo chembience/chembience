@@ -53,11 +53,13 @@ services:
       - app-network
     working_dir: "/home/postgres/"
     entrypoint: [ "/docker-entrypoint.sh" ]
+    command: [ "gosu", "app", "postgres", "-D", "/home/postgres/postgres_data" ]
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U chembience" ]
       interval: 5s
       timeout: 5s
       retries: 5
+
 
 volumes:
   postgres-db-volume:
