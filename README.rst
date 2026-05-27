@@ -1,11 +1,15 @@
+DEPRECATION NOTICE 
+===================
+
+The further development of Chembience has been moved to another repository. The final release in this repository will remain v0.4.0, 
+Chembience version v0.5.0 or later are available from the new respository https://github.com/chembience/core
+
+
 Chembience
 ==========
 
 .. image:: https://github.com/chembience/chembience/actions/workflows/build_and_publish.yml/badge.svg?tag=v0.4.0
     :target: https://github.com/chembience/chembience/actions
-
-.. image:: https://zenodo.org/badge/124780116.svg
-   :target: https://zenodo.org/badge/latestdoi/124780116
 
 .. image:: https://img.shields.io/github/release/chembience/chembience.svg
    :target: https://img.shields.io/github/release/chembience/chembience.svg
